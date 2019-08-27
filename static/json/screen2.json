@@ -1,0 +1,509 @@
+{
+    "dataList": [
+        {
+            "amount": "12000.36",
+            "unit": "万元",
+            "type": "累计交易金额"
+        },
+        {
+            "amount": "9527",
+            "unit": "笔",
+            "type": "累计交易笔数"
+        },
+        {
+            "amount": "4561",
+            "unit": "件",
+            "type": "进件数"
+        },
+        {
+            "amount": "5541",
+            "unit": "件",
+            "type": "处理数"
+        },
+        {
+            "amount": "667",
+            "unit": "件",
+            "type": "审批通过数"
+        },
+        {
+            "amount": "12000",
+            "unit": "万元",
+            "type": "今日放款金额"
+        },
+        {
+            "amount": "1200000",
+            "unit": "笔数",
+            "type": "今日放款笔数"
+        },
+        {
+            "amount": "12000",
+            "unit": "万元",
+            "type": "今日换款金额"
+        },
+        {
+            "amount": "12000",
+            "unit": "元",
+            "type": "利息"
+        },
+        {
+            "amount": "12000",
+            "unit": "万元",
+            "type": "新网联合授信业务"
+        },
+        {
+            "amount": "12000",
+            "unit": "万元",
+            "type": "O2O贷款业务"
+        },
+        {
+            "amount": "12000",
+            "unit": "笔",
+            "type": "放款笔数"
+        }
+    ],
+    "nationmap": [
+        {
+            "amount": "210",
+            "type": "北京",
+            "value": 80
+        },
+        {
+            "amount": "100",
+            "type": "天津",
+            "value": 105
+        },
+        {
+            "amount": "120",
+            "type": "上海",
+            "value": 130
+        },
+        {
+            "amount": "110",
+            "type": "重庆",
+            "value": 155
+        },
+        {
+            "amount": "90",
+            "type": "河北",
+            "value": 180
+        },
+        {
+            "amount": "150",
+            "type": "山西",
+            "value": 205
+        },
+        {
+            "amount": "160",
+            "type": "辽宁",
+            "value": 230
+        },
+        {
+            "amount": "170",
+            "type": "吉林",
+            "value": 255
+        },
+        {
+            "amount": "180",
+            "type": "黑龙江",
+            "value": 280
+        },
+        {
+            "amount": "190",
+            "type": "江苏",
+            "value": 305
+        },
+        {
+            "amount": "13",
+            "type": "浙江",
+            "value": 330
+        },
+        {
+            "amount": "120",
+            "type": "安徽",
+            "value": 355
+        },
+        {
+            "amount": "150",
+            "type": "福建",
+            "value": 380
+        },
+        {
+            "amount": "231",
+            "type": "江西",
+            "value": 405
+        },
+        {
+            "amount": "232",
+            "type": "山东",
+            "value": 430
+        },
+        {
+            "amount": "233",
+            "type": "河南",
+            "value": 455
+        },
+        {
+            "amount": "234",
+            "type": "湖北",
+            "value": 480
+        },
+        {
+            "amount": "235",
+            "type": "湖南",
+            "value": 505
+        },
+        {
+            "amount": "236",
+            "type": "广东",
+            "value": 530
+        },
+        {
+            "amount": "237",
+            "type": "海南",
+            "value": 555
+        },
+        {
+            "amount": "238",
+            "type": "四川",
+            "value": 580
+        },
+        {
+            "amount": "239",
+            "type": "贵州",
+            "value": 605
+        },
+        {
+            "amount": "240",
+            "type": "云南",
+            "value": 630
+        },
+        {
+            "amount": "250",
+            "type": "陕西",
+            "value": 655
+        },
+        {
+            "amount": "260",
+            "type": "甘肃",
+            "value": 680
+        },
+        {
+            "amount": "270",
+            "type": "青海",
+            "value": 705
+        },
+        {
+            "amount": "280",
+            "type": "台湾",
+            "value": 730
+        },
+        {
+            "amount": "190",
+            "type": "内蒙",
+            "value": 755
+        },
+        {
+            "amount": "130",
+            "type": "广西",
+            "value": 780
+        },
+        {
+            "amount": "330",
+            "type": "西藏",
+            "value": 805
+        },
+        {
+            "amount": "430",
+            "type": "宁夏",
+            "value": 830
+        },
+        {
+            "amount": "530",
+            "type": "新疆",
+            "value": 855
+        },
+        {
+            "amount": "633",
+            "type": "香港",
+            "value": 880
+        },
+        {
+            "amount": "111",
+            "type": "澳门",
+            "value": 905
+        }
+    ],
+    "realist_CY": [
+        {
+            "amount": "500000",
+            "address": "陕西省咸阳",
+            "sex": "先生",
+            "name": "张健",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "475000",
+            "address": "云南省曲靖",
+            "sex": "先生",
+            "name": "刘波",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "400000",
+            "address": "云南省曲靖",
+            "sex": "先生",
+            "name": "曾传生",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "475000",
+            "address": "云南省曲靖",
+            "sex": "先生",
+            "name": "李鸿岗",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "495000",
+            "address": "云南省曲靖",
+            "sex": "女士",
+            "name": "何平",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省曲靖",
+            "sex": "女士",
+            "name": "曾焕芬",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省曲靖",
+            "sex": "女士",
+            "name": "曾丽芬",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "475000",
+            "address": "云南省曲靖",
+            "sex": "先生",
+            "name": "郭永辉",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省曲靖",
+            "sex": "先生",
+            "name": "曾亚飞",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "女士",
+            "name": "吴朝贤",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "先生",
+            "name": "方浩亦",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "先生",
+            "name": "杨波",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "女士",
+            "name": "白秀",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "女士",
+            "name": "张金玉",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "先生",
+            "name": "李学锐",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "云南省红河",
+            "sex": "先生",
+            "name": "陈全平",
+            "type": "个人农户贷款"
+        }
+    ],
+    "latest7": [
+        {
+            "date": "07.15",
+            "data1": 664,
+            "data2": 573
+        },
+        {
+            "date": "07.16",
+            "data1": 201,
+            "data2": 492
+        },
+        {
+            "date": "07.17",
+            "data1": 362,
+            "data2": 201
+        },
+        {
+            "date": "07.18",
+            "data1": 755,
+            "data2": 939
+        },
+        {
+            "date": "07.19",
+            "data1": 361,
+            "data2": 275
+        },
+        {
+            "date": "07.20",
+            "data1": 524,
+            "data2": 679
+        },
+        {
+            "date": "07.21",
+            "data1": 230,
+            "data2": 562
+        }
+    ],
+    "fullDayTrade": [
+        {
+            "hour": "0:00",
+            "date24": 1143,
+            "date24_before": 1018
+        },
+        {
+            "hour": "1:00",
+            "date24": 820,
+            "date24_before": 1226
+        },
+        {
+            "hour": "2:00",
+            "date24": 240,
+            "date24_before": 235
+        },
+        {
+            "hour": "3:00",
+            "date24": 635,
+            "date24_before": 1569
+        },
+        {
+            "hour": "4:00",
+            "date24": 733,
+            "date24_before": 151
+        },
+        {
+            "hour": "5:00",
+            "date24": 1231,
+            "date24_before": 1865
+        },
+        {
+            "hour": "6:00",
+            "date24": 983,
+            "date24_before": 214
+        },
+        {
+            "hour": "7:00",
+            "date24": 665,
+            "date24_before": 1272
+        },
+        {
+            "hour": "8:00",
+            "date24": 1377,
+            "date24_before": 1051
+        },
+        {
+            "hour": "9:00",
+            "date24": 1295,
+            "date24_before": 1897
+        },
+        {
+            "hour": "10:00",
+            "date24": 306,
+            "date24_before": 179
+        },
+        {
+            "hour": "11:00",
+            "date24": 1530,
+            "date24_before": 1303
+        },
+        {
+            "hour": "12:00",
+            "date24": 1211,
+            "date24_before": 1203
+        },
+        {
+            "hour": "13:00",
+            "date24": 547,
+            "date24_before": 1253
+        },
+        {
+            "hour": "14:00",
+            "date24": 286,
+            "date24_before": 1733
+        },
+        {
+            "hour": "15:00",
+            "date24": 360,
+            "date24_before": 1570
+        },
+        {
+            "hour": "16:00",
+            "date24": 1440,
+            "date24_before": 241
+        },
+        {
+            "hour": "17:00",
+            "date24": 163,
+            "date24_before": 1907
+        },
+        {
+            "hour": "18:00",
+            "date24": 755,
+            "date24_before": 1872
+        },
+        {
+            "hour": "19:00",
+            "date24": 188,
+            "date24_before": 290
+        },
+        {
+            "hour": "20:00",
+            "date24": 248,
+            "date24_before": 1701
+        },
+        {
+            "hour": "21:00",
+            "date24": 1943,
+            "date24_before": 274
+        },
+        {
+            "hour": "22:00",
+            "date24": 1995,
+            "date24_before": 380
+        },
+        {
+            "hour": "23:00",
+            "date24": 354,
+            "date24_before": 1470
+        }
+    ]
+}
