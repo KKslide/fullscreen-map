@@ -12,10 +12,7 @@ export default {
       fontColor: 'white',
       titleFontColor: 'white',
       isPlay: true,
-      dl11: [],
-      dl12: [],
-      // dataL: ['广州', '珠海'],
-      dataL: ['笔数', '金额'],
+      dataL: ['金额', '笔数'],
       baseLinerColor: [{
         startc: '#31C9FA',
         endc: 'rgba(255,255,255,0.6)'
@@ -26,11 +23,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.crightData);
-
     this.getEchart();
-
-
   },
   methods: {
     getEchart() {
@@ -58,22 +51,12 @@ export default {
           color: this.fontColor,
           fontSize: '80%'
         },
-        // tooltip: {
-        //   trigger: 'axis',
-        //   axisPointer: {
-        //     type: 'cross',
-        //     label: {
-        //       backgroundColor: '#6a7985',
-        //       show: false,
-        //     }
-        //   }
-        // },
         legend: {
           show: true,
           data: this.dataL,
           type: 'plain',
           left: 'center',
-          bottom: '10%',
+          bottom: '5%',
           textStyle: {
             color: '#fff',
             fontSize: '16'
@@ -83,7 +66,7 @@ export default {
           top: '30%',
           left: '8%',
           right: '5%',
-          bottom: '5%',
+          bottom: '15%',
           containLabel: true
         },
         xAxis: [
@@ -261,11 +244,11 @@ export default {
           }],
           series: [
             {
-              name: '',
+              name: '金额',
               data: d1
             },
             {
-              name: '',
+              name: '笔数',
               data: d2
             }
           ]

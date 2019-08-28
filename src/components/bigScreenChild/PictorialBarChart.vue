@@ -15,7 +15,7 @@ export default {
       dl11: [],
       dl12: [],
       // dataL: ['广州', '珠海'],
-			dataL: [],
+      dataL: [],
       baseLinerColor: [{
         startc: '#31C9FA',
         endc: 'rgba(255,255,255,0.6)'
@@ -26,31 +26,27 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.crightData);
-    
-		this.getEchart();
-		
-		
+    this.getEchart();
   },
   methods: {
     getEchart() {
       // 基于准备好的dom，初始化echarts实例
       // let myChart = this.$echarts.init(document.getElementById('pictorialBarChart'))
-			let myChart = this.$echarts.init(this.$refs.chart)
+      let myChart = this.$echarts.init(this.$refs.chart)
       // 绘制图表
       let option = {
         title: {
           text: '近7天交易趋势',
           left: 'center',
           // padding: [20, 20],
-					subtext: "横坐标为最近7天，纵坐标为交易量",
-					subtextStyle: {
-             color: 'white' ,// 副标题文字颜色
-						 fontSize: '25',
-						 lineHeight:"40"
-					},
-			
-					top:'10',
+          subtext: "横坐标为最近7天，纵坐标为交易量",
+          subtextStyle: {
+            color: 'white',// 副标题文字颜色
+            fontSize: '25',
+            lineHeight: "40"
+          },
+
+          top: '10',
           textStyle: {
             color: this.titleFontColor,
             fontFamily: 'Arial',
@@ -59,7 +55,7 @@ export default {
           }
         },
         color: this.baseColor,
-				// color:rgba(46,97,210,0.36),
+        // color:rgba(46,97,210,0.36),
         backgroundColor: '',
         textStyle: {
           color: this.fontColor,
@@ -67,25 +63,25 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-					
+
           axisPointer: {
             type: 'cross',
             label: {
               backgroundColor: '#6a7985',
-							show:false,
+              show: false,
             }
           }
         },
-//         legend: {
-//           data: this.dataL,
-//           top: '10%',
-//           textStyle: {
-//             color: this.fontColor,
-//             fontSize: '0'
-//           }
-//         },
+        // legend: {
+        //   data: this.dataL,
+        //   top: '10%',
+        //   textStyle: {
+        //     color: this.fontColor,
+        //     fontSize: '0'
+        //   }
+        // },
         grid: {
-					top:'30%',
+          top: '30%',
           left: '3%',
           right: '10%',
           bottom: '2%',
@@ -94,14 +90,14 @@ export default {
         xAxis: [{
           type: 'category',
           data: this.crightData.dataX,
-					//横坐标倾斜不间隔显示
-					axisLabel:{ 
-						interval:0,
-						textStyle: {
-							color: "white",
-							fontSize: "14"
-						},
-					},
+          //横坐标倾斜不间隔显示
+          axisLabel: {
+            interval: 0,
+            textStyle: {
+              color: "white",
+              fontSize: "14"
+            },
+          },
           axisTick: {
             alignWithLabel: true
           },
@@ -121,12 +117,12 @@ export default {
           splitLine: { //x轴网格线修改
             show: false,
           },
-					axisLabel:{ 
-						textStyle: {
-							color: "white",
-							fontSize: "14"
-						},
-					},
+          axisLabel: {
+            textStyle: {
+              color: "white",
+              fontSize: "14"
+            },
+          },
           axisLine: {
             show: false, // X轴轴线颜色类型的修改
             lineStyle: {
@@ -142,40 +138,40 @@ export default {
           barGap: '-30%',
           // symbol: 'path://M0,10 L10,10 L5,0 L0,10 z',
           symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
-					// barCategoryGap: '-130%',
-					label: {
+          // barCategoryGap: '-130%',
+          label: {
             normal: {
-                show: true,
-                position: 'top',
-                formatter: '{c}',
-                textStyle: {
-                    fontSize: 18,
-                    color: 'white'
-                }
+              show: true,
+              position: 'top',
+              formatter: '{c}',
+              textStyle: {
+                fontSize: 18,
+                color: 'white'
+              }
             }
-        },
-					itemStyle: {
+          },
+          itemStyle: {
             normal: {
-							color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-									offset: 0,
-									color: 'rgba(225,59,31,0.87)'
-							}, 
-							{
-									offset: 0.03,
-									color: 'rgba(225,59,31,0.85)'
-							},
-							{
-									offset: 0.48,
-									color: 'rgba(136,78,121,0.62)'
-							},
-							{
-									offset: 0.96,
-									color: 'rgba(54,95,203,0.36)'
-							},
-							{
-									offset: 1,
-									color: 'rgba(46,97,210,0.36)'
-							}]),
+              color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'rgba(225,59,31,0.87)'
+              },
+              {
+                offset: 0.03,
+                color: 'rgba(225,59,31,0.85)'
+              },
+              {
+                offset: 0.48,
+                color: 'rgba(136,78,121,0.62)'
+              },
+              {
+                offset: 0.96,
+                color: 'rgba(54,95,203,0.36)'
+              },
+              {
+                offset: 1,
+                color: 'rgba(46,97,210,0.36)'
+              }]),
               opacity: 0.5
             },
             emphasis: {
@@ -187,7 +183,7 @@ export default {
         }]
       };
       var that = this;
-      setInterval(function() {
+      setInterval(function () {
         if (!that.isPlay) return;
         var d1 = [],
           // d2 = [],
@@ -199,11 +195,11 @@ export default {
             indexArr.push(that.crightData.dataX[i])
           }
         }
-//         for (let i = startIndex; i < that.crightData.data1.length; i++) {
-//           if (i < startIndex + 6) {
-//             d2.push(that.crightData.data2[i]);
-//           }
-//         }
+        //         for (let i = startIndex; i < that.crightData.data1.length; i++) {
+        //           if (i < startIndex + 6) {
+        //             d2.push(that.crightData.data2[i]);
+        //           }
+        //         }
 
         if (d1.length < 6) {
           startIndex = -1;
@@ -217,20 +213,20 @@ export default {
             name: '',
             data: d1
           },
-// 					{
-//             name: '珠海',
-//             data: d2
-//           },
-					]
+            // 					{
+            //             name: '珠海',
+            //             data: d2
+            //           },
+          ]
         });
       }, 3000);
       // 使用刚指定的配置项和数据显示图表。
       if (that.isPlay) {
         myChart.setOption(option);
       }
-//       window.addEventListener("resize", function() {
-//         myChart.resize();
-//       });
+      //       window.addEventListener("resize", function() {
+      //         myChart.resize();
+      //       });
     }
 
   },
@@ -241,8 +237,7 @@ export default {
 <style lang="less">
 #pictorialBarChart {
   width: 100%;
-	// height: 50vh;
+  // height: 50vh;
   // height: 35vh;
 }
-
 </style>

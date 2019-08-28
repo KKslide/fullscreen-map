@@ -7,179 +7,173 @@ export default {
   data() {
     return {}
   },
-  mounted(){
-	  this.getChart()
+  mounted() {
+    this.getChart()
   },
   methods: {
     getChart() {
       let chart = this.$echarts.init(this.$refs.failTradeWayRank)
       let option = {
+        // backgroundColor: "#05224d",
+        // tooltip: {},
         grid: {
-          top: "25%",
-          bottom: "10%"
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "shadow",
-            label: {
-              show: true
-            }
-          }
+          top: '20%',
+          left: '1%',
+          right: '5%',
+          bottom: '15%',
+          containLabel: true,
         },
         legend: {
-          data: ["同比", "投资额"],
-          top: "15%",
+          show: false,
+          itemGap: 50,
+          data: ['失败交易笔数', '失败交易金额'],
           textStyle: {
-            color: "#ffffff"
-          }
+            color: '#f9f9f9',
+            borderColor: '#fff',
+            fontSize: 20
+          },
+          bottom: '5%',
+          left: 'center'
         },
-        xAxis: {
-          data: [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
-          ],
-          axisLine: {
-            show: false //隐藏X轴轴线
-          },
-          axisTick: {
-            show: false //隐藏X轴刻度
-          },
-          axisLabel: {
-            show: true,
-            textStyle: {
-              color: "#ebf8ac" //X轴文字颜色
-            }
-          }
-        },
-        yAxis: [{
-          type: "value",
-          name: "亿元",
-          nameTextStyle: {
-            color: "#ebf8ac"
-          },
-          splitLine: {
-            show: false
-          },
-          splitLine: {
-            show: false
-          },
-          axisTick: {
-            show: false
-          },
-          axisLine: {
-            show: false
-          },
-          axisLabel: {
-            show: true,
-            textStyle: {
-              color: "#ebf8ac"
-            }
-          }
-        },
-        // { // 这个是右侧的数值, 是可以控制显示和隐藏的
-        //     show:false,
-        //     type: "value",
-        //     name: "同比",
-        //     nameTextStyle: {
-        //         color: "#ebf8ac"
-        //     },
-        //     position: "right",
-        //     splitLine: {
-        //         show: false
-        //     },
-        //     splitLine: {
-        //         show: false
-        //     },
-        //     axisTick: {
-        //         show: false
-        //     },
-        //     axisLine: {
-        //         show: false
-        //     },
-        //     axisLabel: {
-        //         show: true,
-        //         formatter: "{value} %", //右侧Y轴文字显示
-        //         textStyle: {
-        //             color: "#ebf8ac"
-        //         }
-        //     }
-        // },
-        {
-          type: "value",
-          gridIndex: 0,
-          min: 50,
-          max: 100,
-          splitNumber: 8,
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            show: false
-          },
-          axisTick: {
-            show: false
-          },
-          axisLabel: {
-            show: false
-          },
-          splitArea: {
-            show: true,
-            areaStyle: {
-              color: ["rgba(250,250,250,0.0)", "rgba(250,250,250,0.05)"]
-            }
-          }
-        }
-        ],
-        series: [{
-          name: "同比",
-          type: "line",
-          yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
-          smooth: true, //平滑曲线显示
-          showAllSymbol: true, //显示所有图形。
-          symbol: "circle", //标记的图形为实心圆
-          symbolSize: 10, //标记的大小
-          itemStyle: {
-            //折线拐点标志的样式
-            color: "#058cff"
-          },
-          lineStyle: {
-            color: "#058cff"
-          },
-          areaStyle: {
-            color: "rgba(5,140,255, 0.2)"
-          },
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        },
-        {
-          name: "投资额",
-          type: "bar",
-          barWidth: 15,
-          itemStyle: {
-            normal: {
-              color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: "#6f3d9e"
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: true,
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+              show: true,
+              lineStyle: {
+                color: '#f9f9f9',
               },
-              {
-                offset: 1,
-                color: "#3637a3"
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+              textStyle: {
+                color: '#d1e6eb',
+                margin: 15
+              },
+              fontSize: 16
+            },
+            axisTick: {
+              show: false
+            },
+            data: ['渠道1', '渠道2', '渠道3', '渠道4', '渠道5', '渠道6', '渠道7'],
+          }
+        ],
+        yAxis: [
+          {
+            show: false,
+            type: 'value',
+            min: 0,
+            // max: 140,
+            splitNumber: 7,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: '#0a3256'
               }
-              ])
-            }
+            },
+            axisLine: {
+              show: false,
+            },
+            axisLabel: {
+              margin: 20,
+              textStyle: {
+                color: '#d1e6eb',
+
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+          }
+        ],
+        series: [
+          {
+            name: '失败交易笔数',
+            type: 'line',
+            // smooth: true, //是否平滑曲线显示
+            // symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true,
+            symbol: 'emptyCircle',
+            symbolSize: 6,
+            lineStyle: {
+              normal: {
+                color: "#28ffb3", // 线条颜色
+              },
+              borderColor: '#f0f'
+            },
+            label: {
+              show: true,
+              position: 'top',
+              textStyle: {
+                color: '#fff',
+                fontSize: 20
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: "#28ffb3",
+
+              }
+            },
+            tooltip: {
+              show: false
+            },
+            areaStyle: { //区域填充样式
+              normal: {
+                //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(0,154,120,1)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgba(0,0,0, 0)'
+                }
+                ], false),
+                shadowColor: 'rgba(53,142,215, 0.9)', //阴影颜色
+                shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+              }
+            },
+            data: [393, 415, 485, 631, 689, 824, 850]
           },
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        }
+          /* {
+            name: '失败交易金额',
+            type: 'bar',
+            barWidth: 20,
+            tooltip: {
+              show: false
+            },
+            label: {
+              show: true,
+              position: 'top',
+              textStyle: {
+                color: '#fff',
+                fontSize: 20
+              }
+            },
+            itemStyle: {
+              normal: {
+                // barBorderRadius: 5,
+                // color: new echarts.graphic.LinearGradient(
+                //     0, 0, 0, 1,
+                //     [{
+                //             offset: 0,
+                //             color: '#14c8d4'
+                //         },
+                //         {
+                //             offset: 1,
+                //             color: '#43eec6'
+                //         }
+                //     ]
+                // )
+                color: function (params) {
+                  var colorList = ['#0ec1ff', '#10cdff', '#12daff', '#15ebff', '#17f8ff', '#1cfffb', '#1dfff1'];
+                  return colorList[params.dataIndex];
+                }
+              }
+            },
+            data: [200, 215, 102, 267, 186, 315, 316]
+          } */
         ]
       };
       chart.setOption(option);

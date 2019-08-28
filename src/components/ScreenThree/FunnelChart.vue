@@ -7,7 +7,8 @@ export default {
   data() {
     return {
       //baseColor: ['rgba(245,252,75,0.3)', 'rgba(23,216,188,0.5)'],
-      baseColor: ['#46b2e1', '#70e5c1', '#626d90', '#a0a8e4', '#c5eaaf'],
+      // baseColor: ['#46b2e1', '#70e5c1', '#626d90', '#a0a8e4', '#c5eaaf'],
+      baseColor: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff'],
       // fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228, 0.8)',
     }
@@ -85,8 +86,9 @@ export default {
               label: {
                 show: true,
                 position: 'right',
-                // formatter: "{d}%",
-                fontSize: '15',
+				// formatter: "{d}%",
+				fontWeight:'600',
+                fontSize: '16',
                 formatter: '{b}:{d}%'
               },
               labelLine: {

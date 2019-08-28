@@ -128,7 +128,7 @@ export default {
                   offset: 1,
                   color: '#fc4b4b'
                 }]),
-                opacity: 0.5,
+                opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10,
                 label: {
@@ -174,7 +174,7 @@ export default {
                   offset: 1,
                   color: '#626d90'
                 }]),
-                opacity: 0.5,
+                opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10,
                 label: {
@@ -215,7 +215,7 @@ export default {
                   offset: 1,
                   color: '#f95e74'
                 }]),
-                opacity: 0.5,
+                opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10,
                 label: {

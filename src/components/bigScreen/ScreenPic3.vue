@@ -123,7 +123,7 @@ export default {
         series: [
           {
             name: '',
-            center: ['30%', '65%'],
+            center: ['35%', '68%'],
             data: [
               { value: 310, name: '网银' },
               { value: 274, name: '柜面' },
@@ -151,7 +151,7 @@ export default {
         series: [
           {
             name: '',
-            center: ['65%', '40%'],
+            center: ['65%', '35%'],
             data: [
               { value: 310, name: '网银' },
               { value: 274, name: '柜面' },
@@ -188,7 +188,6 @@ export default {
       url: "./static/json/screen3_new.json",
       method: "get"
     }).then(res => {
-
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
       this.funnelData = res.data.funnelData // 漏斗图数据

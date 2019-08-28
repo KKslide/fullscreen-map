@@ -94,7 +94,6 @@ export default {
           splitLine: { //Y轴网格线修改
             show: false,
           },
-
           axisLine: {
             show: true, // Y轴轴线颜色类型的修改
             lineStyle: {
@@ -128,8 +127,26 @@ export default {
                   offset: 1,
                   color: '#fc4b4b'
                 }]),
-                opacity: 0.8,
+                opacity: 0.9,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
+                shadowBlur: 10,
+                label: {
+                  show: true,
+                  position: 'top',
+                  fontSize: 12
+                }
+              }
+            },
+            areaStyle: { // 设置折线图区域渐变
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(247,195,104, 0.5)'
+                }, {
+                  offset: 0.8,
+                  color: 'rgba(252,75,75, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
                 shadowBlur: 10,
                 label: {
                   show: true,
@@ -159,7 +176,7 @@ export default {
                     color: '#f95e74'
                   }
                 ]),
-                opacity: 0.8,
+                opacity: 0.9,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10,
                 label: {
@@ -167,6 +184,19 @@ export default {
                   position: 'top',
                   fontSize: 12
                 }
+              }
+            },
+            areaStyle: { // 设置折线图区域渐变
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(160,168,228, 0.5)' //#a0a8e4
+                }, {
+                  offset: 0.8,
+                  color: 'rgba(98,109,144, 0)' // #626d90
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
               }
             },
             data: [] // 所有的

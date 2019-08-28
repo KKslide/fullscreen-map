@@ -12,10 +12,7 @@ export default {
       fontColor: 'white',
       titleFontColor: 'white',
       isPlay: true,
-      dl11: [],
-      dl12: [],
-      // dataL: ['广州', '珠海'],
-      dataL: [],
+      dataL: ['金额'],
       baseLinerColor: [{
         startc: '#31C9FA',
         endc: 'rgba(255,255,255,0.6)'
@@ -69,14 +66,14 @@ export default {
             }
           }
         },
-        //         legend: {
-        //           data: this.dataL,
-        //           top: '10%',
-        //           textStyle: {
-        //             color: this.fontColor,
-        //             fontSize: '0'
-        //           }
-        //         },
+        legend: {
+          data: this.dataL,
+          bottom: '5%',
+          textStyle: {
+            color: this.fontColor,
+            fontSize: '16'
+          }
+        },
         grid: {
           top: '30%',
           left: '10%',
@@ -208,7 +205,7 @@ export default {
             data: indexArr
           }],
           series: [{
-            name: '',
+            // name: '',
             data: d1
           },
             // 					{

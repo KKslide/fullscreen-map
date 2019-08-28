@@ -32,14 +32,14 @@
           <part-5></part-5>
         </div>
         <div class="content-mid-bot">
-          <!-- <div class="content_title" v-html="title5"></div>
-          <part-5></part-5>-->
+		  <!-- 当天失败交易渠道排名 -->
           <div class="content_title" v-html="title6"></div>
           <part-6></part-6>
         </div>
         <div class="content-r-bot">
+			<!-- 当天机构失败交易量排名 -->
           <div class="content_title" v-html="title7"></div>
-          <!-- <part-7 :crightData="workCrightData"></part-7> -->
+          <part-7></part-7>
         </div>
       </div>
     </div>
@@ -52,7 +52,6 @@ import CountPart from '../ScreenFive/CountPart' // 中间上边 - 当天交易�
 import DayTradeCount from '../ScreenFive/BarChart1' // 右上组件 - 当天失败交易量
 import FailTradeRank from '../ScreenFive/FailTradeRank' // 右上组件 - 当天失败交易类型排名
 import FailReasonRank from '../ScreenFive/FailReasonRank' // 当天未成功交易原因排名
-// import DayAvgTradeTime from '../ScreenFour/DayAvgTradeTime' // 当天交易平均处理时间
 import FailTradeWayRank from '../ScreenFive/FailTradeWayRank' // 当天失败交易渠道排名
 import FailOrgRank from '../ScreenFive/FailOrgRank' // 当天机构失败交易量排名
 export default {

@@ -24,7 +24,8 @@ export default {
       pieChart.setOption(
         {
           //   backgroundColor: 'rgba(0,0,0,1)',
-          color: ['#46b2e1', '#70e5c1', '#626d90', '#a0a8e4', '#c5eaaf', '#99dee7'],
+          // color: ['#46b2e1', '#70e5c1', '#626d90', '#a0a8e4', '#c5eaaf', '#99dee7'], // 原来的
+          color: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff', '#99dee7'],
           //   title: {
           //     text: 'CustomizedPie',
           //     top: '3%',

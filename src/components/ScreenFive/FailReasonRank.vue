@@ -12,8 +12,7 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228,0.8)',
-      //   dataL: ['原因1', '原因2', '原因3', '原因4', '原因5'],
-
+        // dataL: ['原因1', '原因2', '原因3', '原因4', '原因5'],
     }
   },
   mounted() {
@@ -31,7 +30,7 @@ export default {
           top: '20%',
           left: '1%',
           right: '5%',
-          bottom: '10%',
+          bottom: '15%',
           containLabel: true,
         },
         legend: {
@@ -39,7 +38,8 @@ export default {
           data: ['失败交易笔数', '失败交易金额'],
           textStyle: {
             color: '#f9f9f9',
-            borderColor: '#fff'
+			borderColor: '#fff',
+			fontSize:20
           },
           bottom: '5%',
           left: 'center'
@@ -191,21 +191,6 @@ export default {
       });
     },
 
-    fixedForm(data) {
-      let obj = {}, keys = [];
-      data.forEach(e => keys = keys.concat(Object.keys(e))); // 先去重掉keys
-      this.unique(keys).forEach(ele => {
-        obj[ele] = data.map(val => val[ele])
-      });
-      return obj;
-    },
-    // 去重
-    unique(arr) {
-      return arr.filter(function (item, index, arr) {
-        //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
-        return arr.indexOf(item, 0) === index;
-      });
-    }
   },
   props: ['titleName']
 };

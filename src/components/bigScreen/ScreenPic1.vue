@@ -22,7 +22,7 @@
       </div>
       <div class="content-r-top">
         <!-- <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近一个月交易量趋势（单位：万元）</p> -->
-        <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近一个月放款金额趋势</p>
+        <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近七天放款金额趋势</p>
         <pictorialBar-chart :childClass="childClass1" :crightData="workCrightData"></pictorialBar-chart>
       </div>
       <div class="content-l-bot">

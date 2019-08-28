@@ -1,241 +1,210 @@
 <template>
-  <div id="pictorialBarChart" ref="chart" :style="this.childClass2"></div>
+  <div id="failOrgRank" ref="failOrgRank"></div>
 </template>
+
 <script>
-var startIndex = 0;
 export default {
-  name: "PictorialBarChart",
   data() {
-    return {
-      baseColor: ['red', '#AFFCF7', '#959DD7'],
-      axisColor: 'rgba(255,255,255,0.8)',
-      fontColor: 'white',
-      titleFontColor: 'white',
-      isPlay: true,
-      dl11: [],
-      dl12: [],
-      // dataL: ['广州', '珠海'],
-      dataL: [],
-      baseLinerColor: [{
-        startc: '#31C9FA',
-        endc: 'rgba(255,255,255,0.6)'
-      }, {
-        startc: '#B998D6',
-        endc: 'rgba(255,255,255,0.6)'
-      }]
-    }
+    return {}
   },
   mounted() {
-    // console.log(this.crightData);
-
-    this.getEchart();
-
-
+    this.getChart()
   },
   methods: {
-    getEchart() {
-      // 基于准备好的dom，初始化echarts实例
-      // let myChart = this.$echarts.init(document.getElementById('pictorialBarChart'))
-      let myChart = this.$echarts.init(this.$refs.chart)
-      // 绘制图表
+    getChart() {
+      let chart = this.$echarts.init(this.$refs.failOrgRank)
       let option = {
-        title: {
-          show: false,
-          text: '当天每个小时交易量',
-          left: 'center',
-          top: '10',
-          textStyle: {
-            color: this.titleFontColor,
-            fontFamily: 'Arial',
-            fontWeight: '400',
-            fontSize: '35'
-          }
-        },
-        color: this.baseColor,
-        // color:rgba(46,97,210,0.36),
-        backgroundColor: '',
-        textStyle: {
-          color: this.fontColor,
-          fontSize: '80%'
+        grid: {
+          top: "25%",
+		  bottom: "15%",
+		  left:"10%",
+		  right:"10%"
         },
         tooltip: {
-          trigger: 'axis',
-
+          trigger: "axis",
           axisPointer: {
-            type: 'cross',
+            type: "shadow",
             label: {
-              backgroundColor: '#6a7985',
-              show: false,
+              show: true
             }
           }
         },
-        //         legend: {
-        //           data: this.dataL,
-        //           top: '10%',
-        //           textStyle: {
-        //             color: this.fontColor,
-        //             fontSize: '0'
-        //           }
-        //         },
-        grid: {
-          top: '30%',
-          left: '10%',
-          right: '5%',
-          bottom: '15%',
-          containLabel: true
+        legend: {
+          show: false,
+          data: ["同比", "投资额"],
+          top: "15%",
+          textStyle: {
+            color: "#ffffff",
+            fontSize: 20
+          }
         },
-        xAxis: [{
-          type: 'category',
-          data: this.crightData.dataX,
-          //横坐标倾斜不间隔显示
-          axisLabel: {
-            interval: 0,
-            textStyle: {
-              color: "white",
-              fontSize: "14"
-            },
+        xAxis: {
+          data: [
+            "渠道1",
+            "渠道2",
+            "渠道3",
+            "渠道4",
+            "渠道5",
+            "渠道6",
+            "渠道7",
+            "渠道8",
+            "渠道9",
+            "渠道10",
+            "渠道11",
+            "渠道12"
+          ],
+          axisLine: {
+            show: false //隐藏X轴轴线
           },
           axisTick: {
-            alignWithLabel: true
-          },
-          splitLine: { //x轴网格线修改
-            show: false,
-          },
-          axisLine: {
-            show: true, // X轴轴线颜色类型的修改
-            lineStyle: {
-              type: 'solid',
-              color: this.axisColor
-            },
-          },
-        }],
-        yAxis: [{
-          type: 'value',
-          splitLine: { //x轴网格线修改
-            show: false,
+            show: false //隐藏X轴刻度
           },
           axisLabel: {
+            show: true,
             textStyle: {
-              color: "white",
-              fontSize: "14"
-            },
+              color: "#ebf8ac", //X轴文字颜色,
+              fontSize: 20
+            }
+          }
+        },
+        yAxis: [{
+          type: "value",
+          name: "",
+          nameTextStyle: {
+            color: "#ebf8ac"
+          },
+          splitLine: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
           },
           axisLine: {
-            show: true, // X轴轴线颜色类型的修改
-            lineStyle: {
-              type: 'solid',
-              color: this.axisColor
-            }
+            show: false
           },
-        }],
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "#ebf8ac",
+              fontSize: 20
+            }
+          }
+        },
+        // { // 这个是右侧的数值, 是可以控制显示和隐藏的
+        //     show:false,
+        //     type: "value",
+        //     name: "同比",
+        //     nameTextStyle: {
+        //         color: "#ebf8ac"
+        //     },
+        //     position: "right",
+        //     splitLine: {
+        //         show: false
+        //     },
+        //     splitLine: {
+        //         show: false
+        //     },
+        //     axisTick: {
+        //         show: false
+        //     },
+        //     axisLine: {
+        //         show: false
+        //     },
+        //     axisLabel: {
+        //         show: true,
+        //         formatter: "{value} %", //右侧Y轴文字显示
+        //         textStyle: {
+        //             color: "#ebf8ac"
+        //         }
+        //     }
+        // },
+        {
+          type: "value",
+          gridIndex: 0,
+          min: 50,
+          max: 100,
+          splitNumber: 8,
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            show: false
+          },
+          splitArea: {
+            show: true,
+            areaStyle: {
+              color: ["rgba(250,250,250,0.0)", "rgba(250,250,250,0.05)"]
+            }
+          }
+        }
+        ],
         series: [{
-          name: this.dataL[0],
-          // type: 'pictorialBar',
-          type: 'bar',
-          barWidth: '50%',
-          barGap: '-30%',
-          // symbol: 'path://M0,10 L10,10 L5,0 L0,10 z',
-          symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
-          // barCategoryGap: '-130%',
+          name: "同比",
+          type: "line",
+          yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
+          smooth: true, //平滑曲线显示
+          showAllSymbol: true, //显示所有图形。
+          symbol: "circle", //标记的图形为实心圆
+          symbolSize: 10, //标记的大小
+          itemStyle: {
+            //折线拐点标志的样式
+            color: "#058cff"
+          },
+          lineStyle: {
+            color: "#058cff"
+          },
+          areaStyle: {
+            color: "rgba(5,140,255, 0.2)"
+          },
           label: {
-            normal: {
-              show: true,
-              position: 'top',
-              formatter: '{c}',
-              textStyle: {
-                fontSize: 18,
-                color: 'white'
-              }
+            show: true,
+            position: 'top',
+            textStyle: {
+              color: '#fff',
+              fontSize: 20
             }
           },
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        },
+        {
+          name: "投资额",
+          type: "bar",
+          barWidth: 15,
           itemStyle: {
             normal: {
               color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
-                color: 'rgba(225,59,31,0.87)'
-              },
-              {
-                offset: 0.03,
-                color: 'rgba(225,59,31,0.85)'
-              },
-              {
-                offset: 0.48,
-                color: 'rgba(136,78,121,0.62)'
-              },
-              {
-                offset: 0.96,
-                color: 'rgba(54,95,203,0.36)'
+                color: "#6f3d9e"
               },
               {
                 offset: 1,
-                color: 'rgba(46,97,210,0.36)'
-              }]),
-              opacity: 0.5
-            },
-            emphasis: {
-              opacity: 1
+                color: "#3637a3"
+              }
+              ])
             }
           },
-          data: [],
-          z: 10
-        }]
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        }
+        ]
       };
-      var that = this;
-      setInterval(function () {
-        if (!that.isPlay) return;
-        var d1 = [],
-          // d2 = [],
-          indexArr = [];
-        startIndex++;
-        for (let i = startIndex; i < that.crightData.data1.length; i++) {
-          if (i < startIndex + 6) {
-            d1.push(that.crightData.data1[i]);
-            indexArr.push(that.crightData.dataX[i])
-          }
-        }
-        //         for (let i = startIndex; i < that.crightData.data1.length; i++) {
-        //           if (i < startIndex + 6) {
-        //             d2.push(that.crightData.data2[i]);
-        //           }
-        //         }
-
-        if (d1.length < 6) {
-          startIndex = -1;
-        }
-
-        myChart.setOption({
-          xAxis: [{
-            data: indexArr
-          }],
-          series: [{
-            name: '',
-            data: d1
-          },
-            // 					{
-            //             name: '珠海',
-            //             data: d2
-            //           },
-          ]
-        });
-      }, 3000);
-      // 使用刚指定的配置项和数据显示图表。
-      if (that.isPlay) {
-        myChart.setOption(option);
-      }
-      //       window.addEventListener("resize", function() {
-      //         myChart.resize();
-      //       });
+      chart.setOption(option);
     }
-
-  },
-  props: ['childClass2', 'crightData']
-};
-
+  }
+}
 </script>
-<style lang="less">
-#pictorialBarChart {
+
+<style lang="less" scoped>
+#failOrgRank {
   width: 100%;
-  // height: 50vh;
-  height: 35vh;
+  height: 100%;
 }
 </style>

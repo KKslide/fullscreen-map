@@ -73,14 +73,14 @@ export default {
             }
           }
         },
-        //         legend: {
-        //           data: this.dataL,
-        //           top: '10%',
-        //           textStyle: {
-        //             color: this.fontColor,
-        //             fontSize: '0'
-        //           }
-        //         },
+        legend: {
+          data: this.dataL,
+          top: '10%',
+          textStyle: {
+            color: this.fontColor,
+            fontSize: '0'
+          }
+        },
         grid: {
           top: '30%',
           left: '5%',
