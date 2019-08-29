@@ -31,7 +31,10 @@ export default {
   methods: {
     getEchart() {
       this.fulldata = this.crightData;
-      setTimeout(() => {
+
+      console.log(this.fulldata.dataX,'this.dataX')
+      console.log(this.fulldata.data1,'this.data1')
+
         let dataX = this.fulldata.dataX.splice(0, 7).map(v => {
           return v.slice(4, v.length)
         })
@@ -186,7 +189,7 @@ export default {
         };
         //******************* */
         myChart.setOption(option)
-      }, 2000);
+   
     }
 
   },
