@@ -1,7 +1,6 @@
 <template>
   <div class="SPOcontainer">
     <div class="title">{{title}}</div>
-
     <div class="content">
       <div class="content-l-top">
         <!-- 全国业务量情况 | 左上 -->
