@@ -5,6 +5,7 @@
 var startIndex = 0;
 export default {
   name: "PictorialBarChart",
+  
   data() {
     return {
       baseColor: ['red', '#AFFCF7', '#959DD7'],
