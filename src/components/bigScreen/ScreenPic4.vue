@@ -4,14 +4,17 @@
     <div class="content">
       <div class="content-top">
         <div class="content-l-top">
+          <!-- 当天每个小时交易量 -->
           <div class="content_title" v-html="title1"></div>
           <part-1 :crightData="workCrightData"></part-1>
         </div>
         <div class="content-mid-top">
+          <!-- 当天交易量 -->
           <div class="content_title" v-html="title2"></div>
           <part-2 :title="title2"></part-2>
         </div>
         <div class="content-r-top">
+          <!-- 当前一分钟交易量 -->
           <div class="content_title" v-html="title3"></div>
           <part-3 :title="title3"></part-3>
         </div>
@@ -19,15 +22,18 @@
 
       <div class="content-bot">
         <div class="content-l-bot">
-			<div class="content_title" v-html="title4"></div>
+          <!-- 当前一小时交易 -->
+          <div class="content_title" v-html="title4"></div>
           <part-4 :oneHourData="oneHourData"></part-4>
         </div>
         <div class="content-mid-bot">
-			<div class="content_title" v-html="title5"></div>
+          <!-- 当前一小时平均处理时间 -->
+          <div class="content_title" v-html="title5"></div>
           <part-5></part-5>
         </div>
         <div class="content-r-bot">
-			<div class="content_title" v-html="title6"></div>
+          <!-- 当天交易平均处理时间 -->
+          <div class="content_title" v-html="title6"></div>
           <part-6></part-6>
         </div>
       </div>
@@ -48,7 +54,7 @@ export default {
       title: '全局业务监控',
       title1: '每天每个小时交易量',
       title2: '当天交易量',
-      title3: '当天交易量',
+      title3: '当前一分钟交易量',
       title4: '当前一小时交易',
       title5: '当前一小时平均处理时间',
       title6: '当天交易平均处理时间',
@@ -70,11 +76,11 @@ export default {
     }
   },
   components: {
-    'part-1': PictorialBarChart,
-    'part-2': DayTradeCount,
-    'part-3': OneMinTrade,
-    'part-4': OneHourTrade,
-    'part-5': HourAvgTradeTime,
+    'part-1': PictorialBarChart, // 当天每个小时交易量
+    'part-2': DayTradeCount, // 当天交易量
+    'part-3': OneMinTrade, // 当前一分钟交易量
+    'part-4': OneHourTrade, // 当前一小时交易
+    'part-5': HourAvgTradeTime, // 当前一小时平均处理时间
     'part-6': DayAvgTradeTime, // 当天交易平均处理时间
   },
   methods: {
@@ -127,16 +133,16 @@ export default {
       height: 35vh;
       background-image: url("../../../static/images/rectangle.png");
       background-repeat: no-repeat;
-	  background-size: 100% 100%;
-	  position: relative;
-	  >div.content_title{
-		  font-size: 0.22rem;
-		  color:#fff;
-		  position: absolute;
-		  top:0.06rem;
-		  left: 50%;
-		  transform: translateX(-50%);
-	  }
+      background-size: 100% 100%;
+      position: relative;
+      > div.content_title {
+        font-size: 0.22rem;
+        color: #fff;
+        position: absolute;
+        top: 0.06rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
       div:nth-child(2) {
         margin: 0;
       }
@@ -164,25 +170,27 @@ export default {
       }
     }
 
-
-	.content-l-bot,
-	.content-mid-bot,
-	.content-r-bot{
+    div.content-bot {
+      width: 100%;
+      height: 50vh;
+      .content-l-bot,
+      .content-mid-bot,
+      .content-r-bot {
         width: 33.3333%;
+        height: 50vh;
         background-image: url("../../../static/images/rectangle_big.png");
         background-repeat: no-repeat;
-		background-size: 100% 100%;
-		position: relative;
-		div.content_title{
-			font-size: 0.22rem;
-			color:#fff;
-			position: absolute;
-			top:0.1rem;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-	}
-    div.content-bot {
+        background-size: 100% 100%;
+        position: relative;
+        div.content_title {
+          font-size: 0.22rem;
+          color: #fff;
+          position: absolute;
+          top: 0.1rem;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
       .content-l-bot {
         margin-left: 0.1rem;
       }
@@ -190,6 +198,7 @@ export default {
         margin: 0 0.1rem;
       }
       .content-r-bot {
+        margin-left: 0;
         margin-right: 0.1rem;
       }
     }

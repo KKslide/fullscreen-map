@@ -56,7 +56,7 @@ export default {
         },
         legend: {
           data: this.dataL,
-          bottom: "1%",
+          bottom: "3%",
           left: 'center',
           textStyle: {
             color: this.fontColor,
@@ -66,7 +66,8 @@ export default {
         grid: {
           left: '8%',
           right: '10%',
-          top: '25%',
+		  top: '20%',
+		  bottom:'15%',
           containLabel: true
         },
         xAxis: {

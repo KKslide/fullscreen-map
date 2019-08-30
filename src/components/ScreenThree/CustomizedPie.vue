@@ -13,13 +13,16 @@ export default {
     }
   },
   mounted() {
-    this.getPieChhart();
-    // console.log(this.pieChart.series);
+    // this.getPieChhart();
+    let timer = setInterval(() => {
+      if (this.pieChart.series[0].data.length != 0) {
+        clearInterval(timer)
+        this.getPieChhart()
+      }
+    }, 500);
   },
   methods: {
     getPieChhart() {
-      // let pieChart = this.$echarts.init(document.querySelector(".pieChart"));
-      // let pieChart = this.$echarts.init(document.getElementsByClassName("pieChart"));
       let pieChart = this.$echarts.init(this.$refs.chart)
       pieChart.setOption(
         {
@@ -58,8 +61,8 @@ export default {
                     fontSize: '15%',
                     color: 'rgba(255, 255, 255, 1)'
                   },
-                  
-                formatter: '{b}:{d}%'
+
+                  formatter: '{b}:{d}%'
                 }
               },
               labelLine: {
@@ -91,7 +94,12 @@ export default {
       )
     }
   },
-  props: ['pieChart']
+  props: ['pieChart'],
+  //   watch:{ // 我也不知道为什么这里监听不到
+  // 	  'pieChart.data':function (nv,ov) {
+  // 		  console.log('123123132');
+  // 	  }
+  //   }
 }
 </script>
 

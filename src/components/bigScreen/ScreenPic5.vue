@@ -32,12 +32,12 @@
           <part-5></part-5>
         </div>
         <div class="content-mid-bot">
-		  <!-- 当天失败交易渠道排名 -->
+          <!-- 当天失败交易渠道排名 -->
           <div class="content_title" v-html="title6"></div>
           <part-6></part-6>
         </div>
         <div class="content-r-bot">
-			<!-- 当天机构失败交易量排名 -->
+          <!-- 当天机构失败交易量排名 -->
           <div class="content_title" v-html="title7"></div>
           <part-7></part-7>
         </div>
@@ -151,7 +151,7 @@ export default {
     .content-r-top {
       margin-bottom: 0.1rem;
       //   width: 33%;
-      height: 36vh;
+      height: 35vh;
       background-image: url("../../../static/images/rectangle.png");
       background-repeat: no-repeat;
       background-size: 100% 100%;
@@ -174,9 +174,12 @@ export default {
       display: flex;
       flex-wrap: nowrap;
       align-content: flex-start;
+      width: 100%;
     }
 
     div.content-top {
+	  height: 35vh;
+	  margin-bottom: 0.1rem;
       .content-l-top {
         width: 35%;
         margin-left: 0.1rem;
@@ -211,8 +214,8 @@ export default {
             left: 50%;
             transform: translateX(-50%);
             font-size: 0.22rem;
-			color: #fff;
-			background: unset;
+            color: #fff;
+            background: unset;
           }
           > div {
             background-image: url("../../../static/images/rectangle_half.png");
@@ -230,7 +233,8 @@ export default {
     .content-l-bot,
     .content-mid-bot,
     .content-r-bot {
-      width: 33.3333%;
+	  width: 33.3333%;
+	  height: 50vh;
       background-image: url("../../../static/images/rectangle_big.png");
       background-repeat: no-repeat;
       background-size: 100% 100%;
@@ -245,6 +249,7 @@ export default {
       }
     }
     div.content-bot {
+      height: 50vh;
       .content-l-bot {
         margin-left: 0.1rem;
       }

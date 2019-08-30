@@ -3,8 +3,13 @@
     <div class="iconItem" v-for="(item,index) in iconItemData" :key="index">
       <div class="content">
         <p v-html="item.text"></p>
-        <p>
-          <span v-for="(val,index) in item.value" :key="index" v-html="val" :class="val==','||val=='.'?'dot':''">1</span>
+        <p v-translatex>
+          <span
+            v-for="(val,index) in item.value"
+            :key="index"
+            v-html="val"
+            :class="val==','||val=='.'?'dot':''"
+          >1</span>
           <i class="unit" v-html="item.unit"></i>
         </p>
       </div>
@@ -42,7 +47,7 @@
           <i class="unit">笔</i>
         </p>
       </div>
-    </div> -->
+    </div>-->
   </div>
 </template>
 <script>
@@ -69,6 +74,18 @@ export default {
   watch: {
     iconItemData(nv, ov) {
       this.fixedData = this.formatData(nv)
+    }
+  },
+  directives: {
+    translatex: {
+      inserted(el) {
+        let eleChildrenNodes = el.children
+        for (let i = 0; i < eleChildrenNodes.length; i++) {
+          if (eleChildrenNodes[i].innerHTML == "元" || eleChildrenNodes[i].innerHTML == "万元") {
+            el.style.transform = "translateX(0.15rem)";
+          }
+        }
+      },
     }
   }
 };

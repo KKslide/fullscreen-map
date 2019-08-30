@@ -354,7 +354,7 @@ export default {
     .content-r-top {
       // background: yellow;
       width: 30%;
-      height: 32vh !important;
+      height: 32vh;
     }
     .content-l-bot {
       // background: pink;

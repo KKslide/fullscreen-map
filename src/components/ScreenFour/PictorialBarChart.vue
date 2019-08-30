@@ -27,7 +27,6 @@ export default {
 
     this.getEchart();
 
-
   },
   methods: {
     getEchart() {
@@ -229,7 +228,7 @@ export default {
 };
 
 </script>
-<style lang="less">
+<style lang="less" scoped>
 #pictorialBarChart {
   width: 100%;
   // height: 50vh;

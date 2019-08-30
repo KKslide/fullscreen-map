@@ -19,7 +19,10 @@
           <div class="top_title">
             <span>客户交易热力图</span>
           </div>
-          <heat-map></heat-map>
+          <!-- Top5排行 -->
+          <top5-rank :mapData="mapDataTop5"></top5-rank>
+          <!-- Top5排行 -->
+          <heat-map :mapData="mapData"></heat-map>
         </div>
       </div>
       <div class="content-mid-wrap">
@@ -48,11 +51,7 @@
           <div class="top_title">
             <span>各渠道交易金额</span>
           </div>
-          <line-chart4
-            :childClass1="childClass3"
-            :diffTradeWayData="diffTradeWayList"
-            :titleName="titleName1"
-          ></line-chart4>
+          <line-chart4 :childClass1="childClass3" :diffTradeWayData="diffTradeWayList"></line-chart4>
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
@@ -77,6 +76,7 @@ import LineChart3 from '@/components/ScreenThree/LineChart3'; // 中间曲线图
 import RealTimeList from '@/components/ScreenThree/RealTimeList2'; // 中间下边实时交易
 import LineChart4 from '@/components/ScreenThree/LineChart4'; // 右边曲线图
 import HeatMap from '@/components/ScreenThree/HeatMap'; // 热力图
+import HeatMapRank from '@/components/ScreenThree/HeatMapRank'; // 热力图
 import PieChart from '@/components/ScreenThree/CustomizedPie'; // 右下角两个饼图
 export default {
   name: 'ScreenPic2',
@@ -94,7 +94,6 @@ export default {
           unit: '笔'
         }
       ],
-      titleName1: "test...whatever",
       childClass1: {
         width: '100%',
         height: '30vh'
@@ -117,21 +116,22 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: '18%',
-            fontWeight:'normal'
+            fontWeight: 'normal'
           }
         },
         series: [
           {
             name: '',
             center: ['35%', '68%'],
-            data: [
-              { value: 310, name: '网银' },
-              { value: 274, name: '柜面' },
-              { value: 235, name: '手机' },
-              { value: 335, name: '电话' },
-              { value: 666, name: '微信' },
-              { value: 400, name: '自助' }
-            ].sort(function (a, b) { return a.value - b.value; })
+            // data: [
+            //   { value: 310, name: '网银' },
+            //   { value: 274, name: '柜面' },
+            //   { value: 235, name: '手机' },
+            //   { value: 335, name: '电话' },
+            //   { value: 666, name: '微信' },
+            //   { value: 400, name: '自助' }
+            // ].sort(function (a, b) { return a.value - b.value; })
+            data: []
           }
         ]
       },
@@ -145,20 +145,21 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: '18%',
-            fontWeight:'normal'
+            fontWeight: 'normal'
           }
         },
         series: [
           {
             name: '',
             center: ['65%', '35%'],
-            data: [
-              { value: 310, name: '网银' },
-              { value: 274, name: '柜面' },
-              { value: 235, name: '手机' },
-              { value: 335, name: '电话' },
-              { value: 400, name: '自助' }
-            ].sort(function (a, b) { return a.value - b.value; })
+            // data: [
+            //   { value: 310, name: '网银' },
+            //   { value: 274, name: '柜面' },
+            //   { value: 235, name: '手机' },
+            //   { value: 335, name: '电话' },
+            //   { value: 400, name: '自助' }
+            // ].sort(function (a, b) { return a.value - b.value; })
+            data: []
           }
         ]
       },
@@ -169,19 +170,20 @@ export default {
       heatMapData: [], // 热数据
       productRealTimeLine: [], // 理财产品实时情况
       workreallist: [],      //实时信息数据
-      diffTradeWayList: []  // 各交易渠道金额
+      diffTradeWayList: [],  // 各交易渠道金额
+      mapData: [],
+      mapDataTop5: []
     };
   },
   components: {
     'line-chart3': LineChart3, // 理财产品实时情况
-    'line-chart4': LineChart4,
-    // 'count-left': CountLeft, // 左上角统计
-    // 'count-right': CountRight, // 右上角统计
+    'line-chart4': LineChart4, // 各个渠道交易情况
     'count-part': CountPart, // 统计组件
-    'funnel-chart': FunnelChart,
-    'realTime-list': RealTimeList,
-    'heat-map': HeatMap,
-    'pie-chart': PieChart
+    'funnel-chart': FunnelChart, // 漏斗图
+    'realTime-list': RealTimeList, // 交易提醒-
+    'heat-map': HeatMap, // 热力图
+    'top5-rank': HeatMapRank,
+    'pie-chart': PieChart // 饼图
   },
   beforeCreate() {
     this.$axios({
@@ -196,12 +198,40 @@ export default {
       this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount)  // 各交易渠道金额
       this.pieChartL.series[0].data = res.data.customPie.data1 // 饼图数据(左)
       this.pieChartR.series[0].data = res.data.customPie.data2 // 饼图数据(右)
+      this.mapData = res.data.nationmap // 地图数据 - 城市的数据
+      this.mapDataTop5 = res.data.nationmap.sort(this.compare("value")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
     })
-  },
-  mounted() {
 
   },
+  mounted() {
+    // setInterval(() => {
+    //   console.log('father_component');
+    //   this.$axios({
+    //     url: "./static/json/screen3_new.json",
+    //     method: "get"
+    //   }).then(res => {
+    //     this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
+    //     this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
+    //     this.funnelData = res.data.funnelData // 漏斗图数据
+    //     this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 理财产品实时交易
+    //     this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
+    //     this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount)  // 各交易渠道金额
+    //     this.pieChartL.series[0].data = res.data.customPie.data1 // 饼图数据(左)
+    //     this.pieChartR.series[0].data = res.data.customPie.data2 // 饼图数据(右)
+    //     this.mapData = res.data.nationmap // 地图数据 - 城市的数据
+    //     this.mapDataTop5 = res.data.nationmap.sort(this.compare("value")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
+    //   })
+    // }, 6000);
+  },
   methods: {
+    // 排序
+    compare(prop) {
+      return function (a, b) {
+        var v1 = a[prop];
+        var v2 = b[prop];
+        return v1 - v2;
+      }
+    },
     // json的数据格式在转换
     fixedForm(data) {
       let obj = {}, keys = [];
