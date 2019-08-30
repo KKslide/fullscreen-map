@@ -1,7 +1,6 @@
 <template>
   <div class="SPOcontainer">
     <div class="title">{{title}}</div>
-
     <div class="content">
       <div class="content-l-top">
         <!-- 全国业务量情况 | 左上 -->
@@ -23,7 +22,7 @@
       <div class="content-r-top">
         <!-- <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近一个月交易量趋势（单位：万元）</p> -->
         <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近七天放款金额趋势</p>
-        <pictorialBar-chart :childClass="childClass1" :crightData="workCrightData"></pictorialBar-chart>
+        <pictorialBar-chart :childClass="childClass1"  v-if="workCrightData.dataX.length&&workCrightData.data1.length"  :crightData="workCrightData"></pictorialBar-chart>
       </div>
       <div class="content-l-bot">
         <!-- 全国交易量情况 | 中国地图  -->
@@ -223,6 +222,8 @@ export default {
 
         this.workCrightData.dataX = workdataX
         this.workCrightData.data1 = workdata1
+      
+       console.log(this.workCrightData)
 
         this.nationMapValueData = res.data.nationmap;
 
