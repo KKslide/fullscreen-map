@@ -2,6 +2,7 @@
   <div class="SPTcontainer">
     <div class="title">数字银行监控大屏</div>
     <div class="content">
+      <!-- 左边 -->
       <div class="content-l-wrap">
         <div class="l-top">
           <div class="l-top-title top_title">
@@ -13,33 +14,34 @@
           <div class="top_title">
             <span>交易转化情况</span>
           </div>
-          <funnel-chart :childClass="childClass1" :titleName="funnelTitle" :funnelData="funnelData"></funnel-chart>
+          <funnel-chart :titleName="funnelTitle" :funnelData="funnelData"></funnel-chart>
         </div>
         <div class="l-bot">
           <div class="top_title">
             <span>客户交易热力图</span>
           </div>
           <!-- Top5排行 -->
-          <top5-rank :mapData="mapDataTop5"></top5-rank>
+          <heat-map-rank :mapData="mapDataTop5"></heat-map-rank>
           <!-- Top5排行 -->
           <heat-map :mapData="mapData"></heat-map>
         </div>
       </div>
+      <!-- 中间 -->
       <div class="content-mid-wrap">
         <div class="content-mid-wrap-t">
           <div class="top_title">
             <span>购买产品实时情况</span>
           </div>
-          <line-chart3 :productRealTimeLine="productRealTimeLine"></line-chart3>
+          <line-chart-mid :productRealTimeLine="productRealTimeLine"></line-chart-mid>
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
             <span>交易提示</span>
           </div>
-          <realTime-list :titleName="titleName" :reallist="workreallist"></realTime-list>
+          <realTime-list :reallist="workreallist"></realTime-list>
         </div>
       </div>
-
+      <!-- 右边 -->
       <div class="content-r-wrap">
         <div class="content-mid-wrap-t">
           <div class="top_title">
@@ -51,7 +53,7 @@
           <div class="top_title">
             <span>各渠道交易金额</span>
           </div>
-          <line-chart4 :childClass1="childClass3" :diffTradeWayData="diffTradeWayList"></line-chart4>
+          <line-chart-right :diffTradeWayData="diffTradeWayList"></line-chart-right>
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
@@ -70,13 +72,13 @@
   </div>
 </template>
 <script>
-import FunnelChart from '@/components/ScreenThree/FunnelChart'; // 漏斗组件
 import CountPart from '@/components/ScreenThree/CountPart'; // 统计组件
-import LineChart3 from '@/components/ScreenThree/LineChart3'; // 中间曲线图
-import RealTimeList from '@/components/ScreenThree/RealTimeList2'; // 中间下边实时交易
-import LineChart4 from '@/components/ScreenThree/LineChart4'; // 右边曲线图
-import HeatMap from '@/components/ScreenThree/HeatMap'; // 热力图
+import FunnelChart from '@/components/ScreenThree/FunnelChart'; // 交易量转话情况 - 漏斗组件
+import HeatMap from '@/components/ScreenThree/HeatMap'; // 客户交易量热力图
 import HeatMapRank from '@/components/ScreenThree/HeatMapRank'; // 热力图
+import LineChartMid from '@/components/ScreenThree/LineChartMid'; // 购买产品实时情况 - 中间曲线图
+import RealTimeList from '@/components/ScreenThree/RealTimeList'; // 中间下边实时交易
+import LineChartRight from '@/components/ScreenThree/LineChartRight'; // 各个渠道交易情况 - 右边曲线图
 import PieChart from '@/components/ScreenThree/CustomizedPie'; // 右下角两个饼图
 export default {
   name: 'ScreenPic2',
@@ -93,18 +95,9 @@ export default {
           value: '226',
           unit: '笔'
         }
-      ],
-      childClass1: {
-        width: '100%',
-        height: '30vh'
-      },
-
-      childClass3: {
-        height: '100%'
-      },
+	  ],
+	  
       funnelTitle: '交易转话情况',
-
-      titleName: '理财产品实时情况',
 
       //   饼图数据1
       pieChartL: {
@@ -162,8 +155,8 @@ export default {
             data: []
           }
         ]
-      },
-      //*********************** */
+	  },
+	  
       onlineSaving: [], // 累计线上存款交易
       onlineRegister: [], //累计线上开户情况
       funnelData: [], // 漏斗图数据
@@ -176,18 +169,18 @@ export default {
     };
   },
   components: {
-    'line-chart3': LineChart3, // 理财产品实时情况
-    'line-chart4': LineChart4, // 各个渠道交易情况
     'count-part': CountPart, // 统计组件
     'funnel-chart': FunnelChart, // 漏斗图
-    'realTime-list': RealTimeList, // 交易提醒-
     'heat-map': HeatMap, // 热力图
-    'top5-rank': HeatMapRank,
+    'heat-map-rank': HeatMapRank,
+    'line-chart-mid': LineChartMid, // 购买产品实时情况
+    'realTime-list': RealTimeList, // 交易提醒-
+    'line-chart-right': LineChartRight, // 各个渠道交易情况
     'pie-chart': PieChart // 饼图
   },
   beforeCreate() {
     this.$axios({
-      url: "./static/json/screen3_new.json",
+      url: "./static/json/screen3.json",
       method: "get"
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
@@ -204,24 +197,7 @@ export default {
 
   },
   mounted() {
-    // setInterval(() => {
-    //   console.log('father_component');
-    //   this.$axios({
-    //     url: "./static/json/screen3_new.json",
-    //     method: "get"
-    //   }).then(res => {
-    //     this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
-    //     this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
-    //     this.funnelData = res.data.funnelData // 漏斗图数据
-    //     this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 理财产品实时交易
-    //     this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
-    //     this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount)  // 各交易渠道金额
-    //     this.pieChartL.series[0].data = res.data.customPie.data1 // 饼图数据(左)
-    //     this.pieChartR.series[0].data = res.data.customPie.data2 // 饼图数据(右)
-    //     this.mapData = res.data.nationmap // 地图数据 - 城市的数据
-    //     this.mapDataTop5 = res.data.nationmap.sort(this.compare("value")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
-    //   })
-    // }, 6000);
+	  
   },
   methods: {
     // 排序

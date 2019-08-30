@@ -6,7 +6,7 @@
       <div class="content-l-wrap">
         <div class="content_L_wrap_item">
           <div>
-            <line-chart2 :latest24Data="latest24Data" :titleName="titleName1"></line-chart2>
+            <line-chart :latest24Data="latest24Data" :titleName="titleName1"></line-chart>
           </div>
         </div>
         <div class="content_L_wrap_item">
@@ -76,7 +76,6 @@
         </div>
         <div class="content-mid-wrap-m">
           <div class="content-mid-wrap-m-title">全国交易分布情况</div>
-
           <!-- 交易金额top5 -->
           <div class="tradeCountTop5">
             <div class="trade_count">
@@ -85,34 +84,9 @@
                 <div class="trade_count_item_data" :data-name="item.type" :data-count="item.value"></div>
                 <div class="rank_circle"></div>
               </div>
-              <!-- <div class="trade_count_item">
-				<div class="trade_count_item_data" data-name="北京" data-count="12300"></div>
-				<div class="rank_circle"></div>
-			  </div>
-			  <div class="trade_count_item">
-				<div class="trade_count_item_data" data-name="上海" data-count="12300"></div>
-				<div class="rank_circle"></div>
-			  </div>
-			  <div class="trade_count_item">
-				<div class="trade_count_item_data" data-name="广州" data-count="12300"></div>
-				<div class="rank_circle"></div>
-			  </div>
-			  <div class="trade_count_item">
-				<div class="trade_count_item_data" data-name="深圳" data-count="12300"></div>
-				<div class="rank_circle"></div>
-			  </div>
-			  <div class="trade_count_item">
-				<div class="trade_count_item_data" data-name="杭州" data-count="12300"></div>
-				<div class="rank_circle"></div>
-              </div>-->
             </div>
             <div class="trade_amount">
               <span>交易量Top5</span>
-              <!-- <div class="trande_amount_item">北京1111笔</div>
-			  <div class="trande_amount_item">北京1111笔</div>
-			  <div class="trande_amount_item">北京1111笔</div>
-			  <div class="trande_amount_item">北京1111笔</div>
-              <div class="trande_amount_item">北京1111笔</div>-->
               <div
                 class="trande_amount_item"
                 v-for="(item,index) in mapTradeAmountTop5"
@@ -129,14 +103,13 @@
       <div class="content-r-wrap">
         <div class="content-r-wrap-t">
           <!-- <div class="content-r-wrap-t-title">放款类型</div> -->
-          <bar-chart1></bar-chart1>
+          <bar-chart :barChartData="barChartData"></bar-chart>
         </div>
         <div class="content-r-wrap-m">
           <area-chart :areaData="latest7"></area-chart>
         </div>
         <div class="content-r-wrap-b">
           <div>
-            <!-- <pie-chart :childClass="childClass3" :titleName="pieTitle" :pieData="pieData"></pie-chart> -->
             <realTime-list :reallist="workreallist"></realTime-list>
           </div>
         </div>
@@ -146,34 +119,18 @@
   </div>
 </template>
 <script>
-import LineChart2 from '@/components/bigScreenChild/LineChart2';
-import BarChart1 from '@/components/bigScreenChild/BarChart1';
-import AreaChart from '@/components/bigScreenChild/AreaChart';
-// import PieChart from '@/components/bigScreenChild/PieChart'; // 突然间又说不要饼图了
-import RealTimeList from '@/components/ScreenTwo/RealTimeList';
-import PictorialBarChart from '@/components/bigScreenChild/PictorialBarChart'
-import SemicircleProgressBar from '@/components/bigScreenChild/SemicircleProgressBar'
-import ScatterMap from '@/components/bigScreenChild/ScatterMap';
-import ChinaMap from '@/components/ScreenTwo/ChinaMap'; // 普通地图
+import LineChart from '@/components/ScreenTwo/LineChart' // 最近24小时交易金额
 import BaseNumber from '@/components/ScreenTwo/BaseNumber' // 数字样式
+import SemicircleProgressBar from '@/components/ScreenTwo/SemicircleProgressBar' // 今日放款金额和笔数 - 仪表盘
+import ChinaMap from '@/components/ScreenTwo/ChinaMap' // 全国地图
+import BarChart from '@/components/ScreenTwo/BarChart' // 放款类型统计 - 条形进度条组件
+import AreaChart from '@/components/ScreenTwo/AreaChart' // 近7天的交易趋势 - 曲线图区域样式
+import RealTimeList from '@/components/ScreenTwo/RealTimeList' // 实时交易情况
 export default {
   name: 'ScreenPic2',
   data() {
     return {
-      //总贷款余额,总客户数比例
       title: "线上资产业务监控大屏",
-      //   childClass3: {
-      //     height: '28vh'
-      //   },
-      //   mapTitle: '客户分布地图',
-      //   pieTitle: '拒绝业务百分比',
-      //   pieData: [
-      //     { value: 635, name: '反欺诈规则' },
-      //     { value: 310, name: '风控评分底' },
-      //     { value: 234, name: '业务核查' },
-      //     { value: 215, name: '其他' },
-      //   ],
-
       titleName1: '最近24小时交易金额',
       latest24Data: {}, // 最近24小时交易金额  -  这里是要把请求回来的数据整理成这种格式
 
@@ -196,28 +153,24 @@ export default {
       mapTradeAmountTop5: [], // 地图数据交易笔数Top5
       mapTradeValueTop5: [], // 地图数据交易金额Top5
 
-      titleName3: "放款类型",
-      titleName4: "近7天的交易趋势",
       latest7: {}, // 最近7日数据
 
       titleName5: "实时交易情况",
 
-      //     "河北省秦皇岛彭雪兰女士，申请一笔创业贷产品，金额 18,000 元",
-      //     "广东省云浮孙兆男女士，申请一笔创业贷产品，金额 15,328 元",
-      //     "河北省邢台梁丽莲女士，申请一笔创业贷产品，金额 25,000 元",
+      workreallist: [], //  交易滚动数据
 
-      workreallist: [] //  交易滚动数据
+      barChartData: {}
 
     };
   },
   components: {
-    'line-chart2': LineChart2,
-    'bar-chart1': BarChart1,
-    'area-chart': AreaChart,
-    'semicircleProgress-bar': SemicircleProgressBar,
-    'china-map': ChinaMap,
-    'realTime-list': RealTimeList,
-    'base-number': BaseNumber
+    'line-chart': LineChart, // 最近24小时交易金额
+    'base-number': BaseNumber, // 数字样式组件
+    'semicircleProgress-bar': SemicircleProgressBar, // 今日放款金额和笔数 - 仪表盘
+    'china-map': ChinaMap, // 全国地图
+    'bar-chart': BarChart, // 放款类型统计 - 条形进度条组件
+    'area-chart': AreaChart, // 近7天的交易趋势 - 曲线图区域样式
+    'realTime-list': RealTimeList, // 实时交易情况
   },
   beforeCreate() {
     this.$axios({
@@ -249,6 +202,8 @@ export default {
       this.latest7 = this.fixedForm(res.data.latest7) // 近7天的交易趋势
 
       this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
+
+      this.barChartData = this.fixedForm(res.data.realeaseType)
 
     })
   },

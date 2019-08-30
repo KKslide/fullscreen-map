@@ -1,5 +1,5 @@
 <template>
-  <div id="funnelChart" ref="funnelChart" :style="this.childClass"></div>
+  <div id="funnelChart" ref="funnelChart"></div>
 </template>
 <script>
 export default {
@@ -125,9 +125,9 @@ export default {
 };
 
 </script>
-<style lang="less">
+<style lang="less" scoped>
 #funnelChart {
   width: 100%;
-  height: 50vh;
+  height: 100%;
 }
 </style>

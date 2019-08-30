@@ -1,5 +1,5 @@
 <template>
-  <div id="pictorialBarChart" ref="chart" :style="this.childClass2"></div>
+  <div id="pictorialBarChart" ref="chart" ></div>
 </template>
 <script>
 var startIndex = 0;
@@ -32,9 +32,6 @@ export default {
   methods: {
     getEchart() {
       this.fulldata = this.crightData;
-
-      console.log(this.fulldata.dataX,'this.dataX')
-      console.log(this.fulldata.data1,'this.data1')
 
         let dataX = this.fulldata.dataX.splice(0, 7).map(v => {
           return v.slice(4, v.length)
@@ -194,7 +191,7 @@ export default {
     }
 
   },
-  props: ['childClass2', 'crightData']
+  props: ['crightData']
 };
 
 </script>

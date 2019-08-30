@@ -4,25 +4,23 @@
     <div class="content">
       <div class="content-l-top">
         <!-- 全国业务量情况 | 左上 -->
-        <Information-display
-          :childClass="childClass1"
-          :titleName="titleName1"
-          :informList="nationList"
-        ></Information-display>
+        <Information-display :titleName="titleName1" :informList="nationList"></Information-display>
       </div>
       <div class="content-mid-top">
         <!-- 广东业务情况 | 上中 -->
         <Information-display
           style="padding-left:10%;"
-          :childClass="childClass1"
           :titleName="titleName2"
           :informList="localList"
         ></Information-display>
       </div>
       <div class="content-r-top">
-        <!-- <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近一个月交易量趋势（单位：万元）</p> -->
+        <!-- 近七天放款金额趋势 | 上右 -->
         <p :style="{'font-size':'0.22rem','color':'white','margin-left':'2%'}">近七天放款金额趋势</p>
-        <pictorialBar-chart :childClass="childClass1"  v-if="workCrightData.dataX.length&&workCrightData.data1.length"  :crightData="workCrightData"></pictorialBar-chart>
+        <pictorialBar-chart
+          v-if="workCrightData.dataX.length&&workCrightData.data1.length"
+          :crightData="workCrightData"
+        ></pictorialBar-chart>
       </div>
       <div class="content-l-bot">
         <!-- 全国交易量情况 | 中国地图  -->
@@ -35,31 +33,10 @@
               <div class="trade_count_item_data" :data-name="item.type" :data-count="item.value"></div>
               <div class="circle L"></div>
             </div>
-            <!-- <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="北京" data-count="12300"></div>
-              <div class="circle"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="上海" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="广州" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="深圳" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="杭州" data-count="12300"></div>
-            </div>-->
           </div>
           <!-- 交易笔数top5 -->
           <div class="trade_amount">
             <span>交易量Top5</span>
-            <!-- <div class="trande_amount_item">北京1111笔</div>
-			<div class="trande_amount_item"></div>
-			<div class="trande_amount_item"></div>
-			<div class="trande_amount_item"></div>
-            <div class="trande_amount_item"></div>-->
             <div
               class="trande_amount_item"
               v-for="(item,index) in nationTradeAmountTop5"
@@ -67,11 +44,7 @@
             >{{item.type}}{{fixedNumber(item.amount)}}笔</div>
           </div>
         </div>
-        <china-map
-          :childClass="childClass3"
-          :nationMapValueData="nationMapValueData"
-          :titleName="titleName3"
-        ></china-map>
+        <china-map :nationMapValueData="nationMapValueData" :titleName="titleName3"></china-map>
       </div>
       <div class="content-mid-bot">
         <!-- 广东交易量情况 | 广东地图  -->
@@ -84,35 +57,10 @@
               <div class="trade_count_item_data" :data-name="item.name" :data-count="item.value"></div>
               <div class="circle R"></div>
             </div>
-            <!-- <div class="trade_count_item">
-              <div class="trade_count_item_data" data-name="北京" data-count="12300"></div>
-              <div class="circle"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="circle"></div>
-              <div class="trade_count_item_data" data-name="上海" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="circle"></div>
-              <div class="trade_count_item_data" data-name="广州" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="circle"></div>
-              <div class="trade_count_item_data" data-name="深圳" data-count="12300"></div>
-            </div>
-            <div class="trade_count_item">
-              <div class="circle"></div>
-              <div class="trade_count_item_data" data-name="杭州" data-count="12300"></div>
-            </div>-->
           </div>
           <!-- 交易笔数top5 -->
           <div class="trade_amount">
             <span>交易量Top5</span>
-            <!-- <div class="trande_amount_item">北京1111笔</div>
-			<div class="trande_amount_item"></div>
-			<div class="trande_amount_item"></div>
-			<div class="trande_amount_item"></div>
-            <div class="trande_amount_item"></div>-->
             <div
               class="trande_amount_item"
               v-for="(item,index) in GDTadeAmountTop5"
@@ -123,40 +71,27 @@
         <GD-map :titleName="titleName4" :localMapValueData="localMapValueData"></GD-map>
       </div>
       <div class="content-r-bot">
-        <realTime-list :childClass="childClass2" :titleName="titleName" :reallist="workreallist"></realTime-list>
+        <!-- 实时交易情况 | 右下 -->
+        <realTime-list :titleName="titleName" :reallist="workreallist"></realTime-list>
       </div>
     </div>
   </div>
 </template>
 <script>
-import RealTimeList from '@/components/ScreenOne/RealTimeList';
-import PictorialBarChart from '@/components/ScreenOne/PictorialBarChart'
-import InformationDisplay from '@/components/ScreenOne/InformationDisplay'
-import ChinaMap from '@/components/ScreenOne/ChinaMap';
-import GDMap from '@/components/ScreenOne/GDMap';
+import RealTimeList from '@/components/ScreenOne/RealTimeList'; // 实时交易情况
+import PictorialBarChart from '@/components/ScreenOne/PictorialBarChart' // 近七天放款金额趋势
+import InformationDisplay from '@/components/ScreenOne/InformationDisplay' // 广东业务情况/全国交易情况
+import ChinaMap from '@/components/ScreenOne/ChinaMap'; // 全国地图
+import GDMap from '@/components/ScreenOne/GDMap'; // 广东地图
 export default {
   name: 'ScreenPic1',
   data() {
     return {
-      childClass1: {
-        width: '100%',
-        // height: '10vh'
-      },
-      childClass2: {
-        width: '100%',
-        // height: '50vh'
-      },
-      childClass3: {
-        width: '100%',
-        // height: '50vh'
-      },
-
       //近7天的交易趋势数据,
       workCrightData: {
         dataX: [],
         data1: [],
       },
-      //进度条数据(创业贷)
 
       worklist: [],
 
@@ -185,6 +120,13 @@ export default {
       title: "温氏物联网金融",
 
     };
+  },
+  components: {
+    'realTime-list': RealTimeList, // 实时交易情况
+    'pictorialBar-chart': PictorialBarChart, // 近七天放款金额趋势
+    'Information-display': InformationDisplay, // 广东业务情况/全国交易情况
+    'china-map': ChinaMap, // 全国地图
+    'GD-map': GDMap, // 广东地图
   },
   methods: {
     // 格式化数字
@@ -222,8 +164,6 @@ export default {
 
         this.workCrightData.dataX = workdataX
         this.workCrightData.data1 = workdata1
-      
-       console.log(this.workCrightData)
 
         this.nationMapValueData = res.data.nationmap;
 
@@ -242,9 +182,9 @@ export default {
 
         this.worklist = res.data.list_CY
 
-        this.nationList = res.data.nationList
+        this.nationList = res.data.nationList // 全国地图数据
 
-        this.localList = res.data.localList
+        this.localList = res.data.localList // 广东地图数据
 
         for (var i = 0; i < res.data.realist_CY.length; i++) {
           var a = res.data.realist_CY[i];
@@ -297,17 +237,10 @@ export default {
       }, 1000);
     }
   },
-  components: {
-    'realTime-list': RealTimeList,
-    'pictorialBar-chart': PictorialBarChart,
-    'Information-display': InformationDisplay,
-    'china-map': ChinaMap,
-    'GD-map': GDMap,
-  },
   mounted() {
 
     this.getData()
-    
+
     setInterval(() => {
       this.getData()
     }, 30000)

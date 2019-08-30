@@ -1,5 +1,5 @@
 <template>
-  <div id="map" ref="map" :style="this.childClass"></div>
+  <div id="map" ref="map"></div>
 </template>
 <script>
 import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
@@ -428,15 +428,14 @@ export default {
 
     }
   },
-  props: ['childClass', 'nationMapValueData', 'titleName']
+  props: ['nationMapValueData', 'titleName']
 };
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
+<style lang="less" scoped>
 #map {
   width: 100%;
-  height: 100% !important;
-  // height:58vh !important;
+  height: 100%;
 }
 </style>

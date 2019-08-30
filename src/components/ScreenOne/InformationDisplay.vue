@@ -1,9 +1,9 @@
 <template>
-  <div class="inform" :style="this.childClass">
+  <div class="inform">
     <div class="inform-title">
       <!--<img class="icon" src="../../../static/icons/zaikubishudaibaoguanchaxun.svg" alt="icon" style="width: 0.4rem">-->
       <span>{{this.titleName}}</span>
-	  &nbsp;
+      &nbsp;
       <span style="font-size:0.2rem;">({{this.preDate}})</span>
     </div>
     <div class="inform-content">
@@ -65,7 +65,7 @@ export default {
   name: 'InformationDisplay',
   data() {
     return {
-		preDate:this.getPreDate()
+      preDate: this.getPreDate()
     };
   },
   methods: {
@@ -78,7 +78,6 @@ export default {
           "m+": this.getMinutes(),
           "s+": this.getSeconds(),
           "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
-
           "S": this.getMilliseconds()
         };
         if (/(y+)/.test(format)) format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
@@ -97,20 +96,19 @@ export default {
   },
   mounted() {
 
-    // 			setTimeout(()=>{
-    // 			
-    // 				console.log(Number(this.informList[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0].split(''))
-    // 			},800)
+    // setTimeout(() => {
+    //   console.log(Number(this.informList[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0].split(''))
+    // }, 800)
 
   },
-  props: ['childClass', 'titleName', 'informList']
+  props: ['titleName', 'informList']
 
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .inform {
-  // 		width: 100%;
+  width: 100%;
   // 		height: 100%;
   margin-left: 2.5%;
   display: flex;

@@ -1,5 +1,5 @@
 <template>
-  <div id="realTimeList" :style="this.childClass">
+  <div id="realTimeList" >
     <p>
       {{this.titleName}}
       <span v-html="time"></span>
@@ -50,11 +50,11 @@ export default {
 
     // console.log(123)
   },
-  props: ['childClass', 'titleName', 'reallist']
+  props: ['titleName', 'reallist']
 };
 
 </script>
-<style lang="less">
+<style lang="less" scoped>
 @fontColor: rgba(255, 255, 255, 0.8);
 @titleFontColor: rgba(12, 236, 228, 0.7);
 

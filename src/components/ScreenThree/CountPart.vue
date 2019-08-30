@@ -1,7 +1,7 @@
 <template>
   <div id="iconC">
     <div class="iconItem" v-for="(item,index) in iconItemData" :key="index">
-      <div class="content">
+      <div class="num_content">
         <p v-html="item.text"></p>
         <p v-translatex>
           <span
@@ -111,7 +111,7 @@ export default {
       height: 0.25rem;
     }
 
-    .content {
+    .num_content {
       // display: flex;
       // justify-content: center;
       // align-items: center;

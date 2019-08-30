@@ -1,164 +1,150 @@
 <template>
   <div class="SemicircleProgressBar">
-    <div class="SemicircleProgressBarWarp">
-      <div class="SemicircleProgressBarTitle">今日放款金额</div>
-      <div class="circle_pos circle_L">
-        <div class="circle"></div>
-      </div>
-      <!-- <div class="datas">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span class="dot">,</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span class="dot">.</span>
-        <span>7</span>
-        <i class="unit">元</i>
-      </div>-->
-      <base-number :tradeData="this.dataL" :toFixedNum="2" :customClass="'datas'"></base-number>
-    </div>
-    <div class="SemicircleProgressBarWarp">
-      <div class="SemicircleProgressBarTitle">今日放款笔数</div>
-      <div class="circle_pos circle_R">
-        <div class="circle"></div>
-      </div>
-      <base-number :tradeData="this.dataR" :toFixedNum="2" :customClass="'datas'"></base-number>
+    <div v-for="(item,index) in list" :key="index" class="SemicircleProgressBarWarp" >
+			<div class="SemicircleProgressBarTitle">{{item.title}}</div>
+			<div class="whz">
+					<div class="fzsj" 
+					:style="{'background': 'url('+item.img+') no-repeat','background-size':'100% 100%'}"></div>
+					<div class="wbhz"></div>
+					<div class="d1" :style="{'border':item.pro,'border-bottom':'none','transform':'rotate(' + (180 * item.cout - 180) + 'deg)'}"><span class="dwy"></span>
+				</div>
+			</div>
+			<div class="SemicircleProgressBar-count">
+				<span>{{item.amount}}</span>
+				<span>{{item.unit}}</span>
+			</div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseNumber from '@/components/ScreenTwo/BaseNumber' // 数字样式
 export default {
   name: 'SemicircleProgressBar',
   data() {
     return {
-      dataL: null,
-      dataR: null
+
+      list: [{ "cout": "", "pro": ".15rem solid #fc4b4b", "img": "./static/images/money.png", "title": "总贷款余额", "unit": "元", "amount": "" },
+      { "cout": "", "pro": ".15rem solid #00a2ff", "img": "./static/images/custom.png", "title": "总客户数", "unit": "户", "amount": "" }]
     };
   },
   mounted() {
-    $('.circle_L>.circle').circleProgress({
-      value: 0.45,
-      size: 180,
-      startAngle: Math.PI,
-      thickness: 15,
-      lineCap: "round",
-      emptyFill: "rgba(67,96,160,0.5)",
-      fill: {
-        gradient: ["#f7c368", "#fc4b4b"]
-      },
-      animation: {
-        duration: 2200
+
+    setTimeout(() => {
+      console.log(this.showData)
+      for (var j = 0; j < this.showData.length; j++) {
+        this.list[j].cout = Number(this.showData[j].scale);
+        this.list[j].unit = this.showData[j].unit;
+        this.list[j].title = this.showData[j].type;
+        this.list[j].amount = this.showData[j].amount;
+        console.log(this.list[j].title)
       }
-    });
-    $('.circle_R>.circle').circleProgress({
-      value: 0.35,
-      size: 180,
-      startAngle: Math.PI,
-      thickness: 15,
-      lineCap: "round",
-      emptyFill: "rgba(67,96,160,0.5)",
-      fill: {
-        gradient: ["#44e5c5", "#00a2ff"]
-      },
-      animation: {
-        duration: 2200
-      }
-    });
+    }, 800)
+
+
+
+
+    // 			for(var i =0 ; i<this.list.length; i++){
+    // 				var ddc = this.list[i].cout;
+    // 				var cfbl = 180 * ddc - 180;
+    // 				var a = document.getElementsByClassName("d1")[i];
+    // 				a.style.transform = "rotate(" + (cfbl) + "deg)";
+    // 			}
+
   },
-  components: {
-    'base-number': BaseNumber
-  },
-  props: ['showData'],
-  watch: {
-    showData(newV, oldV) {
-      this.dataL = newV[0]
-	  this.dataR = newV[1]
-    }
-  }
+  props: ['showData']
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.wbhz {
+  box-sizing: border-box;
+  border: 0.15rem solid #4360a0;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  width: 1.6rem;
+  height: 0.8rem;
+  border-bottom: none;
+}
+
+.d1 {
+  position: relative;
+  top: -0.8rem;
+  z-index: 10;
+  height: 0.8rem;
+  width: 1.6rem;
+  // border:.15rem solid #f7c368;
+  // border:.15rem solid #fc4b4b;
+  // 		background: linear-gradient(0deg,#f7c368,#fc4b4b);
+  // 		border:linear-gradient(0deg,#479df6,#f95e74) ;
+  box-sizing: border-box;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  // border-bottom:none;
+  transform-origin: 50% 100%;
+  //transform:rotate(-180deg);
+  // transition:all 2s;
+  animation: load1 3s;
+}
+@keyframes load1 {
+  0% {
+    transform: rotate(-180deg);
+  }
+}
+.whz {
+  width: 1.6rem;
+  height: 0.8rem;
+  overflow: hidden;
+  position: relative;
+}
+.fzsj {
+  height: 50%;
+  text-align: center;
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 30%;
+}
+
+.SemicircleProgressBar-count {
+  font-size: 0.24rem;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.1rem;
+}
+
 .SemicircleProgressBar {
   width: 100%;
   display: flex;
   height: 100%;
   justify-content: space-between;
-  .SemicircleProgressBarWarp {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 48%;
-    background: url(../../../static/images/bg_with_title.png) no-repeat;
-    background-size: 100% 100%;
-    position: relative;
-    .SemicircleProgressBarTitle {
-      position: absolute;
-      font-size: 0.2rem;
-      // font-weight: 700;
-      color: white;
-      top: 0.06rem;
-      text-align: center;
-    }
-    .circle_pos {
-      position: relative;
-      width: 1.65rem;
-      height: 0.8rem;
-      overflow: hidden;
-      margin-top: -0.15rem;
-      background-repeat: no-repeat;
-      background-position: center 0.45rem;
-      .circle {
-        height: 180px;
-        width: 180px;
-        position: absolute;
-        border-radius: 50%;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 80px);
-      }
-    }
-    .circle_pos.circle_L {
-      background-image: url("../../../static/images/a_icon.png");
-    }
-    .circle_pos.circle_R {
-      background-image: url("../../../static/images/b_icon.png");
-    }
-    .datas {
-      position: absolute;
-      bottom: 0.3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      font-size: 0.16rem;
-      color: #fff;
-      padding: 0 0.05rem;
-      span:not(.dot) {
-        border: 0.02rem solid rgb(77, 102, 200);
-        box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
-        padding: 0px 0.03rem;
-      }
-      span.dot {
-        transform: translateY(0.05rem);
-      }
-      span {
-        margin-left: 0.03rem;
-      }
-      i {
-        font-style: normal;
-        font-size: 0.14rem;
-        margin-left: 0.03rem;
-		transform: translateY(0.05rem);
-		white-space: nowrap;
-      }
-    }
+}
+
+.SemicircleProgressBarWarp {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 48%;
+  background: url(../../../static/images/square.png) no-repeat;
+  background-size: 100% 100%;
+  .SemicircleProgressBarTitle {
+    font-size: 0.24rem;
+    color: white;
   }
 }
-</style>
 
+// 	.dwy {
+// 		width:.16rem;
+// 		height:.16rem;
+// 		border-radius:50%;
+// 		background:chartreuse;
+// 		position:absolute;
+// 		right:-.13rem;
+// 		bottom:-.03rem;
+// 	}
+</style>

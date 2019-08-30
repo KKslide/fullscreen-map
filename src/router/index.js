@@ -3,18 +3,18 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 
 
-import DataAnalysis1 from '@/components/page/DataAnalysis1'
-import DataAnalysis2 from '@/components/page/DataAnalysis2'
-import DataAnalysis3 from '@/components/page/DataAnalysis3'
+// import DataAnalysis1 from '@/components/page/DataAnalysis1'
+// import DataAnalysis2 from '@/components/page/DataAnalysis2'
+// import DataAnalysis3 from '@/components/page/DataAnalysis3'
 
-import ScreenDisplay1 from '@/components/page/ScreenDisplay1'
-import ScreenDisplay2 from '@/components/page/ScreenDisplay2'
-import ScreenDisplay3 from '@/components/page/ScreenDisplay3'
-import ScreenDisplay4 from '@/components/page/ScreenDisplay4'
+// import ScreenDisplay1 from '@/components/page/ScreenDisplay1'
+// import ScreenDisplay2 from '@/components/page/ScreenDisplay2'
+// import ScreenDisplay3 from '@/components/page/ScreenDisplay3'
+// import ScreenDisplay4 from '@/components/page/ScreenDisplay4'
 
 
-
-import ScreenPic0 from '@/components/bigScreen/ScreenPic0'
+/* ********* 以下是正式使用的大屏 ********** */
+// import ScreenPic0 from '@/components/bigScreen/ScreenPic0'
 import ScreenPic1 from '@/components/bigScreen/ScreenPic1'
 import ScreenPic2 from '@/components/bigScreen/ScreenPic2'
 import ScreenPic3 from '@/components/bigScreen/ScreenPic3'
@@ -26,43 +26,43 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/DataAnalysis1',
-      name: 'DataAnalysis1',
-      component: DataAnalysis1
-    }, {
-      path: '/DataAnalysis2',
-      name: 'DataAnalysis2',
-      component: DataAnalysis2
-    }, {
-      path: '/DataAnalysis3',
-      name: 'DataAnalysis3',
-      component: DataAnalysis3
-    }, {
-      path: '/ScreenDisplay1',
-      name: 'ScreenDisplay1',
-      component: ScreenDisplay1
-    }, {
-      path: '/ScreenDisplay2',
-      name: 'ScreenDisplay2',
-      component: ScreenDisplay2
-    }, {
-      path: '/ScreenDisplay3',
-      name: 'ScreenDisplay3',
-      component: ScreenDisplay3
-    }, {
-      path: '/ScreenDisplay4',
-      name: 'ScreenDisplay4',
-      component: ScreenDisplay4
-    },
+    // {
+    //   path: '/DataAnalysis1',
+    //   name: 'DataAnalysis1',
+    //   component: DataAnalysis1
+    // }, {
+    //   path: '/DataAnalysis2',
+    //   name: 'DataAnalysis2',
+    //   component: DataAnalysis2
+    // }, {
+    //   path: '/DataAnalysis3',
+    //   name: 'DataAnalysis3',
+    //   component: DataAnalysis3
+    // }, {
+    //   path: '/ScreenDisplay1',
+    //   name: 'ScreenDisplay1',
+    //   component: ScreenDisplay1
+    // }, {
+    //   path: '/ScreenDisplay2',
+    //   name: 'ScreenDisplay2',
+    //   component: ScreenDisplay2
+    // }, {
+    //   path: '/ScreenDisplay3',
+    //   name: 'ScreenDisplay3',
+    //   component: ScreenDisplay3
+    // }, {
+    //   path: '/ScreenDisplay4',
+    //   name: 'ScreenDisplay4',
+    //   component: ScreenDisplay4
+    // },
 
 
     //大屏设计
-    {
-      path: '/ScreenPic0',
-      name: 'ScreenPic0',
-      component: ScreenPic0
-    },
+    // {
+    //   path: '/ScreenPic0',
+    //   name: 'ScreenPic0',
+    //   component: ScreenPic0
+    // },
     {
       path: '/ScreenPic1',
       name: 'ScreenPic1',
