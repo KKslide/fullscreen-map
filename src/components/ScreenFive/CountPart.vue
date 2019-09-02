@@ -1,7 +1,7 @@
 <template>
   <div id="iconC">
     <div class="iconItem" v-for="(item,index) in iconItemData" :key="index">
-      <div class="content">
+      <div class="iconItem_content">
         <p v-html="item.text"></p>
         <p v-translatex>
           <span
@@ -47,7 +47,7 @@ export default {
       inserted(el) {
         let eleChildrenNodes = el.children
         for (let i = 0; i < eleChildrenNodes.length; i++) {
-          if (eleChildrenNodes[i].innerHTML == "元") {
+          if (eleChildrenNodes[i].innerHTML.indexOf("元") != -1) {
             el.style.transform = "translateX(0.15rem)";
           }
         }
@@ -77,7 +77,7 @@ export default {
       height: 0.25rem;
     }
 
-    .content {
+    .iconItem_content {
       // display: flex;
       // justify-content: center;
       // align-items: center;

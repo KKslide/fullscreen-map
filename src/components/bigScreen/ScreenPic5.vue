@@ -4,42 +4,44 @@
     <div class="content">
       <div class="content-top">
         <div class="content-l-top">
-          <!-- 当天个小时失败交易量 -->
+          <!-- 每天每个小时失败交易量 -->
           <div class="content_title" v-html="title1"></div>
-          <part-1 :crightData="workCrightData"></part-1>
+          <pictprial-bar-chart :crightData="workCrightData"></pictprial-bar-chart>
         </div>
         <div class="content-mid-top">
           <div class="content-mid-top-up">
+            <!-- 当天交易量 -->
             <div class="content_title" v-html="title2"></div>
-            <part-2 :title="title2" :iconItemData="iconItemData"></part-2>
+            <count-part :title="title2" :iconItemData="iconItemData"></count-part>
           </div>
           <div class="content-mid-top-down">
+            <!-- 当天失败交易量 -->
             <div class="content_title" v-html="title3"></div>
-            <part-3 :title="title3"></part-3>
+            <day-trade-count :title="title3"></day-trade-count>
           </div>
         </div>
         <div class="content-r-top">
-          <!-- <div class="content_title" v-html="title3"></div>
-          <part-3 :title="title3"></part-3>-->
+          <!-- 当天失败交易类型排名 -->
           <div class="content_title" v-html="title4"></div>
-          <part-4 :title="title4"></part-4>
+          <fail-trade-rank :title="title4"></fail-trade-rank>
         </div>
       </div>
 
       <div class="content-bot">
         <div class="content-l-bot">
+          <!-- 当天未成功交易原因排名 -->
           <div class="content_title" v-html="title5"></div>
-          <part-5></part-5>
+          <fail-reason-rank></fail-reason-rank>
         </div>
         <div class="content-mid-bot">
           <!-- 当天失败交易渠道排名 -->
           <div class="content_title" v-html="title6"></div>
-          <part-6></part-6>
+          <fail-trade-way-rank></fail-trade-way-rank>
         </div>
         <div class="content-r-bot">
           <!-- 当天机构失败交易量排名 -->
           <div class="content_title" v-html="title7"></div>
-          <part-7></part-7>
+          <fail-org-rank></fail-org-rank>
         </div>
       </div>
     </div>
@@ -49,20 +51,20 @@
 <script>
 import PictorialBarChart from '../ScreenFive/PictorialBarChart' // 左上角柱状图
 import CountPart from '../ScreenFive/CountPart' // 中间上边 - 当天交易量
-import DayTradeCount from '../ScreenFive/BarChart1' // 右上组件 - 当天失败交易量
+import DayTradeCount from '../ScreenFive/BarChart' // 右上组件 - 当天失败交易量
 import FailTradeRank from '../ScreenFive/FailTradeRank' // 右上组件 - 当天失败交易类型排名
 import FailReasonRank from '../ScreenFive/FailReasonRank' // 当天未成功交易原因排名
 import FailTradeWayRank from '../ScreenFive/FailTradeWayRank' // 当天失败交易渠道排名
 import FailOrgRank from '../ScreenFive/FailOrgRank' // 当天机构失败交易量排名
 export default {
   components: {
-    'part-1': PictorialBarChart, // 左上角柱状图
-    'part-2': CountPart, // 当天交易量
-    'part-3': DayTradeCount, // 当天失败交易量
-    'part-4': FailTradeRank, // 当天失败交易类型排名
-    'part-5': FailReasonRank, // 当天未成功交易原因排名
-    'part-6': FailTradeWayRank, // 当天失败交易渠道排名
-    'part-7': FailOrgRank, // 当天机构失败交易量排名
+    'pictprial-bar-chart': PictorialBarChart, // 左上角柱状图
+    'count-part': CountPart, // 当天交易量
+    'day-trade-count': DayTradeCount, // 当天失败交易量
+    'fail-trade-rank': FailTradeRank, // 当天失败交易类型排名
+    'fail-reason-rank': FailReasonRank, // 当天未成功交易原因排名
+    'fail-trade-way-rank': FailTradeWayRank, // 当天失败交易渠道排名
+    'fail-org-rank': FailOrgRank, // 当天机构失败交易量排名
   },
   data() {
     return {
@@ -178,8 +180,8 @@ export default {
     }
 
     div.content-top {
-	  height: 35vh;
-	  margin-bottom: 0.1rem;
+      height: 35vh;
+      margin-bottom: 0.1rem;
       .content-l-top {
         width: 35%;
         margin-left: 0.1rem;
@@ -233,8 +235,8 @@ export default {
     .content-l-bot,
     .content-mid-bot,
     .content-r-bot {
-	  width: 33.3333%;
-	  height: 50vh;
+      width: 33.3333%;
+      height: 50vh;
       background-image: url("../../../static/images/rectangle_big.png");
       background-repeat: no-repeat;
       background-size: 100% 100%;
