@@ -81,8 +81,6 @@ export default {
         }
         that.list = []
         var localName = ''
-        //				var a = Math.floor(Math.random()*geoCoordMapList.length)
-        //				console.log(geoCoordMapList[a])
 
 
         for (var i = 0; i < that.nationMapValueData.length; i++) {
@@ -383,7 +381,11 @@ export default {
               return b.amount - a.amount;
             }).slice(0, 5)),
             symbolSize: function (val) {
-              return maxNum -= 3;
+              if (val[2] == 0) {
+                return 0
+              } else {
+                return maxNum -= 3;
+              }
             },
             // showEffectOn: 'none',
             showEffectOn: 'render',

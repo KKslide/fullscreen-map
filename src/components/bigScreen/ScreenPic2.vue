@@ -174,8 +174,12 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      url: "./static/json/screen2.json",
-      method: "get"
+		url:'./static/json/screen2.json',
+        // url: "./static/json/screen2_new.json",
+        method: "get"
+    //   url: "./tx/XSZC",
+    //   method: "post",
+    //   data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -187,8 +191,8 @@ export default {
       this.passNum = this.getDetails('审批通过数')
       this.releaseAmount = this.getDetails('今日放款金额')
       this.releaseCount = this.getDetails('今日放款笔数')
-      this.returnAmount = this.getDetails('今日换款金额')
-      this.returnCount = this.getDetails('利息')
+      this.returnAmount = this.getDetails('今日还款金额')
+      this.returnCount = this.getDetails('今日还款利息')
       this.newsBussiness = this.getDetails('新网联合授信业务')
       this.O2OBussiness = this.getDetails('O2O贷款业务')
 
@@ -277,7 +281,7 @@ export default {
       for (var i = 0; i < list.length; i++) {
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
+        workreallistdata.push(a.address + a.name /* + a.sex */ + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     }

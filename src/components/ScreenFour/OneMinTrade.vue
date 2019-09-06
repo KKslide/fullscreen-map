@@ -66,32 +66,12 @@ export default {
         {
           "amount": "416.5",
           "unit": "万元",
-          "type": "交易类型1"
+          "type": "交易金额"
         },
         {
-          "amount": "52.0",
-          "unit": "万元",
-          "type": "交易类型2"
-        },
-        {
-          "amount": "2446.0",
-          "unit": "万元",
-          "type": "交易类型3"
-        },
-        {
-          "amount": "52.0",
-          "unit": "万元",
-          "type": "交易类型4"
-        },
-        {
-          "amount": "2029.5",
-          "unit": "万元",
-          "type": "交易类型5"
-        },
-        {
-          "amount": "45.0",
-          "unit": "万元",
-          "type": "交易类型6"
+          "amount": "5236",
+          "unit": "笔",
+          "type": "交易笔数"
         }
       ]
     }
@@ -106,6 +86,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  height: 100%;
   .inform-title {
     width: 100%;
     font-size: 0.26rem;
@@ -120,9 +101,10 @@ export default {
     font-size: 0.2rem;
     color: white;
     width: 100%;
+    height: 80%;
     display: flex;
-	flex-wrap: wrap;
-	padding:0 0.3rem 0 0.4rem;
+    flex-wrap: wrap;
+    padding: 0 0.3rem 0 0.4rem;
     > div {
       width: 100%;
       display: flex;
@@ -131,23 +113,23 @@ export default {
       margin-top: 0.05rem;
       > span {
         margin-bottom: 1%;
-        flex: 1;
+        flex: 1.5;
         text-align: left;
-        font-size: 0.16rem;
+        font-size: 0.28rem;
         i {
           //color: #2fb9ea;
           color: #4d66c8;
-          width: 0.3rem;
-          height: 0.3rem;
-          font-size: 0.24rem;
+          width: 0.35rem;
+          height: 0.35rem;
+          font-size: 0.32rem;
           text-align: center;
-          line-height: 0.31rem;
+          line-height: 0.35rem;
         }
       }
       .inform-num {
         display: flex;
         width: 100%;
-        flex: 2;
+        flex: 2.5;
         .inform-num-cout {
           display: flex;
           flex: 4;
@@ -158,15 +140,16 @@ export default {
             > span {
               text-align: right;
               box-sizing: border-box;
-              font-size: 0.16rem;
+              font-size: 0.24rem;
             }
           }
         }
         .inform-num-unit {
           flex: 1;
           margin-left: 0.1rem;
-          font-size: 0.04rem;
-          line-height: 0.3rem;
+          font-size: 0.2rem;
+		  line-height: 0.3rem;
+		  transform: translateY(.1rem);
         }
       }
     }

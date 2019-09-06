@@ -62,8 +62,8 @@ export default {
         },
         grid: {
           top: '20%',
-          left: '30%',
-          right: '10%',
+          left: '32%',
+          right: '18%',
           bottom: '5%',
           containLabel: true
         },
@@ -148,6 +148,7 @@ export default {
             name: '放款笔数',
             type: 'bar',
             barWidth: '15%', //柱条的宽度
+            barGap: '80%', //不同系列的柱间距离
             itemStyle: {
               normal: { //颜色渐变
                 color: new this.$echarts.graphic.LinearGradient(
