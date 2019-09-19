@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted() {
-    this.getEchart();
+    // this.getEchart();
   },
   methods: {
     compare(prop) {
@@ -53,15 +53,17 @@ export default {
           tooltip: {
             trigger: 'item',
             formatter: "{b} : {c}%",
-            show:false,
+            show: false,
           },
           legend: {
             orient: 'horizontal',
             left: 'center',
             bottom: '5%',
-            data: ['产品推荐', '客户回应', '签约成功', '交易笔数', '衍生产品签约'],
+            // data: ['产品推荐', '客户回应', '签约成功', '交易笔数', '衍生产品签约'],
+            // data: ['购买', '充值', '录取'],
+            data: val.map(v => { return v.name }),
             textStyle: {
-              fontSize: '12%',
+              fontSize: '15%',
               color: '#fff',
               padding: [0, 55, 0, 0]
             }
@@ -80,14 +82,14 @@ export default {
               max: 100,
               minSize: '0%',
               maxSize: '100%',
-              // sort: 'descending', // 倒三角 - 降序
-              sort: 'ascending', // 正三角- 升序
+              sort: 'descending', // 倒三角 - 降序
+              //   sort: 'ascending', // 正三角- 升序
               gap: 0, //数据图形间距
               label: {
                 show: true,
                 position: 'right',
-				// formatter: "{d}%",
-				fontWeight:'600',
+                // formatter: "{d}%",
+                fontWeight: '600',
                 fontSize: '16',
                 formatter: '{b}:{d}%'
               },
@@ -116,7 +118,7 @@ export default {
       });
     }
   },
-  props: ['childClass', 'titleName', 'funnelData'],
+  props: ['titleName', 'funnelData'],
   watch: {
     funnelData(nv, ov) {
       this.getEchart(this.funnelData)
