@@ -90,27 +90,50 @@ export default {
             }
           }
         },
-        yAxis: {
-          type: 'value',
-          splitLine: { //Y轴网格线修改
-            show: false,
-          },
+        yAxis: [
+          {
+            type: 'value',
+            splitLine: { //Y轴网格线修改
+              show: false,
+            },
 
-          axisLine: {
-            show: true, // Y轴轴线颜色类型的修改
-            lineStyle: {
-              type: 'solid',
-              color: this.axisColor
+            axisLine: {
+              show: true, // Y轴轴线颜色类型的修改
+              lineStyle: {
+                type: 'solid',
+                color: this.axisColor
+              }
+            },
+            axisLabel: {
+              show: true,
+              textStyle: {
+                // color: 'red',
+                fontSize: 18
+              }
             }
           },
-          axisLabel: {
-            show: true,
-            textStyle: {
-              // color: 'red',
-              fontSize: 18
+          {
+            type: 'value',
+            splitLine: { //Y轴网格线修改
+              show: false,
+            },
+
+            axisLine: {
+              show: true, // Y轴轴线颜色类型的修改
+              lineStyle: {
+                type: 'solid',
+                color: this.axisColor
+              }
+            },
+            axisLabel: {
+              show: true,
+              textStyle: {
+                // color: 'red',
+                fontSize: 18
+              }
             }
           }
-        },
+        ],
         series: [
           {
             name: this.dataL[0],
@@ -156,7 +179,8 @@ export default {
                 }
               }
             },
-            data: []
+            data: [],
+            yAxisIndex: 1, // 当有多个Y轴的时候，选择跟哪个Y轴
           },
           {
             name: this.dataL[1],
@@ -304,7 +328,7 @@ export default {
       }
     }
   },
-  props: [ 'productRealTimeLine', 'titleName']
+  props: ['productRealTimeLine', 'titleName']
 };
 
 </script>
