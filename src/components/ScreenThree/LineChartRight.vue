@@ -12,12 +12,16 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228,0.8)',
-      dataL: ['自营', '陆金所', '京东', '拉卡拉', '比财'],
+      // dataL: ['自营', '陆金所', '京东', '拉卡拉', '比财'],
+      dataL: [],
     }
   },
   mounted() {
-    this.getLineChart();
-    this.play();
+    //   console.log(this.diffTradeWayData);
+    //   console.log(this.legendNames);
+    //   return
+    // this.getLineChart();
+    // this.play();
   },
   methods: {
     getLineChart() {
@@ -324,8 +328,7 @@ export default {
           d5 = [],
           indexArr = [];
         startIndex++;
-        for (let i = startIndex; i < that.diffTradeWayData
-          .data1.length; i++) {
+        for (let i = startIndex; i < that.diffTradeWayData.data1.length; i++) {
           if (i < startIndex + 6) {
             d1.push(that.diffTradeWayData.data1[i]);
             indexArr.push(that.diffTradeWayData.date[i])
@@ -359,7 +362,7 @@ export default {
           }, {
             name: that.dataL[3],
             data: d4
-          },{
+          }, {
             name: that.dataL[4],
             data: d5
           }]
@@ -386,7 +389,14 @@ export default {
       }
     }
   },
-  props: ['diffTradeWayData', 'titleName']
+  props: ['diffTradeWayData', 'legendNames', 'titleName'],
+  watch: {
+    legendNames(nv, ov) { // 监听legendnames的变化
+      this.dataL = nv;
+      this.getLineChart();
+      this.play();
+    }
+  }
 };
 
 </script>

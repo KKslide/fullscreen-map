@@ -135,7 +135,7 @@ export default {
           }
         ],
         series: [
-          {
+          { // 笔数
             name: this.dataL[0],
             type: 'line',
             smooth: true,
@@ -180,9 +180,8 @@ export default {
               }
             },
             data: [],
-            yAxisIndex: 1, // 当有多个Y轴的时候，选择跟哪个Y轴
           },
-          {
+          { // 金额
             name: this.dataL[1],
             type: 'line',
             smooth: true,
@@ -221,9 +220,10 @@ export default {
                 shadowBlur: 10
               }
             },
-            data: []
+            data: [],
+            yAxisIndex: 1, // 当有多个Y轴的时候，选择跟哪个Y轴
           },
-          {
+          /* { // 开户数 - 取消掉了
             name: this.dataL[2],
             type: 'line',
             smooth: true,
@@ -263,7 +263,7 @@ export default {
               }
             },
             data: []
-          }
+          } */
         ]
       };
       var that = this;
@@ -271,7 +271,7 @@ export default {
         if (!that.isPlay) return;
         var d1 = [],
           d2 = [],
-          d3 = [],
+          //   d3 = [],
           indexArr = [];
         startIndex++;
         for (let i = startIndex; i < that.productRealTimeLine
@@ -284,7 +284,7 @@ export default {
         for (let i = startIndex; i < that.productRealTimeLine.data2.length; i++) {
           if (i < startIndex + 6) {
             d2.push(that.productRealTimeLine.data2[i]);
-            d3.push(that.productRealTimeLine.data3[i]);
+            // d3.push(that.productRealTimeLine.data3[i]);
           }
         }
         if (d1.length < 6) {
@@ -301,10 +301,10 @@ export default {
           }, {
             name: that.dataL[1],
             data: d2
-          }, {
+          }/* , {
             name: that.dataL[2],
             data: d3
-          }]
+          } */]
         });
       }, 2000);
       // 使用刚指定的配置项和数据显示图表。

@@ -53,7 +53,7 @@
           <div class="top_title">
             <span>各渠道交易金额</span>
           </div>
-          <line-chart-right :diffTradeWayData="diffTradeWayList"></line-chart-right>
+          <line-chart-right :diffTradeWayData="diffTradeWayList" :legendNames="diffTradeWayNames"></line-chart-right>
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
@@ -95,8 +95,8 @@ export default {
           value: '226',
           unit: '笔'
         }
-	  ],
-	  
+      ],
+
       funnelTitle: '交易转话情况',
 
       //   饼图数据1
@@ -155,8 +155,8 @@ export default {
             data: []
           }
         ]
-	  },
-	  
+      },
+
       onlineSaving: [], // 累计线上存款交易
       onlineRegister: [], //累计线上开户情况
       funnelData: [], // 漏斗图数据
@@ -164,6 +164,7 @@ export default {
       productRealTimeLine: [], // 理财产品实时情况
       workreallist: [],      //实时信息数据
       diffTradeWayList: [],  // 各交易渠道金额
+      diffTradeWayNames: [], // 各交易渠道名称
       mapData: [],
       mapDataTop5: []
     };
@@ -180,15 +181,20 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      url: "./static/json/screen3.json",
-      method: "get"
+        url: "./static/json/screen3.json",
+        method: "get" // 本地
+      //   url: "http://10.30.3.13:8081/usp_ks/tx/GYL",
+    //   url: "./tx/SZYH",
+    //   method: "post",
+    //   data: {},
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
       this.funnelData = res.data.funnelData // 漏斗图数据
       this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 理财产品实时交易
       this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
-      this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount)  // 各交易渠道金额
+      this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount.data)  // 各交易渠道金额
+      this.diffTradeWayNames = Object.values(res.data.diffTradeWayAmount.names) // 各交易渠道名称(用在右边中间提示按钮的)
       this.pieChartL.series[0].data = res.data.customPie.data1 // 饼图数据(左)
       this.pieChartR.series[0].data = res.data.customPie.data2 // 饼图数据(右)
       this.mapData = res.data.nationmap // 地图数据 - 城市的数据
@@ -197,7 +203,7 @@ export default {
 
   },
   mounted() {
-	  
+
   },
   methods: {
     // 排序

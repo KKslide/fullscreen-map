@@ -11,6 +11,34 @@ export default {
       baseColor: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff'],
       // fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228, 0.8)',
+      data_left: [
+        {
+          "value": 4,
+          "name": "购买"
+        },
+        {
+          "value": 7,
+          "name": "充值"
+        },
+        {
+          "value": 12,
+          "name": "支取"
+        }
+      ],
+      data_right: [
+        {
+          "value": 40,
+          "name": "购买"
+        },
+        {
+          "value": 70,
+          "name": "充值"
+        },
+        {
+          "value": 120,
+          "name": "支取"
+        }
+      ]
     }
   },
   mounted() {
@@ -25,6 +53,8 @@ export default {
       }
     },
     getEchart(val) {
+      //   console.log(val);
+      //   return
       // 基于准备好的dom，初始化echarts实例
       let funnelChart = this.$echarts.init(this.$el)
       // 绘制图表
@@ -61,7 +91,7 @@ export default {
             bottom: '5%',
             // data: ['产品推荐', '客户回应', '签约成功', '交易笔数', '衍生产品签约'],
             // data: ['购买', '充值', '录取'],
-            data: val.map(v => { return v.name }),
+            // data: val.map(v => { return v.name }),
             textStyle: {
               fontSize: '15%',
               color: '#fff',
@@ -72,10 +102,10 @@ export default {
             {
               name: '',
               type: 'funnel',
-              left: '10%',
+              x: '20%',
               top: 'center',
               // bottom: '5%',
-              width: '65%',
+              width: '30%',
               height: '55%',
               // height: {totalHeight} - y - y2,
               min: 0,
@@ -85,13 +115,15 @@ export default {
               sort: 'descending', // 倒三角 - 降序
               //   sort: 'ascending', // 正三角- 升序
               gap: 0, //数据图形间距
+              funnelAlign: 'right',
+              center: ['50%', '50%'],
               label: {
                 show: true,
-                position: 'right',
+                position: 'left',
                 // formatter: "{d}%",
                 fontWeight: '600',
                 fontSize: '16',
-                formatter: '{b}:{d}%'
+                formatter: '{b}金额'+ '{d}%'
               },
               labelLine: {
                 length: 10,
@@ -102,14 +134,66 @@ export default {
               },
               itemStyle: {
                 borderColor: 'rgba(26,32,54,1)',
-                borderWidth: 0
+                borderWidth: 0,
+                shadowBlur: 20,
+                shadowOffsetX: 0,
+                shadowOffsetY: 5,
+                shadowColor: 'rgba(0, 0, 0, 0.3)'
               },
               // emphasis: {
               //   label: {
               //     fontSize: '5%'
               //   }
               // },
-              data: val
+              data: val.trade_amount
+            },
+            {
+              name: '',
+              type: 'funnel',
+              x: '50%',
+              top: 'center',
+              // bottom: '5%',
+              width: '85%',
+              height: '55%',
+              // height: {totalHeight} - y - y2,
+              min: 0,
+              max: 100,
+              minSize: '0%',
+              maxSize: '100%',
+              sort: 'descending', // 倒三角 - 降序
+              //   sort: 'ascending', // 正三角- 升序
+              gap: 0, //数据图形间距
+              funnelAlign: 'left',
+              center: ['50%', '50%'],
+              label: {
+                show: true,
+                position: 'right',
+                // formatter: "{d}%",
+                fontWeight: '600',
+                fontSize: '16',
+                formatter: '{b}笔数{d}%'
+              },
+              labelLine: {
+                length: 10,
+                lineStyle: {
+                  width: 1,
+                  type: 'solid'
+                }
+              },
+              itemStyle: {
+                borderColor: 'rgba(26,32,54,1)',
+                borderWidth: 0,
+                shadowBlur: 20,
+                shadowOffsetX: 0,
+                shadowOffsetY: 5,
+                shadowColor: 'rgba(0, 0, 0, 0.3)'
+              },
+              // emphasis: {
+              //   label: {
+              //     fontSize: '5%'
+              //   }
+              // },
+              data: val.trade_count
             }
           ]
         });

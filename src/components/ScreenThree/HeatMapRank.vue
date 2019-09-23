@@ -2,7 +2,7 @@
   <div class="trade_rank">
     <div class="trade_rank_content">
       <!-- 交易金额 -->
-      <span>交易金额Top5</span>
+      <span v-if="top5">交易金额Top5</span>
 
       <div class="trade_rank_item" v-for="(item,index) in top5" :key="index">
         <div class="trade_rank_item_data" :data-name="item.type" :data-count="item.value"></div>
