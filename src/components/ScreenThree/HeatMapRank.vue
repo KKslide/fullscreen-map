@@ -2,10 +2,10 @@
   <div class="trade_rank">
     <div class="trade_rank_content">
       <!-- 交易金额 -->
-      <span v-if="top5">交易金额Top5</span>
+      <span v-if="top5">交易金额Top5<br>(万元)</span>
 
       <div class="trade_rank_item" v-for="(item,index) in top5" :key="index">
-        <div class="trade_rank_item_data" :data-name="item.type" :data-count="item.value"></div>
+        <div class="trade_rank_item_data" :data-name="item.type" :data-count="item.amount"></div>
         <div class="rank_circle"></div>
       </div>
     </div>
@@ -52,7 +52,11 @@ export default {
   props: ['mapData'],
   watch: {
     mapData(nv, ov) {
-      this.top5 = nv
+      let temp = nv;
+      for (let i = 0; i < temp.length; i++) {
+          temp[i].amount = (parseFloat(temp[i].amount) / 10000).toFixed(1)+""
+      }
+      this.top5 = temp
       this.getCircle()
     }
   }
@@ -76,7 +80,7 @@ export default {
       transform: translateY(-50%);
       color: #fff;
       //   width: 1.9rem;
-      text-align: left;
+      text-align: right;
       text-indent: 0.15rem;
     }
     .trade_rank_item {

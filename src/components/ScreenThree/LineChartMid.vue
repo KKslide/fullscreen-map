@@ -12,7 +12,7 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228,0.8)',
-      dataL: ['今日购买金额', '今日开户数量', '今日购买笔数'],
+      dataL: ['今日购买金额', /* '今日开户数量', */ '今日购买笔数'],
     }
   },
   mounted() {
@@ -109,7 +109,8 @@ export default {
               textStyle: {
                 // color: 'red',
                 fontSize: 18
-              }
+              },
+              formatter:'{value} 元'
             }
           },
           {
@@ -130,7 +131,8 @@ export default {
               textStyle: {
                 // color: 'red',
                 fontSize: 18
-              }
+              },
+              formatter:'{value} 笔'
             }
           }
         ],

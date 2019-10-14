@@ -29,8 +29,8 @@ export default {
               };
         */
 
-      const geoCoordMap = allCity;
-
+        const geoCoordMap = allCity;
+        
       /*
               let dataValue = [ // 父组件传来的值 该写成这样
                 { name: "海门", value: 100 },
@@ -43,14 +43,18 @@ export default {
 
       let dataValue = mapdata
 
-      dataValue.map(e => e["name"] = e["name"] ? e["name"] : e["type"])
+      dataValue.map(e => {
+        e["name"] = e["name"] ? e["name"] : e["type"];
+        e["amount"] = Math.round(Number(e["amount"]))
+      })
+
 
       let convertData = function (data) {
         var res = [];
         for (var i = 0; i < data.length; i++) {
           var geoCoord = geoCoordMap[data[i].name];
           if (geoCoord) {
-            res.push(geoCoord.concat(data[i].value));
+            res.push(geoCoord.concat(data[i].amount));
           }
         }
         return res;
@@ -121,8 +125,8 @@ export default {
           name: 'AQI',
           type: 'heatmap',
           coordinateSystem: 'geo',
-          pointSize: 15, // 设置 热力图 点 的大小
-          blurSize: 20, // 设置点的 阴影半径
+          pointSize: 8, // 设置 热力图 点 的大小
+          blurSize: 5, // 设置点的 阴影半径
           data: convertData(dataValue)
         }]
       };

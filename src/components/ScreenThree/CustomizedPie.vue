@@ -62,7 +62,14 @@ export default {
                     color: 'rgba(255, 255, 255, 1)'
                   },
 
-                  formatter: '{b}:{d}%'
+                  formatter: function (params) {
+                    if (params.percent == 0) {
+                      return params.name
+                    } else {
+                      return params.name + ':' + params.percent + '%'
+                    }
+                  }
+                  //   formatter: '{b}:{d}%'
                 }
               },
               labelLine: {

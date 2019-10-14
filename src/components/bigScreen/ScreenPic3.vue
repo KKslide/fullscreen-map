@@ -1,5 +1,6 @@
 <template>
   <div class="SPTcontainer">
+    <div class="logo"></div>
     <div class="title">数字银行监控大屏</div>
     <div class="content">
       <!-- 左边 -->
@@ -181,12 +182,12 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-        url: "./static/json/screen3.json",
-        method: "get" // 本地
+    //   url: "./static/json/screen3-allcity.json",
+    //   method: "get" // 本地
       //   url: "http://10.30.3.13:8081/usp_ks/tx/GYL",
-    //   url: "./tx/SZYH",
-    //   method: "post",
-    //   data: {},
+      url: "./tx/SZYH",
+      method: "post",
+      data: {},
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
@@ -195,10 +196,10 @@ export default {
       this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
       this.diffTradeWayList = this.fixedForm(res.data.diffTradeWayAmount.data)  // 各交易渠道金额
       this.diffTradeWayNames = Object.values(res.data.diffTradeWayAmount.names) // 各交易渠道名称(用在右边中间提示按钮的)
-      this.pieChartL.series[0].data = res.data.customPie.data1 // 饼图数据(左)
-      this.pieChartR.series[0].data = res.data.customPie.data2 // 饼图数据(右)
+      this.pieChartL.series[0].data = this.filterNotZero(res.data.customPie.data1) // 饼图数据(左)
+      this.pieChartR.series[0].data = this.filterNotZero(res.data.customPie.data2) // 饼图数据(右)
       this.mapData = res.data.nationmap // 地图数据 - 城市的数据
-      this.mapDataTop5 = res.data.nationmap.sort(this.compare("value")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
+      this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
     })
 
   },
@@ -239,6 +240,12 @@ export default {
         workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
+    },
+    filterNotZero(arr) {
+      var newArr = arr.filter((v, i, arr) => {
+        return Math.round(Number(v.value)) > 0
+      })
+      return newArr.length == 0 ? arr : newArr;
     }
   }
 }
@@ -253,18 +260,27 @@ export default {
   text-align: left;
   text-indent: 0.15rem;
   padding: 0.05rem 0;
-  span {
-  }
 }
 .SPTcontainer {
   width: 100%;
   height: 100vh;
-  background: url(../../../static/images/bg.png);
+  background: url(../../../static/images/bg.jpg);
   background-size: 100% 100%;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
+  .logo{
+      background-image: url('../../../static/images/logo.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 1%;
+      left: 1%;
+      width: 100%;
+      height: 6vh;
+  }
   .title {
-    background: url(../../../static/images/top1.png) no-repeat;
+    background: url(../../../static/images/top3.png) no-repeat;
     background-size: 100% 100%;
     height: 10vh;
     display: flex;
@@ -272,6 +288,7 @@ export default {
     font-size: 0.28rem;
     color: white;
     line-height: 0.45rem;
+    // line-height: 1.05rem;
   }
   .content {
     width: 100%;
@@ -343,6 +360,7 @@ export default {
       .content-mid-wrap-b {
         // flex:2;
         height: 40%;
+        overflow: hidden;
       }
     }
     .content-r-wrap {

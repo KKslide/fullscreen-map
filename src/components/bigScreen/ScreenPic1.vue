@@ -1,5 +1,6 @@
 <template>
   <div class="SPOcontainer">
+    <div class="logo"></div>
     <div class="title">{{title}}</div>
     <div class="content">
       <div class="content-l-top">
@@ -143,12 +144,12 @@ export default {
     },
     getData() {
       this.$axios({
-        url: "./static/json/cc.json",
-        method: "get",
+        // url: "./static/json/cc.json",
+        // method: "get",
         // url:"http://10.30.3.13:8081/usp_ks/tx/GYL",
-        // url:"./tx/GYL",
-        // method:"post",
-        // data:{},
+        url:"./tx/GYL",
+        method:"post",
+        data:{},
       }).then(res => {
 
         var workdataX = [];
@@ -254,12 +255,23 @@ export default {
 .SPOcontainer {
   width: 100%;
   height: 100vh;
-  background: url(../../../static/images/bg.png);
+  background: url(../../../static/images/bg.jpg);
   background-size: 100% 100%;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
+  .logo {
+    background-image: url("../../../static/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 100%;
+    height: 6vh;
+  }
   .title {
-    background: url(../../../static/images/top1.png) no-repeat;
+    background: url(../../../static/images/top3.png) no-repeat;
     background-size: 100% 100%;
     height: 10vh;
     display: flex;
@@ -267,6 +279,7 @@ export default {
     font-size: 0.28rem;
     color: white;
     line-height: 0.45rem;
+    // line-height: 1.05rem;
   }
   .content {
     width: 100%;

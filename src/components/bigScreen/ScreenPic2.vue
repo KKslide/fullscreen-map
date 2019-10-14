@@ -1,5 +1,6 @@
 <template>
   <div class="SPTcontainer">
+    <div class="logo"></div>
     <div class="title">{{title}}</div>
     <div class="content" style="transform:translateY(-1.1%);">
       <!-- 左 -->
@@ -174,12 +175,11 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-		url:'./static/json/screen2.json',
-        // url: "./static/json/screen2_new.json",
-        method: "get"
-    //   url: "./tx/XSZC",
-    //   method: "post",
-    //   data: {}
+    //   url: './static/json/screen2_new.json',
+    //   method: "get"
+        url: "./tx/XSZC",
+        method: "post",
+        data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -300,12 +300,23 @@ export default {
 .SPTcontainer {
   width: 100%;
   height: 100vh;
-  background: url(../../../static/images/bg.png);
+  background: url(../../../static/images/bg.jpg);
   background-size: 100% 100%;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
+  .logo {
+    background-image: url("../../../static/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 100%;
+    height: 6vh;
+  }
   .title {
-    background: url(../../../static/images/top1.png) no-repeat;
+    background: url(../../../static/images/top3.png) no-repeat;
     background-size: 100% 100%;
     height: 10vh;
     display: flex;
@@ -608,6 +619,7 @@ export default {
         align-items: center;
         padding: 1%;
         box-sizing: border-box;
+        overflow: hidden;
         .map {
           width: 100%;
         }

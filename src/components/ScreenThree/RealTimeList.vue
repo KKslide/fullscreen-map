@@ -6,10 +6,10 @@
       <span v-html="time"></span>
     </p>
     <ul>
-      <li 
-      v-for="(item,index) in reallist" 
-      :key="index"
-      :style="{'display':index<6?'':'none'}"
+      <li
+        v-for="(item,index) in reallist"
+        :key="index"
+        :style="{'display':index<6?'':'none'}"
       >{{item}}</li>
       <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
       <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
@@ -55,7 +55,7 @@ export default {
 
     // console.log(123)
   },
-  props: [  'reallist']
+  props: ['reallist']
 };
 
 </script>
@@ -85,9 +85,9 @@ export default {
   }
 
   ul {
+    transform: translateY(-0.15rem);
     margin: 0 0.5%;
     list-style-type: none;
-
     height: 3.8rem;
     overflow: hidden;
   }
@@ -99,6 +99,9 @@ export default {
     font-size: 0.16rem;
     text-align: left;
     color: @fontColor;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 </style>

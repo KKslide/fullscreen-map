@@ -11,34 +11,6 @@ export default {
       baseColor: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff'],
       // fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228, 0.8)',
-      data_left: [
-        {
-          "value": 4,
-          "name": "购买"
-        },
-        {
-          "value": 7,
-          "name": "充值"
-        },
-        {
-          "value": 12,
-          "name": "支取"
-        }
-      ],
-      data_right: [
-        {
-          "value": 40,
-          "name": "购买"
-        },
-        {
-          "value": 70,
-          "name": "充值"
-        },
-        {
-          "value": 120,
-          "name": "支取"
-        }
-      ]
     }
   },
   mounted() {
@@ -102,10 +74,10 @@ export default {
             {
               name: '',
               type: 'funnel',
-              x: '20%',
+              x: '35%',
               top: 'center',
               // bottom: '5%',
-              width: '30%',
+              width: '15%',
               height: '55%',
               // height: {totalHeight} - y - y2,
               min: 0,
@@ -123,7 +95,7 @@ export default {
                 // formatter: "{d}%",
                 fontWeight: '600',
                 fontSize: '16',
-                formatter: '{b}金额'+ '{d}%'
+                formatter: '累计{b}笔数:{d}%'
               },
               labelLine: {
                 length: 10,
@@ -153,7 +125,7 @@ export default {
               x: '50%',
               top: 'center',
               // bottom: '5%',
-              width: '85%',
+              width: '15%',
               height: '55%',
               // height: {totalHeight} - y - y2,
               min: 0,
@@ -171,7 +143,7 @@ export default {
                 // formatter: "{d}%",
                 fontWeight: '600',
                 fontSize: '16',
-                formatter: '{b}笔数{d}%'
+                formatter: '累计{b}金额:{d}%'
               },
               labelLine: {
                 length: 10,
@@ -205,6 +177,13 @@ export default {
   props: ['titleName', 'funnelData'],
   watch: {
     funnelData(nv, ov) {
+      var newData = this.funnelData;
+      for (const index of Object.keys(newData)) {
+        newData[index].map(v => {
+          return v.name = v.name.replace(/累计/g, '').replace(/笔数/g, '').replace(/金额/g, '')
+        })
+      }
+      //   console.log(newData);
       this.getEchart(this.funnelData)
     }
   }
