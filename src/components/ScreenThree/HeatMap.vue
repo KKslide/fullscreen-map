@@ -122,7 +122,7 @@ export default {
           }
         },
         series: [{
-          name: 'AQI',
+          name: ' ',
           type: 'heatmap',
           coordinateSystem: 'geo',
           pointSize: 8, // 设置 热力图 点 的大小

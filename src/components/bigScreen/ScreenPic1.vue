@@ -144,12 +144,12 @@ export default {
     },
     getData() {
       this.$axios({
-        // url: "./static/json/cc.json",
-        // method: "get",
+        url: "./static/json/cc.json",
+        method: "get",
         // url:"http://10.30.3.13:8081/usp_ks/tx/GYL",
-        url:"./tx/GYL",
-        method:"post",
-        data:{},
+        // url:"./tx/GYL",
+        // method:"post",
+        // data:{},
       }).then(res => {
 
         var workdataX = [];
@@ -188,9 +188,18 @@ export default {
         this.localList = res.data.localList // 广东地图数据
 
         for (var i = 0; i < res.data.realist_CY.length; i++) {
+        //   var randomNames = ['赵', '黄', '李', '刘', '邱', '陈', '魏'];
+        //   var sex = a.sex ? a.sex : Math.random() > 0.5 ? '先生' : '女士';
+        //   var a = res.data.realist_CY[i];
+        //   var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+        //   var type = a.type ? a.type : '个人农户贷款';
+        //   var name = a.name ? a.name.substring(0, 1) : randomNames[Math.round(Math.random() * (randomNames.length - 1))];
+        //   workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元");
+          // ***************************************************
           var a = res.data.realist_CY[i];
           var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-          workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
+          var type = a.type ? a.type : '个人农户贷款';
+          workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
         }
 
         this.workreallist = workreallistdata

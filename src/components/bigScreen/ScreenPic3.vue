@@ -37,7 +37,7 @@
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
-            <span>交易提示</span>
+            <span>实时交易情况</span>
           </div>
           <realTime-list :reallist="workreallist"></realTime-list>
         </div>
@@ -182,12 +182,12 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-    //   url: "./static/json/screen3-allcity.json",
-    //   method: "get" // 本地
+      url: "./static/json/screen3-allcity.json",
+      method: "get" // 本地
       //   url: "http://10.30.3.13:8081/usp_ks/tx/GYL",
-      url: "./tx/SZYH",
-      method: "post",
-      data: {},
+      //   url: "./tx/SZYH",
+      //   method: "post",
+      //   data: {},
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
@@ -200,6 +200,8 @@ export default {
       this.pieChartR.series[0].data = this.filterNotZero(res.data.customPie.data2) // 饼图数据(右)
       this.mapData = res.data.nationmap // 地图数据 - 城市的数据
       this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
+
+      console.log(this.workreallist);
     })
 
   },
@@ -237,7 +239,9 @@ export default {
       for (var i = 0; i < list.length; i++) {
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
+        let name = a.name ? a.name.substring(0, 1) : '李**';
+        let address = a.address ? a.address : '广东省广州市';
+        workreallistdata.push(address + name + a.sex + "，" + "申请一笔【线上存款】产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     },
@@ -269,15 +273,15 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  .logo{
-      background-image: url('../../../static/images/logo.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      position: absolute;
-      top: 1%;
-      left: 1%;
-      width: 100%;
-      height: 6vh;
+  .logo {
+    background-image: url("../../../static/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 100%;
+    height: 6vh;
   }
   .title {
     background: url(../../../static/images/top3.png) no-repeat;

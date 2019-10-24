@@ -175,11 +175,11 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-    //   url: './static/json/screen2_new.json',
-    //   method: "get"
-        url: "./tx/XSZC",
-        method: "post",
-        data: {}
+      url: './static/json/screen2_new.json',
+      method: "get"
+      // url: "./tx/XSZC",
+      // method: "post",
+      // data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -279,9 +279,12 @@ export default {
     formMatList(list) {
       let workreallistdata = [];
       for (var i = 0; i < list.length; i++) {
+        let randomNames = ['赵', '黄', '李', '刘', '邱', '陈', '魏'];
+        let sex = Math.random() > 0.5 ? '先生' : '女士';
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        workreallistdata.push(a.address + a.name /* + a.sex */ + "，" + "申请一笔" + a.type + "产品，金额" + " " + b + " 元")
+        let name = a.name ? a.name.substring(0, 1) : randomNames[Math.round(Math.random() * (randomNames.length - 1))];
+        workreallistdata.push(a.address + name + '**' + sex + "，" + "申请一笔【线上贷款】产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     }

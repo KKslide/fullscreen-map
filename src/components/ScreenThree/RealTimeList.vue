@@ -1,8 +1,8 @@
 <template>
   <div id="realTimeList">
-    <p style="opacity:0;">
+    <p>
       <!-- {{this.titleName}} -->
-      test...
+      <i style="opacity:0;">none</i>
       <span v-html="time"></span>
     </p>
     <ul>
