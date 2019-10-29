@@ -182,12 +182,12 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      url: "./static/json/screen3-allcity.json",
-      method: "get" // 本地
+      //   url: "./static/json/screen3-allcity.json",
+      //   method: "get" // 本地
       //   url: "http://10.30.3.13:8081/usp_ks/tx/GYL",
-      //   url: "./tx/SZYH",
-      //   method: "post",
-      //   data: {},
+      url: "./tx/SZYH",
+      method: "post",
+      data: {},
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.onlineRegister = res.data.iconItemData2  // 累计线上存款交易
@@ -201,7 +201,6 @@ export default {
       this.mapData = res.data.nationmap // 地图数据 - 城市的数据
       this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
 
-      console.log(this.workreallist);
     })
 
   },
@@ -239,9 +238,9 @@ export default {
       for (var i = 0; i < list.length; i++) {
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        let name = a.name ? a.name.substring(0, 1) : '李**';
-        let address = a.address ? a.address : '广东省广州市';
-        workreallistdata.push(address + name + a.sex + "，" + "申请一笔【线上存款】产品，金额" + " " + b + " 元")
+        // let name = a.name ? a.name.substring(0, 1) : '李**';
+        // let address = a.address ? a.address : '广东省广州市';
+        workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔【线上存款】产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     },
