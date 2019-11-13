@@ -27,18 +27,18 @@
               <base-number :tradeData="importNum" :toFixedNum="0"></base-number>
             </div>
             <div class="trade_count">
-              <div>处理数</div>
-              <base-number :tradeData="dealNum" :toFixedNum="0"></base-number>
+              <div style="width:unset !important;">审批通过数</div>
+              <base-number :tradeData="passNum" :toFixedNum="0"></base-number>
             </div>
           </div>
           <div class="content_right">
-            <div>审批通过数</div>
-            <base-number :tradeData="passNum" :toFixedNum="0"></base-number>
+            <div>放款数</div>
+            <base-number :tradeData="dealNum" :toFixedNum="0"></base-number>
           </div>
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>今日放款金额</div>
+            <div>昨日放款金额</div>
             <base-number :tradeData="releaseAmount" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
@@ -48,7 +48,7 @@
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>今日还款金额</div>
+            <div>昨日还款金额</div>
             <base-number :tradeData="returnAmount" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
@@ -136,12 +136,12 @@ export default {
       totalTradeAmount: null, // 累计交易金额
       totalTradeCount: null, // 累计交易笔数
       importNum: null, // 进件数
-      dealNum: null, // 处理数
+      dealNum: null, // 放款数
       passNum: null, // 审批通过数
-      releaseAmount: null, // 今日放款金额
-      releaseCount: null, // 今日放款笔数
-      returnAmount: null, // 今日还款金额
-      returnCount: null, // 今日还款笔数
+      releaseAmount: null, // 昨日放款金额
+      releaseCount: null, // 昨日放款笔数
+      returnAmount: null, // 昨日还款金额
+      returnCount: null, // 昨日还款笔数
       newsBussiness: null, // 新网联合授权业务
       O2OBussiness: null, // O2O贷款业务
       showData: [], // 今日放款金额和笔数
@@ -172,11 +172,11 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-        url: './static/json/screen2_new.json',
-        method: "get"
-    //   url: "./tx/XSZC",
-    //   method: "post",
-    //   data: {}
+    //   url: './static/json/screen2_new.json',
+    //   method: "get"
+        url: "./tx/XSZC",
+        method: "post",
+        data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -184,16 +184,18 @@ export default {
       this.totalTradeAmount = this.getDetails('累计交易金额')
       this.totalTradeCount = this.getDetails('累计交易笔数')
       this.importNum = this.getDetails('进件数')
-      this.dealNum = this.getDetails('处理数')
+      this.dealNum = this.getDetails('放款数')
       this.passNum = this.getDetails('审批通过数')
-      this.releaseAmount = this.getDetails('今日放款金额')
-      this.releaseCount = this.getDetails('今日放款笔数')
-      this.returnAmount = this.getDetails('今日还款金额')
-      this.returnCount = this.getDetails('今日还款利息')
+      this.releaseAmountToday = this.getDetails('今日放款金额')
+      this.releaseCountToday = this.getDetails('今日放款笔数')
+      this.releaseAmount = this.getDetails('昨日放款金额')
+      this.releaseCount = this.getDetails('昨日放款笔数')
+      this.returnAmount = this.getDetails('昨日还款金额')
+      this.returnCount = this.getDetails('昨日还款利息')
       this.newsBussiness = this.getDetails('新网联合授信业务')
       this.O2OBussiness = this.getDetails('O2O贷款业务')
 
-      this.showData = [this.releaseAmount, this.releaseCount] //今日放款金额和笔数
+      this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
 
       this.nationMapValueData = res.data.nationmap // 地图数据
       this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
