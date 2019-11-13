@@ -151,23 +151,23 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: 'rgba(225,59,31,0.87)'
+                  color: 'rgba(255, 129, 10, 0.87)'
                 },
                 {
                   offset: 0.03,
-                  color: 'rgba(225,59,31,0.85)'
+                  color: 'rgba(225, 138, 31, 0.85)'
                 },
                 {
                   offset: 0.48,
-                  color: 'rgba(136,78,121,0.62)'
+                  color: 'rgba(236, 212, 55, 0.62)'
                 },
                 {
                   offset: 0.96,
-                  color: 'rgba(54,95,203,0.36)'
+                  color: 'rgba(238, 241, 80, 0.36)'
                 },
                 {
                   offset: 1,
-                  color: 'rgba(46,97,210,0.36)'
+                  color: 'rgba(208, 249, 92, 0.36)'
                 }]),
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10

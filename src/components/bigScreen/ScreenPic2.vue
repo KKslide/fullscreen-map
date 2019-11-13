@@ -48,7 +48,7 @@
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>今日换款金额</div>
+            <div>今日还款金额</div>
             <base-number :tradeData="returnAmount" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
@@ -58,7 +58,7 @@
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>新网联合授信业务</div>
+            <div>联合授信业务</div>
             <base-number :tradeData="newsBussiness" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
@@ -103,16 +103,13 @@
       <!-- 右 -->
       <div class="content-r-wrap">
         <div class="content-r-wrap-t">
-          <!-- <div class="content-r-wrap-t-title">放款类型</div> -->
           <bar-chart :barChartData="barChartData"></bar-chart>
         </div>
         <div class="content-r-wrap-m">
           <area-chart :areaData="latest7"></area-chart>
         </div>
         <div class="content-r-wrap-b">
-          <div>
-            <realTime-list :reallist="workreallist"></realTime-list>
-          </div>
+          <realTime-list :reallist="workreallist"></realTime-list>
         </div>
       </div>
       <!-- 右 -->
@@ -143,8 +140,8 @@ export default {
       passNum: null, // 审批通过数
       releaseAmount: null, // 今日放款金额
       releaseCount: null, // 今日放款笔数
-      returnAmount: null, // 今日换款金额
-      returnCount: null, // 今日换款笔数
+      returnAmount: null, // 今日还款金额
+      returnCount: null, // 今日还款笔数
       newsBussiness: null, // 新网联合授权业务
       O2OBussiness: null, // O2O贷款业务
       showData: [], // 今日放款金额和笔数
@@ -175,11 +172,11 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-    //   url: './static/json/screen2_new.json',
-    //   method: "get"
-      url: "./tx/XSZC",
-      method: "post",
-      data: {}
+        url: './static/json/screen2_new.json',
+        method: "get"
+    //   url: "./tx/XSZC",
+    //   method: "post",
+    //   data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -279,12 +276,9 @@ export default {
     formMatList(list) {
       let workreallistdata = [];
       for (var i = 0; i < list.length; i++) {
-        // let randomNames = ['赵', '黄', '李', '刘', '邱', '陈', '魏'];
-        // let sex = Math.random() > 0.5 ? '先生' : '女士';
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        // let name = a.name ? a.name.substring(0, 1) : randomNames[Math.round(Math.random() * (randomNames.length - 1))];
-        workreallistdata.push(a.address + a.name + "，" + "申请一笔【线上贷款】产品，金额" + " " + b + " 元")
+        workreallistdata.push(a.address + a.name + "**" + "，" + "申请一笔【线上贷款】产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     }
@@ -334,15 +328,14 @@ export default {
     padding: 1%;
     box-sizing: border-box;
     display: flex;
-    // left-part
     .content-l-wrap {
-      flex: 2;
+      width: 28.57vw;
       display: flex;
       flex-direction: column;
       // background: darkkhaki;
       .content_L_wrap_item {
         width: 100%;
-        flex: 1;
+        height: 12.8571vh;
         background-image: url("../../../static/images/wrap_bg3.png");
         background-size: 100% 100%;
         background-position: center;
@@ -384,9 +377,8 @@ export default {
         }
       }
       .content_L_wrap_item:first-child {
-        flex: 2;
+        height: 25.7142vh;
         background-image: unset;
-        // background-color: #fff;
       }
       // 特殊
       .content_L_wrap_item:nth-child(3) {
@@ -452,10 +444,8 @@ export default {
         }
       }
     }
-    // left-oart
-    // middle-part
     .content-mid-wrap {
-      flex: 3;
+      width: 42.857vw;
       margin: 0 1%;
       display: flex;
       flex-direction: column;
@@ -628,15 +618,12 @@ export default {
         }
       }
     }
-    // middle-part
-    // right-part
     .content-r-wrap {
-      flex: 2;
+      width: 28.57vw;
       display: flex;
       flex-direction: column;
       .content-r-wrap-t {
-        // flex: 1;
-        height: 25%;
+        height: 20.7692vh;
         background: url(../../../static/images/rectangle_small.png) no-repeat;
         background-size: 100% 100%;
         position: relative;
@@ -651,23 +638,20 @@ export default {
       }
       .content-r-wrap-m {
         margin: 2% 0;
-        // flex: 2;
-        height: 33.33333%;
+        height: 29.9999vh;
         background: url(../../../static/images/rectangle.png) no-repeat;
         background-size: 100% 100%;
       }
       .content-r-wrap-b {
-        // flex: 3;
-        height: 33.33333%;
         background: orange;
-        height: 39vh;
+        // width: 28.57vw;
+        height: 38.0001vh;
         font-size: 0.14rem;
         background: url(../../../static/images/rectangle_big.png) no-repeat;
         background-size: 100% 100%;
         text-align: center;
       }
     }
-    // right-part
   }
 }
 </style>

@@ -33,10 +33,10 @@ export default {
     getEchart() {
       this.fulldata = this.crightData;
 
-        let dataX = this.fulldata.dataX.splice(0, 7).map(v => {
+        let dataX = this.fulldata.dataX.map(v => {
           return v.slice(4, v.length)
         })
-        let data1 = this.fulldata.data1.splice(0, 7).map(v => {
+        let data1 = this.fulldata.data1.map(v => {
           return parseInt(Number(v))
         })
         //******************* */
@@ -190,6 +190,12 @@ export default {
    
     }
 
+  },
+  watch:{
+    //   crightData(val){
+    //       console.log(val);
+    //       this.getEchart()
+    //   }
   },
   props: ['crightData']
 };

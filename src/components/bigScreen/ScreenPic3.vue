@@ -48,7 +48,7 @@
           <div class="top_title">
             <span>累计线上存款开户情况</span>
           </div>
-          <count-part :iconItemData="onlineRegister"></count-part>
+          <count-part :iconItemData="onlineRegister" :height="'100%'"></count-part>
         </div>
         <div class="content-mid-wrap-m">
           <div class="top_title">
@@ -104,9 +104,8 @@ export default {
       pieChartL: {
         title: {
           text: '各渠道开户占比',
-          top: '10%',
+          top: '25%',
           left: 'left',
-          // top: 20,
           textStyle: {
             color: '#fff',
             fontSize: '18%',
@@ -117,14 +116,6 @@ export default {
           {
             name: '',
             center: ['35%', '68%'],
-            // data: [
-            //   { value: 310, name: '网银' },
-            //   { value: 274, name: '柜面' },
-            //   { value: 235, name: '手机' },
-            //   { value: 335, name: '电话' },
-            //   { value: 666, name: '微信' },
-            //   { value: 400, name: '自助' }
-            // ].sort(function (a, b) { return a.value - b.value; })
             data: []
           }
         ]
@@ -133,7 +124,7 @@ export default {
       pieChartR: {
         title: {
           text: '各渠道交易占比',
-          bottom: '10%',
+          bottom: '25%',
           right: 'right',
           // top: 20,
           textStyle: {
@@ -238,9 +229,7 @@ export default {
       for (var i = 0; i < list.length; i++) {
         let a = list[i];
         let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        // let name = a.name ? a.name.substring(0, 1) : '李**';
-        // let address = a.address ? a.address : '广东省广州市';
-        workreallistdata.push(a.address + a.name + a.sex + "，" + "申请一笔【线上存款】产品，金额" + " " + b + " 元")
+        workreallistdata.push(a.address + a.name + /* a.sex */"**" + "，" + "申请一笔【线上存款】产品，金额" + " " + b + " 元")
       }
       return workreallistdata;
     },
@@ -291,23 +280,20 @@ export default {
     font-size: 0.28rem;
     color: white;
     line-height: 0.45rem;
-    // line-height: 1.05rem;
   }
   .content {
-    width: 100%;
+    width: 100vw;
     height: 90vh;
-    // background: red;
     padding: 1%;
     box-sizing: border-box;
     display: flex;
     .content-l-wrap {
-      flex: 2.5;
-      // background: pink;
+      width: 31.25vw;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       .l-top {
-        flex: 1;
+        flex: 1.5;
         margin-bottom: 0.1rem;
         background: url(../../../static/images/wrap_bg2.png) no-repeat;
         background-size: 100% 100%;
@@ -322,7 +308,7 @@ export default {
         }
       }
       .l-mid {
-        flex: 1.5;
+        flex: 1;
         margin-bottom: 0.1rem;
         background: url(../../../static/images/wrap_bg4.png) no-repeat;
         background-size: 100% 100%;
@@ -341,7 +327,7 @@ export default {
       }
     }
     .content-mid-wrap {
-      flex: 3;
+      width: 37.5vw;
       margin: 0 0.1rem;
       display: flex;
       flex-direction: column;
@@ -361,13 +347,13 @@ export default {
         margin-bottom: 0.1rem;
       }
       .content-mid-wrap-b {
-        // flex:2;
+        width: 37.5vw;
         height: 40%;
         overflow: hidden;
       }
     }
     .content-r-wrap {
-      flex: 2.5;
+      width: 31.25vw;
       display: flex;
       flex-direction: column;
       .content-mid-wrap-t {

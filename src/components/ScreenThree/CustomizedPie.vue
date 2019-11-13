@@ -13,7 +13,6 @@ export default {
     }
   },
   mounted() {
-    // this.getPieChhart();
     let timer = setInterval(() => {
       if (this.pieChart.series[0].data.length != 0) {
         clearInterval(timer)
@@ -26,39 +25,20 @@ export default {
       let pieChart = this.$echarts.init(this.$refs.chart)
       pieChart.setOption(
         {
-          //   backgroundColor: 'rgba(0,0,0,1)',
-          // color: ['#46b2e1', '#70e5c1', '#626d90', '#a0a8e4', '#c5eaaf', '#99dee7'], // 原来的
           color: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff', '#99dee7'],
-          //   title: {
-          //     text: 'CustomizedPie',
-          //     top: '3%',
-          //     left: 'left',
-          //     top: 20,
-          //     textStyle: {
-          //       color: '#fff'
-          //     },
-          //   }
           title: this.pieChart.title, // 使用父组件传来的值
           series: [
             {
               name: '',
               type: 'pie',
-              radius: '55%',
-              // center: ['30%', '65%'],
+              radius: '50%',
               center: this.pieChart.series[0].center,
-              // data: [
-              //   { value: 310, name: '网银' },
-              //   { value: 274, name: '柜面' },
-              //   { value: 235, name: '手机' },
-              //   { value: 335, name: '电话' },
-              //   { value: 400, name: '自助' }
-              // ].sort(function (a, b) { return a.value - b.value; }),
               data: this.pieChart.series[0].data,
               roseType: 'radius',
               label: {
                 normal: {
                   textStyle: {
-                    fontSize: '15%',
+                    fontSize: '10%',
                     color: 'rgba(255, 255, 255, 1)'
                   },
 
@@ -69,13 +49,12 @@ export default {
                       return params.name + ':' + params.percent + '%'
                     }
                   }
-                  //   formatter: '{b}:{d}%'
                 }
               },
               labelLine: {
                 normal: {
                   lineStyle: {
-                    color: 'rgba(255, 255, 255, 0.3)'
+                    color: 'rgba(255, 255, 255, 0.8)'
                   },
                   smooth: 0.2,
                   length: 1,
@@ -84,7 +63,6 @@ export default {
               },
               itemStyle: {
                 normal: {
-                  //   color: '#c23531',
                   shadowBlur: 200,
                   shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }

@@ -40,7 +40,7 @@ export default {
       // 绘制图表
       barChart.setOption({
         title: {
-          text: '类型放款',
+          text: '按放款类型统计',
           left: 'left',
           padding: [10, 20],
           // show:false,
@@ -194,6 +194,6 @@ export default {
 <style lang="less" scoped>
 #barChart {
   width: 100%;
-  height: 100% !important;
+  height: 100%;
 }
 </style>

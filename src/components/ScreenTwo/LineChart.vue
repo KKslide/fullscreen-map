@@ -12,7 +12,7 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228,0.8)',
-      dataL: ['昨日', '前日'],
+      dataL: ['昨日', '今日'],
     }
   },
   mounted() {
@@ -269,6 +269,6 @@ export default {
 <style lang="less" scoped>
 #lineChart {
   width: 100%;
-  height: 32.8vh;
+  height: 25.7142vh;
 }
 </style>

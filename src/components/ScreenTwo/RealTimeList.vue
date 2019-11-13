@@ -63,9 +63,9 @@ export default {
 @titleFontColor: rgba(12, 236, 228, 0.7);
 
 #realTimeList {
-  width: 100%;
+  width: 28.57vw;
   overflow: hidden;
-  // height: 50vh;
+  height: 100%;
   text-align: center;
   font-family: "PingFang SC";
   p {
@@ -89,7 +89,7 @@ export default {
     list-style-type: none;
     // height: 3.8rem;
     overflow: hidden;
-    // transform: translateY(-0.05rem);
+    // transform: translateY(-0.1rem);
   }
 
   li {
@@ -100,6 +100,9 @@ export default {
     font-size: 0.14rem;
     text-align: left;
     color: @fontColor;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>

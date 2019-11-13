@@ -116,7 +116,7 @@ export default {
           }
         },
         series: [
-          {
+          { // 陆金所
             name: this.dataL[0],
             type: 'line',
             smooth: false,
@@ -157,7 +157,7 @@ export default {
             },
             data: []
           },
-          {
+          { // 拉卡拉
             name: this.dataL[1],
             type: 'line',
             smooth: false,
@@ -193,7 +193,7 @@ export default {
             },
             data: []
           },
-          {
+          { // 自营
             name: this.dataL[2],
             type: 'line',
             smooth: false,
@@ -203,11 +203,11 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: '#479df6'
+                  color: '#7cdfa1'
                 },
                 {
                   offset: 1,
-                  color: '#f95e74'
+                  color: '#f2d345'
                 }]),
                 opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
@@ -223,10 +223,10 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: 'rgba(0, 136, 212, 0.5)'
+                  color: 'rgba(125, 221, 158, 0.8)'
                 }, {
                   offset: 0.8,
-                  color: 'rgba(0, 136, 212, 0)'
+                  color: 'rgba(242, 211, 69, 0)'
                 }], false),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
                 shadowBlur: 10
@@ -234,7 +234,7 @@ export default {
             },
             data: []
           },
-          {
+          { // 宜信
             name: this.dataL[3],
             type: 'line',
             smooth: false,
@@ -244,11 +244,11 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: '#479df6'
+                  color: '#4298ff'
                 },
                 {
                   offset: 1,
-                  color: '#f95e74'
+                  color: '#61f5e9'
                 }]),
                 opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
@@ -264,10 +264,10 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: 'rgba(197,234,175, 0.5)'
+                  color: 'rgba(65, 154, 248, 0.9)'
                 }, {
                   offset: 0.8,
-                  color: 'rgba(112,229,193, 0)'
+                  color: 'rgba(97, 245, 233, 0)'
                 }], false),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
                 shadowBlur: 10
@@ -275,7 +275,7 @@ export default {
             },
             data: []
           },
-          {
+          { // 比财
             name: this.dataL[4],
             type: 'line',
             smooth: false,
@@ -285,11 +285,11 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: '#479df6'
+                  color: '#f0668f'
                 },
                 {
                   offset: 1,
-                  color: '#f95e74'
+                  color: '#b7f5f0'
                 }]),
                 opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
@@ -305,10 +305,10 @@ export default {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
-                  color: 'rgba(197,234,175, 0.5)'
+                  color: 'rgba(240, 102, 143, 0.85)'
                 }, {
                   offset: 0.8,
-                  color: 'rgba(112,229,193, 0)'
+                  color: 'rgba(184, 241, 236, 0)'
                 }], false),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
                 shadowBlur: 10

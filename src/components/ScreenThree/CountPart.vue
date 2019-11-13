@@ -140,7 +140,7 @@ export default {
   padding-top: 0.3rem;
   .iconItem {
     width: 50%;
-    height: 50%;
+    // height: 33.333333%;
     display: inline-block;
     text-align: center;
     .icon {
@@ -158,7 +158,7 @@ export default {
       p {
         color: @fontColor;
         // margin-bottom: 0.2rem;
-        font-size: 0.22rem;
+        font-size: 0.2rem;
       }
       p:last-child {
         font-size: 0.16rem;
