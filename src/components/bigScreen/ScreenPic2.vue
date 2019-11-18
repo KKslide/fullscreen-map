@@ -12,11 +12,11 @@
         </div>
         <div class="content_L_wrap_item">
           <div class="trade_amount">
-            <div>累计交易金额</div>
+            <div>贷款余额</div>
             <base-number :tradeData="totalTradeAmount" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
-            <div>累计交易笔数</div>
+            <div>累计放款笔数</div>
             <base-number :tradeData="totalTradeCount" :toFixedNum="2"></base-number>
           </div>
         </div>
@@ -27,14 +27,14 @@
               <base-number :tradeData="importNum" :toFixedNum="0"></base-number>
             </div>
             <div class="trade_count">
-              <div style="width:unset !important;">审批通过数</div>
+              <div>审批通过数</div>
               <base-number :tradeData="passNum" :toFixedNum="0"></base-number>
             </div>
           </div>
-          <div class="content_right">
+          <!-- <div class="content_right">
             <div>放款数</div>
             <base-number :tradeData="dealNum" :toFixedNum="0"></base-number>
-          </div>
+          </div> -->
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
@@ -58,11 +58,11 @@
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>联合授信业务</div>
+            <div>昨日联合授信放款金额</div>
             <base-number :tradeData="newsBussiness" :toFixedNum="2"></base-number>
           </div>
           <div class="trade_count">
-            <div>O2O贷款业务</div>
+            <div>昨日O2O贷款放款金额</div>
             <base-number :tradeData="O2OBussiness" :toFixedNum="2"></base-number>
           </div>
         </div>
@@ -77,17 +77,17 @@
         </div>
         <div class="content-mid-wrap-m">
           <div class="content-mid-wrap-m-title">全国交易分布情况</div>
-          <!-- 交易金额top5 -->
+          <!-- 放款金额top5 -->
           <div class="tradeCountTop5">
             <div class="trade_count">
-              <span>金额Top5</span>
+              <span>放款金额Top5</span>
               <div class="trade_count_item" v-for="(item,index) in mapTradeValueTop5" :key="index">
                 <div class="trade_count_item_data" :data-name="item.type" :data-count="item.value"></div>
                 <div class="rank_circle"></div>
               </div>
             </div>
             <div class="trade_amount">
-              <span>交易量Top5</span>
+              <span>放款笔数Top5</span>
               <div
                 class="trande_amount_item"
                 v-for="(item,index) in mapTradeAmountTop5"
@@ -122,7 +122,8 @@ import BaseNumber from '@/components/ScreenTwo/BaseNumber' // 数字样式
 import SemicircleProgressBar from '@/components/ScreenTwo/SemicircleProgressBar' // 今日放款金额和笔数 - 仪表盘
 import ChinaMap from '@/components/ScreenTwo/ChinaMap' // 全国地图
 import BarChart from '@/components/ScreenTwo/BarChart' // 放款类型统计 - 条形进度条组件
-import AreaChart from '@/components/ScreenTwo/AreaChart' // 近7天的交易趋势 - 曲线图区域样式
+// import AreaChart from '@/components/ScreenTwo/AreaChart' // 近7天的交易趋势 - 曲线图区域样式
+import AreaChart from '@/components/ScreenTwo/LineChartRight' // 近7天的交易趋势 - 曲线图区域样式
 import RealTimeList from '@/components/ScreenTwo/RealTimeList' // 实时交易情况
 export default {
   name: 'ScreenPic2',
@@ -133,8 +134,8 @@ export default {
       latest24Data: {}, // 最近24小时交易金额  -  这里是要把请求回来的数据整理成这种格式
 
       totalData: null, // 所有数据
-      totalTradeAmount: null, // 累计交易金额
-      totalTradeCount: null, // 累计交易笔数
+      totalTradeAmount: null, // 贷款余额
+      totalTradeCount: null, // 累计放款笔数
       importNum: null, // 进件数
       dealNum: null, // 放款数
       passNum: null, // 审批通过数
@@ -143,13 +144,13 @@ export default {
       returnAmount: null, // 昨日还款金额
       returnCount: null, // 昨日还款笔数
       newsBussiness: null, // 新网联合授权业务
-      O2OBussiness: null, // O2O贷款业务
+      O2OBussiness: null, // 昨日O2O贷款放款金额
       showData: [], // 今日放款金额和笔数
       nationMapValueData: [], // 地图数据
 
       titleName2: "全国交易分布情况",
       mapTradeAmountTop5: [], // 地图数据交易笔数Top5
-      mapTradeValueTop5: [], // 地图数据交易金额Top5
+      mapTradeValueTop5: [], // 地图数据放款金额top5
 
       latest7: {}, // 最近7日数据
 
@@ -172,17 +173,17 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-    //   url: './static/json/screen2_new.json',
-    //   method: "get"
-        url: "./tx/XSZC",
-        method: "post",
-        data: {}
+      url: './static/json/screen2.json',
+      method: "get"
+        // url: "./tx/XSZC",
+        // method: "post",
+        // data: {}
     }).then(res => {
 
       this.totalData = res.data;
 
-      this.totalTradeAmount = this.getDetails('累计交易金额')
-      this.totalTradeCount = this.getDetails('累计交易笔数')
+      this.totalTradeAmount = this.getDetails('贷款余额')
+      this.totalTradeCount = this.getDetails('累计放款笔数')
       this.importNum = this.getDetails('进件数')
       this.dealNum = this.getDetails('放款数')
       this.passNum = this.getDetails('审批通过数')
@@ -192,8 +193,8 @@ export default {
       this.releaseCount = this.getDetails('昨日放款笔数')
       this.returnAmount = this.getDetails('昨日还款金额')
       this.returnCount = this.getDetails('昨日还款利息')
-      this.newsBussiness = this.getDetails('新网联合授信业务')
-      this.O2OBussiness = this.getDetails('O2O贷款业务')
+      this.newsBussiness = this.getDetails('昨日联合授信放款金额')
+      this.O2OBussiness = this.getDetails('昨日O2O贷款放款金额')
 
       this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
 
@@ -358,6 +359,8 @@ export default {
           div:last-child {
             float: right;
             display: flex;
+            justify-content: flex-end;
+            width:65%;
             span:not(.dot) {
               border: 0.02rem solid rgb(77, 102, 200);
               box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
@@ -429,6 +432,7 @@ export default {
               font-size: 0.14rem;
               margin-left: 0.05rem;
               transform: translateY(0.035rem);
+              white-space: nowrap;
             }
           }
         }
@@ -441,7 +445,8 @@ export default {
         div.trade_amount,
         div.trade_count {
           div:first-child {
-            text-align: right;
+            // text-align: right;
+            white-space: nowrap;
           }
         }
       }
@@ -529,8 +534,8 @@ export default {
               top: 50%;
               transform: translateY(-50%);
               color: #fff;
-              width: 0.9rem;
-              text-align: right;
+              width: 1.1rem;
+            //   text-align: right;
             }
             // 交易金额
             .trade_count_item {

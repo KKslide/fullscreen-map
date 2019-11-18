@@ -12,12 +12,16 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228,0.8)',
-      dataL: ['今日购买金额', /* '今日开户数量', */ '今日购买笔数'],
+      // dataL: ['自营', '陆金所', '京东', '拉卡拉', '比财'],
+      dataL: [],
     }
   },
   mounted() {
-    this.getLineChart();
-    this.play();
+    //   console.log(this.diffTradeWayData);
+    //   console.log(this.legendNames);
+    //   return
+    // this.getLineChart();
+    // this.play();
   },
   methods: {
     getLineChart() {
@@ -63,9 +67,9 @@ export default {
         },
         grid: {
           left: '3%',
-          right: '5%',
-          top: '15%',
+          right: '8%',
           bottom: '13%',
+          top: "20%",
           containLabel: true
         },
         xAxis: {
@@ -90,57 +94,32 @@ export default {
             }
           }
         },
-        yAxis: [
-          {
-            type: 'value',
-            splitLine: { //Y轴网格线修改
-              show: false,
-            },
+        yAxis: {
+          type: 'value',
+          splitLine: { //Y轴网格线修改
+            show: false,
+          },
 
-            axisLine: {
-              show: true, // Y轴轴线颜色类型的修改
-              lineStyle: {
-                type: 'solid',
-                color: this.axisColor
-              }
-            },
-            axisLabel: {
-              show: true,
-              textStyle: {
-                // color: 'red',
-                fontSize: 18
-              },
-              formatter:'{value} 元'
+          axisLine: {
+            show: true, // Y轴轴线颜色类型的修改
+            lineStyle: {
+              type: 'solid',
+              color: this.axisColor
             }
           },
-          {
-            type: 'value',
-            splitLine: { //Y轴网格线修改
-              show: false,
-            },
-
-            axisLine: {
-              show: true, // Y轴轴线颜色类型的修改
-              lineStyle: {
-                type: 'solid',
-                color: this.axisColor
-              }
-            },
-            axisLabel: {
-              show: true,
-              textStyle: {
-                // color: 'red',
-                fontSize: 18
-              },
-              formatter:'{value} 笔'
+          axisLabel: {
+            show: true,
+            textStyle: {
+              // color: 'red',
+              fontSize: 18
             }
           }
-        ],
+        },
         series: [
-          { // 笔数
+          { // 陆金所
             name: this.dataL[0],
             type: 'line',
-            smooth: true,
+            smooth: false,
             symbol: 'circle',
             symbolSize: 10,
             itemStyle: {
@@ -155,12 +134,7 @@ export default {
                 }]),
                 opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
-                shadowBlur: 10,
-                label: {
-                  show: true,
-                  position: 'top',
-                  fontSize: 12
-                }
+                shadowBlur: 10
               }
             },
             areaStyle: { // 设置折线图区域渐变
@@ -181,54 +155,12 @@ export default {
                 }
               }
             },
-            data: [],
+            data: []
           },
-          { // 金额
+          { // 拉卡拉
             name: this.dataL[1],
             type: 'line',
-            smooth: true,
-            symbol: 'circle',
-            symbolSize: 10,
-            itemStyle: {
-              normal: {
-                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0,
-                  color: '#a0a8e4'
-                },
-                {
-                  offset: 1,
-                  color: '#626d90'
-                }]),
-                opacity: 0.8,
-                shadowColor: 'rgba(255, 255, 255, 0.7)',
-                shadowBlur: 10,
-                label: {
-                  show: true,
-                  position: 'top',
-                  fontSize: 12
-                }
-              }
-            },
-            areaStyle: { // 设置折线图区域渐变
-              normal: {
-                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0,
-                  color: 'rgba(160,168,228, 0.5)' //#a0a8e4
-                }, {
-                  offset: 0.8,
-                  color: 'rgba(98,109,144, 0)' // #626d90
-                }], false),
-                shadowColor: 'rgba(0, 0, 0, 0.1)',
-                shadowBlur: 10
-              }
-            },
-            data: [],
-            yAxisIndex: 1, // 当有多个Y轴的时候，选择跟哪个Y轴
-          },
-          /* { // 开户数 - 取消掉了
-            name: this.dataL[2],
-            type: 'line',
-            smooth: true,
+            smooth: false,
             symbol: 'circle',
             symbolSize: 10,
             itemStyle: {
@@ -243,12 +175,7 @@ export default {
                 }]),
                 opacity: 0.8,
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
-                shadowBlur: 10,
-                label: {
-                  show: true,
-                  position: 'top',
-                  fontSize: 12
-                }
+                shadowBlur: 10
               }
             },
             areaStyle: { // 设置折线图区域渐变
@@ -265,7 +192,130 @@ export default {
               }
             },
             data: []
-          } */
+          },
+          { // 自营
+            name: this.dataL[2],
+            type: 'line',
+            smooth: false,
+            symbol: 'circle',
+            symbolSize: 10,
+            itemStyle: {
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#7cdfa1'
+                },
+                {
+                  offset: 1,
+                  color: '#f2d345'
+                }]),
+                opacity: 0.8,
+                shadowColor: 'rgba(255, 255, 255, 0.7)',
+                shadowBlur: 10,
+                label: {
+                  show: true,
+                  position: 'top',
+                  fontSize: 12
+                }
+              }
+            },
+            areaStyle: { // 设置折线图区域渐变
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(125, 221, 158, 0.8)'
+                }, {
+                  offset: 0.8,
+                  color: 'rgba(242, 211, 69, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+              }
+            },
+            data: []
+          },
+          { // 宜信
+            name: this.dataL[3],
+            type: 'line',
+            smooth: false,
+            symbol: 'circle',
+            symbolSize: 10,
+            itemStyle: {
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#4298ff'
+                },
+                {
+                  offset: 1,
+                  color: '#61f5e9'
+                }]),
+                opacity: 0.8,
+                shadowColor: 'rgba(255, 255, 255, 0.7)',
+                shadowBlur: 10,
+                label: {
+                  show: true,
+                  position: 'top',
+                  fontSize: 12
+                }
+              }
+            },
+            areaStyle: { // 设置折线图区域渐变
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(65, 154, 248, 0.9)'
+                }, {
+                  offset: 0.8,
+                  color: 'rgba(97, 245, 233, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+              }
+            },
+            data: []
+          },
+          { // 比财
+            name: this.dataL[4],
+            type: 'line',
+            smooth: false,
+            symbol: 'circle',
+            symbolSize: 10,
+            itemStyle: {
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: '#f0668f'
+                },
+                {
+                  offset: 1,
+                  color: '#b7f5f0'
+                }]),
+                opacity: 0.8,
+                shadowColor: 'rgba(255, 255, 255, 0.7)',
+                shadowBlur: 10,
+                label: {
+                  show: true,
+                  position: 'top',
+                  fontSize: 12
+                }
+              }
+            },
+            areaStyle: { // 设置折线图区域渐变
+              normal: {
+                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(240, 102, 143, 0.85)'
+                }, {
+                  offset: 0.8,
+                  color: 'rgba(184, 241, 236, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+              }
+            },
+            data: []
+          }
         ]
       };
       var that = this;
@@ -273,20 +323,23 @@ export default {
         if (!that.isPlay) return;
         var d1 = [],
           d2 = [],
-          //   d3 = [],
+          d3 = [],
+          d4 = [],
+          d5 = [],
           indexArr = [];
         startIndex++;
-        for (let i = startIndex; i < that.productRealTimeLine
-          .data1.length; i++) {
+        for (let i = startIndex; i < that.diffTradeWayData.data1.length; i++) {
           if (i < startIndex + 6) {
-            d1.push(that.productRealTimeLine.data1[i]);
-            indexArr.push(that.productRealTimeLine.hour[i])
+            d1.push(that.diffTradeWayData.data1[i]);
+            indexArr.push(that.diffTradeWayData.date[i])
           }
         }
-        for (let i = startIndex; i < that.productRealTimeLine.data2.length; i++) {
+        for (let i = startIndex; i < that.diffTradeWayData.data2.length; i++) {
           if (i < startIndex + 6) {
-            d2.push(that.productRealTimeLine.data2[i]);
-            // d3.push(that.productRealTimeLine.data3[i]);
+            d2.push(that.diffTradeWayData.data2[i]);
+            d3.push(that.diffTradeWayData.data3[i]);
+            d4.push(that.diffTradeWayData.data4[i]);
+            d5.push(that.diffTradeWayData.data5[i]);
           }
         }
         if (d1.length < 6) {
@@ -303,10 +356,16 @@ export default {
           }, {
             name: that.dataL[1],
             data: d2
-          }/* , {
+          }, {
             name: that.dataL[2],
             data: d3
-          } */]
+          }, {
+            name: that.dataL[3],
+            data: d4
+          }, {
+            name: that.dataL[4],
+            data: d5
+          }]
         });
       }, 2000);
       // 使用刚指定的配置项和数据显示图表。
@@ -330,14 +389,20 @@ export default {
       }
     }
   },
-  props: ['productRealTimeLine', 'titleName']
+  props: ['diffTradeWayData', 'legendNames', 'titleName'],
+  watch: {
+    legendNames(nv, ov) { // 监听legendnames的变化
+      this.dataL = nv;
+      this.getLineChart();
+      this.play();
+    }
+  }
 };
 
 </script>
 <style lang="less" scoped>
 #lineChart2 {
   width: 100%;
-  // height: 32.8vh;
   height: 100%;
 }
 </style>

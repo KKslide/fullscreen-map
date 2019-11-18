@@ -144,12 +144,12 @@ export default {
     },
     getData() {
       this.$axios({
-        // url: "./static/json/cc.json",
-        // method: "get",
+        url: "./static/json/cc.json",
+        method: "get",
         // url:"http://10.30.3.13:8081/usp_ks/tx/GYL",
-        url: "./tx/GYL",
-        method: "post",
-        data: {},
+        // url: "./tx/GYL",
+        // method: "post",
+        // data: {},
       }).then(res => {
 
         var workdataX = [];

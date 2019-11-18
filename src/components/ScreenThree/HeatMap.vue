@@ -87,7 +87,7 @@ export default {
           map: 'china',
           top: '30%',
           bottom: '3%',
-          left: '10%',
+          left: '5%',
           right: '5%',
           label: {
             normal: {

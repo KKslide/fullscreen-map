@@ -10,7 +10,7 @@ export default {
       axisColor: 'rgba(255,255,255,0.5)',
       fontColor: 'rgba(255,255,255,0.9)',
       titleFontColor: 'rgba(12, 236, 228, 0.8)',
-      dataL: ['放款金额', '放款笔数'],
+      dataL: ['贷款余额', '放款笔数'],
       barData: {
         type: ['O2O贷款业务', '联合授信业务'],
         data1: [1034, 1360],
@@ -64,13 +64,12 @@ export default {
           top: '20%',
           left: '32%',
           right: '18%',
-          bottom: '5%',
+          bottom: '20%',
           containLabel: true
         },
         legend: { // 不同系列的标记, 可以通过点击图例控制哪些系列不显示。
-          show: false,
-          //orient: 'vertical',
-          bottom: '1%',
+          show: true,
+          bottom: '3%',
           data: this.dataL,
           textStyle: {
             color: 'white',
@@ -107,7 +106,7 @@ export default {
         },
         series: [
           {
-            name: '放款金额',
+            name: '贷款余额',
             type: 'bar',
             barWidth: '15%', //柱条的宽度
             barGap: '80%', //不同系列的柱间距离
@@ -115,7 +114,8 @@ export default {
             label: {
               normal: {
                 show: true,
-                position: 'right'
+                position: 'right',
+                fontSize: '15%'
               }
             },
             itemStyle: {
@@ -134,12 +134,6 @@ export default {
               },
               emphasis: {
                 barBorderRadius: 7
-              }
-            },
-            label: {
-              normal: {
-                show: true,
-                position: 'right'
               }
             },
             data: val.data1
@@ -170,7 +164,8 @@ export default {
             label: {
               normal: {
                 show: true,
-                position: 'right'
+                position: 'right',
+                fontSize: '15%'
               }
             },
             data: val.data2

@@ -155,6 +155,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      padding: 0.1rem 0;
       p {
         color: @fontColor;
         // margin-bottom: 0.2rem;

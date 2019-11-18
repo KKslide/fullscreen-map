@@ -9,7 +9,7 @@
       <li
         v-for="(item,index) in reallist"
         :key="index"
-        :style="{'display':index<6?'':'none'}"
+        :style="{'display':index<9?'':'none'}"
       >{{item}}</li>
       <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
       <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>

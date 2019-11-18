@@ -44,8 +44,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/usp_ks/',  // 线上
-    // assetsPublicPath: './',  // 本地
+    // assetsPublicPath: '/usp_ks/',  // 线上
+    assetsPublicPath: './',  // 本地
 
     /**
      * Source Maps

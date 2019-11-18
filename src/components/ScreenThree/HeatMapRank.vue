@@ -66,7 +66,7 @@ export default {
 <style lang="less" >
 .trade_rank {
   position: absolute;
-  top: 0.35rem;
+  top: 0.5rem;
   width: 100%;
   .trade_rank_content {
     display: flex;
