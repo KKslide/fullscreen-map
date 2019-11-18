@@ -17,7 +17,7 @@
       :class="item==','||item=='.'?'dot':''"
     ></span>
 
-    <i class="unit" v-html="unit"></i>
+    <i class="unit" v-html="unit" style="white-space:nowrap;"></i>
   </div>
 </template>
 
@@ -78,7 +78,7 @@ export default {
     font-size: 0.14rem;
     margin-left: 0.03rem;
     transform: translateY(0.05rem);
-    white-space: nowrap;
+    white-space: nowrap; // 我艹.. 为什么在这里加居然没用
   }
 }
 </style>

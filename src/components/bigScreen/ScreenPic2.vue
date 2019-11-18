@@ -17,7 +17,7 @@
           </div>
           <div class="trade_count">
             <div>累计放款笔数</div>
-            <base-number :tradeData="totalTradeCount" :toFixedNum="2"></base-number>
+            <base-number :tradeData="totalTradeCount" :toFixedNum="0"></base-number>
           </div>
         </div>
         <div class="content_L_wrap_item">
@@ -34,7 +34,7 @@
           <!-- <div class="content_right">
             <div>放款数</div>
             <base-number :tradeData="dealNum" :toFixedNum="0"></base-number>
-          </div> -->
+          </div>-->
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
@@ -173,11 +173,11 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      url: './static/json/screen2.json',
-      method: "get"
-        // url: "./tx/XSZC",
-        // method: "post",
-        // data: {}
+      //   url: './static/json/screen2.json',
+      //   method: "get"
+      url: "./tx/XSZC",
+      method: "post",
+      data: {}
     }).then(res => {
 
       this.totalData = res.data;
@@ -360,7 +360,7 @@ export default {
             float: right;
             display: flex;
             justify-content: flex-end;
-            width:65%;
+            width: 65%;
             span:not(.dot) {
               border: 0.02rem solid rgb(77, 102, 200);
               box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
@@ -432,7 +432,6 @@ export default {
               font-size: 0.14rem;
               margin-left: 0.05rem;
               transform: translateY(0.035rem);
-              white-space: nowrap;
             }
           }
         }
@@ -535,7 +534,7 @@ export default {
               transform: translateY(-50%);
               color: #fff;
               width: 1.1rem;
-            //   text-align: right;
+              //   text-align: right;
             }
             // 交易金额
             .trade_count_item {

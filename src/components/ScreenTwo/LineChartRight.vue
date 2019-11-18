@@ -1,5 +1,5 @@
 <template>
-  <div id="lineChart" ref="lineChart"></div>
+  <div id="lineChartRight" ref="lineChartRight"></div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     getChart() {
-      let lineChart = this.$echarts.init(this.$el)
+      let lineChartRight = this.$echarts.init(this.$el)
       //   let xData = ['芝罘区', '福山区', '莱山区', '牟平区', '海阳市', '莱阳市', '蓬莱市', '栖霞市', '龙口市', '长岛县', '招远市', '莱州市', '开发区', '高新区', '昆嵛山', '龙海', '机场', '核电'];
       //   let y1Data = [10758, 3975, 2980, 1831, 2122, 3018, 3525, 1729, 2764, 380, 3988, 2333, 3596, 453, 365, 9, 67, 48];
       //   let y2Data = [28, 4.4, 5.9, 0.9, 0.7, 1.1, 2.1, 0.4, 1.9, 3.8, 1.6, 0.7, 5.7, 6.1, 0.7, 1.1, 28, 4.4];
@@ -206,7 +206,7 @@ export default {
             }
           ]
         };
-      lineChart.setOption(option);
+      lineChartRight.setOption(option);
     }
   },
   mounted() {
@@ -222,7 +222,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#lineChart {
+#lineChartRight {
   width: 100%;
   height: 100%;
 }

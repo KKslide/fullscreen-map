@@ -103,12 +103,12 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      url: "./static/json/screen3.json",
-      method: "get" // 本地
+      //   url: "./static/json/screen3.json",
+      //   method: "get" // 本地
 
-      //   url: "./tx/SZYH",
-      //   method: "post",
-      //   data: {},
+      url: "./tx/SZYH",
+      method: "post",
+      data: {},
     }).then(res => {
       this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
       this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据

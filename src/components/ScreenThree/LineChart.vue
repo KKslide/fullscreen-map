@@ -83,7 +83,12 @@ export default {
             scale: true,
             name: '',
             axisLine: {
-              show: false
+              show: true,
+              lineStyle: {
+                type: 'solid',
+                color: '#4e608b',//左边线的颜色
+                width: '1'//坐标线的宽度
+              }
             },
             splitNumber: 4,
             axisTick: {
@@ -100,13 +105,24 @@ export default {
               margin: 12,
             },
             min: 0,
+            max: function (val) {
+              if (val.max <= 10) return 10;
+              let temp = val.max.toString().split("");
+              temp[1] = parseInt(temp[1]) + 1;
+              return temp.join("");
+            },
             boundaryGap: [0.2, 0.2]
           },
           {
             type: 'value',
             scale: true,
             axisLine: {
-              show: false
+              show: true,
+              lineStyle: {
+                type: 'solid',
+                color: '#4e608b',//左边线的颜色
+                width: '1'//坐标线的宽度
+              }
             },
             splitNumber: 3,
             axisTick: {
@@ -125,6 +141,12 @@ export default {
             },
             name: '',
             min: 0,
+            max: function (val) {
+              if (val.max <= 10) return 10;
+              let temp = val.max.toString().split("");
+              temp[1] = parseInt(temp[1]) + 1;
+              return temp.join("");
+            },
             boundaryGap: [0.2, 0.2]
           },
 
@@ -140,7 +162,7 @@ export default {
                 textStyle: {
                   color: '#1dacfe'
                 },
-                formatter:'{c}万元'
+                formatter: '{c}万元'
               }
             },
             itemStyle: {
@@ -169,7 +191,7 @@ export default {
                 textStyle: {
                   color: '#ffd300'
                 },
-                formatter:'{c}笔'
+                formatter: '{c}笔'
               }
             },
             lineStyle: {
