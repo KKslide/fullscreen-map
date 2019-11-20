@@ -117,7 +117,7 @@
   </div>
 </template>
 <script>
-import LineChart from '@/components/ScreenTwo/LineChart' // 最近24小时交易金额
+import LineChart from '@/components/ScreenTwo/LineChart' // 最近24小时放款金额
 import BaseNumber from '@/components/ScreenTwo/BaseNumber' // 数字样式
 import SemicircleProgressBar from '@/components/ScreenTwo/SemicircleProgressBar' // 今日放款金额和笔数 - 仪表盘
 import ChinaMap from '@/components/ScreenTwo/ChinaMap' // 全国地图
@@ -130,8 +130,8 @@ export default {
   data() {
     return {
       title: "线上资产业务监控大屏",
-      titleName1: '最近24小时交易金额',
-      latest24Data: {}, // 最近24小时交易金额  -  这里是要把请求回来的数据整理成这种格式
+      titleName1: '最近24小时放款金额',
+      latest24Data: {}, // 最近24小时放款金额  -  这里是要把请求回来的数据整理成这种格式
 
       totalData: null, // 所有数据
       totalTradeAmount: null, // 贷款余额
@@ -163,7 +163,7 @@ export default {
     };
   },
   components: {
-    'line-chart': LineChart, // 最近24小时交易金额
+    'line-chart': LineChart, // 最近24小时放款金额
     'base-number': BaseNumber, // 数字样式组件
     'semicircleProgress-bar': SemicircleProgressBar, // 今日放款金额和笔数 - 仪表盘
     'china-map': ChinaMap, // 全国地图
@@ -202,8 +202,8 @@ export default {
       this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
       this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
 
-      this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时交易金额
-      this.latest7 = this.fixedForm(res.data.latest7) // 近7天的交易趋势
+      this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
+      this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
 
       this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
 

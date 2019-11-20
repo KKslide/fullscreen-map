@@ -43,7 +43,7 @@ export default {
             }
           },
           legend: {
-            data: ['借款金额', '还款金额'],
+            data: ['借款金额(万元)', '还款金额(万元)'],
             right: '3%',
             top: '5%',
             itemWidth: 11,
@@ -82,7 +82,7 @@ export default {
             }
           ],
           yAxis: [
-            {
+            { // 左
               type: 'value',
               scale: true,
               name: '',
@@ -117,11 +117,11 @@ export default {
               },
               boundaryGap: [0.2, 0.2]
             },
-            {
+            { // 右
               type: 'value',
               scale: true,
               axisLine: {
-                show: true,
+                show: false,
                 lineStyle: {
                   type: 'solid',
                   color: '#4e608b',//左边线的颜色
@@ -136,6 +136,7 @@ export default {
                 fontSize: 13,
                 color: '#d0d0d0',
                 margin: 12,
+                show:false
               },
               splitLine: {
                 lineStyle: {
@@ -157,7 +158,8 @@ export default {
           ],
           series: [
             {
-              name: '借款金额',
+              name: '借款金额(万元)',
+              yAxisIndex: 0,
               type: 'bar',
               label: {
                 normal: {
@@ -166,7 +168,7 @@ export default {
                   textStyle: {
                     color: '#1dacfe'
                   },
-                  formatter: '{c}万元'
+                  formatter: '{c}'
                 }
               },
               itemStyle: {
@@ -181,12 +183,12 @@ export default {
                 }
               },
               barWidth: '40%',
-              yAxisIndex: 0,
               data: y1Data
             },
             {
-              name: '还款金额',
-              yAxisIndex: 1,
+              name: '还款金额(万元)',
+              yAxisIndex: 0,
+              type: 'line',
               color: '#ffd300',
               label: {
                 normal: {
@@ -195,13 +197,12 @@ export default {
                   textStyle: {
                     color: '#ffd300'
                   },
-                  formatter: '{c}万元'
+                  formatter: '{c}'
                 }
               },
               lineStyle: {
                 color: '#ffd300'
               },
-              type: 'line',
               data: y2Data
             }
           ]
@@ -210,7 +211,7 @@ export default {
     }
   },
   mounted() {
-    this.getChart()
+    // this.getChart()
   },
   props: ['areaData'],
   watch: {

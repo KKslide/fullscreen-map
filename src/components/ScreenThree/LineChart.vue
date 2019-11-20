@@ -39,7 +39,7 @@ export default {
           }
         },
         legend: {
-          data: ['交易金额', '交易笔数'],
+          data: ['交易金额(万元)', '交易笔数(笔)'],
           right: '3%',
           top: '10%',
           itemWidth: 11,
@@ -153,7 +153,7 @@ export default {
         ],
         series: [
           {
-            name: '交易金额',
+            name: '交易金额(万元)',
             type: 'bar',
             label: {
               normal: {
@@ -162,7 +162,7 @@ export default {
                 textStyle: {
                   color: '#1dacfe'
                 },
-                formatter: '{c}万元'
+                formatter: '{c}'
               }
             },
             itemStyle: {
@@ -181,7 +181,7 @@ export default {
             data: y1Data
           },
           {
-            name: '交易笔数',
+            name: '交易笔数(笔)',
             yAxisIndex: 1,
             color: '#ffd300',
             label: {
@@ -191,7 +191,7 @@ export default {
                 textStyle: {
                   color: '#ffd300'
                 },
-                formatter: '{c}笔'
+                formatter: '{c}'
               }
             },
             lineStyle: {

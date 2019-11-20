@@ -3,10 +3,11 @@
 </template>
 <script>
 //import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
-import '../../../node_modules/echarts/map/js/province/guangdong.js'; // 引入广东地图数据
+// import '../../../node_modules/echarts/map/js/province/guangdong.js'; // 引入广东地图数据
 //import '../../js/echarts-all.js'; 
 //import '../../js/china.js'; 
-//import '../../js/guangdong.js'; 
+// import '../../js/guangdong'; 
+import some from '../../js/temp'; // 拼凑出来的json格式的包括部分县级的地标数据
 
 export default {
   name: 'GuangdongMap',
@@ -22,7 +23,6 @@ export default {
   mounted() {
     setTimeout(() => {
       this.getMap();
-      //   this.dataList();
     }, 800)
 
   },
@@ -31,9 +31,11 @@ export default {
       return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
     },
     getMap(mapname) {
-      var mapdata = this.localMapValueData;
-      // console.log(mapdata);
-      var topArr = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse();
+      this.$echarts.registerMap('广东', some);
+
+      var mapdata = this.localMapValueData; // 所有数据
+
+      var topArr = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse(); // 前5名数据
 
       for (var i = 0; i < topArr.length; i++) {
         // this.title += (i + 1) + '. ' + topArr[i].name + ' : ' + this.changeNum(topArr[i].value) + '\n'
@@ -45,53 +47,87 @@ export default {
         result = Math.max(result, mapdata[i].value);
       }
 
-
       var placeList = [
-        { name: '广州市', coord: [113.5, 23.5] },
-        { name: '云浮市', coord: [111.8, 23.1] },
-        { name: '梅州市', coord: [116.1, 24.55] },
-        { name: '汕尾市', coord: [115.5, 23.2] },
-        { name: '潮州市', coord: [116.76, 24] },
-        { name: '汕头市', coord: [116.69, 23.39] },
-        { name: '湛江市', coord: [110.1, 21.270708] },
-        { name: '揭阳市', coord: [116, 23.55] },
-        { name: '东莞市', coord: [113.85, 23.08] },
-        { name: '韶关市', coord: [113.8, 25.1] },
-        { name: '清远市', coord: [113.01, 24.4] },
-        { name: '中山市', coord: [113.38, 22.6] },
-        { name: '深圳市', coord: [114.07, 22.62] },
-        { name: '珠海市', coord: [113.52, 22.3] },
-        { name: '佛山市', coord: [113, 23.24] },
-        { name: '茂名市', coord: [110.95, 22] },
-        { name: '阳江市', coord: [111.75, 22.2] },
-        { name: '惠州市', coord: [114.4, 23.5] },
-        { name: '江门市', coord: [112.7, 22.58] },
-        { name: '肇庆市', coord: [112.1, 23.74] },
-        { name: '河源市', coord: [115.1, 24.36] },
+        { name: '广州', coord: [113.5, 23.5] },
+        { name: '云浮', coord: [111.8, 23.1] },
+        { name: '梅州', coord: [116.1, 24.55] },
+        { name: '汕尾', coord: [115.5, 23.2] },
+        { name: '潮州', coord: [116.76, 24] },
+        { name: '汕头', coord: [116.69, 23.39] },
+        { name: '湛江', coord: [110.1, 21.270708] },
+        { name: '揭阳', coord: [116, 23.55] },
+        { name: '东莞', coord: [113.85, 23.08] },
+        { name: '韶关', coord: [113.8, 25.1] },
+        { name: '清远', coord: [113.01, 24.4] },
+        { name: '中山', coord: [113.38, 22.6] },
+        { name: '深圳', coord: [114.07, 22.62] },
+        { name: '珠海', coord: [113.52, 22.3] },
+        { name: '佛山', coord: [113, 23.24] },
+        { name: '茂名', coord: [110.95, 22] },
+        { name: '阳江', coord: [111.75, 22.2] },
+        { name: '惠州', coord: [114.4, 23.5] },
+        { name: '江门', coord: [112.7, 22.58] },
+        { name: '肇庆', coord: [112.1, 23.74] },
+        { name: '河源', coord: [115.1, 24.36] },
+        { name: '新兴', coord: [112.23083, 22.703204] },
+        { name: '鹤山', coord: [112.961795, 22.768104] },
+        { name: '阳春', coord: [111.7905, 22.169598] },
+        { name: '清新', coord: [113.015203, 23.736949] },
+        { name: '佛冈', coord: [113.534094, 23.866739] },
+        { name: '阳山', coord: [112.634019, 24.470286] },
+        { name: '英德', coord: [113.405404, 24.18612] },
+        { name: '连州', coord: [112.379271, 24.783966] },
+        { name: '曲江', coord: [113.605582, 24.680195] },
+        { name: '霞兴', coord: [113.748627, 25.088226] },
+        { name: '南雄', coord: [114.311231, 25.115328] },
+        { name: '开平', coord: [112.692262, 22.366286] },
+        { name: '恩平', coord: [112.314051, 22.182956] },
+        { name: '阳东', coord: [112.011267, 21.864728] },
+        { name: '阳西', coord: [111.617556, 21.75367] },
+        { name: '揭阳', coord: [116.355733, 23.543778] },
+        { name: '丰顺', coord: [116.184419, 23.752771] }
       ];
 
       var geoCoordMap = {
-        '广州市': [113.5, 23.5],
-        '云浮市': [111.8, 23.1],
-        '梅州市': [116.1, 24.55],
-        '汕尾市': [115.5, 23.2],
-        '潮州市': [116.76, 24],
-        '汕头市': [116.69, 23.39],
-        '湛江市': [110.1, 21.270708],
-        '揭阳市': [116, 23.55],
-        '东莞市': [113.85, 23.08],
-        '韶关市': [113.8, 25.1],
-        '清远市': [113.01, 24.4],
-        '中山市': [113.38, 22.6],
-        '深圳市': [114.07, 22.62],
-        '珠海市': [113.52, 22.3],
-        '佛山市': [113, 23.24],
-        '茂名市': [110.95, 22],
-        '阳江市': [111.75, 22.2],
-        '惠州市': [114.4, 23.5],
-        '江门市': [112.7, 22.58],
-        '肇庆市': [112.1, 23.74],
-        '河源市': [115.1, 24.36]
+        '广州': [113.5, 23.5],
+        '云浮': [111.8, 23.1],
+        '梅州': [116.1, 24.55],
+        '汕尾': [115.5, 23.2],
+        '潮州': [116.76, 24],
+        '汕头': [116.69, 23.39],
+        '湛江': [110.1, 21.270708],
+        '揭阳': [116, 23.55],
+        '东莞': [113.85, 23.08],
+        '韶关': [113.8, 25.1],
+        '清远': [113.01, 24.4],
+        '中山': [113.38, 22.6],
+        '深圳': [114.07, 22.62],
+        '珠海': [113.52, 22.3],
+        '佛山': [113, 23.24],
+        '茂名': [110.95, 22],
+        '阳江': [111.75, 22.2],
+        '惠州': [114.4, 23.5],
+        '江门': [112.7, 22.58],
+        '肇庆': [112.1, 23.74],
+        '河源': [115.1, 24.36],
+        '新兴': [112.23083, 22.703204],
+        "鹤山": [112.961795, 22.768104],
+        "阳春": [111.7905, 22.169598],
+        "清新": [113.015203, 23.736949],
+        "佛冈": [113.534094, 23.866739],
+        "阳山": [112.634019, 24.470286],
+        "英德": [113.405404, 24.18612],
+        "连州": [112.379271, 24.783966],
+        "曲江": [113.605582, 24.680195],
+        "霞兴": [113.748627, 25.088226],
+        "南雄": [114.311231, 25.115328],
+        "开平": [112.692262, 22.366286],
+        "恩平": [112.314051, 22.182956],
+        "阳东": [112.011267, 21.864728],
+        "阳西": [111.617556, 21.75367],
+        "揭阳": [116.355733, 23.543778],
+        "丰顺": [116.184419, 23.752771]
+
       }
 
       var getGeoCoord = function () {
@@ -160,10 +196,10 @@ export default {
           min: 0,
           max: result,
           right: '10%',
-          //		        top: 'bottom',
+          // top: 'bottom',
           bottom: '5%',
           calculable: false,
-          //		        seriesIndex: [1],
+          // seriesIndex: [1],
           inRange: {
             // color: ['#2fb9ea', '#0f58ce'] // 蓝绿
           }
@@ -249,7 +285,6 @@ export default {
             itemStyle: {
               color:
                 function (params) {
-
                   //   console.log(params.name)
                   if (params.name == mapname) {
                     return "#2fb9ea"                  }
@@ -263,10 +298,10 @@ export default {
                 color: 'yellow'
               },
               data: this.list
-              //             [
-              //               {name:'广州',coord:[113.23, 23.16]},
-              //               
-              //             ]
+              //   [
+              //     { name: '广州', coord: [113.23, 23.16] },
+
+              //     ]
             },
 
           },
@@ -278,6 +313,7 @@ export default {
             coordinateSystem: 'geo',
             data: convertData(mapdata),
             symbolSize: function (val) {
+                // console.log(val);
               if (val[2] == "0.0") {
                 return 0
               } else {
@@ -318,6 +354,7 @@ export default {
               return b.value - a.value;
             }).slice(0, 5)),
             symbolSize: function (val) {
+                console.log(val);
               if (val[2] == "0.0") return 0;
               return maxNum -= 3;
             },
@@ -348,10 +385,9 @@ export default {
       };
       mapChart.setOption(options);
 
-
-      //       window.addEventListener("resize", function() {
-      //         mapChart.resize();
-      //       });
+      // window.addEventListener("resize", function() {
+      //   mapChart.resize();
+      // });
     },
 
     // 排序
@@ -362,12 +398,11 @@ export default {
         return v1 - v2;
       }
     },
-  },//methods
+  },
   props: ['childClass', 'titleName', 'localMapValueData']
 };
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 #GDmap {
   width: 100%;

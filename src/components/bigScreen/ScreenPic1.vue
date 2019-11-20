@@ -157,14 +157,13 @@ export default {
 
         var workreallistdata = [];
 
-
         for (var i = 0; i < res.data["7day_CY"].length; i++) {
           workdataX.push(res.data["7day_CY"][i].date);
           workdata1.push(res.data["7day_CY"][i].amount);
         }
 
-        this.workCrightData.dataX = workdataX
-        this.workCrightData.data1 = workdata1
+        this.workCrightData.dataX = workdataX.reverse();
+        this.workCrightData.data1 = workdata1.reverse();
 
         this.nationMapValueData = res.data.nationmap;
 

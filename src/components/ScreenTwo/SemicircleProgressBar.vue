@@ -24,7 +24,7 @@
       <div class="circle_pos circle_R">
         <div class="circle"></div>
       </div>
-      <base-number :tradeData="this.dataR" :toFixedNum="2" :customClass="'datas'"></base-number>
+      <base-number :tradeData="this.dataR" :toFixedNum="0" :customClass="'datas'"></base-number>
     </div>
   </div>
 </template>
