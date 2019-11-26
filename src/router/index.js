@@ -68,7 +68,7 @@ export default new Router({
       name: 'ScreenPic1',
       component: ScreenPic1,
       meta: {
-        title: '温氏物联网供应链金融',
+        title: '温氏物联网金融',
         show:true
       }
     },
@@ -88,18 +88,18 @@ export default new Router({
         title: '数字银行监控大屏'
       }
     },
-    {
-      path: '/ScreenPic4',
-      name: 'ScreenPic4',
-      component: ScreenPic4,
-      meta: {
-        title: '全局业务监控'
-      }
-    },
-    {
-      path: '/ScreenPic5',
-      name: 'ScreenPic5',
-      component: ScreenPic5
-    }
+    // {
+    //   path: '/ScreenPic4',
+    //   name: 'ScreenPic4',
+    //   component: ScreenPic4,
+    //   meta: {
+    //     title: '全局业务监控'
+    //   }
+    // },
+    // {
+    //   path: '/ScreenPic5',
+    //   name: 'ScreenPic5',
+    //   component: ScreenPic5
+    // }
   ]
 })

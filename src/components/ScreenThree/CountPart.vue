@@ -79,8 +79,7 @@
           <i class="unit">笔</i>
         </p>
       </div>
-    </div> -->
-
+    </div>-->
   </div>
 </template>
 <script>
@@ -98,7 +97,9 @@ export default {
     formatData(param) {
       let _data = param;
       _data.forEach((v, i) => {
-        v.value = v.value.split('');
+        if (v.text.indexOf('金额') == -1) {
+          v.value = v.value.split('.')[0].split(''); // 非金额的指标都不要小数点
+        }
       });
       return _data;
     }
@@ -106,7 +107,7 @@ export default {
   props: ['iconItemData'],
   watch: {
     iconItemData(nv, ov) {
-	  this.fixedData = this.formatData(nv)
+      this.fixedData = this.formatData(nv);
     }
   },
   directives: {

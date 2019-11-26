@@ -66,7 +66,7 @@ export default {
 #realTimeList {
   width: 100%;
   overflow: hidden;
-  // height: 50vh;
+  height: 48vh;
   text-align: center;
   font-family: "PingFang SC";
   p {
@@ -88,7 +88,8 @@ export default {
     transform: translateY(-0.15rem);
     margin: 0 0.5%;
     list-style-type: none;
-    height: 3.8rem;
+    // height: 3.8rem;
+    height: 42vh;
     overflow: hidden;
   }
 

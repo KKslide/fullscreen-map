@@ -110,7 +110,7 @@ export default {
       method: "post",
       data: {},
     }).then(res => {
-      this.onlineSaving = res.data.iconItemData1  // 累计线上存款交易
+      this.onlineSaving = res.data.iconItemData1  // 左上组件 
       this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
       this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
       this.mapData = res.data.nationmap // 地图数据 - 城市的数据

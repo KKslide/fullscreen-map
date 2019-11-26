@@ -228,11 +228,11 @@ export default {
             color: "white",
             fontSize: '10%'
           },
-          formatter: function (params) {
+          formatter: params=> {
             if (params.data == undefined) {
               return
             } else {
-              return "交易情况:</br>" + params.name + ': ' + params.data.value[2];
+              return "交易金额(万元):</br>" + params.name + ': ' + this.changeNum(params.data.value[2]);
             }
           }
         },
@@ -319,7 +319,7 @@ export default {
           {
             geoIndex: 1,
             type: 'map',
-            name: '交易情况',
+            name: '',
             roam: false,
             data: convertData(data),
             // geoCoord: convertData(data),
@@ -417,14 +417,7 @@ export default {
       };
 
       chinaMap.setOption(option);
-      var that = this
-      chinaMap.on('touch', function (params) {
-        //				console.log(this)
-        //      console.log(params.name,params.data.value[2]);
-      });
-
-      // 轮播事件
-      // 轮播事件
+      var that = this;
 
     }
   },
@@ -432,7 +425,6 @@ export default {
 };
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 #map {
   width: 100%;

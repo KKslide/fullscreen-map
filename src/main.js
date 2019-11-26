@@ -4,6 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 动态修改title
+router.beforeEach((to,from,next)=>{
+    if(to.meta.title){ document.title = to.meta.title; }
+    next();
+})
+
 import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
 

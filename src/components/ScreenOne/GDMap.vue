@@ -183,7 +183,14 @@ export default {
         },
         backgroundColor: '',
         tooltip: {
-          position: 'top'
+          position: 'top',
+          formatter: params=> {
+            if (params.data == undefined) {
+              return
+            } else {
+              return "交易金额(万元):</br>" + params.name + ': ' + this.changeNum(params.data.value[2]);
+            }
+          }
         },
         animation: false,
         grid: {
@@ -278,7 +285,7 @@ export default {
           {
             geoIndex: 1,
             type: 'map',
-            name: '交易情况',
+            name: '',
             roam: false,
             data: convertData(mapdata),
             geoCoord: getGeoCoord(),
