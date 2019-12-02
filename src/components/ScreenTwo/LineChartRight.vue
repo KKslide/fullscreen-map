@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-        titleName: '近7天的交易趋势'
+      titleName: '近7天的交易趋势'
     }
   },
   methods: {
@@ -109,12 +109,7 @@ export default {
                 margin: 12,
               },
               min: 0,
-              max: function (val) {
-                if (val.max <= 10) return 10;
-                let temp = val.max.toString().split("");
-                temp[1] = parseInt(temp[1]) + 1;
-                return temp.join("");
-              },
+              max:'dataMax',
               boundaryGap: [0.2, 0.2]
             },
             { // 右
@@ -136,7 +131,7 @@ export default {
                 fontSize: 13,
                 color: '#d0d0d0',
                 margin: 12,
-                show:false
+                show: false
               },
               splitLine: {
                 lineStyle: {
@@ -146,18 +141,18 @@ export default {
               },
               name: '',
               min: 0,
-              max: function (val) {
-                if (val.max <= 10) return 10;
-                let temp = val.max.toString().split("");
-                temp[1] = parseInt(temp[1]) + 1;
-                return temp.join("");
-              },
+              //   max: function (val) {
+              //     if (val.max <= 10) return 10;
+              //     let temp = val.max.toString().split("");
+              //     temp[1] = parseInt(temp[1]) + 1;
+              //     return temp.join("");
+              //   },
               boundaryGap: [0.2, 0.2]
             },
 
           ],
           series: [
-            {
+            { // 柱状
               name: '借款金额(万元)',
               yAxisIndex: 0,
               type: 'bar',
@@ -185,7 +180,7 @@ export default {
               barWidth: '40%',
               data: y1Data
             },
-            {
+            { // 折线
               name: '还款金额(万元)',
               yAxisIndex: 0,
               type: 'line',

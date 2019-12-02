@@ -103,8 +103,8 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      //   url: "./static/json/screen3.json",
-      //   method: "get" // 本地
+      // url: "./static/json/screen3.json",
+      // method: "get" // 本地
 
       url: "./tx/SZYH",
       method: "post",

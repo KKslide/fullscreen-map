@@ -173,8 +173,8 @@ export default {
   },
   beforeCreate() {
     this.$axios({
-      //   url: './static/json/screen2.json',
-      //   method: "get"
+      // url: './static/json/screen2.json',
+      // method: "get"
       url: "./tx/XSZC",
       method: "post",
       data: {}
