@@ -1,5 +1,5 @@
 <template>
-  <div id="map" ref="map"></div>
+  <div id="map" ref="map" :style="this.childClass"></div>
 </template>
 <script>
 import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
@@ -19,13 +19,12 @@ export default {
       list: [],
       //   title: '\n1.城市1 \n2.城市2 \n3.城市3 \n4.城市4 \n5.城市5',
       title: '\nTop5: '
-
     }
   },
   mounted() {
     setTimeout(() => {
-      this.getMap();
-      //   this.dataList();
+      //   this.getMap();
+      // this.dataList();
     }, 800)
 
   },
@@ -82,16 +81,9 @@ export default {
         }
         that.list = []
         var localName = ''
-        //				var a = Math.floor(Math.random()*geoCoordMapList.length)
-        //				console.log(geoCoordMapList[a])
-
-
         for (var i = 0; i < that.nationMapValueData.length; i++) {
           if (geoCoordMapList[a] == undefined) {
-            // console.log(a)
             var b = Number(that.nationMapValueData[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
-
-
             that.title = that.nationMapValueData[0].type + " " + b + " " + "笔"
             localName = that.nationMapValueData[0].type
             that.list.push(geoCoordMapList[0])
@@ -104,7 +96,6 @@ export default {
             }
           }
         }
-        //					console.log(that.list)
         that.getMap(localName)
       }, 2000)
 
@@ -118,6 +109,7 @@ export default {
       }
     },
     getMap(mapname) {
+
       var data = this.nationMapValueData;
       //   存Top5 前五名
       var topArr = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse();
@@ -126,7 +118,6 @@ export default {
         // this.title += (i + 1) + '. ' + topArr[i].type + ' : ' + this.changeNum(topArr[i].amount) + '\n'
         this.title += topArr[i].type + this.changeNum(topArr[i].amount) + '   '
       }
-
 
       var result = data[0].amount;
       for (var i = 0; i < data.length; i++) {
@@ -179,7 +170,7 @@ export default {
           if (geoCoord) {
             res.push({
               name: data[i].type,
-              value: geoCoord.concat(data[i].value),
+              value: geoCoord.concat(data[i].amount),
 
             });
           }
@@ -216,7 +207,7 @@ export default {
             height: 200,
           },
         },
-        backgroundColor: '',
+        // backgroundColor: 'pink',
         textStyle: {
           color: this.fontColor,
           fontSize: '80%'
@@ -228,31 +219,33 @@ export default {
             color: "white",
             fontSize: '10%'
           },
-          formatter: params => {
+          formatter: function (params) {
             if (params.data == undefined) {
               return
             } else {
-              return "交易金额(万元):</br>" + params.name + ': ' + this.changeNum(params.data.value[2]);
+              return "交易金额(万元):</br>" + params.name + ': ' + params.data.value[2];
             }
           }
         },
         animation: false,
         grid: {
-          height: '10%',
-          x: '15%',
-          y: '15%'
+          backgroundColor: 'rgba(255,0,0,.8)',
+          // height: '0%',
+          // x: '15%',
+          // y: '5%'
+          // left: 'center',
+          //   top: '35%',
         },
         // 左下角的条子
         visualMap: {
           show: false,
           min: 0,
           max: result,
-          left: '10%',
-          //		        top: 'bottom',
-          bottom: '5%',
+          left: 'center',
+          top: '10%',
+          // bottom: '5%',
           calculable: false,
-
-          //		        seriesIndex: [1],
+          // seriesIndex: [1],
           inRange: {
             // color: ['#2fb9ea', '#0f58ce'] // 蓝绿
           }
@@ -261,7 +254,7 @@ export default {
           {
             type: 'map',
             map: 'china',
-            top: '47%',
+            top: '37%',
             zoom: 1.2,
             aspectScale: 1.1,
             label: {
@@ -285,7 +278,7 @@ export default {
           },
           {
             type: 'map',
-            top: '45%',
+            top: '35%',
             zoom: 1.2,
             aspectScale: 1.1,
             map: 'china',
@@ -346,14 +339,7 @@ export default {
             type: 'effectScatter',
             coordinateSystem: 'geo',
             data: convertData(data),
-            // symbolSize: 12,
-            symbolSize: function (val) {
-              if (val[2] == "0.0") {
-                return 0
-              } else {
-                return 12;
-              };
-            },
+            symbolSize: 12,
             showEffectOn: 'render',
             rippleEffect: {
               brushType: 'stroke'
@@ -388,7 +374,11 @@ export default {
               return b.amount - a.amount;
             }).slice(0, 5)),
             symbolSize: function (val) {
-              return maxNum -= 4;
+              if (val[2] == 0) {
+                return 0
+              } else {
+                return maxNum -= 3;
+              }
             },
             // showEffectOn: 'none',
             showEffectOn: 'render',
@@ -418,16 +408,28 @@ export default {
 
       chinaMap.setOption(option);
       var that = this;
-
+      chinaMap.on('touch', function (params) { });
     }
   },
-  props: ['nationMapValueData', 'titleName']
+  props: ['childClass', 'nationMapValueData', 'titleName'],
+  watch: {
+    nationMapValueData(v) {
+        setTimeout(() => {
+            this.getMap()
+        }, 800);
+        // Vue.nextTick(_=>{
+        //     this.getMap()
+        // })
+    }
+  }
 };
 
 </script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 #map {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 </style>

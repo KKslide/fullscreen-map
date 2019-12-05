@@ -292,7 +292,6 @@ export default {
             itemStyle: {
               color:
                 function (params) {
-                  //   console.log(params.name)
                   if (params.name == mapname) {
                     return "#2fb9ea"                  }
                 }
@@ -320,7 +319,6 @@ export default {
             coordinateSystem: 'geo',
             data: convertData(mapdata),
             symbolSize: function (val) {
-                // console.log(val);
               if (val[2] == "0.0") {
                 return 0
               } else {
@@ -361,7 +359,6 @@ export default {
               return b.value - a.value;
             }).slice(0, 5)),
             symbolSize: function (val) {
-                console.log(val);
               if (val[2] == "0.0") return 0;
               return maxNum -= 3;
             },

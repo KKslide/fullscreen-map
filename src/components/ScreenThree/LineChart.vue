@@ -5,9 +5,7 @@
 <script>
 export default {
   data() {
-    return {
-
-    }
+    return {}
   },
   methods: {
     // getMax(val) { // 笔数或金额的最大值
@@ -202,7 +200,8 @@ export default {
           }
         ]
       };
-      lineChart.setOption(option);
+      this.$nextTick(_ => lineChart.setOption(option))
+      //   lineChart.setOption(option);
     }
   },
   props: ['sevenDayTradeTendency'],

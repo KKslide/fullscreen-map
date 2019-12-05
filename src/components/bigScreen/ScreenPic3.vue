@@ -13,12 +13,12 @@
         </div>
         <div class="l-bot">
           <div class="top_title">
-            <span>客户交易热力图</span>
+            <span>全国交易分布情况</span>
           </div>
           <!-- Top5排行 -->
           <heat-map-rank :mapData="mapDataTop5"></heat-map-rank>
           <!-- Top5排行 -->
-          <heat-map :mapData="mapData"></heat-map>
+          <heat-map :nationMapValueData="mapData"></heat-map>
         </div>
       </div>
       <!-- 中间 -->
@@ -56,7 +56,8 @@
 </template>
 <script>
 import CountPart from '@/components/ScreenThree/CountPart'; // 统计组件
-import HeatMap from '@/components/ScreenThree/HeatMap'; // 客户交易量热力图
+// import HeatMap from '@/components/ScreenThree/HeatMap'; // 客户交易量热力图
+import HeatMap from '@/components/ScreenThree/ChinaMap'; // 客户交易量热力图
 import HeatMapRank from '@/components/ScreenThree/HeatMapRank'; // 热力图
 import LineChartRight from '@/components/ScreenThree/LineChartRight'; // 购买产品实时情况 - 中间曲线图
 import RealTimeList from '@/components/ScreenThree/RealTimeList'; // 中间下边实时交易
@@ -101,27 +102,32 @@ export default {
     'line-chart': LineChart,
     'tendency-chart': Tendency
   },
-  beforeCreate() {
-    this.$axios({
-      // url: "./static/json/screen3.json",
-      // method: "get" // 本地
-
-      url: "./tx/SZYH",
-      method: "post",
-      data: {},
-    }).then(res => {
-      this.onlineSaving = res.data.iconItemData1  // 左上组件 
-      this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
-      this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
-      this.mapData = res.data.nationmap // 地图数据 - 城市的数据
-      this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
-
-      this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
-      this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
-    })
-
+  mounted() {
+    this.getMap()
+    setInterval(_ => {
+      this.getMap();
+    }, 60 * 1000 * 10);
   },
   methods: {
+    getMap() {
+      this.$axios({
+        // url: "./static/json/screen3.json",
+        // method: "get" // 本地
+
+        url: "./tx/SZYH",
+        method: "post",
+        data: {},
+      }).then(res => {
+        this.onlineSaving = res.data.iconItemData1  // 左上组件 
+        this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
+        this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
+        this.mapData = res.data.nationmap // 地图数据 - 城市的数据
+        this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
+
+        this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
+        this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
+      })
+    },
     compare(prop) { // 排序
       return function (a, b) {
         var v1 = a[prop];

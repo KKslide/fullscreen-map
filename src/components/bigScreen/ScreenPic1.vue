@@ -142,11 +142,11 @@ export default {
         return v1 - v2;
       }
     },
-    getData() {
+    getData() { // 获取数据
       this.$axios({
         // url: "./static/json/cc.json",
         // method: "get",
-        // url:"http://10.30.3.13:8081/usp_ks/tx/GYL",
+
         url: "./tx/GYL",
         method: "post",
         data: {},
@@ -198,8 +198,7 @@ export default {
 
       })
     },
-
-    getCircle() {
+    getCircle() { // 启动圆环排名的圆环插件
       var timer = setInterval(() => {
         if ($(".circle").length >= 0) clearInterval(timer);
         var valNumL = 0.9;
@@ -235,17 +234,32 @@ export default {
           });
         })
       }, 1000);
+    },
+    setRegularTime(targetHour) { // 每日固定时间刷新
+      var timeInterval, nowTime, nowSeconds, targetSeconds
+
+      nowTime = new Date()
+      // 计算当前时间的秒数
+      nowSeconds = nowTime.getHours() * 3600 + nowTime.getMinutes() * 60 + nowTime.getSeconds()
+
+      // 计算目标时间对应的秒数
+      targetSeconds = targetHour * 3600
+
+      //  判断是否已超过今日目标小时，若超过，时间间隔设置为距离明天目标小时的距离
+      timeInterval = targetSeconds > nowSeconds ? targetSeconds - nowSeconds : targetSeconds + 24 * 3600 - nowSeconds
+
+      setTimeout(this.getDataByAlarm, timeInterval * 1000)
+    },
+    getDataByAlarm() { // 每日刷新数据递归
+      this.getData()
+      this.getCircle()
+      setTimeout(this.getDataByAlarm, 24 * 3600 * 1000)//之后每天调用一次
     }
   },
   mounted() {
-
     this.getData()
-
-    setInterval(() => {
-      this.getData()
-    }, 30000)
-
     this.getCircle()
+    this.setRegularTime(8) // 启动闹钟
   }
 }
 </script>

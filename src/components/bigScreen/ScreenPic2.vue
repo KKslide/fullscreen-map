@@ -171,50 +171,54 @@ export default {
     'area-chart': AreaChart, // 近7天的交易趋势 - 曲线图区域样式
     'realTime-list': RealTimeList, // 实时交易情况
   },
-  beforeCreate() {
-    this.$axios({
-      // url: './static/json/screen2.json',
-      // method: "get"
-      url: "./tx/XSZC",
-      method: "post",
-      data: {}
-    }).then(res => {
-
-      this.totalData = res.data;
-
-      this.totalTradeAmount = this.getDetails('贷款余额')
-      this.totalTradeCount = this.getDetails('累计放款笔数')
-      this.importNum = this.getDetails('进件数')
-      this.dealNum = this.getDetails('放款数')
-      this.passNum = this.getDetails('审批通过数')
-      this.releaseAmountToday = this.getDetails('今日放款金额')
-      this.releaseCountToday = this.getDetails('今日放款笔数')
-      this.releaseAmount = this.getDetails('昨日放款金额')
-      this.releaseCount = this.getDetails('昨日放款笔数')
-      this.returnAmount = this.getDetails('昨日还款金额')
-      this.returnCount = this.getDetails('昨日还款利息')
-      this.newsBussiness = this.getDetails('昨日联合授信放款金额')
-      this.O2OBussiness = this.getDetails('昨日O2O贷款放款金额')
-
-      this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
-
-      this.nationMapValueData = res.data.nationmap // 地图数据
-      this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
-      this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
-
-      this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
-      this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
-
-      this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
-
-      this.barChartData = this.fixedForm(res.data.realeaseType)
-
-    })
-  },
   mounted() {
-
+    this.getMap()
+    setInterval(_ => { // 每十分钟更新一次
+      this.getMap()
+    }, 10 * 1000 * 10);
   },
   methods: {
+    getMap() {
+      this.$axios({
+        // url: './static/json/screen2.json',
+        // method: "get"
+
+        url: "./tx/XSZC",
+        method: "post",
+        data: {}
+      }).then(res => {
+
+        this.totalData = res.data;
+
+        this.totalTradeAmount = this.getDetails('贷款余额')
+        this.totalTradeCount = this.getDetails('累计放款笔数')
+        this.importNum = this.getDetails('进件数')
+        this.dealNum = this.getDetails('放款数')
+        this.passNum = this.getDetails('审批通过数')
+        this.releaseAmountToday = this.getDetails('今日放款金额')
+        this.releaseCountToday = this.getDetails('今日放款笔数')
+        this.releaseAmount = this.getDetails('昨日放款金额')
+        this.releaseCount = this.getDetails('昨日放款笔数')
+        this.returnAmount = this.getDetails('昨日还款金额')
+        this.returnCount = this.getDetails('昨日还款利息')
+        this.newsBussiness = this.getDetails('昨日联合授信放款金额')
+        this.O2OBussiness = this.getDetails('昨日O2O贷款放款金额')
+
+        this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
+
+        this.nationMapValueData = res.data.nationmap // 地图数据
+        this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
+        this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
+
+        this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
+        this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
+
+        this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
+
+        this.barChartData = this.fixedForm(res.data.realeaseType)
+
+      })
+    },
     getDetails(detail) {
       return this.totalData.dataList.filter(v => v.type == detail)
     },

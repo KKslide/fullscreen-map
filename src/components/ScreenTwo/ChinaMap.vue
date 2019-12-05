@@ -85,7 +85,6 @@ export default {
 
         for (var i = 0; i < that.nationMapValueData.length; i++) {
           if (geoCoordMapList[a] == undefined) {
-            // console.log(a)
             var b = Number(that.nationMapValueData[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
 
 
@@ -101,7 +100,6 @@ export default {
             }
           }
         }
-        //					console.log(that.list)
         that.getMap(localName)
       }, 2000)
 
@@ -177,7 +175,7 @@ export default {
           if (geoCoord) {
             res.push({
               name: data[i].type,
-              value: geoCoord.concat(data[i].amount),
+              value: geoCoord.concat(data[i].value),
 
             });
           }
@@ -230,7 +228,7 @@ export default {
             if (params.data == undefined) {
               return
             } else {
-              return "交易情况:</br>" + params.name + ': ' + params.data.value[2];
+              return "交易金额(万元):</br>" + params.name + ': ' + params.data.value[2];
             }
           }
         },
@@ -319,7 +317,7 @@ export default {
           {
             geoIndex: 1,
             type: 'map',
-            name: '交易情况',
+            name: '',
             roam: false,
             data: convertData(data),
             // geoCoord: convertData(data),
@@ -415,10 +413,7 @@ export default {
 
       chinaMap.setOption(option);
       var that = this
-      chinaMap.on('touch', function (params) {
-        //				console.log(this)
-        //      console.log(params.name,params.data.value[2]);
-      });
+      chinaMap.on('touch', function (params) { });
 
       // 轮播事件
       // 轮播事件

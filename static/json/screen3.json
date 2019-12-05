@@ -268,9 +268,9 @@
             "value": "0"
         },
         {
-            "amount": "0.0",
-            "type": "新乐",
-            "value": "0"
+            "amount": "678999",
+            "type": "广西",
+            "value": "1234"
         },
         {
             "amount": "0.0",
@@ -3414,7 +3414,7 @@
             "tradeAmount": "77655"
         },
         {
-            "date": "20191002",
+            "date": "20191109",
             "tradeCount": "1658",
             "tradeAmount": "98852"
         },
