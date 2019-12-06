@@ -94,11 +94,16 @@ export default {
 
   },
   methods: {
+    fixedNumber(num) {
+      return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')//.split(".")[0];
+    },
     formatData(param) {
       let _data = param;
       _data.forEach((v, i) => {
-        if (v.text.indexOf('金额') == -1) {
+        if (v.text.indexOf('金额') == -1) { // 不含'金额'字眼的
           v.value = v.value.split('.')[0].split(''); // 非金额的指标都不要小数点
+        } else {
+          v.value = this.fixedNumber(v.value)
         }
       });
       return _data;

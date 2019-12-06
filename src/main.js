@@ -4,12 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// 动态修改title
-router.beforeEach((to,from,next)=>{
-    if(to.meta.title){ document.title = to.meta.title; }
-    next();
-})
-
 import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
 
@@ -30,12 +24,39 @@ import echarts from 'echarts';
 import 'echarts-gl'
 Vue.prototype.$echarts = echarts;
 
+// 动态修改title和验证口令
+router.beforeEach((to, from, next) => {
+    if (to.meta.title) { document.title = to.meta.title; }
+    let isAdmin = sessionStorage.getItem('isAdmin');
+    if (isAdmin) {
+        next()
+    } else {
+        let tempToken = prompt('请输入口令');
+        axios({
+            // url:"./static/json/token.json",
+            // method:'get'
+
+            url: './tx/Login',
+            method: 'post',
+            data: { password: tempToken }
+        }).then(res => {
+            if (res.data.message) { // 
+                sessionStorage.setItem('isAdmin', true)
+                next()
+            } else {
+                alert('口令有误！请重新输入！')
+                window.location.reload()
+            }
+        })
+    }
+})
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: {
-    App
-  },
-  template: '<App/>'
+    el: '#app',
+    router,
+    components: {
+        App
+    },
+    template: '<App/>'
 })

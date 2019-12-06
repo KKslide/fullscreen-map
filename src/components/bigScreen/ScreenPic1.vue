@@ -423,6 +423,7 @@ export default {
             font-size: 0.12rem;
             color: #fff;
             margin-left: 0.15rem;
+            white-space: nowrap;
           }
         }
       }

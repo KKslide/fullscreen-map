@@ -110,7 +110,7 @@ export default {
                 // color: 'red',
                 fontSize: 13
               },
-              formatter: '{value} 元'
+              formatter: '{value} 万元'
             }
           },
           {
@@ -137,7 +137,7 @@ export default {
           }
         ],
         series: [
-          { // 笔数
+          { // 金额
             name: this.dataL[0],
             type: 'line',
             smooth: true,
@@ -159,7 +159,10 @@ export default {
                 label: {
                   show: true,
                   position: 'top',
-                  fontSize: 12
+                  fontSize: 12,
+                  formatter: function (params) {
+                    return parseInt(params.value)
+                  }
                 }
               }
             },
@@ -183,7 +186,7 @@ export default {
             },
             data: this.productRealTimeLine.data1,
           },
-          { // 金额
+          { // 笔数
             name: this.dataL[1],
             type: 'line',
             smooth: true,
@@ -203,7 +206,7 @@ export default {
                 shadowColor: 'rgba(255, 255, 255, 0.7)',
                 shadowBlur: 10,
                 label: {
-                  show: true,
+                  show: false,
                   position: 'top',
                   fontSize: 12
                 }
@@ -286,10 +289,10 @@ export default {
     } */
   },
   props: ['productRealTimeLine', 'titleName'],
-  watch:{
-      productRealTimeLine(nv){
-          this.getLineChart()
-      }
+  watch: {
+    productRealTimeLine(nv) {
+      this.getLineChart()
+    }
   }
 };
 
