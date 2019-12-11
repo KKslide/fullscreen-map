@@ -5,10 +5,8 @@
       <span v-html="time"></span>
     </p>
     <ul>
-      <li
-        v-for="(item,index) in reallist"
-        :key="index"
-        :style="{'display':index<9?'':'none'}"
+      <li v-for="(item,index) in reallist" :key="index"
+      :style="{'display':index<14?'':'none'}"
       >{{item}}</li>
       <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
       <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
@@ -17,7 +15,7 @@
       <li>客户XXX,4月15日15:35分开户成功,设备型号XXX</li>
       <li>客户XXX,4月15日15:36分开户成功,设备型号XXX</li>
       <li>客户XXX,4月15日15:37分开户成功,设备型号XXX</li>
-      <li>客户XXX,4月15日15:38分开户成功,设备型号XXX</li>-->
+      <li>客户XXX,4月15日15:38分开户成功,设备型号XXX</li> -->
     </ul>
   </div>
 </template>
@@ -50,7 +48,6 @@ export default {
       var a = that.reallist;
       var b = that.reallist.shift()
       that.reallist.push(b)
-      // console.log(b)
     }, 2000)
 
   },
@@ -63,9 +60,13 @@ export default {
 @titleFontColor: rgba(12, 236, 228, 0.7);
 
 #realTimeList {
-  width: 28.57vw;
-  height: 36vh;
-  overflow: hidden;
+  //   width: 28.57vw;
+  //   height: 36vh;
+  //   height: 60vh;
+  //   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   text-align: center;
   font-family: "PingFang SC";
   p {
@@ -87,16 +88,17 @@ export default {
   ul {
     margin: 0 0.5%;
     list-style-type: none;
-    // height: 3.8rem;
-    height: 30.5vh;
-    overflow: hidden;
+    // height: 55vh;
+    // height: 30.5vh;
+    // overflow: hidden;
     // transform: translateY(-0.1rem);
   }
 
   li {
     margin-left: 0.1rem;
     margin-right: 0.15rem;
-    padding: 1.5% 0;
+    // padding: 1.5% 0;
+    padding: 1.35% 0;
     // font-size: 0.16rem;
     font-size: 0.14rem;
     text-align: left;

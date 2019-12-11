@@ -8,7 +8,7 @@
       </span>
 
       <div class="trade_rank_item" v-for="(item,index) in top5" :key="index">
-        <div class="trade_rank_item_data" :data-name="item.type" :data-count="item.amount"></div>
+        <div class="trade_rank_item_data" :data-name="item.type" :data-count="parseInt(item.amount)"></div>
         <div class="rank_circle"></div>
       </div>
     </div>

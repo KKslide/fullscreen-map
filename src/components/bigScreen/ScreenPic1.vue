@@ -29,9 +29,13 @@
           <p class="rank_title">全国交易量情况</p>
           <!-- 交易金额top5 -->
           <div class="trade_count">
-            <span>金额Top5</span>
+            <span>金额Top5(万元)</span>
             <div class="trade_count_item" v-for="(item,index) in nationTradeValueTop5" :key="index">
-              <div class="trade_count_item_data" :data-name="item.type" :data-count="item.value"></div>
+              <div
+                class="trade_count_item_data"
+                :data-name="item.type"
+                :data-count="parseInt(item.value)"
+              ></div>
               <div class="circle L"></div>
             </div>
           </div>
@@ -53,9 +57,13 @@
           <p class="rank_title">广东省交易量情况</p>
           <!-- 交易金额top5 -->
           <div class="trade_count">
-            <span>金额Top5</span>
+            <span>金额Top5(万元)</span>
             <div class="trade_count_item" v-for="(item,index) in GDTadeValueTop5" :key="index">
-              <div class="trade_count_item_data" :data-name="item.name" :data-count="item.value"></div>
+              <div
+                class="trade_count_item_data"
+                :data-name="item.name"
+                :data-count="parseInt(item.value)"
+              ></div>
               <div class="circle R"></div>
             </div>
           </div>
@@ -235,7 +243,7 @@ export default {
         })
       }, 1000);
     },
-    setRegularTime(targetHour) { // 每日固定时间刷新
+    setRegularTime(targetHour, targetMinute) { // 每日固定时间刷新
       var timeInterval, nowTime, nowSeconds, targetSeconds
 
       nowTime = new Date()
@@ -243,7 +251,7 @@ export default {
       nowSeconds = nowTime.getHours() * 3600 + nowTime.getMinutes() * 60 + nowTime.getSeconds()
 
       // 计算目标时间对应的秒数
-      targetSeconds = targetHour * 3600
+      targetSeconds = targetHour * 3600 + targetMinute * 60
 
       //  判断是否已超过今日目标小时，若超过，时间间隔设置为距离明天目标小时的距离
       timeInterval = targetSeconds > nowSeconds ? targetSeconds - nowSeconds : targetSeconds + 24 * 3600 - nowSeconds
@@ -254,13 +262,22 @@ export default {
       this.getData()
       this.getCircle()
       setTimeout(this.getDataByAlarm, 24 * 3600 * 1000)//之后每天调用一次
+    },
+    setCarousel() {
+      let timer = parseInt(sessionStorage.getItem('timer'));
+      if (timer) {
+        setTimeout(() => {
+          this.$router.push({ name: 'ScreenPic2' })
+        }, 5 * 1000);
+      }
     }
   },
   mounted() {
     this.getData()
     this.getCircle()
-    this.setRegularTime(8) // 启动闹钟
-  }
+    this.setRegularTime(11, 0) // 启动闹钟
+    this.$setCarousel('ScreenPic2')
+  },
 }
 </script>
 

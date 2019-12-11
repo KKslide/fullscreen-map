@@ -13,57 +13,57 @@
         <div class="content_L_wrap_item">
           <div class="trade_amount">
             <div>贷款余额</div>
-            <base-number :tradeData="totalTradeAmount" :toFixedNum="2"></base-number>
+            <base-number :tradeData="totalTradeAmount"></base-number>
           </div>
           <div class="trade_count">
             <div>累计放款笔数</div>
-            <base-number :tradeData="totalTradeCount" :toFixedNum="0"></base-number>
+            <base-number :tradeData="totalTradeCount"></base-number>
           </div>
         </div>
         <div class="content_L_wrap_item">
           <div class="content_left">
             <div class="trade_amount">
               <div>进件数</div>
-              <base-number :tradeData="importNum" :toFixedNum="0"></base-number>
+              <base-number :tradeData="importNum"></base-number>
             </div>
             <div class="trade_count">
               <div>审批通过数</div>
-              <base-number :tradeData="passNum" :toFixedNum="0"></base-number>
+              <base-number :tradeData="passNum"></base-number>
             </div>
           </div>
           <!-- <div class="content_right">
             <div>放款数</div>
-            <base-number :tradeData="dealNum" :toFixedNum="0"></base-number>
+            <base-number :tradeData="dealNum"></base-number>
           </div>-->
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
             <div>昨日放款金额</div>
-            <base-number :tradeData="releaseAmount" :toFixedNum="2"></base-number>
+            <base-number :tradeData="releaseAmount"></base-number>
           </div>
           <div class="trade_count">
             <div>笔数</div>
-            <base-number :tradeData="releaseCount" :toFixedNum="0"></base-number>
+            <base-number :tradeData="releaseCount"></base-number>
           </div>
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
             <div>昨日还款金额</div>
-            <base-number :tradeData="returnAmount" :toFixedNum="2"></base-number>
+            <base-number :tradeData="returnAmount"></base-number>
           </div>
           <div class="trade_count">
             <div>利息</div>
-            <base-number :tradeData="returnCount" :toFixedNum="0"></base-number>
+            <base-number :tradeData="returnCount"></base-number>
           </div>
         </div>
         <div class="content_L_wrap_item r_style_item">
           <div class="trade_amount">
-            <div>昨日联合授信放款金额</div>
-            <base-number :tradeData="newsBussiness" :toFixedNum="2"></base-number>
+            <div>总客户数</div>
+            <base-number :tradeData="newsBussiness"></base-number>
           </div>
           <div class="trade_count">
-            <div>昨日O2O贷款放款金额</div>
-            <base-number :tradeData="O2OBussiness" :toFixedNum="2"></base-number>
+            <div>昨日新增客户数</div>
+            <base-number :tradeData="O2OBussiness"></base-number>
           </div>
         </div>
       </div>
@@ -80,9 +80,9 @@
           <!-- 放款金额top5 -->
           <div class="tradeCountTop5">
             <div class="trade_count">
-              <span>放款金额Top5</span>
+              <span>放款金额Top5<br>(万元)</span>
               <div class="trade_count_item" v-for="(item,index) in mapTradeValueTop5" :key="index">
-                <div class="trade_count_item_data" :data-name="item.type" :data-count="item.value"></div>
+                <div class="trade_count_item_data" :data-name="item.type" :data-count="parseInt(item.value)"></div>
                 <div class="rank_circle"></div>
               </div>
             </div>
@@ -102,9 +102,9 @@
       <!-- 中 -->
       <!-- 右 -->
       <div class="content-r-wrap">
-        <div class="content-r-wrap-t">
+        <!-- <div class="content-r-wrap-t">
           <bar-chart :barChartData="barChartData"></bar-chart>
-        </div>
+        </div> -->
         <div class="content-r-wrap-m">
           <area-chart :areaData="latest7"></area-chart>
         </div>
@@ -144,7 +144,7 @@ export default {
       returnAmount: null, // 昨日还款金额
       returnCount: null, // 昨日还款笔数
       newsBussiness: null, // 新网联合授权业务
-      O2OBussiness: null, // 昨日O2O贷款放款金额
+      O2OBussiness: null, // 昨日新增客户数
       showData: [], // 今日放款金额和笔数
       nationMapValueData: [], // 地图数据
 
@@ -176,6 +176,7 @@ export default {
     setInterval(_ => { // 每十分钟更新一次
       this.getMap()
     }, 10 * 1000 * 10);
+    this.$setCarousel('ScreenPic3')
   },
   methods: {
     getMap() {
@@ -201,8 +202,8 @@ export default {
         this.releaseCount = this.getDetails('昨日放款笔数')
         this.returnAmount = this.getDetails('昨日还款金额')
         this.returnCount = this.getDetails('昨日还款利息')
-        this.newsBussiness = this.getDetails('昨日联合授信放款金额')
-        this.O2OBussiness = this.getDetails('昨日O2O贷款放款金额')
+        this.newsBussiness = this.getDetails('总客户数')
+        this.O2OBussiness = this.getDetails('昨日新增客户数')
 
         this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
 
@@ -654,13 +655,15 @@ export default {
         background-size: 100% 100%;
       }
       .content-r-wrap-b {
-        background: orange;
+        background: rgba(255, 104, 242, 0.376);
         // width: 28.57vw;
-        height: 38.0001vh;
+        // height: 38.0001vh;
+        height: 60.0001vh;
         font-size: 0.14rem;
-        background: url(../../../static/images/rectangle_big.png) no-repeat;
+        background: url(../../../static/images/wrap_bg6.png) no-repeat;
         background-size: 100% 100%;
         text-align: center;
+        position: relative;
       }
     }
   }

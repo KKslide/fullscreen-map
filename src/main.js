@@ -7,6 +7,9 @@ import router from './router'
 import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
 
+import setCarousel from './js/setCarousel';
+Vue.prototype.$setCarousel = setCarousel;
+
 import vueTouch from 'kim-vue-touch'
 Vue.use(vueTouch)
 import axios from 'axios'
@@ -26,30 +29,41 @@ Vue.prototype.$echarts = echarts;
 
 // 动态修改title和验证口令
 router.beforeEach((to, from, next) => {
-    if (to.meta.title) { document.title = to.meta.title; }
     let isAdmin = sessionStorage.getItem('isAdmin');
+    if (to.meta.title) { document.title = to.meta.title; }
+
     if (isAdmin) {
+        sessionStorage.setItem('toPage',to.path)
         next()
     } else {
-        let tempToken = prompt('请输入口令');
-        axios({
-            // url:"./static/json/token.json",
-            // method:'get'
-
-            url: './tx/Login',
-            method: 'post',
-            data: { password: tempToken }
-        }).then(res => {
-            if (res.data.message) { // 
-                sessionStorage.setItem('isAdmin', true)
-                next()
-            } else {
-                alert('口令有误！请重新输入！')
-                window.location.reload()
-            }
-        })
+        if (to.path == '/access') {
+            next()
+        } else {
+            sessionStorage.setItem('toPage',to.path)
+            next({ name: 'access' })
+        }
     }
 })
+
+// Vue.prototype.resetSetItem = function (key, newVal) {
+//     if (key === 'watchStorage') {
+ 
+//         // 创建一个StorageEvent事件
+//         var newStorageEvent = document.createEvent('StorageEvent');
+//         const storage = {
+//             setItem: function (k, val) {
+//                 sessionStorage.setItem(k, val);
+ 
+//                 // 初始化创建的事件
+//                 newStorageEvent.initStorageEvent('setItem', false, false, k, null, val, null, null);
+ 
+//                 // 派发对象
+//                 window.dispatchEvent(newStorageEvent)
+//             }
+//         }
+//         return storage.setItem(key, newVal);
+//     }
+//  }
 
 /* eslint-disable no-new */
 new Vue({

@@ -15,10 +15,10 @@ export default {
       let option = {
         // backgroundColor: '#0F2B5C',
         title: {
-              show: true,
+              show: false,
               text: '单位(户)',
-              top: '15%',
-              left: '3%',
+              top: '5%',
+              left: '40%',
               textStyle: {
                 color: "#FFF",
                 fontSize: 15

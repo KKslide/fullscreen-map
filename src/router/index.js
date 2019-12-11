@@ -22,6 +22,9 @@ import ScreenPic4 from '@/components/bigScreen/ScreenPic4'
 import ScreenPic5 from '@/components/bigScreen/ScreenPic5'
 
 
+import Access from '@/components/bigScreen/Access'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -63,6 +66,11 @@ export default new Router({
     //   name: 'ScreenPic0',
     //   component: ScreenPic0
     // },
+    {
+      path: '/access',
+      name: 'access',
+      component: Access
+    },
     {
       path: '/ScreenPic1',
       name: 'ScreenPic1',

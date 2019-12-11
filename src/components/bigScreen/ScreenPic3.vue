@@ -31,7 +31,8 @@
         </div>
         <div class="content-mid-wrap-b">
           <div class="top_title">
-            <span>近七日线上开户走势</span>
+            <span class="top_title_after" attr-title="单位(户)">近七日线上开户走势</span>
+            <!-- <div style="font-size:15px;">单位(户)</div> -->
           </div>
           <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart>
         </div>
@@ -107,19 +108,24 @@ export default {
     setInterval(_ => {
       this.getMap();
     }, 60 * 1000 * 10);
+    this.$setCarousel('ScreenPic1')
   },
   methods: {
     getMap() {
       this.$axios({
         // url: "./static/json/screen3.json",
-        // method: "get" // 本地
+        // method: "get", // 本地
 
         url: "./tx/SZYH",
         method: "post",
         data: {},
       }).then(res => {
+        let curHour = new Date().getHours();
         this.onlineSaving = res.data.iconItemData1  // 左上组件 
         this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
+        this.productRealTimeLine.data1.splice(curHour + 1)
+        this.productRealTimeLine.data2.splice(curHour + 1)
+        this.productRealTimeLine.hour.splice(curHour + 1)
         this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
         this.mapData = res.data.nationmap // 地图数据 - 城市的数据
         this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
@@ -177,6 +183,15 @@ export default {
   text-align: left;
   text-indent: 0.15rem;
   padding: 0.05rem 0;
+  .top_title_after::after {
+    content: attr(attr-title);
+    font-size: 15px;
+    padding-left: 5px;
+    position: absolute;
+    right: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 .SPTcontainer {
   width: 100%;

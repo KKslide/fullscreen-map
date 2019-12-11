@@ -58,7 +58,7 @@ export default {
           left: 'center',
           textStyle: {
             color: this.fontColor,
-            fontSize: '20'
+            fontSize: 15
           }
         },
         grid: {
@@ -185,6 +185,7 @@ export default {
               }
             },
             data: this.productRealTimeLine.data1,
+            zlevel: 2
           },
           { // 笔数
             name: this.dataL[1],

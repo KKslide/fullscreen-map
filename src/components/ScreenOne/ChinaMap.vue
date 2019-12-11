@@ -232,7 +232,7 @@ export default {
             if (params.data == undefined) {
               return
             } else {
-              return "交易金额(万元):</br>" + params.name + ': ' + this.changeNum(params.data.value[2]);
+              return "交易金额(万元):</br>" + params.name + ': ' + parseInt(params.data.value[2]);
             }
           }
         },

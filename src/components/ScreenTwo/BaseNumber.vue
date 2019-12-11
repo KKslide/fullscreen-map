@@ -35,10 +35,14 @@ export default {
   methods: {
     //   格式化数字
     fixedNumber(data) {
-      return Number(data).toFixed(this.toFixedNum).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+      return Number(data).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
     },
     setData(param) {
-      this.amount = this.fixedNumber(param.amount).split('');
+      if (param.unit.indexOf('元') != -1) {
+        this.amount = this.fixedNumber(param.amount).split('')
+      } else {
+        this.amount = this.fixedNumber(param.amount).split('.')[0]
+      }
       this.unit = param.unit;
     }
   },
