@@ -44,7 +44,7 @@ export default {
             toPage: '',
             password: '',
             carouselTime: 30,
-            isCarousel: 'yes'
+            isCarousel: 'no'
         }
     },
     methods: {

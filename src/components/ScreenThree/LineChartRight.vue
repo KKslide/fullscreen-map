@@ -2,6 +2,7 @@
     <div id="lineChart2" ref="lineChart2"></div>
 </template>
 <script>
+import echarts from 'echarts'
 let startIndex = 0;
 export default {
     name: "lineChart2",
@@ -13,6 +14,7 @@ export default {
             fontColor: 'rgba(255,255,255,0.9)',
             titleFontColor: 'rgba(12, 236, 228,0.8)',
             dataL: ['存款金额', '存款笔数'],
+            echartElement: null,
         }
     },
     mounted() {
@@ -22,7 +24,7 @@ export default {
     methods: {
         getLineChart() {
             // 基于准备好的dom，初始化echarts实例
-            let lineChart2 = this.$echarts.init(this.$el)
+            this.echartElement = echarts.init(this.$el)
             // 绘制图表
             let option = {
                 title: {
@@ -145,7 +147,7 @@ export default {
                         symbolSize: 10,
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: '#f7c368'
                                 },
@@ -168,7 +170,7 @@ export default {
                         },
                         areaStyle: { // 设置折线图区域渐变
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: 'rgba(247,195,104, 0.5)'
                                 }, {
@@ -195,7 +197,7 @@ export default {
                         symbolSize: 10,
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: '#a0a8e4'
                                 },
@@ -215,7 +217,7 @@ export default {
                         },
                         areaStyle: { // 设置折线图区域渐变
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: 'rgba(160,168,228, 0.5)' //#a0a8e4
                                 }, {
@@ -255,7 +257,7 @@ export default {
                 startIndex = -1;
               }
       
-              lineChart2.setOption({
+              this.echartElement.setOption({
                 xAxis: [{
                   data: indexArr
                 }],
@@ -269,31 +271,22 @@ export default {
               });
             }, 2000); */
             // 使用刚指定的配置项和数据显示图表。
-            // 使用刚指定的配置项和数据显示图表。
             if (that.isPlay) {
-                lineChart2.setOption(option);
+                this.echartElement.setOption(option);
             }
             window.addEventListener("resize", function () {
-                lineChart2.resize();
+                this.echartElement.resize();
             });
         },
-        //控制myChart1的暂停与开始
-        /* play() {
-          let that = this;
-          let lineChart = document.getElementById('lineChart2')
-          lineChart.onclick = function () {
-            that.isPlay = !that.isPlay;
-            setInterval(() => {
-              that.isPlay = true;
-            }, 60000);
-          }
-        } */
     },
     props: ['productRealTimeLine', 'titleName'],
     watch: {
         productRealTimeLine(nv) {
             this.getLineChart()
         }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
     }
 };
 

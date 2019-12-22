@@ -28,13 +28,20 @@
                         <span>近七日交易量走势</span>
                     </div>
                     <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart>
+                    <!-- <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart> -->
                 </div>
-                <div class="content-mid-wrap-b">
+                <div class="content-mid-wrap-m">
                     <div class="top_title">
                         <span class="top_title_after" attr-title="单位(户)">近七日线上开户走势</span>
                         <!-- <div style="font-size:15px;">单位(户)</div> -->
                     </div>
                     <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart>
+                </div>
+                <div class="content-mid-wrap-b">
+                    <div class="top_title">
+                        <span class="top_title_after" attr-title="单位(户)">全国实时交易分布情况</span>
+                    </div>
+                    <live-trade-map></live-trade-map>
                 </div>
             </div>
             <!-- 右边 -->
@@ -49,10 +56,11 @@
                     <div class="top_title">
                         <span>最新存款动态</span>
                     </div>
-                    <realTime-list :reallist="workreallist"></realTime-list>
+                    <realTime-list :reallist="workreallist" :originList="originRealList"></realTime-list>
                 </div>
             </div>
         </div>
+        <page-switcher :prePagePath="'/screenpic2'" :nextPagePath="'/screenpic1'"></page-switcher>
     </div>
 </template>
 <script>
@@ -65,6 +73,8 @@ import RealTimeList from '@/components/ScreenThree/RealTimeList'; // 中间下�
 
 import LineChart from '@/components/ScreenThree/LineChart'; // 近七日交易量走势
 import Tendency from '@/components/ScreenThree/Tendency'; // 近七日线上开户走势
+import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
+import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 export default {
     name: 'ScreenPic2',
     data() {
@@ -86,11 +96,19 @@ export default {
             heatMapData: [], // 热数据
             productRealTimeLine: [], // 理财产品实时情况
             workreallist: [],      //实时信息数据
+            originRealList: [],
             mapData: [], // 热例如数据
             mapDataTop5: [],
 
             sevenDayTradeTendency: [], // 近七日交易量走势
-            sevenDayOpenAccountTendency: [] // 近七日线上开户走势
+            sevenDayOpenAccountTendency: [], // 近七日线上开户走势
+            liveData: {
+                amount: "",
+                address: "",
+                sex: "",
+                name: "",
+                type: ""
+            }
         };
     },
     components: {
@@ -99,9 +117,10 @@ export default {
         'heat-map-rank': HeatMapRank,
         'line-chart-right': LineChartRight, // 购买产品实时情况
         'realTime-list': RealTimeList, // 交易提醒-
-
         'line-chart': LineChart,
-        'tendency-chart': Tendency
+        'tendency-chart': Tendency,
+        'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
+        'page-switcher': PageSwitcher, // 前进后退按钮控件
     },
     mounted() {
         this.getMap()
@@ -127,6 +146,7 @@ export default {
                 this.productRealTimeLine.data2.splice(curHour + 1)
                 this.productRealTimeLine.hour.splice(curHour + 1)
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
+                this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
                 this.mapData = res.data.nationmap // 地图数据 - 城市的数据
                 this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
 
@@ -170,6 +190,9 @@ export default {
             })
             return newArr.length == 0 ? arr : newArr;
         }
+    },
+    beforeDestroy(){
+        // window.sessionStorage.removeItem('reloaded');
     }
 }
 </script>
@@ -196,8 +219,6 @@ export default {
 .SPTcontainer {
     width: 100%;
     height: 100vh;
-    background: url(../../../static/images/bg.jpg);
-    background-size: 100% 100%;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
@@ -271,7 +292,7 @@ export default {
             display: flex;
             flex-direction: column;
             .content-mid-wrap-t,
-            .content-mid-wrap-b {
+            .content-mid-wrap-m {
                 background-image: url("../../../static/images/wrap_bg4.png");
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
@@ -282,13 +303,16 @@ export default {
             }
             .content-mid-wrap-t {
                 // flex: 2.5;
-                height: 60%;
+                height: 25%;
                 margin-bottom: 0.1rem;
             }
-            .content-mid-wrap-b {
+            .content-mid-wrap-m {
                 width: 33.3333vw;
-                height: 40%;
+                height: 25%;
                 overflow: hidden;
+            }
+            .content-mid-wrap-b{
+                height: 50%;
             }
         }
         .content-r-wrap {

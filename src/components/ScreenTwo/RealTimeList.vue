@@ -2,7 +2,7 @@
     <div id="realTimeList">
         <p>
             {{this.titleName}}
-            <span v-html="time"></span>
+            <span v-html="$store.getters.getTime"></span>
         </p>
         <ul>
             <li
@@ -17,7 +17,7 @@
             <li>客户XXX,4月15日15:35分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:36分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:37分开户成功,设备型号XXX</li>
-            <li>客户XXX,4月15日15:38分开户成功,设备型号XXX</li> -->
+            <li>客户XXX,4月15日15:38分开户成功,设备型号XXX</li>-->
         </ul>
     </div>
 </template>
@@ -26,34 +26,31 @@ export default {
     name: "",
     data() {
         return {
-            time: '',
-            titleName: '实时交易情况'
+            titleName: '实时交易情况',
         }
     },
     methods: {
-        getTime() {
-            setInterval(() => {
-                let now = new Date();
-                this.time = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' '
-                    + (now.getHours() < 10 ? ('0' + now.getHours()) : now.getHours()) + ':'
-                    + (now.getMinutes() < 10 ? ('0' + now.getMinutes()) : now.getMinutes()) + ":"
-                    + (now.getSeconds() < 10 ? ('0' + now.getSeconds()) : now.getSeconds())
-            });
-        }
     },
     mounted() {
-        this.getTime();
-        //setInterval()
-        var that = this
-        setInterval(function () {
-
-            var a = that.reallist;
-            var b = that.reallist.shift()
-            that.reallist.push(b)
-        }, 2000)
-
+        window.chartTimer.two_live_trade = setInterval(_ => {
+            console.log('大屏2 右下角实时数据');
+            let a = this.reallist,
+                b = this.reallist.shift()
+            this.reallist.push(b);
+            let _a = this.originList,
+                _b = this.originList.shift();
+            this.originList.push(_b);
+        }, 6 * 1000)
     },
-    props: ['childClass', 'reallist']
+    watch: {
+        originList(newVal, oldValue) {
+            this.$store.commit('setCurrentTrade', newVal[0])
+        }
+    },
+    beforeDestroy() {
+        console.log('大屏2 页面销毁了');
+    },
+    props: ['childClass', 'reallist', 'originList']
 };
 
 </script>
@@ -65,7 +62,7 @@ export default {
     //   width: 28.57vw;
     //   height: 36vh;
     //   height: 60vh;
-    //   overflow: hidden;
+    overflow: hidden;
     width: 100%;
     height: 100%;
     position: absolute;

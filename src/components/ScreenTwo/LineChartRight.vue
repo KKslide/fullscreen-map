@@ -3,15 +3,17 @@
 </template>
 
 <script>
+import echarts from 'echarts'
 export default {
     data() {
         return {
-            titleName: '近7天的交易趋势'
+            titleName: '近7天的交易趋势',
+            echartElement: null,
         }
     },
     methods: {
         getChart() {
-            let lineChartRight = this.$echarts.init(this.$el)
+            this.echartElement = this.$echarts.init(this.$el)
             //   let xData = ['芝罘区', '福山区', '莱山区', '牟平区', '海阳市', '莱阳市', '蓬莱市', '栖霞市', '龙口市', '长岛县', '招远市', '莱州市', '开发区', '高新区', '昆嵛山', '龙海', '机场', '核电'];
             //   let y1Data = [10758, 3975, 2980, 1831, 2122, 3018, 3525, 1729, 2764, 380, 3988, 2333, 3596, 453, 365, 9, 67, 48];
             //   let y2Data = [28, 4.4, 5.9, 0.9, 0.7, 1.1, 2.1, 0.4, 1.9, 3.8, 1.6, 0.7, 5.7, 6.1, 0.7, 1.1, 28, 4.4];
@@ -75,6 +77,7 @@ export default {
                                 lineStyle: {
                                     type: 'solid',
                                     color: '#4e608b',//左边线的颜色
+                                    color: 'rgba(255,255,255,.8)',//左边线的颜色
                                     width: '1'//坐标线的宽度
                                 }
                             },
@@ -90,7 +93,8 @@ export default {
                                 show: true,
                                 lineStyle: {
                                     type: 'solid',
-                                    color: '#4e608b',//左边线的颜色
+                                    // color: '#4e608b',//左边线的颜色
+                                    color: 'rgba(255,255,255,.8)',//左边线的颜色
                                     width: '1'//坐标线的宽度
                                 }
                             },
@@ -100,7 +104,8 @@ export default {
                             },
                             splitLine: {
                                 lineStyle: { // 使用深浅的间隔色
-                                    color: '#4e608b'
+                                    // color: '#4e608b'
+                                    color: 'rgba(255,255,255,.8)'
                                 }
                             },
                             axisLabel: {
@@ -161,7 +166,7 @@ export default {
                                     show: true,
                                     position: 'top',
                                     textStyle: {
-                                        color: '#1dacfe'
+                                        color: '#fff'
                                     },
                                     formatter: '{c}'
                                 }
@@ -202,17 +207,17 @@ export default {
                         }
                     ]
                 };
-            lineChartRight.setOption(option);
+            this.echartElement.setOption(option);
         }
-    },
-    mounted() {
-        // this.getChart()
     },
     props: ['areaData'],
     watch: {
         areaData(nv, ov) {
             this.getChart()
         }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
     }
 }
 </script>

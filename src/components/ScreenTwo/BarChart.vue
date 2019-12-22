@@ -2,6 +2,7 @@
     <div id="barChart"></div>
 </template>
 <script>
+import echarts from 'echarts'
 export default {
     name: "barChart",
     data() {
@@ -12,7 +13,8 @@ export default {
             titleFontColor: 'rgba(12, 236, 228, 0.8)',
             dataL: ['贷款余额', '放款笔数'],
             barData: {
-                type: ['O2O贷款业务', '联合授信业务'],
+                // type: ['O2O贷款业务', '联合授信业务'],
+                type: ['温氏物联网', '线上车金融'],
                 data1: [1034, 1360],
                 data2: [413, 502]
             },
@@ -22,23 +24,21 @@ export default {
             }, {
                 startc: '#BFD8E8',
                 endc: '#0089AF'
-            }]
+            }],
+            echartElement: null,
         }
-    },
-    mounted() {
-        // this.getEchart();
     },
     methods: {
         getEchart(val) {
             // 基于准备好的dom，初始化echarts实例
-            let barChart = this.$echarts.init(document.getElementById('barChart'));
+            this.echartElement = echarts.init(document.getElementById('barChart'));
             let labelRight = {
                 normal: {
                     position: 'right',
                 }
             };
             // 绘制图表
-            barChart.setOption({
+            this.echartElement.setOption({
                 title: {
                     text: '按放款类型统计',
                     left: 'left',
@@ -120,7 +120,7 @@ export default {
                         },
                         itemStyle: {
                             normal: { //颜色渐变
-                                color: new this.$echarts.graphic.LinearGradient(
+                                color: new echarts.graphic.LinearGradient(
                                     0, 0, 1, 0,
                                     [
                                         { offset: 0, color: '#f7c368' },
@@ -145,7 +145,7 @@ export default {
                         barGap: '80%', //不同系列的柱间距离
                         itemStyle: {
                             normal: { //颜色渐变
-                                color: new this.$echarts.graphic.LinearGradient(
+                                color: new echarts.graphic.LinearGradient(
                                     0, 0, 1, 0,
                                     [
                                         { offset: 0, color: '#44e5c5' },
@@ -182,6 +182,9 @@ export default {
         barChartData(nv, ov) {
             this.getEchart(nv)
         }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
     }
 };
 

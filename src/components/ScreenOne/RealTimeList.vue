@@ -2,7 +2,7 @@
     <div id="realTimeList">
         <p>
             {{this.titleName}}
-            <span v-html="time"></span>
+            <span v-html="$store.getters.getTime"></span>
         </p>
         <ul>
             <li v-for="(item,index) in reallist" :key="index">{{item}}</li>
@@ -18,39 +18,33 @@
     </div>
 </template>
 <script>
+import eventBus from '../../js/eventBus';
 export default {
     name: "",
     data() {
         return {
-            time: ''
         }
     },
     methods: {
-        getTime() {
-            setInterval(() => {
-                let now = new Date();
-                this.time = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' '
-                    + (now.getHours() < 10 ? ('0' + now.getHours()) : now.getHours()) + ':'
-                    + (now.getMinutes() < 10 ? ('0' + now.getMinutes()) : now.getMinutes()) + ":"
-                    + (now.getSeconds() < 10 ? ('0' + now.getSeconds()) : now.getSeconds())
-            });
-        }
     },
     mounted() {
-        this.getTime();
-        //setInterval()
-        var that = this
-        setInterval(function () {
-
-            var a = that.reallist;
-            var b = that.reallist.shift()
-            that.reallist.push(b)
-            // console.log(b)
-        }, 2000)
-
-        // console.log(123)
+        window.chartTimer.one_live_trade = setInterval(_ => {
+            let a = this.reallist,
+                b = this.reallist.shift();
+            this.reallist.push(b);
+            let _a = this.originList,
+                _b = this.originList.shift();
+            this.originList.push(_b);
+        }, 6 * 1000)
     },
-    props: ['titleName', 'reallist']
+    watch: {
+        originList(newVal, oldValue) {
+            this.$store.commit('setCurrentTrade', newVal[0])
+        }
+    },
+    beforeDestroy() {
+    },
+    props: ['titleName', 'reallist', 'originList']
 };
 
 </script>

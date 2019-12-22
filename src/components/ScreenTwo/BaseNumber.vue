@@ -8,7 +8,7 @@
         <span>5</span>
         <span>6</span>
         <span class="dot">.</span>
-        <span>7</span> -->
+        <span>7</span>-->
 
         <span
             v-for="(item,index) in amount"
@@ -67,8 +67,10 @@ export default {
     color: #fff;
     padding: 0 0.05rem;
     span:not(.dot) {
-        border: 0.02rem solid rgb(77, 102, 200);
-        box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+        // border: 0.02rem solid rgb(77, 102, 200);
+        // box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+        border: 0.02rem solid rgba(65, 160, 231, 0.88);
+        box-shadow: 0px 0px 0.1rem rgba(82, 184, 226, 0.54) inset;
         padding: 0px 0.03rem;
     }
     span.dot {

@@ -19,22 +19,56 @@
                         <div>累计放款笔数</div>
                         <base-number :tradeData="totalTradeCount"></base-number>
                     </div>
+                    <div class="trade_amount">
+                        <div>进件数</div>
+                        <base-number :tradeData="importNum"></base-number>
+                    </div>
+                    <div class="trade_count">
+                        <div>审批通过数</div>
+                        <base-number :tradeData="passNum"></base-number>
+                    </div>
                 </div>
                 <div class="content_L_wrap_item">
-                    <div class="content_left">
-                        <div class="trade_amount">
-                            <div>进件数</div>
-                            <base-number :tradeData="importNum"></base-number>
-                        </div>
+                    <div
+                        style=" position: absolute; top: 8px; left: 10px; font-size: 0.22rem; "
+                    >全国交易分布情况</div>
+                    <!-- top5 -->
+                    <div class="tradeCountTop5">
                         <div class="trade_count">
-                            <div>审批通过数</div>
-                            <base-number :tradeData="passNum"></base-number>
+                            <span>
+                                放款金额Top5
+                                <br />(万元)
+                            </span>
+                            <div
+                                class="trade_count_item"
+                                v-for="(item,index) in mapTradeValueTop5"
+                                :key="index"
+                            >
+                                <div
+                                    class="trade_count_item_data"
+                                    :data-name="item.type"
+                                    :data-count="parseInt(item.value)"
+                                    v-trans
+                                ></div>
+                                <div class="rank_circle"></div>
+                            </div>
+                        </div>
+                        <div class="trade_amount" v-if="false">
+                            <span>放款笔数Top5</span>
+                            <div
+                                class="trande_amount_item"
+                                v-for="(item,index) in mapTradeAmountTop5"
+                                :key="index"
+                            >{{item.type}}{{fixedNumber(item.amount)}}笔</div>
                         </div>
                     </div>
-                    <!-- <div class="content_right">
-            <div>放款数</div>
-            <base-number :tradeData="dealNum"></base-number>
-                    </div>-->
+                    <china-map :nationMapValueData="nationMapValueData"></china-map>
+                </div>
+                <!-- <div class="content_L_wrap_item">
+                    <div class="content_right">
+                        <div>放款数</div>
+                        <base-number :tradeData="dealNum"></base-number>
+                    </div>
                 </div>
                 <div class="content_L_wrap_item r_style_item">
                     <div class="trade_amount">
@@ -65,7 +99,7 @@
                         <div>昨日新增客户数</div>
                         <base-number :tradeData="O2OBussiness"></base-number>
                     </div>
-                </div>
+                </div>-->
             </div>
             <!-- 左 -->
             <!-- 中 -->
@@ -76,9 +110,9 @@
                     </div>
                 </div>
                 <div class="content-mid-wrap-m">
-                    <div class="content-mid-wrap-m-title">全国交易分布情况</div>
-                    <!-- 放款金额top5 -->
-                    <div class="tradeCountTop5">
+                    <div class="content-mid-wrap-m-title">全国实时交易分布情况</div>
+                    <!-- top5 -->
+                    <!-- <div class="tradeCountTop5">
                         <div class="trade_count">
                             <span>
                                 放款金额Top5
@@ -105,26 +139,50 @@
                                 :key="index"
                             >{{item.type}}{{fixedNumber(item.amount)}}笔</div>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <china-map :nationMapValueData="nationMapValueData"></china-map>
+                    <!-- <china-map :nationMapValueData="nationMapValueData"></china-map> -->
+                    <!-- 实时交易提示 -->
+                    <div class="live_tip">
+                        <div class="live_tip_addr">
+                            <p class="live_tip_item">地点</p>
+                            <p class="live_tip_content animated" v-animate v-text="liveData.address" ></p>
+                        </div>
+                        <div class="live_tip_name">
+                            <p class="live_tip_item">客户</p>
+                            <p class="live_tip_content animated" v-animate v-text="liveData.name+(liveData.sex||'')" ></p>
+                        </div>
+                        <div class="live_tip_type">
+                            <p class="live_tip_item">产品</p>
+                            <p class="live_tip_content animated" v-animate v-text="liveData.type"></p>
+                        </div>
+                        <div class="live_tip_amount">
+                            <p class="live_tip_item">金额</p>
+                            <p class="live_tip_content animated" v-animate v-text="liveData.amount+'元'"></p>
+                        </div>
+                    </div>
+                    <live-trade-map></live-trade-map>
                 </div>
             </div>
             <!-- 中 -->
             <!-- 右 -->
             <div class="content-r-wrap">
-                <!-- <div class="content-r-wrap-t">
-          <bar-chart :barChartData="barChartData"></bar-chart>
-                </div>-->
+                <div class="content-r-wrap-t">
+                    <bar-chart :barChartData="barChartData"></bar-chart>
+                </div>
                 <div class="content-r-wrap-m">
                     <area-chart :areaData="latest7"></area-chart>
                 </div>
                 <div class="content-r-wrap-b">
-                    <realTime-list :reallist="workreallist"></realTime-list>
+                    <realTime-list
+                        :reallist="workreallist"
+                        :originList="originRealList"
+                    ></realTime-list>
                 </div>
             </div>
             <!-- 右 -->
         </div>
+        <page-switcher :prePagePath="'/screenpic1'" :nextPagePath="'/screenpic3'"></page-switcher>
     </div>
 </template>
 <script>
@@ -136,6 +194,8 @@ import BarChart from '@/components/ScreenTwo/BarChart' // 放款类型统计 - �
 // import AreaChart from '@/components/ScreenTwo/AreaChart' // 近7天的交易趋势 - 曲线图区域样式
 import AreaChart from '@/components/ScreenTwo/LineChartRight' // 近7天的交易趋势 - 曲线图区域样式
 import RealTimeList from '@/components/ScreenTwo/RealTimeList' // 实时交易情况
+import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
+import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 export default {
     name: 'ScreenPic2',
     data() {
@@ -168,10 +228,42 @@ export default {
             titleName5: "实时交易情况",
 
             workreallist: [], //  交易滚动数据
+            originRealList: [],
 
-            barChartData: {}
+            barChartData: {},
 
+            liveData: {
+                amount: "",
+                address: "",
+                sex: "",
+                name: "",
+                type: ""
+            }
         };
+    },
+    directives: {
+        trans: { // 还不知道为什么最后一个元素会偏移, 所以就先写了个自定义指令控制位置
+            inserted(el, binding, vnode, oldVnode) {
+                let ele = document.getElementsByClassName('trade_count_item_data');
+                if (el == ele[ele.length - 1]) {
+                    let elWidth = el.offsetWidth;
+                    el.style.left = '0';
+                    el.style.marginRight = -elWidth / 4 + 'px'
+                }
+            }
+        },
+        animate: {
+            inserted(el) {
+            },
+            update(el) {
+                el.classList.remove('fadeOutDown');
+                el.classList.add('fadeInDown');
+                setTimeout(() => {
+                    el.classList.remove('fadeInDown');
+                    el.classList.add('fadeOutDown');
+                }, 4500);
+            }
+        }
     },
     components: {
         'line-chart': LineChart, // 最近24小时放款金额
@@ -181,6 +273,8 @@ export default {
         'bar-chart': BarChart, // 放款类型统计 - 条形进度条组件
         'area-chart': AreaChart, // 近7天的交易趋势 - 曲线图区域样式
         'realTime-list': RealTimeList, // 实时交易情况
+        'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
+        'page-switcher': PageSwitcher, // 前进后退按钮控件
     },
     mounted() {
         this.getMap()
@@ -226,6 +320,7 @@ export default {
                 this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
 
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
+                this.originRealList = res.data.realist_CY
 
                 this.barChartData = this.fixedForm(res.data.realeaseType)
 
@@ -264,15 +359,6 @@ export default {
         },
         // 设置Top5的圆环
         getCircle() {
-            //   $('.rank_circle').circleProgress({
-            //     value: 0.8,
-            //     size: 70,
-            //     startAngle: 0,
-            //     thickness: 2,
-            //     fill: {
-            //       gradient: ["#6179ff", "#8ebeff"]
-            //     }
-            //   });
             let valNum = 0.8;
             $('.rank_circle').each((i, e) => {
                 if ($('.rank_circle').eq(i).prev().data('count') == 0) {
@@ -307,8 +393,11 @@ export default {
             setTimeout(() => {
                 this.getCircle();
             }, 400);
+        },
+        '$store.state.currentTrade':function(newVal) {
+            this.liveData = newVal
         }
-    }
+    },
 }
 </script>
 
@@ -317,6 +406,7 @@ export default {
     width: 100%;
     height: 100vh;
     // background: url(../../../static/images/bg.jpg);
+    background: url(../../../static/images/bg2.png);
     background-color: black;
     background-size: 100% 100%;
     overflow: hidden;
@@ -349,13 +439,13 @@ export default {
         box-sizing: border-box;
         display: flex;
         .content-l-wrap {
-            width: 28.57vw;
+            width: 30vw;
             display: flex;
             flex-direction: column;
             // background: darkkhaki;
             .content_L_wrap_item {
                 width: 100%;
-                height: 12.8571vh;
+                height: 18vh;
                 background-image: url("../../../static/images/wrap_bg3.png");
                 background-size: 100% 100%;
                 background-position: center;
@@ -379,8 +469,11 @@ export default {
                         justify-content: flex-end;
                         width: 65%;
                         span:not(.dot) {
-                            border: 0.02rem solid rgb(77, 102, 200);
-                            box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                            // border: 0.02rem solid rgb(77, 102, 200);
+                            // box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                            border: 0.02rem solid rgba(65, 160, 231, 0.88);
+                            box-shadow: 0px 0px 0.1rem rgba(82, 184, 226, 0.54)
+                                inset;
                             padding: 0px 0.03rem;
                         }
                         span.dot {
@@ -399,7 +492,7 @@ export default {
                 }
             }
             .content_L_wrap_item:first-child {
-                height: 25.7142vh;
+                height: 24vh;
                 background-image: unset;
             }
             // 特殊
@@ -434,8 +527,11 @@ export default {
                         justify-content: space-evenly;
                         padding: 0 0.1rem;
                         span:not(.dot) {
-                            border: 0.02rem solid rgb(77, 102, 200);
-                            box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                            // border: 0.02rem solid rgb(77, 102, 200);
+                            // box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                            border: 0.02rem rgba(65, 160, 231, 0.88);
+                            box-shadow: 0px 0px 0.1rem rgba(82, 184, 226, 0.54)
+                                inset;
                             padding: 0px 0.03rem;
                         }
                         span.dot {
@@ -455,6 +551,116 @@ export default {
             }
             .content_L_wrap_item:last-child {
                 margin-bottom: 0;
+                height: 40vh;
+                position: relative;
+                background-image: url("../../../static/images/rectangle_big.png");
+                .tradeCountTop5 {
+                    position: absolute;
+                    z-index: 99;
+                    top: 0.4rem;
+                    width: 100%;
+                    padding: 0 0.3rem;
+                    transform: scale(0.8) translateX(-3%);
+                    .trade_amount,
+                    .trade_count {
+                        // background: red;
+                        display: flex;
+                        justify-content: flex-end;
+                        position: relative;
+                        margin-bottom: 0.1rem;
+                        padding-right: 0;
+                        transform: translateX(15%);
+                        span {
+                            font-size: 0.16rem;
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%) translateX(-60%);
+                            color: #fff;
+                            width: 1.1rem;
+                            //   text-align: right;
+                            margin-left: -5%;
+                        }
+                        // 交易金额
+                        .trade_count_item {
+                            // width: 16.66666%;
+                            width: 0.65rem;
+                            height: 0.65rem;
+                            background-image: url("../../../static/images/circle.png");
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position: 0 0;
+                            margin-left: 0.05rem;
+                            position: relative;
+                            div.trade_count_item_data {
+                                position: relative;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                height: 0.02rem;
+                                width: 70%;
+                                background-color: #6985ff;
+                            }
+                            div.trade_count_item_data:before,
+                            div.trade_count_item_data:after {
+                                position: absolute;
+                                font-size: 0.12rem;
+                                height: 0.14rem;
+                                width: 100%;
+                                color: #fff;
+                                z-index: 99;
+                                text-align: center;
+                            }
+                            div.trade_count_item_data:before {
+                                content: attr(data-name);
+                                top: 0.02rem;
+                            }
+                            div.trade_count_item_data:after {
+                                content: attr(data-count);
+                                top: -0.16rem;
+                            }
+                            .rank_circle {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 0.65rem;
+                                height: 0.65rem;
+                                z-index: 99;
+                                canvas {
+                                    position: absolute !important;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%)
+                                        rotate(-90deg);
+                                    transform-origin: center center;
+                                }
+                            }
+                        }
+                        .trade_count_item:last-child {
+                            .trade_count_item_data {
+                                transform: translateX(-50%);
+                            }
+                        }
+                        // 交易量
+                        .trande_amount_item {
+                            width: 0.65rem;
+                            height: 0.2rem;
+                            line-height: 0.2rem;
+                            text-align: center;
+                            font-size: 0.12rem;
+                            color: #fff;
+                            margin-left: 0.15rem;
+                            white-space: nowrap;
+                        }
+                    }
+                    canvas {
+                        position: absolute !important;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) rotate(-90deg);
+                        transform-origin: center center;
+                    }
+                }
             }
             // 文字右对齐
             .content_L_wrap_item.r_style_item {
@@ -468,7 +674,7 @@ export default {
             }
         }
         .content-mid-wrap {
-            width: 42.857vw;
+            width: 42vw;
             margin: 0 1%;
             display: flex;
             flex-direction: column;
@@ -629,6 +835,34 @@ export default {
                         transform-origin: center center;
                     }
                 }
+                .live_tip {
+                    display: flex;
+                    justify-content: flex-start;
+                    font-size: 25px;
+                    color: #fff;
+                    width: 100%;
+                    position: absolute;
+                    top: 65px;
+                    left: 15px;
+                    div>{
+                        width: 7.5em;
+                        p.live_tip_item{
+                            position: relative;
+                        }
+                        .live_tip_item::after{
+                            content:'·';
+                            font-size: 50px;
+                            position: absolute;
+                            top: 50%;
+                            left: -15%;
+                            transform: translateY(-50%);
+                        }
+                        p.live_tip_content{
+                            // font-size: 15px;
+                            font-size: 0.15rem;
+                        }
+                    }
+                }
             }
             .content-mid-wrap-b {
                 flex: 2;
@@ -645,7 +879,7 @@ export default {
             }
         }
         .content-r-wrap {
-            width: 28.57vw;
+            width: 28vw;
             display: flex;
             flex-direction: column;
             .content-r-wrap-t {

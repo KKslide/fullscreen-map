@@ -3,20 +3,16 @@
 </template>
 
 <script>
+import echarts from 'echarts'
 export default {
     data() {
-        return {}
+        return {
+            echartElement: null,
+        }
     },
     methods: {
-        // getMax(val) { // 笔数或金额的最大值
-        //   var num = val;
-        //   var numLength = num.toString().length;
-        //   var power = Math.pow(10, (numLength - 1));
-        //   num = numLength == 1 ? 10 : Math.ceil(num / power) * power;
-        //   console.log(num)
-        // },
         getChart() {
-            let lineChart = this.$echarts.init(this.$el)
+            this.echartElement = echarts.init(this.$el)
             //   let xData = ['芝罘区', '福山区', '莱山区', '牟平区', '海阳市', '莱阳市', '蓬莱市', '栖霞市', '龙口市', '长岛县', '招远市', '莱州市', '开发区', '高新区', '昆嵛山', '龙海', '机场', '核电'];
             //   let y1Data = [10758, 3975, 2980, 1831, 2122, 3018, 3525, 1729, 2764, 380, 3988, 2333, 3596, 453, 365, 9, 67, 48];
             //   let y2Data = [28, 4.4, 5.9, 0.9, 0.7, 1.1, 2.1, 0.4, 1.9, 3.8, 1.6, 0.7, 5.7, 6.1, 0.7, 1.1, 28, 4.4];
@@ -165,7 +161,7 @@ export default {
                         },
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
                                     offset: 0,
                                     color: "#4889fb" // 0% 处的颜色
                                 }, {
@@ -200,8 +196,7 @@ export default {
                     }
                 ]
             };
-            this.$nextTick(_ => lineChart.setOption(option))
-            //   lineChart.setOption(option);
+            this.$nextTick(_ => this.echartElement.setOption(option))
         }
     },
     props: ['sevenDayTradeTendency'],
@@ -209,6 +204,9 @@ export default {
         sevenDayTradeTendency(nv, ov) {
             this.getChart()
         }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
     }
 }
 </script>

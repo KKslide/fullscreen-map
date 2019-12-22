@@ -3,17 +3,19 @@
 </template>
 
 <script>
+import echarts from 'echarts'
 export default {
-    mounted() {
-        this.getCharts()
+    data(){
+        return {
+            echartElement: null,
+        }
     },
     methods: {
         getCharts() {
-            let lineChart = this.$echarts.init(this.$el);
+            this.echartElement = echarts.init(this.$el);
             let dateData = this.sevenDayOpenAccountTendency.date;
             let amountData = this.sevenDayOpenAccountTendency.data;
             let option = {
-                // backgroundColor: '#0F2B5C',
                 title: {
                     show: false,
                     text: '单位(户)',
@@ -149,7 +151,7 @@ export default {
                     }
                 ]
             };
-            lineChart.setOption(option);
+            this.echartElement.setOption(option);
         }
     },
     props: ["sevenDayOpenAccountTendency"],
@@ -157,6 +159,9 @@ export default {
         sevenDayOpenAccountTendency(nv) {
             this.getCharts()
         }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
     }
 }
 </script>

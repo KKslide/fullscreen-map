@@ -60,7 +60,7 @@
                 <div class="trade_rank">
                     <p class="rank_title">广东省交易量情况</p>
                     <!-- 交易金额top5 -->
-                    <div class="trade_count">
+                    <div class="trade_count" v-if="false">
                         <span>金额Top5(万元)</span>
                         <div
                             class="trade_count_item"
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <!-- 交易笔数top5 -->
-                    <div class="trade_amount">
+                    <div class="trade_amount" v-if="false">
                         <span>交易量Top5</span>
                         <div
                             class="trande_amount_item"
@@ -85,21 +85,47 @@
                         >{{item.name}}{{fixedNumber(item.amount)}}笔</div>
                     </div>
                 </div>
-                <GD-map :titleName="titleName4" :localMapValueData="localMapValueData"></GD-map>
+                <div class="live_tip">
+                    <div class="live_tip_addr">
+                        <p class="live_tip_item">地点</p>
+                        <p class="live_tip_content animated" v-animate v-text="liveData.address"></p>
+                    </div>
+                    <div class="live_tip_name">
+                        <p class="live_tip_item">客户</p>
+                        <p class="live_tip_content animated" v-animate v-text="liveData.name+liveData.sex"></p>
+                    </div>
+                    <div class="live_tip_type">
+                        <p class="live_tip_item">产品</p>
+                        <p class="live_tip_content animated" v-animate v-text="liveData.type"></p>
+                    </div>
+                    <div class="live_tip_amount">
+                        <p class="live_tip_item">金额</p>
+                        <p class="live_tip_content animated" v-animate v-text="liveData.amount+'元'"></p>
+                    </div>
+                </div>
+                <live-trade-map></live-trade-map>
+                <!-- <GD-map :titleName="titleName4" :localMapValueData="localMapValueData"></GD-map> -->
             </div>
             <div class="content-r-bot">
                 <!-- 实时交易情况 | 右下 -->
-                <realTime-list :titleName="titleName" :reallist="workreallist"></realTime-list>
+                <realTime-list
+                    :titleName="titleName"
+                    :reallist="workreallist"
+                    :originList="originRealList"
+                ></realTime-list>
             </div>
         </div>
+        <page-switcher :prePagePath="'/screenpic3'" :nextPagePath="'/screenpic2'"></page-switcher>
     </div>
 </template>
 <script>
-import RealTimeList from '@/components/ScreenOne/RealTimeList'; // 实时交易情况
+import RealTimeList from '@/components/ScreenOne/RealTimeList' // 实时交易情况
 import PictorialBarChart from '@/components/ScreenOne/PictorialBarChart' // 近七天放款金额趋势
 import InformationDisplay from '@/components/ScreenOne/InformationDisplay' // 广东业务情况/全国交易情况
-import ChinaMap from '@/components/ScreenOne/ChinaMap'; // 全国地图
-import GDMap from '@/components/ScreenOne/GDMap'; // 广东地图
+import ChinaMap from '@/components/ScreenOne/ChinaMap' // 全国地图
+import GDMap from '@/components/ScreenOne/GDMap' // 广东地图
+import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
+import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 export default {
     name: 'ScreenPic1',
     data() {
@@ -115,6 +141,7 @@ export default {
             titleName: '实时交易情况',
             //实时信息数据
             workreallist: [],
+            originRealList: [],
 
             titleName1: '全国业务情况',
             nationList: [],
@@ -135,7 +162,13 @@ export default {
             localMapValueData: [],
 
             title: "温氏物联网金融",
-
+            liveData: {
+                amount: "",
+                address: "",
+                sex: "",
+                name: "",
+                type: ""
+            }
         };
     },
     components: {
@@ -144,6 +177,8 @@ export default {
         'Information-display': InformationDisplay, // 广东业务情况/全国交易情况
         'china-map': ChinaMap, // 全国地图
         'GD-map': GDMap, // 广东地图
+        'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
+        'page-switcher': PageSwitcher, // 前进后退按钮控件
     },
     methods: {
         // 格式化数字
@@ -195,12 +230,13 @@ export default {
                 // 广东交易金额前五名
                 this.GDTadeValueTop5 = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse()
 
-
                 this.worklist = res.data.list_CY
 
                 this.nationList = res.data.nationList // 全国地图数据
 
                 this.localList = res.data.localList // 广东地图数据
+
+                this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
 
                 for (var i = 0; i < res.data.realist_CY.length; i++) {
                     var a = res.data.realist_CY[i];
@@ -283,9 +319,28 @@ export default {
     mounted() {
         this.getData()
         this.getCircle()
-        this.setRegularTime(11, 0) // 启动闹钟
+        this.setRegularTime(8, 0) // 启动闹钟
         this.$setCarousel('ScreenPic2')
     },
+    directives: {
+        animate: {
+            inserted(el) {
+            },
+            update(el) {
+                el.classList.remove('fadeOutDown');
+                el.classList.add('fadeInDown');
+                setTimeout(() => {
+                    el.classList.remove('fadeInDown');
+                    el.classList.add('fadeOutDown');
+                }, 4500);
+            }
+        }
+    },
+    watch: {
+        '$store.state.currentTrade':function(newVal) {
+            this.liveData = newVal
+        }
+    }
 }
 </script>
 
@@ -293,8 +348,6 @@ export default {
 .SPOcontainer {
     width: 100%;
     height: 100vh;
-    background: url(../../../static/images/bg.jpg);
-    background-size: 100% 100%;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
@@ -452,7 +505,62 @@ export default {
                     }
                 }
             }
+            .live_tip {
+                display: flex;
+                justify-content: flex-start;
+                font-size: 25px;
+                color: #fff;
+                width: 100%;
+                position: absolute;
+                top: 65px;
+                left: 15px;
+                div > {
+                    width: 5.5em;
+                    p.live_tip_item {
+                        position: relative;
+                    }
+                    .live_tip_item::after {
+                        content: "·";
+                        font-size: 50px;
+                        position: absolute;
+                        top: 50%;
+                        left: -15%;
+                        transform: translateY(-50%);
+                    }
+                    p.live_tip_content {
+                        font-size: 15px;
+                    }
+                }
+            }
         }
+    }
+
+    .page_nav {
+        position: absolute;
+        width: 15%;
+        height: 100%;
+        top: 0;
+        z-index: 9999;
+    }
+    .page_pre {
+        left: 0;
+    }
+    .page_pre:hover {
+        background: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.5)
+        );
+    }
+    .page_next {
+        right: 0;
+    }
+    .page_next:hover {
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.5)
+        );
     }
 }
 </style>

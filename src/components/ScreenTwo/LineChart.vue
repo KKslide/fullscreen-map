@@ -2,6 +2,7 @@
     <div id="lineChart" ref="lineChart"></div>
 </template>
 <script>
+import echarts from 'echarts'
 let startIndex = 0;
 export default {
     name: "lineChart",
@@ -13,17 +14,18 @@ export default {
             fontColor: 'rgba(255,255,255,0.9)',
             titleFontColor: 'rgba(12, 236, 228,0.8)',
             dataL: ['昨日', '今日'],
+            echartElement: null,
         }
     },
     mounted() {
         this.getLineChart();
-        this.play();
+        // this.play();
     },
     methods: {
         getLineChart() {
 
             // 基于准备好的dom，初始化echarts实例
-            let lineChart = this.$echarts.init(this.$el)
+            this.echartElement = echarts.init(this.$el)
             // 绘制图表
             let option = {
                 title: {
@@ -119,7 +121,7 @@ export default {
                         symbolSize: 10,
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: '#f7c368'
                                 },
@@ -139,7 +141,7 @@ export default {
                         },
                         areaStyle: { // 设置折线图区域渐变
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: 'rgba(247,195,104, 0.5)'
                                 }, {
@@ -166,7 +168,7 @@ export default {
                         symbolSize: 10,
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                                     {
                                         offset: 0,
                                         color: '#479df6'
@@ -188,7 +190,7 @@ export default {
                         },
                         areaStyle: { // 设置折线图区域渐变
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: 'rgba(160,168,228, 0.5)' //#a0a8e4
                                 }, {
@@ -204,8 +206,8 @@ export default {
                 ]
             };
             var that = this;
-            var timer = setInterval(function () {
-                // clearInterval(timer);
+            window.chartTimer.two_line_chart = setInterval(function () {
+                console.log('going...');
                 if (!that.isPlay) return;
                 var d1 = [],
                     d2 = [],
@@ -228,7 +230,7 @@ export default {
                     startIndex = -1;
                 }
 
-                lineChart.setOption({
+                that.echartElement.setOption({
                     xAxis: [{
                         data: indexArr
                     }],
@@ -244,10 +246,10 @@ export default {
             // 使用刚指定的配置项和数据显示图表。
             // 使用刚指定的配置项和数据显示图表。
             if (that.isPlay) {
-                lineChart.setOption(option);
+                this.echartElement.setOption(option);
             }
             window.addEventListener("resize", function () {
-                lineChart.resize();
+                this.echartElement.resize();
             });
         },
         //控制myChart1的暂停与开始
@@ -258,11 +260,15 @@ export default {
                 that.isPlay = !that.isPlay;
                 setInterval(() => {
                     that.isPlay = true;
-                }, 60000);
+                }, 10*1000);
             }
         }
     },
-    props: ['latest24Data', 'titleName']
+    props: ['latest24Data', 'titleName'],
+    beforeDestroy(){
+        console.log('destroyed...');
+        this.echartElement.dispose();
+    }
 };
 
 </script>

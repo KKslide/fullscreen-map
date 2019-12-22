@@ -2,12 +2,13 @@
     <div id="pictorialBarChart" ref="chart"></div>
 </template>
 <script>
-var startIndex = 0;
+import echarts from 'echarts'
 export default {
     name: "PictorialBarChart",
 
     data() {
         return {
+            echartElement: null,
             baseColor: ['red', '#AFFCF7', '#959DD7'],
             axisColor: 'rgba(255,255,255,0.5)',
             fontColor: 'white',
@@ -31,6 +32,8 @@ export default {
     },
     methods: {
         getEchart() {
+            // 基于准备好的dom，初始化echarts实例
+            this.echartElement = echarts.init(this.$el);
             this.fulldata = this.crightData;
 
             let dataX = this.fulldata.dataX.map(v => {
@@ -40,7 +43,6 @@ export default {
                 return parseInt(Number(v))
             })
             //******************* */
-            let myChart = this.$echarts.init(this.$refs.chart)
             // 绘制图表
             let option = {
                 title: {
@@ -208,18 +210,16 @@ export default {
                 ]
             };
             //******************* */
-            myChart.setOption(option)
-
+            this.echartElement.setOption(option)
         }
-
     },
     watch: {
-        //   crightData(val){
-        //       console.log(val);
-        //       this.getEchart()
-        //   }
+        
     },
-    props: ['crightData']
+    props: ['crightData'],
+    beforeDestroy(){
+        this.echartElement.dispose();
+    }
 };
 
 </script>

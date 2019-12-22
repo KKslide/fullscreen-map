@@ -1,14 +1,14 @@
 <template>
-    <div id="map" ref="map" :style="this.childClass"></div>
+    <div id="map" ref="chinaMap" :style="this.childClass"></div>
 </template>
 <script>
+import echarts from 'echarts'
+import allCity from '../../js/allCity'
 import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
-
 export default {
     name: 'ChinaMap',
     data() {
         return {
-            // titleFontColor: 'rgba(80,178,240,0.8)',
             titleFontColor: 'white',
             mapColor: [
                 [0, '#BCBFD8'],
@@ -17,19 +17,16 @@ export default {
                 [1, '#46B9DE']
             ],
             list: [],
-            //   title: '\n1.城市1 \n2.城市2 \n3.城市3 \n4.城市4 \n5.城市5',
-            title: '\nTop5: '
+            title: '\nTop5: ',
+            echartElement: null,
         }
     },
     mounted() {
         setTimeout(() => {
             this.getMap();
-            // this.dataList();
         }, 800)
-
     },
     methods: {
-
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
         },
@@ -113,6 +110,8 @@ export default {
             }
         },
         getMap(mapname) {
+            // 基于准备好的dom，初始化echarts实例
+            this.echartElement = echarts.init(this.$el);
 
             var data = this.nationMapValueData;
             //   存Top5 前五名
@@ -130,42 +129,7 @@ export default {
             }
 
             // 全国城市坐标
-            var geoCoordMap = {
-                "新疆": [86.61, 40.79],
-                "西藏": [89.13, 30.66],
-                "黑龙江": [128.34, 47.05],
-                "吉林": [126.32, 43.38],
-                "辽宁": [123.42, 41.29],
-                "内蒙古": [112.17, 42.81],
-                "北京": [116.40, 40.40],
-                "宁夏": [106.27, 36.76],
-                "山西": [111.95, 37.65],
-                "河北": [115.21, 38.44],
-                "天津": [117.04, 39.52],
-                "青海": [97.07, 35.62],
-                "甘肃": [103.82, 36.05],
-                "山东": [118.01, 36.37],
-                "陕西": [108.94, 34.46],
-                "河南": [113.46, 34.25],
-                "安徽": [117.28, 31.86],
-                "江苏": [120.26, 32.54],
-                "上海": [121.46, 31.28],
-                "四川": [103.36, 30.65],
-                "湖北": [112.29, 30.98],
-                "浙江": [120.15, 29.28],
-                "重庆": [107.51, 29.63],
-                "湖南": [112.08, 27.79],
-                "江西": [115.89, 27.97],
-                "贵州": [106.91, 26.67],
-                "福建": [118.31, 26.07],
-                "云南": [101.71, 24.84],
-                "台湾": [121.01, 23.54],
-                "广西": [108.67, 23.68],
-                "广东": [113.98, 22.82],
-                "海南": [110.03, 19.33],
-                "澳门": [113.54, 22.19],
-                "香港": [114.17, 22.32]
-            };
+            var geoCoordMap = allCity;
 
             var convertData = function (data) {
                 var res = [];
@@ -185,9 +149,6 @@ export default {
 
             let maxNum = 30;
 
-            // 基于准备好的dom，初始化echarts实例
-            let chinaMap = this.$echarts.init(this.$el);
-            // let chinaMap = this.$echarts.init(this.$refs.map);
             // 绘制图表
             let option = {
                 title: {
@@ -259,7 +220,10 @@ export default {
                     {
                         type: 'map',
                         map: 'china',
-                        top: '32%',
+                        top: '34%',
+                        bottom:'10%',
+                        left:'15%',
+                        right:'15%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         label: {
@@ -271,6 +235,7 @@ export default {
                         itemStyle: {
                             normal: {
                                 areaColor: '#2fb9ea',
+                                // areaColor: '#00177b',
                                 borderColor: '#2fb9ea',
                                 label: {
                                     show: true,
@@ -283,7 +248,10 @@ export default {
                     },
                     {
                         type: 'map',
-                        top: '30%',
+                        top: '32%',
+                        bottom:'12%',
+                        left:'15%',
+                        right:'15%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         map: 'china',
@@ -303,7 +271,7 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#0f58ce',
+                                areaColor: '#00177b',
                                 // areaColor: 'red',
                                 borderColor: '#2fb9ea',
                             },
@@ -410,17 +378,18 @@ export default {
                     },
                 ]
             };
-
-            chinaMap.setOption(option);
-            var that = this
-            chinaMap.on('touch', function (params) { });
-
-            // 轮播事件
-            // 轮播事件
-
+            this.echartElement.setOption(option);
         }
     },
-    props: ['childClass', 'nationMapValueData', 'titleName']
+    props: ['childClass', 'nationMapValueData', 'titleName'],
+    watch:{
+        nationMapValueData(newVal){
+            // this.getMap()
+        }
+    },
+    beforeDestroy(){
+        this.echartElement.dispose();
+    }
 };
 
 </script>

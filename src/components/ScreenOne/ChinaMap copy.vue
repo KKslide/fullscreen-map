@@ -1,5 +1,5 @@
 <template>
-    <div id="map" ref="map" :style="this.childClass"></div>
+    <div id="map" ref="map"></div>
 </template>
 <script>
 import echarts from 'echarts'
@@ -10,19 +10,12 @@ export default {
     data() {
         return {
             titleFontColor: 'white',
-            mapColor: [
-                [0, '#BCBFD8'],
-                [0.3, '#6B759D'],
-                [0.4, '#AFFCF7'],
-                [1, '#46B9DE']
-            ],
             list: [],
             title: '\nTop5: ',
             echartElement: null,
         }
     },
     methods: {
-
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
         },
@@ -42,7 +35,6 @@ export default {
             var topArr = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse();
 
             for (var i = 0; i < topArr.length; i++) {
-                // this.title += (i + 1) + '. ' + topArr[i].type + ' : ' + this.changeNum(topArr[i].amount) + '\n'
                 this.title += topArr[i].type + this.changeNum(topArr[i].amount) + '   '
             }
 
@@ -97,7 +89,7 @@ export default {
                     if (geoCoord) {
                         res.push({
                             name: data[i].type,
-                            value: geoCoord.concat(data[i].amount),
+                            value: geoCoord.concat(data[i].value),
 
                         });
                     }
@@ -131,7 +123,7 @@ export default {
                         height: 200,
                     },
                 },
-                // backgroundColor: 'pink',
+                backgroundColor: '',
                 textStyle: {
                     color: this.fontColor,
                     fontSize: '80%'
@@ -143,7 +135,7 @@ export default {
                         color: "white",
                         fontSize: '10%'
                     },
-                    formatter: function (params) {
+                    formatter: params => {
                         if (params.data == undefined) {
                             return
                         } else {
@@ -153,23 +145,21 @@ export default {
                 },
                 animation: false,
                 grid: {
-                    backgroundColor: 'rgba(255,0,0,.8)',
-                    // height: '0%',
-                    // x: '15%',
-                    // y: '5%'
-                    // left: 'center',
-                    //   top: '35%',
+                    height: '10%',
+                    x: '15%',
+                    y: '15%'
                 },
                 // 左下角的条子
                 visualMap: {
                     show: false,
                     min: 0,
                     max: result,
-                    left: 'center',
-                    top: '10%',
-                    // bottom: '5%',
+                    left: '10%',
+                    //		        top: 'bottom',
+                    bottom: '5%',
                     calculable: false,
-                    // seriesIndex: [1],
+
+                    //		        seriesIndex: [1],
                     inRange: {
                         // color: ['#2fb9ea', '#0f58ce'] // 蓝绿
                     }
@@ -178,9 +168,9 @@ export default {
                     {
                         type: 'map',
                         map: 'china',
-                        top: '37%',
+                        top: '40%',
                         zoom: 1.2,
-                        aspectScale: 1.1,
+                        aspectScale: 1.05,
                         label: {
                             emphasis: {
                                 show: false
@@ -189,8 +179,14 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#2fb9ea',
-                                borderColor: '#2fb9ea',
+                                // areaColor: '#2fb9ea',
+                                // borderColor: '#2fb9ea',
+
+                                areaColor: '#031525',
+                                borderWidth: 3,
+                                borderColor: '#00FEFF',
+                                shadowColor: 'rgba(3,221,255,0.8)',
+                                shadowBlur: 30,
                                 label: {
                                     show: true,
                                 }
@@ -202,9 +198,9 @@ export default {
                     },
                     {
                         type: 'map',
-                        top: '35%',
+                        top: '40%',
                         zoom: 1.2,
-                        aspectScale: 1.1,
+                        aspectScale: 1.05,
                         map: 'china',
                         label: {
                             normal: {
@@ -222,8 +218,8 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#0f58ce',
-                                // areaColor: 'red',
+                                // areaColor: '#0f58ce',
+                                areaColor: '#00177b',
                                 borderColor: '#2fb9ea',
                             },
                             emphasis: {
@@ -244,7 +240,8 @@ export default {
                             color:
                                 function (params) {
                                     if (params.name == mapname) {
-                                        return "yellow"                                    }
+                                        return "yellow"
+                                    }
                                 }
                         },
                         markPoint: {
@@ -263,7 +260,14 @@ export default {
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
                         data: convertData(data),
-                        symbolSize: 12,
+                        // symbolSize: 12,
+                        symbolSize: function (val) {
+                            if (val[2] == "0.0") {
+                                return 0
+                            } else {
+                                return 12;
+                            };
+                        },
                         showEffectOn: 'render',
                         rippleEffect: {
                             brushType: 'stroke'
@@ -298,11 +302,7 @@ export default {
                             return b.amount - a.amount;
                         }).slice(0, 5)),
                         symbolSize: function (val) {
-                            if (val[2] == 0) {
-                                return 0
-                            } else {
-                                return maxNum -= 3;
-                            }
+                            return maxNum -= 4;
                         },
                         // showEffectOn: 'none',
                         showEffectOn: 'render',
@@ -331,27 +331,25 @@ export default {
             };
 
             this.echartElement.setOption(option);
+            var that = this;
+
         }
     },
-    props: ['childClass', 'nationMapValueData', 'titleName'],
-    watch: {
-        nationMapValueData(v) {
-            setTimeout(() => {
-                this.getMap()
-            }, 800);
+    watch:{
+        nationMapValueData(newVal){
+            this.getMap()
         }
     },
-    beforeDestroy(){
+    props: ['nationMapValueData', 'titleName'],
+    beforeDestroy() {
         this.echartElement.dispose();
     }
 };
 
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 #map {
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
 }
 </style>
