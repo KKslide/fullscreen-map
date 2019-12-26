@@ -14,9 +14,6 @@
                     <i class="iconfont icon-renshutongji" v-if="index==1"></i>
                     <i class="iconfont icon-tubiaozhizuo-" v-if="index%2==0"></i>
                     <i class="iconfont icon-zaikubishudaibaoguanchaxun" v-if="index%2!=0&&index!=1"></i>
-                    <!-- <img class="icon" src="../../../static/icons/yonghu_1.svg" alt="icon" style="width: 0.3rem" v-if="index==1"> -->
-                    <!-- <img class="icon" src="../../../static/icons/leijishouyi.svg" alt="icon" style="width: 0.3rem" v-if="index%2==0">
-                    <img class="icon" src="../../../static/icons/rank_and_window.svg" alt="icon" style="width: 0.3rem" v-if="index%2!=0&&index!=1">-->
                     <span>{{item.type}}</span>
                 </span>
                 <span class="inform-num" v-if="index%2==0">
@@ -27,10 +24,10 @@
                             :style="{'padding':items>=0?'0 0.02rem':'0 0.005rem'}"
                         >
                             <span
-                                :style="{'border':items>=0?'0.02rem solid #4d66c8':'',
-											'-webkit-box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
-											'-moz-box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
-											'box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
+                                :style="{'border':items>=0?'0.02rem solid rgba(65,160,226,.88)':'',
+											'-webkit-box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
+											'-moz-box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
+											'box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
 											'padding':items>=0?'0 0.03rem':'',
 							}"
                             >{{items}}</span>
@@ -46,10 +43,10 @@
                             :style="{'padding':items>=0?'0 0.02rem':'0 0.005rem'}"
                         >
                             <span
-                                :style="{'border':items>=0?'0.02rem solid #4d66c8':'',
-											'-webkit-box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
-											'-moz-box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
-											'box-shadow':items>=0?'0px 0px 0.1rem #4d66c8 inset':'',
+                                :style="{'border':items>=0?'0.02rem solid rgba(65,160,226,.88)':'',
+											'-webkit-box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
+											'-moz-box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
+											'box-shadow':items>=0?'0px 0px 0.1rem rgba(82,184,226,.54) inset':'',
 											'padding':items>=0?'0 0.03rem':'',
 							}"
                             >{{items}}</span>
@@ -96,13 +93,6 @@ export default {
         },
 
     },
-    mounted() {
-
-        // setTimeout(() => {
-        //   console.log(Number(this.informList[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0].split(''))
-        // }, 800)
-
-    },
     props: ['titleName', 'informList']
 
 }
@@ -144,8 +134,8 @@ export default {
                 text-align: left;
                 font-size: 0.16rem;
                 i {
-                    //color: #2fb9ea;
-                    color: #4d66c8;
+                    color: #54d2ea;
+                    text-shadow: 0px 0px 8px rgba(255,255,255,.5);
                     width: 0.3rem;
                     height: 0.3rem;
                     font-size: 0.24rem;

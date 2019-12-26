@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home'
-
 
 /* ********* 以下是正式使用的大屏 ********** */
 import ScreenPic1 from '@/components/bigScreen/ScreenPic1'
@@ -10,7 +8,6 @@ import ScreenPic3 from '@/components/bigScreen/ScreenPic3'
 
 /* 口令登陆页面 */
 import Access from '@/components/bigScreen/Access'
-
 
 Vue.use(Router)
 
@@ -43,7 +40,7 @@ export default new Router({
             name: 'ScreenPic3',
             component: ScreenPic3,
             meta: {
-                title: '数字银行监控大屏'
+                title: '线上存款监控大屏'
             }
         }
     ]

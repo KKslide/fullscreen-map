@@ -58,7 +58,7 @@
             <div class="content-mid-bot">
                 <!-- 广东交易量情况 | 广东地图  -->
                 <div class="trade_rank">
-                    <p class="rank_title">广东省交易量情况</p>
+                    <p class="rank_title">全国实时交易分布情况</p>
                     <!-- 交易金额top5 -->
                     <div class="trade_count" v-if="false">
                         <span>金额Top5(万元)</span>
@@ -85,14 +85,18 @@
                         >{{item.name}}{{fixedNumber(item.amount)}}笔</div>
                     </div>
                 </div>
-                <div class="live_tip">
+                <!-- <div class="live_tip">
                     <div class="live_tip_addr">
                         <p class="live_tip_item">地点</p>
                         <p class="live_tip_content animated" v-animate v-text="liveData.address"></p>
                     </div>
                     <div class="live_tip_name">
                         <p class="live_tip_item">客户</p>
-                        <p class="live_tip_content animated" v-animate v-text="liveData.name+liveData.sex"></p>
+                        <p
+                            class="live_tip_content animated"
+                            v-animate
+                            v-text="liveData.name+liveData.sex"
+                        ></p>
                     </div>
                     <div class="live_tip_type">
                         <p class="live_tip_item">产品</p>
@@ -102,8 +106,9 @@
                         <p class="live_tip_item">金额</p>
                         <p class="live_tip_content animated" v-animate v-text="liveData.amount+'元'"></p>
                     </div>
-                </div>
-                <live-trade-map></live-trade-map>
+                </div> -->
+                <!-- <live-tip :position="{'top':'65px'}"></live-tip> -->
+                <live-trade-map :position="{'top':'15%','bottom':'8%'}"></live-trade-map>
                 <!-- <GD-map :titleName="titleName4" :localMapValueData="localMapValueData"></GD-map> -->
             </div>
             <div class="content-r-bot">
@@ -126,6 +131,7 @@ import ChinaMap from '@/components/ScreenOne/ChinaMap' // 全国地图
 import GDMap from '@/components/ScreenOne/GDMap' // 广东地图
 import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
+// import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
     name: 'ScreenPic1',
     data() {
@@ -179,6 +185,7 @@ export default {
         'GD-map': GDMap, // 广东地图
         'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
         'page-switcher': PageSwitcher, // 前进后退按钮控件
+        // 'live-tip': LiveTipVue
     },
     methods: {
         // 格式化数字
@@ -195,12 +202,13 @@ export default {
         },
         getData() { // 获取数据
             this.$axios({
-                url: "./static/json/cc.json",
-                method: "get",
+                // url: "./static/json/cc.json",
+                // method: "get",
 
-                // url: "./tx/GYL",
-                // method: "post",
-                // data: {},
+                // url: "http://10.30.80.71:8100/usp_ks/tx/GYL",
+                url: "./tx/GYL",
+                method: "post",
+                data: {},
             }).then(res => {
 
                 var workdataX = [];
@@ -245,6 +253,9 @@ export default {
                 }
 
                 this.workreallist = workreallistdata
+
+                // this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+                window.localStorage.setItem('allCurrentTrade',JSON.stringify(res.data.realist_CY))
 
             }).catch(res => {
 
@@ -337,9 +348,12 @@ export default {
         }
     },
     watch: {
-        '$store.state.currentTrade':function(newVal) {
+        '$store.state.currentTrade': function (newVal) {
             this.liveData = newVal
         }
+    },
+    beforeDestroy(){
+        console.log('111---页面1销毁');
     }
 }
 </script>
@@ -505,7 +519,7 @@ export default {
                     }
                 }
             }
-            .live_tip {
+            /* .live_tip {
                 display: flex;
                 justify-content: flex-start;
                 font-size: 25px;
@@ -531,11 +545,11 @@ export default {
                         font-size: 15px;
                     }
                 }
-            }
+            } */
         }
     }
 
-    .page_nav {
+   /*  .page_nav {
         position: absolute;
         width: 15%;
         height: 100%;
@@ -561,6 +575,6 @@ export default {
             rgba(0, 0, 0, 0),
             rgba(0, 0, 0, 0.5)
         );
-    }
+    } */
 }
 </style>

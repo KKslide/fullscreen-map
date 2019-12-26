@@ -23,8 +23,8 @@ export default {
                 grid: {
                     left: '12%',
                     right: '12%',
-                    top: '20%',
-                    bottom: '12%',
+                    top: '30%',
+                    bottom: '16%',
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -59,7 +59,7 @@ export default {
                             color: '#d0d0d0',
                             margin: 8,
                             interval: 0,
-                            rotate: 30
+                            rotate: 10
                         },
                         axisLine: {
                             lineStyle: {

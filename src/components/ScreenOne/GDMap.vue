@@ -390,9 +390,9 @@ export default {
             };
             mapChart.setOption(options);
 
-            // window.addEventListener("resize", function() {
-            //   mapChart.resize();
-            // });
+            window.addEventListener("resize", function() {
+              mapChart.resize();
+            });
         },
 
         // 排序

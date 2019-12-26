@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-import eventBus from '../../js/eventBus';
 export default {
     name: "",
     data() {
@@ -32,15 +31,15 @@ export default {
             let a = this.reallist,
                 b = this.reallist.shift();
             this.reallist.push(b);
-            let _a = this.originList,
-                _b = this.originList.shift();
-            this.originList.push(_b);
+            // let _a = this.originList,
+            //     _b = this.originList.shift();
+            // this.originList.push(_b);
         }, 6 * 1000)
     },
     watch: {
-        originList(newVal, oldValue) {
-            this.$store.commit('setCurrentTrade', newVal[0])
-        }
+        // originList(newVal, oldValue) {
+        //     this.$store.commit('setCurrentTrade', newVal[0])
+        // },
     },
     beforeDestroy() {
     },

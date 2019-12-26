@@ -8,7 +8,7 @@
             <li
                 v-for="(item,index) in reallist"
                 :key="index"
-                :style="{'display':index<9?'':'none'}"
+                :style="{'display':index<10?'':'none'}"
             >{{item}}</li>
             <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
@@ -32,24 +32,22 @@ export default {
     },
     mounted() {
         window.chartTimer.three_live_trade = setInterval(_ => {
-            console.log('大屏3 的定时器');
             let a = this.reallist,
                 b = this.reallist.shift()
             this.reallist.push(b);
-            let _a = this.originList,
-                _b = this.originList.shift();
-            this.originList.push(_b);
+            // let _a = this.originList,
+            //     _b = this.originList.shift();
+            // this.originList.push(_b);
         }, 6 * 1000)
 
     },
     watch: {
-        originList(newVal, oldValue) {
-            this.$store.commit('setCurrentTrade', newVal[0])
-        }
+        // originList(newVal, oldValue) {
+        //     this.$store.commit('setCurrentTrade', newVal[0])
+        // }
     },
     props: ['reallist', 'originList'],
     beforeDestroy() {
-        console.log('大屏3 页面销毁');
     }
 };
 
@@ -61,7 +59,7 @@ export default {
 #realTimeList {
     width: 100%;
     overflow: hidden;
-    height: 48vh;
+    // height: 48vh;
     text-align: center;
     font-family: "PingFang SC";
     p {
@@ -84,14 +82,14 @@ export default {
         margin: 0 0.5%;
         list-style-type: none;
         // height: 3.8rem;
-        height: 42vh;
+        // height: 42vh;
         overflow: hidden;
     }
 
     li {
         margin-left: 0.1rem;
         margin-right: 0.15rem;
-        padding: 1.5% 0;
+        padding: 0.05rem 0;
         font-size: 0.16rem;
         text-align: left;
         color: @fontColor;

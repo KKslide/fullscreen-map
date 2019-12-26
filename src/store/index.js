@@ -2,7 +2,8 @@ export default {
     state: {
         shit: 0,
         currentTime: '',
-        currentTrade: {}
+        currentTrade: {},
+        allCurrentTrade: {},
     },
     getters: {
         getShit(state) {
@@ -20,6 +21,9 @@ export default {
         },
         getCurrentTrade(state) {
             return state.currentTrade
+        },
+        getAllCurrentTrade(state) {
+            return state.allCurrentTrade
         }
     },
     mutations: {
@@ -28,6 +32,9 @@ export default {
         },
         setCurrentTrade(state, params) {
             state.currentTrade = params
+        },
+        setAllCurrentTrade(state, params) {
+            state.allCurrentTrade = params
         }
     }
 }

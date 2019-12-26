@@ -207,7 +207,6 @@ export default {
             };
             var that = this;
             window.chartTimer.two_line_chart = setInterval(function () {
-                console.log('going...');
                 if (!that.isPlay) return;
                 var d1 = [],
                     d2 = [],
@@ -266,7 +265,6 @@ export default {
     },
     props: ['latest24Data', 'titleName'],
     beforeDestroy(){
-        console.log('destroyed...');
         this.echartElement.dispose();
     }
 };

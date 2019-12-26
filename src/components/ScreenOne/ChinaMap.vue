@@ -18,7 +18,7 @@ export default {
     mounted() {
         setTimeout(() => {
             this.getMap();
-        }, 800)
+        }, 1800)
     },
     methods: {
         changeNum(num) {
@@ -37,8 +37,9 @@ export default {
             this.echartElement = echarts.init(this.$el);
             var data = this.nationMapValueData;
             //   存Top5 前五名
-            var topArr = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse();
-
+            var topArr = data.sort(this.compare("amount")).slice(-5).reverse();
+            // console.log(topArr);
+            // return
             for (var i = 0; i < topArr.length; i++) {
                 this.title += topArr[i].type + this.changeNum(topArr[i].amount) + '   '
             }
@@ -160,11 +161,10 @@ export default {
                     min: 0,
                     max: result,
                     left: '10%',
-                    //		        top: 'bottom',
+                    // top: 'bottom',
                     bottom: '5%',
                     calculable: false,
-
-                    //		        seriesIndex: [1],
+                    // seriesIndex: [1],
                     inRange: {
                         // color: ['#2fb9ea', '#0f58ce'] // 蓝绿
                     }
@@ -340,9 +340,9 @@ export default {
 
         }
     },
-    watch:{
-        nationMapValueData(newVal){
-            console.log('what...???');
+    watch: {
+        nationMapValueData(newVal) {
+            // this.getMap()
         }
     },
     props: ['nationMapValueData', 'titleName'],

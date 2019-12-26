@@ -27,10 +27,10 @@ export default {
                     }
                 },
                 grid: {
-                    top: '15%',
+                    top: '25%',
                     left: '10%',
                     right: '10%',
-                    bottom: '20%',
+                    bottom: '18%',
                 },
                 xAxis: [{
                     type: 'category',
@@ -43,7 +43,7 @@ export default {
                     },
                     axisLabel: { //坐标轴刻度标签的相关设置
                         interval: 0,
-                        rotate: 30,
+                        rotate: 10,
                         textStyle: {
                             color: '#d1e6eb',
                             margin: 15,

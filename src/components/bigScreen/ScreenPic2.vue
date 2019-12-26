@@ -143,14 +143,22 @@
 
                     <!-- <china-map :nationMapValueData="nationMapValueData"></china-map> -->
                     <!-- 实时交易提示 -->
-                    <div class="live_tip">
+                    <!-- <div class="live_tip">
                         <div class="live_tip_addr">
                             <p class="live_tip_item">地点</p>
-                            <p class="live_tip_content animated" v-animate v-text="liveData.address" ></p>
+                            <p
+                                class="live_tip_content animated"
+                                v-animate
+                                v-text="liveData.address"
+                            ></p>
                         </div>
                         <div class="live_tip_name">
                             <p class="live_tip_item">客户</p>
-                            <p class="live_tip_content animated" v-animate v-text="liveData.name+(liveData.sex||'')" ></p>
+                            <p
+                                class="live_tip_content animated"
+                                v-animate
+                                v-text="liveData.name+(liveData.sex||'')"
+                            ></p>
                         </div>
                         <div class="live_tip_type">
                             <p class="live_tip_item">产品</p>
@@ -158,10 +166,15 @@
                         </div>
                         <div class="live_tip_amount">
                             <p class="live_tip_item">金额</p>
-                            <p class="live_tip_content animated" v-animate v-text="liveData.amount+'元'"></p>
+                            <p
+                                class="live_tip_content animated"
+                                v-animate
+                                v-text="liveData.amount+'元'"
+                            ></p>
                         </div>
-                    </div>
-                    <live-trade-map></live-trade-map>
+                    </div> -->
+                    <!-- <live-tip :position="{'top':'65px'}"></live-tip> -->
+                    <live-trade-map :position="{'top':'10%','bottom':'15%'}"></live-trade-map>
                 </div>
             </div>
             <!-- 中 -->
@@ -174,10 +187,7 @@
                     <area-chart :areaData="latest7"></area-chart>
                 </div>
                 <div class="content-r-wrap-b">
-                    <realTime-list
-                        :reallist="workreallist"
-                        :originList="originRealList"
-                    ></realTime-list>
+                    <realTime-list :reallist="workreallist" :originList="originRealList"></realTime-list>
                 </div>
             </div>
             <!-- 右 -->
@@ -196,6 +206,7 @@ import AreaChart from '@/components/ScreenTwo/LineChartRight' // 近7天的交�
 import RealTimeList from '@/components/ScreenTwo/RealTimeList' // 实时交易情况
 import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
+// import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
     name: 'ScreenPic2',
     data() {
@@ -275,6 +286,7 @@ export default {
         'realTime-list': RealTimeList, // 实时交易情况
         'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
         'page-switcher': PageSwitcher, // 前进后退按钮控件
+        // 'live-tip': LiveTipVue
     },
     mounted() {
         this.getMap()
@@ -286,12 +298,13 @@ export default {
     methods: {
         getMap() {
             this.$axios({
-                url: './static/json/screen2.json',
-                method: "get"
+                // url: './static/json/screen2.json',
+                // method: "get"
 
-                // url: "./tx/XSZC",
-                // method: "post",
-                // data: {}
+                // url: "http://10.30.80.71:8100/usp_ks/tx/XSZC",
+                url: "./tx/XSZC",
+                method: "post",
+                data: {}
             }).then(res => {
 
                 this.totalData = res.data;
@@ -323,6 +336,8 @@ export default {
                 this.originRealList = res.data.realist_CY
 
                 this.barChartData = this.fixedForm(res.data.realeaseType)
+
+                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
 
             })
         },
@@ -394,10 +409,13 @@ export default {
                 this.getCircle();
             }, 400);
         },
-        '$store.state.currentTrade':function(newVal) {
-            this.liveData = newVal
-        }
+        // '$store.state.currentTrade': function (newVal) {
+        //     this.liveData = newVal
+        // }
     },
+    beforeDestroy(){
+        console.log('222---页面2销毁');
+    }
 }
 </script>
 
@@ -844,20 +862,20 @@ export default {
                     position: absolute;
                     top: 65px;
                     left: 15px;
-                    div>{
+                    div > {
                         width: 7.5em;
-                        p.live_tip_item{
+                        p.live_tip_item {
                             position: relative;
                         }
-                        .live_tip_item::after{
-                            content:'·';
+                        .live_tip_item::after {
+                            content: "·";
                             font-size: 50px;
                             position: absolute;
                             top: 50%;
                             left: -15%;
                             transform: translateY(-50%);
                         }
-                        p.live_tip_content{
+                        p.live_tip_content {
                             // font-size: 15px;
                             font-size: 0.15rem;
                         }

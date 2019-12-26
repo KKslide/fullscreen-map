@@ -100,6 +100,7 @@ export default {
                 color: @fontColor;
                 // margin-bottom: 0.2rem;
                 font-size: 0.2rem;
+                white-space: nowrap;
             }
             p:last-child {
                 font-size: 0.16rem;
@@ -122,6 +123,7 @@ export default {
                     font-size: 0.14rem;
                     // margin-left: 0.03rem;
                     // transform: translateY(0.035rem);
+                    white-space: nowrap;
                 }
             }
         }

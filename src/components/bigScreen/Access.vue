@@ -63,15 +63,15 @@ export default {
                 this.toPage = sessionStorage.getItem('toPage')
             }
             axios({
-                url: './static/json/token.json', // 本地
-                method: 'get',
+                // url: './static/json/token.json', // 本地
+                // method: 'get',
 
-                // url: './tx/Login', // 线上
-                // method: 'POST',
-                // data: { password: this.password }
+                url: './tx/Login', // 线上
+                method: 'POST',
+                data: { password: this.password }
             }).then(res => {
-                // if (res.data.message) {
-                if (res.data.token == this.password) {
+                if (res.data.message) {
+                // if (res.data.token == this.password) {
                     sessionStorage.setItem('isAdmin', true)
                     this.$router.push(this.toPage)
                 } else {
@@ -88,7 +88,7 @@ export default {
 .loginBG {
     width: 100%;
     height: 100vh;
-    background: url(../../../static/images/bg.jpg);
+    // background: url(../../../static/images/bg.jpg);
     background-size: 100% 100%;
     overflow: hidden;
     box-sizing: border-box;

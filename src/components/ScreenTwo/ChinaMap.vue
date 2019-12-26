@@ -3,20 +3,11 @@
 </template>
 <script>
 import echarts from 'echarts'
-import allCity from '../../js/allCity'
 import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
 export default {
     name: 'ChinaMap',
     data() {
         return {
-            titleFontColor: 'white',
-            mapColor: [
-                [0, '#BCBFD8'],
-                [0.3, '#6B759D'],
-                [0.4, '#AFFCF7'],
-                [1, '#46B9DE']
-            ],
-            list: [],
             title: '\nTop5: ',
             echartElement: null,
         }
@@ -24,83 +15,13 @@ export default {
     mounted() {
         setTimeout(() => {
             this.getMap();
-        }, 800)
+        }, 1800)
     },
     methods: {
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
         },
 
-        dataList() {
-            var geoCoordMapList = [
-                { name: "北京", coord: [116.40, 40.40] },
-                { name: "新疆", coord: [86.61, 40.79] },
-                { name: "西藏", coord: [89.13, 30.66] },
-                { name: "黑龙江", coord: [128.34, 47.05] },
-                { name: "吉林", coord: [126.32, 43.38] },
-                { name: "辽宁", coord: [123.42, 41.29] },
-                { name: "内蒙古", coord: [112.17, 42.81] },
-                { name: "宁夏", coord: [106.27, 36.76] },
-                { name: "山西", coord: [111.95, 37.65] },
-                { name: "河北", coord: [115.21, 38.44] },
-                { name: "天津", coord: [117.04, 39.52] },
-                { name: "青海", coord: [97.07, 35.62] },
-                { name: "甘肃", coord: [103.82, 36.05] },
-                { name: "山东", coord: [118.01, 36.37] },
-                { name: "陕西", coord: [108.94, 34.46] },
-                { name: "河南", coord: [113.46, 34.25] },
-                { name: "安徽", coord: [117.28, 31.86] },
-                { name: "江苏", coord: [120.26, 32.54] },
-                { name: "上海", coord: [121.46, 31.28] },
-                { name: "四川", coord: [103.36, 30.65] },
-                { name: "湖北", coord: [112.29, 30.98] },
-                { name: "浙江", coord: [120.15, 29.28] },
-                { name: "重庆", coord: [107.51, 29.63] },
-                { name: "湖南", coord: [112.08, 27.79] },
-                { name: "江西", coord: [115.89, 27.97] },
-                { name: "贵州", coord: [106.91, 26.67] },
-                { name: "福建", coord: [118.31, 26.07] },
-                { name: "云南", coord: [101.71, 24.84] },
-                { name: "台湾", coord: [121.01, 23.54] },
-                { name: "广西", coord: [108.67, 23.68] },
-                { name: "广东", coord: [113.98, 22.82] },
-                { name: "海南", coord: [110.03, 19.33] },
-                { name: "澳门", coord: [113.54, 22.19] },
-                { name: "香港", coord: [114.17, 22.32] }
-            ];
-            var that = this
-            var a = -1;
-            setInterval(function () {
-                if (a > 34) {
-                    a = 0;
-                } else {
-                    a++;
-                }
-                that.list = []
-                var localName = ''
-
-
-                for (var i = 0; i < that.nationMapValueData.length; i++) {
-                    if (geoCoordMapList[a] == undefined) {
-                        var b = Number(that.nationMapValueData[0].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
-
-
-                        that.title = that.nationMapValueData[0].type + " " + b + " " + "笔"
-                        localName = that.nationMapValueData[0].type
-                        that.list.push(geoCoordMapList[0])
-                    } else {
-                        if (geoCoordMapList[a]["name"] == that.nationMapValueData[i].type) {
-                            var b = Number(that.nationMapValueData[i].amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
-                            that.title = that.nationMapValueData[i].type + " " + b + " " + "笔"
-                            localName = that.nationMapValueData[i].type
-                            that.list.push(geoCoordMapList[a])
-                        }
-                    }
-                }
-                that.getMap(localName)
-            }, 2000)
-
-        },
         // 排序
         compare(prop) {
             return function (a, b) {
@@ -109,27 +30,60 @@ export default {
                 return v1 - v2;
             }
         },
-        getMap(mapname) {
+        getMap() {
             // 基于准备好的dom，初始化echarts实例
             this.echartElement = echarts.init(this.$el);
 
             var data = this.nationMapValueData;
             //   存Top5 前五名
-            var topArr = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse();
+            var topArr = this.nationMapValueData.sort(this.compare("value")).slice(-5).reverse();
 
             for (var i = 0; i < topArr.length; i++) {
-                // this.title += (i + 1) + '. ' + topArr[i].type + ' : ' + this.changeNum(topArr[i].amount) + '\n'
-                this.title += topArr[i].type + this.changeNum(topArr[i].amount) + '   '
+                this.title += topArr[i].type + this.changeNum(topArr[i].value) + '   '
             }
 
-
-            var result = data[0].amount;
+            var result = data[0].value;
             for (var i = 0; i < data.length; i++) {
-                result = Math.max(result, data[i].amount);
+                result = Math.max(result, data[i].value);
             }
 
-            // 全国城市坐标
-            var geoCoordMap = allCity;
+            // 全国省份坐标
+            var geoCoordMap = {
+                "新疆": [86.61, 40.79],
+                "西藏": [89.13, 30.66],
+                "黑龙江": [128.34, 47.05],
+                "吉林": [126.32, 43.38],
+                "辽宁": [123.42, 41.29],
+                "内蒙古": [112.17, 42.81],
+                "北京": [116.40, 40.40],
+                "宁夏": [106.27, 36.76],
+                "山西": [111.95, 37.65],
+                "河北": [115.21, 38.44],
+                "天津": [117.04, 39.52],
+                "青海": [97.07, 35.62],
+                "甘肃": [103.82, 36.05],
+                "山东": [118.01, 36.37],
+                "陕西": [108.94, 34.46],
+                "河南": [113.46, 34.25],
+                "安徽": [117.28, 31.86],
+                "江苏": [120.26, 32.54],
+                "上海": [121.46, 31.28],
+                "四川": [103.36, 30.65],
+                "湖北": [112.29, 30.98],
+                "浙江": [120.15, 29.28],
+                "重庆": [107.51, 29.63],
+                "湖南": [112.08, 27.79],
+                "江西": [115.89, 27.97],
+                "贵州": [106.91, 26.67],
+                "福建": [118.31, 26.07],
+                "云南": [101.71, 24.84],
+                "台湾": [121.01, 23.54],
+                "广西": [108.67, 23.68],
+                "广东": [113.98, 22.82],
+                "海南": [110.03, 19.33],
+                "澳门": [113.54, 22.19],
+                "香港": [114.17, 22.32]
+            };
 
             var convertData = function (data) {
                 var res = [];
@@ -159,7 +113,7 @@ export default {
                     top: "2%",
                     padding: [10, 10],
                     textStyle: {
-                        color: this.titleFontColor,
+                        color: "#FFF",
                         fontFamily: 'Arial',
                         // fontWeight: 'lighter',
                         fontWeight: '500',
@@ -220,10 +174,10 @@ export default {
                     {
                         type: 'map',
                         map: 'china',
-                        top: '34%',
-                        bottom:'10%',
-                        left:'15%',
-                        right:'15%',
+                        top: '32%',
+                        bottom: '12%',
+                        left: '15%',
+                        right: '15%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         label: {
@@ -234,9 +188,14 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#2fb9ea',
-                                // areaColor: '#00177b',
-                                borderColor: '#2fb9ea',
+                                // areaColor: '#2fb9ea',
+                                // borderColor: '#2fb9ea',
+
+                                areaColor: '#031525',
+                                borderWidth: 3,
+                                borderColor: '#00FEFF',
+                                shadowColor: 'rgba(3,221,255,0.8)',
+                                shadowBlur: 30,
                                 label: {
                                     show: true,
                                 }
@@ -249,9 +208,9 @@ export default {
                     {
                         type: 'map',
                         top: '32%',
-                        bottom:'12%',
-                        left:'15%',
-                        right:'15%',
+                        bottom: '12%',
+                        left: '15%',
+                        right: '15%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         map: 'china',
@@ -272,7 +231,6 @@ export default {
                         itemStyle: {
                             normal: {
                                 areaColor: '#00177b',
-                                // areaColor: 'red',
                                 borderColor: '#2fb9ea',
                             },
                             emphasis: {
@@ -288,31 +246,28 @@ export default {
                         name: '',
                         roam: false,
                         data: convertData(data),
-                        // geoCoord: convertData(data),
-                        itemStyle: {
-                            color:
-                                function (params) {
-                                    if (params.name == mapname) {
-                                        return "yellow"                                    }
-                                }
-                        },
+                        itemStyle: {},
                         markPoint: {
                             symbol: 'pin',
                             symbolsize: 5,
                             itemStyle: {
                                 color: 'yellow'
-                            },
-                            data: this.list
+                            }
                         },
                     },
                     /* 普通点 */
                     {
                         name: '',
-                        // type: 'scatter',
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
                         data: convertData(data),
-                        symbolSize: 12,
+                        symbolSize: function (val) {
+                            if (val[2] == "0.0") {
+                                return 0
+                            } else {
+                                return 12;
+                            };
+                        },
                         showEffectOn: 'render',
                         rippleEffect: {
                             brushType: 'stroke'
@@ -323,7 +278,7 @@ export default {
                                 position: 'top',
                                 show: true,
                                 color: 'white',
-                                fontSize: 16,
+                                fontSize: 12,
                             },
                             emphasis: {
                                 show: false
@@ -343,14 +298,12 @@ export default {
                         name: '',
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
-                        data: convertData(data.sort(function (a, b) {
-                            return b.amount - a.amount;
-                        }).slice(0, 5)),
+                        data: convertData(this.nationMapValueData.sort(this.compare("value")).slice(-5)).reverse(),
                         symbolSize: function (val) {
                             if (val[2] == 0) {
                                 return 0
                             } else {
-                                return maxNum -= 3;
+                                return maxNum -= 4;
                             }
                         },
                         // showEffectOn: 'none',
@@ -382,12 +335,12 @@ export default {
         }
     },
     props: ['childClass', 'nationMapValueData', 'titleName'],
-    watch:{
-        nationMapValueData(newVal){
+    watch: {
+        nationMapValueData(newVal) {
             // this.getMap()
         }
     },
-    beforeDestroy(){
+    beforeDestroy() {
         this.echartElement.dispose();
     }
 };

@@ -25,7 +25,6 @@ export default {
             }
         },
         getEchart(val) {
-            //   console.log(val);
             //   return
             // 基于准备好的dom，初始化echarts实例
             let funnelChart = this.$echarts.init(this.$el)
@@ -183,7 +182,6 @@ export default {
                     return v.name = v.name.replace(/累计/g, '').replace(/笔数/g, '').replace(/金额/g, '')
                 })
             }
-            //   console.log(newData);
             this.getEchart(this.funnelData)
         }
     }

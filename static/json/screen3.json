@@ -3268,80 +3268,73 @@
     "realist_CY": [
         {
             "amount": "1000.0",
-            "address": "昆明",
+            "address": "湖北省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行周周利2号"
         },
         {
             "amount": "50.0",
-            "address": "哈尔滨",
+            "address": "浙江省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行五年定期存款"
         },
         {
             "amount": "50.0",
-            "address": "青岛",
+            "address": "福建省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行五年定期存款"
         },
         {
             "amount": "1000.0",
-            "address": "南昌",
+            "address": "江西省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行周周利2号"
         },
         {
             "amount": "50.0",
-            "address": "银川",
+            "address": "湖南省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行五年定期存款"
         },
         {
             "amount": "50.0",
-            "address": "",
+            "address": "湖南省xx市",
             "sex": "女士",
             "name": "",
             "type": "客商银行五年定期存款"
         },
         {
             "amount": "30000000000000000.0",
-            "address": "拉萨",
+            "address": "贵州省xx市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "周周利1号"
         },
         {
             "amount": "1000.0",
-            "address": "西安",
+            "address": "云南省xx市",
             "sex": "女士",
             "name": "",
             "type": "周周利1号"
         },
         {
             "amount": "1765.84",
-            "address": "太原",
+            "address": "广西省xx市",
             "sex": "女士",
             "name": "",
             "type": "周周利1号"
         },
         {
             "amount": "10000.0",
-            "address": "长安",
+            "address": "海南省xx市",
             "sex": "女士",
             "name": "",
             "type": "周周利1号"
-        },
-        {
-            "amount": "4000.0",
-            "address": "淄博",
-            "sex": "先生",
-            "name": "陆友翠",
-            "type": "周周利2号"
         }
     ],
     "sevenDayTradeTendency":[

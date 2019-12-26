@@ -80,11 +80,6 @@ export default {
         }
     },
     props: ['pieChart'],
-    //   watch:{ // 我也不知道为什么这里监听不到
-    // 	  'pieChart.data':function (nv,ov) {
-    // 		  console.log('123123132');
-    // 	  }
-    //   }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="SPTcontainer">
         <div class="logo"></div>
-        <div class="title">数字银行监控大屏</div>
+        <div class="title">线上存款监控大屏</div>
         <div class="content">
             <!-- 左边 -->
             <div class="content-l-wrap">
@@ -39,20 +39,22 @@
                 </div>
                 <div class="content-mid-wrap-b">
                     <div class="top_title">
-                        <span class="top_title_after" attr-title="单位(户)">全国实时交易分布情况</span>
+                        <span class="top_title_after">全国实时交易分布情况</span>
                     </div>
-                    <live-trade-map></live-trade-map>
+                    <!-- <live-tip :position="{'top':'25%'}"></live-tip> -->
+                    <live-trade-map :position="{'top':'15%',}"></live-trade-map>
+                    <!-- <heat-map :nationMapValueData="mapData"></heat-map> -->
                 </div>
             </div>
             <!-- 右边 -->
             <div class="content-r-wrap">
-                <div class="content-mid-wrap-t">
+                <div class="content-r-wrap-t">
                     <div class="top_title">
                         <span>今日线上存款实时情况</span>
                     </div>
                     <line-chart-right :productRealTimeLine="productRealTimeLine"></line-chart-right>
                 </div>
-                <div class="content-mid-wrap-b">
+                <div class="content-r-wrap-b">
                     <div class="top_title">
                         <span>最新存款动态</span>
                     </div>
@@ -75,6 +77,8 @@ import LineChart from '@/components/ScreenThree/LineChart'; // 近七日交易�
 import Tendency from '@/components/ScreenThree/Tendency'; // 近七日线上开户走势
 import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
+import LiveTradeTip from '@/components/publicComponent/LiveTip' // 实时交易提示
+// import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
     name: 'ScreenPic2',
     data() {
@@ -121,10 +125,11 @@ export default {
         'tendency-chart': Tendency,
         'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
         'page-switcher': PageSwitcher, // 前进后退按钮控件
+        // 'live-tip':LiveTipVue
     },
     mounted() {
         this.getMap()
-        setInterval(_ => {
+        window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
         }, 60 * 1000 * 10);
         this.$setCarousel('ScreenPic1')
@@ -132,12 +137,13 @@ export default {
     methods: {
         getMap() {
             this.$axios({
-                url: "./static/json/screen3.json",
-                method: "get", // 本地
+                // url: "./static/json/screen3.json",
+                // method: "get", // 本地
 
-                // url: "./tx/SZYH",
-                // method: "post",
-                // data: {},
+                // url: "http://10.30.80.71:8100/usp_ks/tx/SZYH",
+                url: "./tx/SZYH",
+                method: "post",
+                data: {},
             }).then(res => {
                 let curHour = new Date().getHours();
                 this.onlineSaving = res.data.iconItemData1  // 左上组件 
@@ -152,6 +158,7 @@ export default {
 
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
                 this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
+                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
             })
         },
         compare(prop) { // 排序
@@ -192,7 +199,7 @@ export default {
         }
     },
     beforeDestroy(){
-        // window.sessionStorage.removeItem('reloaded');
+        console.log('333---页面3销毁');
     }
 }
 </script>
@@ -202,6 +209,8 @@ export default {
     font-size: 0.2rem;
     color: white;
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     text-align: left;
     text-indent: 0.15rem;
@@ -311,15 +320,16 @@ export default {
                 height: 25%;
                 overflow: hidden;
             }
-            .content-mid-wrap-b{
+            .content-mid-wrap-b {
                 height: 50%;
+                position: relative;
             }
         }
         .content-r-wrap {
             width: 33.3333vw;
             display: flex;
             flex-direction: column;
-            .content-mid-wrap-t {
+            .content-r-wrap-t {
                 height: 42vh;
                 margin-bottom: 0.1rem;
                 background: url("../../../static/images/wrap_bg4.png") center
@@ -327,7 +337,7 @@ export default {
                 background-size: 100% 100%;
                 position: relative;
             }
-            .content-mid-wrap-m {
+            .content-r-wrap-m {
                 flex: 1.5;
                 margin-bottom: 0.1rem;
                 background: url("../../../static/images/wrap_bg4.png") center
@@ -335,7 +345,7 @@ export default {
                 background-size: 100% 100%;
                 position: relative;
             }
-            .content-mid-wrap-b {
+            .content-r-wrap-b {
                 width: 33.3333vw;
                 height: 48vh;
                 background: url("../../../static/images/wrap_bg4.png") center

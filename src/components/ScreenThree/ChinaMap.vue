@@ -22,7 +22,6 @@ export default {
         }
     },
     methods: {
-
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
         },
@@ -178,7 +177,10 @@ export default {
                     {
                         type: 'map',
                         map: 'china',
-                        top: '37%',
+                        top: '35%',
+                        left: '12%',
+                        right: '12%',
+                        bottom: '10%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         label: {
@@ -189,8 +191,14 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#2fb9ea',
-                                borderColor: '#2fb9ea',
+                                // areaColor: '#2fb9ea',
+                                // borderColor: '#2fb9ea',
+
+                                areaColor: '#031525',
+                                borderWidth: 3,
+                                borderColor: '#00FEFF',
+                                shadowColor: 'rgba(3,221,255,0.8)',
+                                shadowBlur: 30,
                                 label: {
                                     show: true,
                                 }
@@ -203,6 +211,9 @@ export default {
                     {
                         type: 'map',
                         top: '35%',
+                        left: '12%',
+                        right: '12%',
+                        bottom: '10%',
                         zoom: 1.2,
                         aspectScale: 1.1,
                         map: 'china',
@@ -222,8 +233,7 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                areaColor: '#0f58ce',
-                                // areaColor: 'red',
+                                areaColor: '#00177b',
                                 borderColor: '#2fb9ea',
                             },
                             emphasis: {
@@ -240,13 +250,7 @@ export default {
                         roam: false,
                         data: convertData(data),
                         // geoCoord: convertData(data),
-                        itemStyle: {
-                            color:
-                                function (params) {
-                                    if (params.name == mapname) {
-                                        return "yellow"                                    }
-                                }
-                        },
+                        itemStyle: {},
                         markPoint: {
                             symbol: 'pin',
                             symbolsize: 5,
@@ -263,7 +267,14 @@ export default {
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
                         data: convertData(data),
-                        symbolSize: 12,
+                        // symbolSize: 12,
+                        symbolSize: function (val) {
+                            if (val[2] == "0.0" || val[2] == "") {
+                                return 0
+                            } else {
+                                return 12;
+                            };
+                        },
                         showEffectOn: 'render',
                         rippleEffect: {
                             brushType: 'stroke'
@@ -338,10 +349,10 @@ export default {
         nationMapValueData(v) {
             setTimeout(() => {
                 this.getMap()
-            }, 800);
+            }, 1800);
         }
     },
-    beforeDestroy(){
+    beforeDestroy() {
         this.echartElement.dispose();
     }
 };

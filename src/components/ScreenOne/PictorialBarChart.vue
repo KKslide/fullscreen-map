@@ -157,27 +157,27 @@ export default {
                         },
                         itemStyle: {
                             normal: {
-                                color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
-                                    color: 'rgba(225,59,31,0.87)'
+                                    color: 'rgba(225,59,31,0.6)'
                                 },
                                 {
                                     offset: 0.03,
-                                    color: 'rgba(225,59,31,0.85)'
+                                    color: 'rgba(225,59,31,0.55)'
                                 },
                                 {
                                     offset: 0.48,
-                                    color: 'rgba(136,78,121,0.62)'
+                                    color: 'rgba(136,78,121,0.3)'
                                 },
                                 {
                                     offset: 0.96,
-                                    color: 'rgba(54,95,203,0.36)'
+                                    color: 'rgba(54,95,203,0.4)'
                                 },
                                 {
                                     offset: 1,
-                                    color: 'rgba(46,97,210,0.36)'
+                                    color: 'rgba(46,97,210,0.1)'
                                 }]),
-                                opacity: 0.5
+                                opacity: 1
                             },
                             emphasis: {
                                 opacity: 1

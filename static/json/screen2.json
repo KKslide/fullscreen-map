@@ -82,27 +82,27 @@
         {
             "amount": "0.0",
             "type": "北京",
-            "value": "0"
+            "value": "9999"
         },
         {
             "amount": "0.0",
             "type": "天津",
-            "value": "0"
+            "value": "8888"
         },
         {
             "amount": "0.0",
             "type": "上海",
-            "value": "0"
+            "value": "7777"
         },
         {
             "amount": "0.0",
             "type": "重庆",
-            "value": "0"
+            "value": "6666"
         },
         {
             "amount": "0.0",
             "type": "河北",
-            "value": "0"
+            "value": "5555"
         },
         {
             "amount": "0.0",
@@ -407,62 +407,50 @@
     "realist_CY": [
         {
             "amount": "34400.0",
-            "address": "昆明",
+            "address": "黑龙江省xx市",
             "name": "AAA",
             "type": "新网联合贷款"
         },
         {
             "amount": "44800.0",
-            "address": "哈尔滨",
+            "address": "内蒙古省xx市",
             "name": "BBB",
             "type": "新网联合贷款"
         },
         {
             "amount": "110000.0",
-            "address": "青岛",
+            "address": "河北省xx市",
             "name": "CCC",
             "type": "新网联合贷款"
         },
         {
             "amount": "59100.0",
-            "address": "南昌",
+            "address": "甘肃省xx市",
             "name": "DDD",
             "type": "新网联合贷款"
         },
         {
             "amount": "54800.0",
-            "address": "银川",
+            "address": "新疆省xx市",
             "name": "EEE",
             "type": "新网联合贷款"
         },
         {
             "amount": "49900.0",
-            "address": "拉萨",
+            "address": "山东省xx市",
             "name": "FFF",
             "type": "新网联合贷款"
         },
         {
             "amount": "48000.0",
-            "address": "西安",
+            "address": "湖北省xx市",
             "name": "GGG",
             "type": "新网联合贷款"
         },
         {
             "amount": "269300.0",
-            "address": "太原",
+            "address": "上海省xx市",
             "name": "HHH",
-            "type": "新网联合贷款"
-        },
-        {
-            "amount": "149000.0",
-            "address": "长安",
-            "name": "III",
-            "type": "新网联合贷款"
-        },
-        {
-            "amount": "69000.0",
-            "address": "淄博",
-            "name": "JJJ",
             "type": "新网联合贷款"
         }
     ]
