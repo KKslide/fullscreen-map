@@ -1,21 +1,35 @@
-# dasd
+# MZKS-Bank 大屏展示页面
 
-> A Vue.js project
+> 该项目前端技术基于Vue和Echarts, 
+> 服务端使用的是公司内部的usp技术
+ 
 
-## Build Setup
+## 打包步骤
 
 ``` bash
-# install dependencies
+# 安装依赖包
 npm install
 
-# serve with hot reload at localhost:8080
+# 本地开发端口 8080
 npm run dev
 
-# build for production with minification
+# 生产环境打包命令
 npm run build
 
-# build for production and view the bundle analyzer report
+# 生产环境打包时,查看打包过程分析报告
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> 已经在/config/index.js中编辑好打包的输出路径了
+
+````     
+build: {
+    // 打包后index.html文件目录
+    index: path.resolve(__dirname, '../../index.html'),
+
+    // 打包后静态资源文件夹位置
+    assetsRoot: path.resolve(__dirname, '../../'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/usp_ks/',  
+    ************
+````

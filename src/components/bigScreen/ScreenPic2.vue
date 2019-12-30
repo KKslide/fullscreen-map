@@ -298,13 +298,14 @@ export default {
     methods: {
         getMap() {
             this.$axios({
-                // url: './static/json/screen2.json',
-                // method: "get"
+                url: this.$http.screenpic2.url, // 本地
+                method: this.$http.screenpic2.method,
+                data: {},
 
                 // url: "http://10.30.80.71:8100/usp_ks/tx/XSZC",
-                url: "./tx/XSZC",
-                method: "post",
-                data: {}
+                // url: "./tx/XSZC",
+                // method: "post",
+                // data: {}
             }).then(res => {
 
                 this.totalData = res.data;
@@ -423,10 +424,6 @@ export default {
 .SPTcontainer {
     width: 100%;
     height: 100vh;
-    // background: url(../../../static/images/bg.jpg);
-    background: url(../../../static/images/bg2.png);
-    background-color: black;
-    background-size: 100% 100%;
     overflow: hidden;
     box-sizing: border-box;
     position: relative;

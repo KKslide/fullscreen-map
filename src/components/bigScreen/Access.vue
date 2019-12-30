@@ -63,15 +63,14 @@ export default {
                 this.toPage = sessionStorage.getItem('toPage')
             }
             axios({
-                // url: './static/json/token.json', // 本地
-                // method: 'get',
+                url: this.$http.access.url, // 本地
+                method: this.$http.access.method,
 
-                url: './tx/Login', // 线上
-                method: 'POST',
-                data: { password: this.password }
+                // url: './tx/Login', // 线上
+                // method: 'POST',
+                // data: { password: this.password }
             }).then(res => {
                 if (res.data.message) {
-                // if (res.data.token == this.password) {
                     sessionStorage.setItem('isAdmin', true)
                     this.$router.push(this.toPage)
                 } else {

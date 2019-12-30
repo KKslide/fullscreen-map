@@ -106,7 +106,7 @@
                         <p class="live_tip_item">金额</p>
                         <p class="live_tip_content animated" v-animate v-text="liveData.amount+'元'"></p>
                     </div>
-                </div> -->
+                </div>-->
                 <!-- <live-tip :position="{'top':'65px'}"></live-tip> -->
                 <live-trade-map :position="{'top':'15%','bottom':'8%'}"></live-trade-map>
                 <!-- <GD-map :titleName="titleName4" :localMapValueData="localMapValueData"></GD-map> -->
@@ -202,13 +202,14 @@ export default {
         },
         getData() { // 获取数据
             this.$axios({
-                // url: "./static/json/cc.json",
-                // method: "get",
+                url: this.$http.screenpic1.url, // 本地
+                method: this.$http.screenpic1.method,
+                data: {},
 
                 // url: "http://10.30.80.71:8100/usp_ks/tx/GYL",
-                url: "./tx/GYL",
-                method: "post",
-                data: {},
+                // url: "./tx/GYL",
+                // method: "post",
+                // data: {},
             }).then(res => {
 
                 var workdataX = [];
@@ -255,7 +256,7 @@ export default {
                 this.workreallist = workreallistdata
 
                 // this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-                window.localStorage.setItem('allCurrentTrade',JSON.stringify(res.data.realist_CY))
+                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
 
             }).catch(res => {
 
@@ -352,7 +353,7 @@ export default {
             this.liveData = newVal
         }
     },
-    beforeDestroy(){
+    beforeDestroy() {
         console.log('111---页面1销毁');
     }
 }
@@ -549,7 +550,7 @@ export default {
         }
     }
 
-   /*  .page_nav {
+    /*  .page_nav {
         position: absolute;
         width: 15%;
         height: 100%;

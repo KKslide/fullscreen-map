@@ -137,13 +137,14 @@ export default {
     methods: {
         getMap() {
             this.$axios({
-                // url: "./static/json/screen3.json",
-                // method: "get", // 本地
+                url: this.$http.screenpic3.url, // 本地
+                method: this.$http.screenpic3.method,
+                data: {},
 
                 // url: "http://10.30.80.71:8100/usp_ks/tx/SZYH",
-                url: "./tx/SZYH",
-                method: "post",
-                data: {},
+                // url: "./tx/SZYH",
+                // method: "post",
+                // data: {},
             }).then(res => {
                 let curHour = new Date().getHours();
                 this.onlineSaving = res.data.iconItemData1  // 左上组件 
@@ -296,7 +297,7 @@ export default {
             }
         }
         .content-mid-wrap {
-            width: 33.3333vw;
+            width: 38.6666vw;
             margin: 0 0.1rem;
             display: flex;
             flex-direction: column;
@@ -312,21 +313,22 @@ export default {
             }
             .content-mid-wrap-t {
                 // flex: 2.5;
-                height: 25%;
+                height: 21.5%;
                 margin-bottom: 0.1rem;
             }
             .content-mid-wrap-m {
-                width: 33.3333vw;
-                height: 25%;
+                // width: 33.3333vw;
+                width: 100%;
+                height: 21.5%;
                 overflow: hidden;
             }
             .content-mid-wrap-b {
-                height: 50%;
+                height: 57%;
                 position: relative;
             }
         }
         .content-r-wrap {
-            width: 33.3333vw;
+            width: 28vw;
             display: flex;
             flex-direction: column;
             .content-r-wrap-t {
@@ -346,7 +348,7 @@ export default {
                 position: relative;
             }
             .content-r-wrap-b {
-                width: 33.3333vw;
+                width: 28vw;
                 height: 48vh;
                 background: url("../../../static/images/wrap_bg4.png") center
                     center no-repeat;

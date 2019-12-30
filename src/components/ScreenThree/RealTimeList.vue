@@ -81,8 +81,6 @@ export default {
         transform: translateY(-0.15rem);
         margin: 0 0.5%;
         list-style-type: none;
-        // height: 3.8rem;
-        // height: 42vh;
         overflow: hidden;
     }
 
@@ -90,7 +88,7 @@ export default {
         margin-left: 0.1rem;
         margin-right: 0.15rem;
         padding: 0.05rem 0;
-        font-size: 0.16rem;
+        font-size: 0.15rem;
         text-align: left;
         color: @fontColor;
         overflow: hidden;

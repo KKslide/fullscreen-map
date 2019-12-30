@@ -29,7 +29,12 @@ body {
     overflow: hidden;
 }
 body {
-    background-image: url('../static/images/bg2.png');
+    background-image: url('../static/images/bg.jpg');
+    background-image: url('../static/images/bg2.jpg');
+    background-image: url('../static/images/bg3.jpg');
+    background-image: url('../static/images/bg4.jpg');
+    background-image: url('../static/images/bg5.jpg');
+    background-image: url('../static/images/bg6.jpg');
     background-size: 100% 100%;
 }
 </style>

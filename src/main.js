@@ -8,17 +8,25 @@ Vue.use(Vuex);
 import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
 
-import setCarousel from './js/setCarousel';
-Vue.prototype.$setCarousel = setCarousel;
+// 设置页面轮播(其实就是自动跳转)
+import setCarousel from './js/setCarousel'
+Vue.prototype.$setCarousel = setCarousel
 
 Vue.prototype.$axios = axios
 
-Vue.config.productionTip = false;
+Vue.prototype.$http = {
+    // "access": { "url": "./tx/Login", "method": "post" },
+    // "screenpic1": { "url": "./tx/GYL", "method": "post" },
+    // "screenpic2": { "url" : "./tx/XSZC", "method": "post" },
+    // "screenpic3": { "url": "./tx/SZYH", "method":"post" },
+    /* ***************************************************** */
+    "access": { "url": "./static/json/token.json", "method": "get" },
+    "screenpic1": { "url": "./static/json/cc.json", "method": "get" },
+    "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
+    "screenpic3": { "url": "./static/json/screen3.json", "method": "get" },
+}
 
-// 引入echarts 其它组件使用 this.$echarts
-// import echarts from 'echarts';
-// import 'echarts-gl'
-// Vue.prototype.$echarts = echarts;
+Vue.config.productionTip = false;
 
 window.chartTimer = {};
 // 动态修改title和验证口令

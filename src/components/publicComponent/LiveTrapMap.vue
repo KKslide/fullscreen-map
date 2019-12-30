@@ -54,27 +54,19 @@ export default {
             this.echartElement = echarts.init(this.$el);
             // this.echartElement.clear(); // 清空还未绘制完成的路线
             let allCurrentTrade = JSON.parse(localStorage.getItem('allCurrentTrade'));
-            let _tempProvince = allCurrentTrade.map(v => {
-                return [{
-                    name: v.address.match(/.+?(省|市|自治区|自治州|县|区)/g)[0].replace(/省|壮族自治区|自治区|回族自治区|维吾尔自治区|市/, ''),
-                    value: parseInt(Math.random() * 100)
-                },
-                { name: '梅州' }]
-            });
             // 不同地方的交易起点位置
             let BJData = [
                 // [ { name: pos, value: 100 }, { name: '梅州' } ],
-                // [{ name: '黑龙江', value: 70 }, { name: '梅州' }],
-                // [{ name: '内蒙古', value: 30 }, { name: '梅州' }],
-                // [{ name: '河北', value: 50 }, { name: '梅州' }],
-                // [{ name: '甘肃', value: 20 }, { name: '梅州' }],
-                // [{ name: '新疆', value: 10 }, { name: '梅州' }],
-                // [{ name: '山东', value: 80 }, { name: '梅州' }],
-                // [{ name: '湖北', value: 55 }, { name: '梅州' }],
-                // [{ name: '上海', value: 55 }, { name: '梅州' }],
-                // [{ name: '广西', value: 90 }, { name: '梅州' }]
             ];
-            if (allCurrentTrade) BJData = _tempProvince
+            if(allCurrentTrade){
+                BJData = allCurrentTrade.map(v => {
+                    return [{
+                        name: v.address.match(/.+?(省|市|自治区|自治州|县|区)/g)[0].replace(/省|壮族自治区|自治区|回族自治区|维吾尔自治区|市/, ''),
+                        value: parseInt(Math.random() * 100)
+                    },
+                    { name: '梅州' }]
+                });
+            }
 
             /* let tempAddr = pos.address.match(/.+?(省|市|自治区|自治州|县|区)/g);
             console.log(tempAddr);
