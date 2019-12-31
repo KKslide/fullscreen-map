@@ -39,10 +39,10 @@
                 </div>
                 <div class="content-mid-wrap-b">
                     <div class="top_title">
-                        <span class="top_title_after">全国实时交易分布情况</span>
+                        <span class="top_title_after">全国实时存款分布情况</span>
                     </div>
                     <!-- <live-tip :position="{'top':'25%'}"></live-tip> -->
-                    <live-trade-map :position="{'top':'15%',}"></live-trade-map>
+                    <live-trade-map :position="{'top':'8%',}"></live-trade-map>
                     <!-- <heat-map :nationMapValueData="mapData"></heat-map> -->
                 </div>
             </div>
@@ -131,11 +131,12 @@ export default {
         this.getMap()
         window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
-        }, 60 * 1000 * 10);
+        }, 60 * 1000 * 10); // 十分钟更新一次
         this.$setCarousel('ScreenPic1')
     },
     methods: {
         getMap() {
+            console.log(this.$http);
             this.$axios({
                 url: this.$http.screenpic3.url, // 本地
                 method: this.$http.screenpic3.method,
@@ -159,6 +160,7 @@ export default {
 
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
                 this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
+                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
                 window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
             })
         },
@@ -313,17 +315,18 @@ export default {
             }
             .content-mid-wrap-t {
                 // flex: 2.5;
-                height: 21.5%;
+                // height: 21.5%;
+                height: 25%;
                 margin-bottom: 0.1rem;
             }
             .content-mid-wrap-m {
                 // width: 33.3333vw;
                 width: 100%;
-                height: 21.5%;
+                height: 25%;
                 overflow: hidden;
             }
             .content-mid-wrap-b {
-                height: 57%;
+                height: 50%;
                 position: relative;
             }
         }

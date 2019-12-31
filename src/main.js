@@ -9,21 +9,34 @@ import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
 
 // 设置页面轮播(其实就是自动跳转)
-import setCarousel from './js/setCarousel'
+import { setCarousel, deepClone } from './js/utils'
 Vue.prototype.$setCarousel = setCarousel
+Vue.prototype.$deepClone = deepClone
 
 Vue.prototype.$axios = axios
 
-Vue.prototype.$http = {
-    // "access": { "url": "./tx/Login", "method": "post" },
-    // "screenpic1": { "url": "./tx/GYL", "method": "post" },
-    // "screenpic2": { "url" : "./tx/XSZC", "method": "post" },
-    // "screenpic3": { "url": "./tx/SZYH", "method":"post" },
-    /* ***************************************************** */
-    "access": { "url": "./static/json/token.json", "method": "get" },
-    "screenpic1": { "url": "./static/json/cc.json", "method": "get" },
-    "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
-    "screenpic3": { "url": "./static/json/screen3.json", "method": "get" },
+Vue.prototype.$http = {}
+
+if (process.env.NODE_ENV === "production") {
+    console.log("你正在线上环境")
+    Vue.prototype.$http = {
+        "access": { "url": "./static/json/token.json", "method": "get" },
+        "screenpic1": { "url": "http://10.30.80.71:8100/usp_ks/tx/GYL", "method": "post" },
+        "screenpic2": { "url": "http://10.30.80.71:8100/usp_ks/tx/XSZC", "method": "post" },
+        "screenpic3": { "url": "http://10.30.80.71:8100/usp_ks/tx/SZYH", "method": "post" },
+        // "access": { "url": "./tx/Login", "method": "post" },
+        // "screenpic1": { "url": "./tx/GYL", "method": "post" },
+        // "screenpic2": { "url" : "./tx/XSZC", "method": "post" },
+        // "screenpic3": { "url": "./tx/SZYH", "method":"post" },
+    }
+} else {
+    console.log("你正在使用开发环境")
+    Vue.prototype.$http = {
+        "access": { "url": "./static/json/token.json", "method": "get" },
+        "screenpic1": { "url": "./static/json/cc.json", "method": "get" },
+        "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
+        "screenpic3": { "url": "./static/json/screen3.json", "method": "get" },
+    }
 }
 
 Vue.config.productionTip = false;

@@ -15,7 +15,6 @@ export default {
     },
     methods: {
         getMap(pos) {
-            // const geoCoordMap = allCity; // 全国
             const geoCoordMap = { // 全省
                 '黑龙江': [127.9688, 45.368],
                 '大庆': [126.9688, 45.868],
@@ -53,7 +52,10 @@ export default {
             };
             this.echartElement = echarts.init(this.$el);
             // this.echartElement.clear(); // 清空还未绘制完成的路线
-            let allCurrentTrade = JSON.parse(localStorage.getItem('allCurrentTrade'));
+            // let allCurrentTrade = this.$deepClone(this.$store.getters.getAllCurrentTrade)
+            // let allCurrentTrade = JSON.parse(localStorage.getItem('allCurrentTrade'));
+            let allCurrentTrade = this.$deepClone(pos)
+            
             // 不同地方的交易起点位置
             let BJData = [
                 // [ { name: pos, value: 100 }, { name: '梅州' } ],
@@ -300,17 +302,18 @@ export default {
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.getMap();
-        }, 1500);
+        // setTimeout(() => {
+        //     this.getMap();
+        // }, 1500);
     },
     watch: {
         // '$store.state.currentTrade': function (newVal) {
         // this.getMap(newVal)
         // },
-        // '$store.state.allCurrentTrade':function(newVal){
-        //     console.log(newVal);
-        // }
+        '$store.state.allCurrentTrade':function(newVal){
+            console.log(newVal);
+            this.getMap(newVal)
+        }
     },
     beforeDestroy() {
         this.echartElement.dispose();

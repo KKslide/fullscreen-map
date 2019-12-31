@@ -128,7 +128,7 @@ import RealTimeList from '@/components/ScreenOne/RealTimeList' // 实时交易�
 import PictorialBarChart from '@/components/ScreenOne/PictorialBarChart' // 近七天放款金额趋势
 import InformationDisplay from '@/components/ScreenOne/InformationDisplay' // 广东业务情况/全国交易情况
 import ChinaMap from '@/components/ScreenOne/ChinaMap' // 全国地图
-import GDMap from '@/components/ScreenOne/GDMap' // 广东地图
+// import GDMap from '@/components/ScreenOne/GDMap' // 广东地图
 import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 // import LiveTipVue from '../publicComponent/LiveTip.vue';
@@ -182,7 +182,7 @@ export default {
         'pictorialBar-chart': PictorialBarChart, // 近七天放款金额趋势
         'Information-display': InformationDisplay, // 广东业务情况/全国交易情况
         'china-map': ChinaMap, // 全国地图
-        'GD-map': GDMap, // 广东地图
+        // 'GD-map': GDMap, // 广东地图
         'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
         'page-switcher': PageSwitcher, // 前进后退按钮控件
         // 'live-tip': LiveTipVue
@@ -255,7 +255,7 @@ export default {
 
                 this.workreallist = workreallistdata
 
-                // this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
                 window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
 
             }).catch(res => {

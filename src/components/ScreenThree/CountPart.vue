@@ -106,8 +106,10 @@ export default {
                 font-size: 0.16rem;
                 margin-bottom: 0.1rem;
                 span:not(.dot) {
-                    border: 0.02rem solid rgb(77, 102, 200);
-                    box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                    // border: 0.02rem solid rgb(77, 102, 200);
+                    // box-shadow: rgb(77, 102, 200) 0px 0px 0.1rem inset;
+                    border: 0.02rem solid rgba(65, 160, 231, 0.88);
+                    box-shadow: 0px 0px 0.1rem rgba(82, 184, 226, 0.54) inset;
                     padding: 0px 0.02rem;
                     // margin-left: 0.03rem;
                 }

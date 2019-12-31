@@ -23,8 +23,8 @@ export default {
                 grid: {
                     left: '12%',
                     right: '12%',
-                    top: '30%',
-                    bottom: '16%',
+                    top: '32%',
+                    bottom: '12%',
                 },
                 tooltip: {
                     trigger: 'axis',

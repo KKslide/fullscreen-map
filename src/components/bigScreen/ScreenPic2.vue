@@ -290,9 +290,9 @@ export default {
     },
     mounted() {
         this.getMap()
-        setInterval(_ => { // 每十分钟更新一次
+        window.chartTimer.AutoRefrash = setInterval(_ => { // 每十分钟更新一次
             this.getMap()
-        }, 10 * 1000 * 10);
+        }, 60 * 1000 * 10);
         this.$setCarousel('ScreenPic3')
     },
     methods: {
@@ -338,6 +338,7 @@ export default {
 
                 this.barChartData = this.fixedForm(res.data.realeaseType)
 
+                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
                 window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
 
             })

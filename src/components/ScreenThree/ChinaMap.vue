@@ -36,9 +36,9 @@ export default {
         getMap(mapname) {
             // 基于准备好的dom，初始化echarts实例
             this.echartElement = echarts.init(this.$el);
-            var data = this.nationMapValueData;
+            var data = this.$deepClone(this.nationMapValueData);
             //   存Top5 前五名
-            var topArr = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse();
+            var topArr = data.sort(this.compare("amount")).slice(-5).reverse();
 
             for (var i = 0; i < topArr.length; i++) {
                 // this.title += (i + 1) + '. ' + topArr[i].type + ' : ' + this.changeNum(topArr[i].amount) + '\n'
@@ -347,9 +347,7 @@ export default {
     props: ['childClass', 'nationMapValueData', 'titleName'],
     watch: {
         nationMapValueData(v) {
-            setTimeout(() => {
-                this.getMap()
-            }, 1800);
+            this.getMap()
         }
     },
     beforeDestroy() {

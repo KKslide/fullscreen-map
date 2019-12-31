@@ -19,7 +19,6 @@ export default {
     },
     mounted() {
         this.getLineChart();
-        // this.play();
     },
     methods: {
         getLineChart() {
