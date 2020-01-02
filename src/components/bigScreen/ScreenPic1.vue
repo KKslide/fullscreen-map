@@ -120,7 +120,7 @@
                 ></realTime-list>
             </div>
         </div>
-        <page-switcher :prePagePath="'/screenpic3'" :nextPagePath="'/screenpic2'"></page-switcher>
+        <page-switcher :prePagePath="'/screenpic4'" :nextPagePath="'/screenpic2'"></page-switcher>
     </div>
 </template>
 <script>

@@ -8,8 +8,8 @@
             <li
                 v-for="(item,index) in reallist"
                 :key="index"
-                :style="{'display':index<10?'':'none'}"
             >{{item}}</li>
+                <!-- :style="{'display':index<10?'':'none'}" -->
             <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:33分开户成功,设备型号XXX</li>
@@ -59,7 +59,7 @@ export default {
 #realTimeList {
     width: 100%;
     overflow: hidden;
-    // height: 48vh;
+    height: 39vh;
     text-align: center;
     font-family: "PingFang SC";
     p {
@@ -78,6 +78,7 @@ export default {
     }
 
     ul {
+        height: 39vh;
         transform: translateY(-0.15rem);
         margin: 0 0.5%;
         list-style-type: none;
@@ -87,13 +88,13 @@ export default {
     li {
         margin-left: 0.1rem;
         margin-right: 0.15rem;
-        padding: 0.05rem 0;
-        font-size: 0.15rem;
+        padding: 0.025rem 0;
+        font-size: 0.14rem;
         text-align: left;
         color: @fontColor;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // text-overflow: ellipsis;
     }
 }
 </style>

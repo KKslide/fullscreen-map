@@ -95,14 +95,14 @@ export default {
         margin-left: 0.1rem;
         margin-right: 0.15rem;
         // padding: 1.5% 0;
-        padding: 1.35% 0;
+        padding: 1.2% 0;
         // font-size: 0.16rem;
         font-size: 0.14rem;
         text-align: left;
         color: @fontColor;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
     }
 }
 </style>

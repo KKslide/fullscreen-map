@@ -3,13 +3,15 @@
 </template>
 
 <script>
+import echarts from 'echarts'
 export default {
     name: "PieChart",
     data() {
         return {
             baseColor: ['rgba(44,198,250,0.6)', 'rgba(97,148,143,0.8)', 'rgba(142,216,142,0.6)', 'rgba(216,194,67,0.6)'],
             fontColor: 'rgba(255,255,255,0.9)',
-            titleFontColor: 'rgba(12, 236, 228, 0.8)'
+            titleFontColor: 'rgba(12, 236, 228, 0.8)',
+            echartElement: null,
         }
     },
     mounted() {
@@ -22,31 +24,35 @@ export default {
     },
     methods: {
         getPieChhart() {
-            let pieChart = this.$echarts.init(this.$refs.chart)
-            pieChart.setOption(
+            this.echartElement = echarts.init(this.$refs.chart)
+            this.echartElement.setOption(
                 {
-                    color: ['#f95e74', '#44e5c5', '#479df6', '#edba4d', '#617aff', '#99dee7'],
+                    color: ['#479df6', '#99dee7', '#f95e74', '#44e5c5', '#edba4d', '#617aff'],
                     title: this.pieChart.title, // 使用父组件传来的值
                     series: [
                         {
                             name: '',
                             type: 'pie',
-                            radius: '50%',
+                            radius: this.pieChart.series[0].radius || '50%',
                             center: this.pieChart.series[0].center,
                             data: this.pieChart.series[0].data,
                             roseType: 'radius',
                             label: {
                                 normal: {
                                     textStyle: {
-                                        fontSize: '10%',
+                                        fontSize: '18',
                                         color: 'rgba(255, 255, 255, 1)'
                                     },
 
-                                    formatter: function (params) {
+                                    formatter: (params) => {
                                         if (params.percent == 0) {
                                             return params.name
                                         } else {
-                                            return params.name + ':' + params.percent + '%'
+                                            if (this.pieChartSuccessData) {
+                                                return params.name + '\n' + '成功率:' + this.pieChartSuccessData[params.dataIndex].value + '%' + '\n失败率：' + this.pieChartSuccessData[params.dataIndex].fail+'%'
+                                            } else {
+                                                return params.name + ': ' + params.percent + '%'
+                                            }
                                         }
                                     }
                                 }
@@ -57,7 +63,7 @@ export default {
                                         color: 'rgba(255, 255, 255, 0.8)'
                                     },
                                     smooth: 0.2,
-                                    length: 1,
+                                    length: 1.5,
                                     length2: 5
                                 }
                             },
@@ -79,7 +85,10 @@ export default {
             )
         }
     },
-    props: ['pieChart'],
+    props: ['pieChart', 'pieChartSuccessData'],
+    beforeDestroy() {
+        this.echartElement.dispose();
+    }
 }
 </script>
 

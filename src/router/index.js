@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import ScreenPic1 from '@/components/bigScreen/ScreenPic1'
 import ScreenPic2 from '@/components/bigScreen/ScreenPic2'
 import ScreenPic3 from '@/components/bigScreen/ScreenPic3'
+import ScreenPic4 from '@/components/bigScreen/ScreenPic4'
 
 /* 口令登陆页面 */
 import Access from '@/components/bigScreen/Access'
@@ -41,6 +42,14 @@ export default new Router({
             component: ScreenPic3,
             meta: {
                 title: '线上存款监控大屏'
+            }
+        },
+        {
+            path: '/ScreenPic4',
+            name: 'ScreenPic4',
+            component: ScreenPic4,
+            meta: {
+                title: '移动支付业务情况'
             }
         }
     ]

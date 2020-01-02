@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <page-switcher :prePagePath="'/screenpic2'" :nextPagePath="'/screenpic1'"></page-switcher>
+        <page-switcher :prePagePath="'/screenpic2'" :nextPagePath="'/screenpic4'"></page-switcher>
     </div>
 </template>
 <script>
@@ -80,7 +80,7 @@ import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后�
 import LiveTradeTip from '@/components/publicComponent/LiveTip' // 实时交易提示
 // import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
-    name: 'ScreenPic2',
+    name: 'ScreenPic3',
     data() {
         return {
             iconItemData: [
@@ -132,7 +132,7 @@ export default {
         window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
         }, 60 * 1000 * 10); // 十分钟更新一次
-        this.$setCarousel('ScreenPic1')
+        this.$setCarousel('ScreenPic4')
     },
     methods: {
         getMap() {

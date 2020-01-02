@@ -36,6 +36,7 @@ if (process.env.NODE_ENV === "production") {
         "screenpic1": { "url": "./static/json/cc.json", "method": "get" },
         "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
         "screenpic3": { "url": "./static/json/screen3.json", "method": "get" },
+        "screenpic4": { "url": "./static/json/screen4.json", "method": "get" },
     }
 }
 
