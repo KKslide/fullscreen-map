@@ -76,7 +76,7 @@ export default {
         margin: 0 0.5%;
         list-style-type: none;
 
-        height: 3.8rem;
+        height: 4rem;
         overflow: hidden;
     }
 

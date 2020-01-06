@@ -4,7 +4,7 @@
             <!--<img class="icon" src="../../../static/icons/zaikubishudaibaoguanchaxun.svg" alt="icon" style="width: 0.4rem">-->
             <span>{{this.titleName}}</span>
             &nbsp;
-            <span style="font-size:0.2rem;">({{this.preDate}})</span>
+            <!-- <span style="font-size:0.2rem;" v-if="false">({{this.preDate}})</span> -->
         </div>
         <div class="inform-content">
             <div v-for="(item,index) in informList" :key="index">

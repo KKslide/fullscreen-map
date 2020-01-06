@@ -20,14 +20,15 @@ Vue.prototype.$http = {}
 if (process.env.NODE_ENV === "production") {
     console.log("你正在线上环境")
     Vue.prototype.$http = {
-        "access": { "url": "./static/json/token.json", "method": "get" },
-        "screenpic1": { "url": "http://10.30.80.71:8100/usp_ks/tx/GYL", "method": "post" },
-        "screenpic2": { "url": "http://10.30.80.71:8100/usp_ks/tx/XSZC", "method": "post" },
-        "screenpic3": { "url": "http://10.30.80.71:8100/usp_ks/tx/SZYH", "method": "post" },
-        // "access": { "url": "./tx/Login", "method": "post" },
-        // "screenpic1": { "url": "./tx/GYL", "method": "post" },
-        // "screenpic2": { "url" : "./tx/XSZC", "method": "post" },
-        // "screenpic3": { "url": "./tx/SZYH", "method":"post" },
+        // "access": { "url": "./static/json/token.json", "method": "get" },
+        // "screenpic1": { "url": "http://10.30.80.71:8100/usp_ks/tx/GYL", "method": "post" },
+        // "screenpic2": { "url": "http://10.30.80.71:8100/usp_ks/tx/XSZC", "method": "post" },
+        // "screenpic3": { "url": "http://10.30.80.71:8100/usp_ks/tx/SZYH", "method": "post" },
+        "access": { "url": "./tx/Login", "method": "post" },
+        "screenpic1": { "url": "./tx/GYL", "method": "post" },
+        "screenpic2": { "url" : "./tx/XSZC", "method": "post" },
+        "screenpic3": { "url": "./tx/SZYH", "method":"post" },
+        "screenpic4": { "url": "./static/json/screen4.json", "method": "get" },
     }
 } else {
     console.log("你正在使用开发环境")

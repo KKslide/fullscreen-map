@@ -15,7 +15,7 @@
                             v-for="(item,index) in customSituation"
                             :key="index"
                         >
-                            <span v-text="item.text + ': ' + item.value + item.unit"></span>
+                            <div> {{item.text}}:  <span class="glow_text">{{item.value}}</span> {{item.unit}} </div>
                         </div>
                     </div>
                     <div class="l-top-rank">
@@ -27,9 +27,9 @@
                                 <div>金额</div>
                             </li>
                             <li v-for="(item,index) in preTradeValueRank" :key="index">
-                                <div v-text="index+1"></div>
+                                <div v-text="rank[index]"></div>
                                 <div v-text="item.name"></div>
-                                <div v-text="item.value+'元'"></div>
+                                <div><span class="glow_text">{{item.value}}</span>&nbsp;元</div>
                             </li>
                         </ul>
                     </div>
@@ -42,9 +42,9 @@
                                 <div>笔数</div>
                             </li>
                             <li v-for="(item,index) in preTradeAmountRank" :key="index">
-                                <div v-text="index+1"></div>
+                                <div v-text="rank[index]"></div>
                                 <div v-text="item.name"></div>
-                                <div v-text="item.value+'笔'"></div>
+                                <div><span class="glow_text">{{item.value}}</span>&nbsp;笔</div>
                             </li>
                         </ul>
                     </div>
@@ -139,6 +139,7 @@ export default {
     name: 'ScreenPic4',
     data() {
         return {
+            rank:['①','②','③','④','⑤'],
             customSituation: [], // 商户情况
             preTradeValueRank: [], // 上月交易金额排名
             preTradeAmountRank: [], // 上月交易笔数排名
@@ -343,6 +344,10 @@ export default {
                 display: flex;
                 justify-content: space-around;
                 padding-top: 8%;
+                .glow_text{
+                    color:#7aeaff;
+                    text-shadow: 0 0 8px rgba(56, 250, 255, .62);
+                }
                 .l-top-custom {
                     position: absolute;
                     top: 10%;

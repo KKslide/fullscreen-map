@@ -136,7 +136,6 @@ export default {
     },
     methods: {
         getMap() {
-            console.log(this.$http);
             this.$axios({
                 url: this.$http.screenpic3.url, // 本地
                 method: this.$http.screenpic3.method,

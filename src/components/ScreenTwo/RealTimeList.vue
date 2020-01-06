@@ -8,7 +8,7 @@
             <li
                 v-for="(item,index) in reallist"
                 :key="index"
-                :style="{'display':index<14?'':'none'}"
+                :style="{'display':index<9?'':'none'}"
             >{{item}}</li>
             <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
@@ -94,14 +94,13 @@ export default {
     li {
         margin-left: 0.1rem;
         margin-right: 0.15rem;
-        // padding: 1.5% 0;
         padding: 1.2% 0;
-        // font-size: 0.16rem;
-        font-size: 0.14rem;
+        font-size: 0.135rem;
         text-align: left;
         color: @fontColor;
-        // white-space: nowrap;
-        // overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        word-break: break-all;
         // text-overflow: ellipsis;
     }
 }

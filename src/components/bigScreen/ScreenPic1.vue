@@ -331,7 +331,10 @@ export default {
     mounted() {
         this.getData()
         this.getCircle()
-        this.setRegularTime(8, 0) // 启动闹钟
+        // this.setRegularTime(8, 0) // 启动闹钟
+        window.chartTimer.screenAutoRefrash = setInterval(_ => { // 每十分钟更新一次
+            this.getData()
+        }, 60 * 1000 * 10);
         this.$setCarousel('ScreenPic2')
     },
     directives: {

@@ -400,7 +400,7 @@ export default {
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
                 let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-                workreallistdata.push(a.address + a.name + "**" + "，" + "申请一笔【线上贷款】产品，金额" + " " + b + " 元")
+                workreallistdata.push(a.address + a.name + "**" + "," + "申请一笔【线上贷款】产品,金额" + " " + b + " 元")
             }
             return workreallistdata;
         }
@@ -900,8 +900,7 @@ export default {
             flex-direction: column;
             .content-r-wrap-t {
                 height: 20.7692vh;
-                background: url(../../../static/images/rectangle_small.png)
-                    no-repeat;
+                background: url(../../../static/images/rectangle_small.png) no-repeat;
                 background-size: 100% 100%;
                 position: relative;
                 .content-r-wrap-t-title {

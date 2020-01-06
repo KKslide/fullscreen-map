@@ -65,7 +65,7 @@ export default {
             axios({
                 url: this.$http.access.url, // 本地
                 method: this.$http.access.method,
-
+                data: { password: this.password }
                 // url: './tx/Login', // 线上
                 // method: 'POST',
                 // data: { password: this.password }

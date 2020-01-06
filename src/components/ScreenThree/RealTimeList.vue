@@ -59,7 +59,7 @@ export default {
 #realTimeList {
     width: 100%;
     overflow: hidden;
-    height: 39vh;
+    height: 40vh;
     text-align: center;
     font-family: "PingFang SC";
     p {
@@ -92,8 +92,9 @@ export default {
         font-size: 0.14rem;
         text-align: left;
         color: @fontColor;
-        // overflow: hidden;
-        // white-space: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+        word-break: break-all;
         // text-overflow: ellipsis;
     }
 }
