@@ -5,7 +5,7 @@
             <span v-html="$store.getters.getTime"></span>
         </p>
         <ul>
-            <li v-for="(item,index) in reallist" :key="index">{{item}}</li>
+            <li v-for="(item,index) in reallist" :key="index" :style="{'display':index<6?'':'none'}">{{item}}</li>
             <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:33分开户成功,设备型号XXX</li>

@@ -442,6 +442,18 @@
             "type": "新网联合贷款"
         },
         {
+            "amount": "110000.0",
+            "address": "河北省xx市",
+            "name": "CCC",
+            "type": "新网联合贷款"
+        },
+        {
+            "amount": "59100.0",
+            "address": "甘肃省xx市",
+            "name": "DDD",
+            "type": "新网联合贷款"
+        },
+        {
             "amount": "48000.0",
             "address": "湖北省xx市",
             "name": "GGG",
@@ -451,6 +463,18 @@
             "amount": "269300.0",
             "address": "上海省xx市",
             "name": "HHH",
+            "type": "新网联合贷款"
+        },
+        {
+            "amount": "110000.0",
+            "address": "河北省xx市",
+            "name": "CCC",
+            "type": "新网联合贷款"
+        },
+        {
+            "amount": "59100.0",
+            "address": "甘肃省xx市",
+            "name": "DDD",
             "type": "新网联合贷款"
         }
     ]

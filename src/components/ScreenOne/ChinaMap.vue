@@ -15,7 +15,7 @@ export default {
             echartElement: null,
         }
     },
-    mounted() {},
+    mounted() { },
     methods: {
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
@@ -28,11 +28,15 @@ export default {
                 return v1 - v2;
             }
         },
+        clone(origin) {
+            return Object.values(Object.assign({}, origin))
+        },
         getMap() {
             // 基于准备好的dom，初始化echarts实例
             this.echartElement = echarts.init(this.$el);
             // var data = this.nationMapValueData;
-            var data = this.$deepClone(this.nationMapValueData);
+            // var data = this.$deepClone(this.nationMapValueData);
+            var data = this.clone(this.nationMapValueData);
             //   存Top5 前五名
             var topArr = data.sort(this.compare("amount")).slice(-5).reverse();
 

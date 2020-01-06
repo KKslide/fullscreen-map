@@ -8,8 +8,8 @@
             <li
                 v-for="(item,index) in reallist"
                 :key="index"
+                :style="{'display':index<12?'':'none'}"
             >{{item}}</li>
-                <!-- :style="{'display':index<10?'':'none'}" -->
             <!-- <li>客户XXX,4月15日15:31分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:32分开户成功,设备型号XXX</li>
             <li>客户XXX,4月15日15:33分开户成功,设备型号XXX</li>

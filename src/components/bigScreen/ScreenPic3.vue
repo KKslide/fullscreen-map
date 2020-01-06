@@ -189,7 +189,7 @@ export default {
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
                 let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-                workreallistdata.push(a.address + a.name + /* a.sex */"**" + "，" + "存入一笔【线上存款】产品，金额" + " " + b + " 元")
+                workreallistdata.push(a.address + a.name + /* a.sex */"**" + ", " + "存入一笔【线上存款】产品, 金额" + " " + b + "元")
             }
             return workreallistdata;
         },
