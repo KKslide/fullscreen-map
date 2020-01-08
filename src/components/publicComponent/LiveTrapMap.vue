@@ -53,14 +53,19 @@ export default {
             this.echartElement = echarts.init(this.$el);
             // this.echartElement.clear(); // 清空还未绘制完成的路线
             // let allCurrentTrade = this.$deepClone(this.$store.getters.getAllCurrentTrade)
-            // let allCurrentTrade = JSON.parse(localStorage.getItem('allCurrentTrade'));
-            let allCurrentTrade = this.$deepClone(pos)
-            
+            let allCurrentTrade;
+            if (Array.isArray(pos) && pos.length != 0) {
+                allCurrentTrade = this.$deepClone(pos)
+            } else {
+                allCurrentTrade = JSON.parse(localStorage.getItem('allCurrentTrade'));
+            }
+
             // 不同地方的交易起点位置
             let BJData = [
                 // [ { name: pos, value: 100 }, { name: '梅州' } ],
             ];
-            if(allCurrentTrade){
+            if (allCurrentTrade) {
+                console.log('当前页面实时数据--->',allCurrentTrade);
                 BJData = allCurrentTrade.map(v => {
                     return [{
                         name: v.address.match(/.+?(省|市|自治区|自治州|县|区)/g)[0].replace(/省|壮族自治区|自治区|回族自治区|维吾尔自治区|市/, ''),
@@ -69,22 +74,6 @@ export default {
                     { name: '梅州' }]
                 });
             }
-
-            /* let tempAddr = pos.address.match(/.+?(省|市|自治区|自治州|县|区)/g);
-            console.log(tempAddr);
-            if (pos.address != "" && tempAddr) { // 如果位置正确的话
-                // tempAddr.some(v => {
-                //     if (v.indexOf('市') != -1) {
-                //         tempAddr = v.replace(/市/g, '');
-                //         return true;
-                //     }
-                // });
-                tempAddr = pos.address.replace(tempAddr[0], '');
-                BJData.push([
-                    { name: tempAddr, value: 100 },
-                    { name: '梅州' }
-                ])
-            } */
 
             let convertData = function (data) {
                 let res = [];
@@ -301,17 +290,12 @@ export default {
             this.echartElement.setOption(option);
         }
     },
-    mounted() {
-        // setTimeout(() => {
-        //     this.getMap();
-        // }, 1500);
-    },
+    mounted() {},
     watch: {
         // '$store.state.currentTrade': function (newVal) {
         // this.getMap(newVal)
         // },
-        '$store.state.allCurrentTrade':function(newVal){
-            console.log(newVal);
+        '$store.state.allCurrentTrade': function (newVal) {
             this.getMap(newVal)
         }
     },
