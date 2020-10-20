@@ -1,12 +1,12 @@
 <template>
-  <div class="GDmap" ref="GDmap" :style="this.childClass"></div>
+  <div class="MZmap" ref="MZmap" :style="this.childClass"></div>
 </template>
 <script>
 import echarts from "echarts";
-import some from "../../js/temp"; // 拼凑出来的json格式的包括部分县级的地标数据
+import meizhou from "../../js/meizhou";
 
 export default {
-  name: "GuangdongMap",
+  name: "MeiZhouMap",
   data() {
     return {
       titleFontColor: "white",
@@ -29,10 +29,10 @@ export default {
         .split(".")[0];
     },
     getMap(mapname) {
-      echarts.registerMap("广东", some);
-
-      var mapdata = this.localMapValueData; // 所有数据
-      var topArr = this.localMapValueData
+      echarts.registerMap("梅州", meizhou);
+      var mapdata = this.meizhouMapValueData; // 所有数据
+      console.log(mapdata);
+      var topArr = mapdata
         .sort(this.compare("value"))
         .slice(-5)
         .reverse(); // 前5名数据
@@ -48,85 +48,25 @@ export default {
       }
 
       var placeList = [
-        { name: "广州", coord: [113.5, 23.5] },
-        { name: "云浮", coord: [111.8, 23.1] },
-        { name: "梅州", coord: [116.1, 24.55] },
-        { name: "汕尾", coord: [115.5, 23.2] },
-        { name: "潮州", coord: [116.76, 24] },
-        { name: "汕头", coord: [116.69, 23.39] },
-        { name: "湛江", coord: [110.1, 21.270708] },
-        { name: "揭阳", coord: [116, 23.55] },
-        { name: "东莞", coord: [113.85, 23.08] },
-        { name: "韶关", coord: [113.8, 25.1] },
-        { name: "清远", coord: [113.01, 24.4] },
-        { name: "中山", coord: [113.38, 22.6] },
-        { name: "深圳", coord: [114.07, 22.62] },
-        { name: "珠海", coord: [113.52, 22.3] },
-        { name: "佛山", coord: [113, 23.24] },
-        { name: "茂名", coord: [110.95, 22] },
-        { name: "阳江", coord: [111.75, 22.2] },
-        { name: "惠州", coord: [114.4, 23.5] },
-        { name: "江门", coord: [112.7, 22.58] },
-        { name: "肇庆", coord: [112.1, 23.74] },
-        { name: "河源", coord: [115.1, 24.36] },
-        { name: "新兴", coord: [112.23083, 22.703204] },
-        { name: "鹤山", coord: [112.961795, 22.768104] },
-        { name: "阳春", coord: [111.7905, 22.169598] },
-        { name: "清新", coord: [113.015203, 23.736949] },
-        { name: "佛冈", coord: [113.534094, 23.866739] },
-        { name: "阳山", coord: [112.634019, 24.470286] },
-        { name: "英德", coord: [113.405404, 24.18612] },
-        { name: "连州", coord: [112.379271, 24.783966] },
-        { name: "曲江", coord: [113.605582, 24.680195] },
-        { name: "霞兴", coord: [113.748627, 25.088226] },
-        { name: "南雄", coord: [114.311231, 25.115328] },
-        { name: "开平", coord: [112.692262, 22.366286] },
-        { name: "恩平", coord: [112.314051, 22.182956] },
-        { name: "阳东", coord: [112.011267, 21.864728] },
-        { name: "阳西", coord: [111.617556, 21.75367] },
-        { name: "揭阳", coord: [116.355733, 23.543778] },
-        { name: "丰顺", coord: [116.184419, 23.752771] }
+        { name: "梅江区", coord: [116.12116, 24.302593] },
+        { name: "梅县区", coord: [116.083482, 24.267825] },
+        { name: "大埔县", coord: [116.69552, 24.351587] },
+        { name: "丰顺县", coord: [116.184419, 23.752771] },
+        { name: "五华县", coord: [115.775004, 23.925424] },
+        { name: "平远县", coord: [115.891729, 24.569651] },
+        { name: "蕉岭县", coord: [116.170531, 24.653313] },
+        { name: "兴宁市", coord: [115.731648, 24.138077] }
       ];
 
       var geoCoordMap = {
-        广州: [113.5, 23.5],
-        云浮: [111.8, 23.1],
-        梅州: [116.1, 24.55],
-        汕尾: [115.5, 23.2],
-        潮州: [116.76, 24],
-        汕头: [116.69, 23.39],
-        湛江: [110.1, 21.270708],
-        揭阳: [116, 23.55],
-        东莞: [113.85, 23.08],
-        韶关: [113.8, 25.1],
-        清远: [113.01, 24.4],
-        中山: [113.38, 22.6],
-        深圳: [114.07, 22.62],
-        珠海: [113.52, 22.3],
-        佛山: [113, 23.24],
-        茂名: [110.95, 22],
-        阳江: [111.75, 22.2],
-        惠州: [114.4, 23.5],
-        江门: [112.7, 22.58],
-        肇庆: [112.1, 23.74],
-        河源: [115.1, 24.36],
-        新兴: [112.23083, 22.703204],
-        鹤山: [112.961795, 22.768104],
-        阳春: [111.7905, 22.169598],
-        清新: [113.015203, 23.736949],
-        佛冈: [113.534094, 23.866739],
-        阳山: [112.634019, 24.470286],
-        英德: [113.405404, 24.18612],
-        连州: [112.379271, 24.783966],
-        曲江: [113.605582, 24.680195],
-        霞兴: [113.748627, 25.088226],
-        南雄: [114.311231, 25.115328],
-        开平: [112.692262, 22.366286],
-        恩平: [112.314051, 22.182956],
-        阳东: [112.011267, 21.864728],
-        阳西: [111.617556, 21.75367],
-        揭阳: [116.355733, 23.543778],
-        丰顺: [116.184419, 23.752771]
+        梅江区: [116.12116, 24.302593],
+        梅县区: [116.083482, 24.267825],
+        大埔县: [116.69552, 24.351587],
+        丰顺县: [116.184419, 23.752771],
+        五华县: [115.775004, 23.925424],
+        平远县: [115.891729, 24.569651],
+        蕉岭县: [116.170531, 24.653313],
+        兴宁市: [115.731648, 24.138077]
       };
 
       var getGeoCoord = function() {
@@ -157,14 +97,15 @@ export default {
       let maxNum = 30;
       // 基于准备好的dom，初始化echarts实例
       let mapChart = echarts.init(this.$el);
+
       // 绘制图表
       let options = {
         title: {
           show: false,
           text: this.titleName,
           subtext: this.title,
-          left: "left",
-          top: "2%",
+          left: "5%",
+          bottom: "2%",
           padding: [10, 10],
           textStyle: {
             color: this.titleFontColor,
@@ -200,8 +141,8 @@ export default {
         animation: false,
         grid: {
           height: "100%",
-          left: "15%",
-          bottom: "10%"
+          left: "10%",
+          bottom: "5%"
         },
         // visualMap: {
         //   show: false,
@@ -218,7 +159,7 @@ export default {
         // },
         geo: [
           {
-            map: "广东",
+            map: "梅州",
             silent: true,
             aspectScale: 1.5, //0.75 geoBoundingRect.width / geoBoundingRect.height * aspectScale
             top: "47%",
@@ -250,7 +191,7 @@ export default {
             }
           },
           {
-            map: "广东",
+            map: "梅州",
             zoom: 1.2,
             aspectScale: 1.5,
             top: "45%",
@@ -407,12 +348,12 @@ export default {
       };
     }
   },
-  props: ["childClass", "titleName", "localMapValueData"]
+  props: ["childClass", "titleName", "meizhouMapValueData"]
 };
 </script>
 <style lang="less">
-.GDmap {
-  width: 100%;
-  height: 100%;
+.MZmap {
+  width: 80%;
+  height: 80%;
 }
 </style>

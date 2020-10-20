@@ -1,5 +1,5 @@
 <template>
-    <div id="pictorialBarChart" ref="chart"></div>
+    <div ref="chart" class="pictorialBarChart"></div>
 </template>
 <script>
 import echarts from 'echarts'
@@ -224,8 +224,9 @@ export default {
 
 </script>
 <style lang="less" scoped>
-#pictorialBarChart {
+.pictorialBarChart {
     width: 100%;
-    height: 32vh !important;
+    // height: 32vh !important;
+    height: 100%;
 }
 </style>

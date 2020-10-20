@@ -172,7 +172,7 @@
                                 v-text="liveData.amount+'元'"
                             ></p>
                         </div>
-                    </div> -->
+                    </div>-->
                     <!-- <live-tip :position="{'top':'65px'}"></live-tip> -->
                     <live-trade-map :position="{'top':'10%','bottom':'15%'}"></live-trade-map>
                 </div>
@@ -192,7 +192,8 @@
             </div>
             <!-- 右 -->
         </div>
-        <page-switcher :prePagePath="'/screenpic1'" :nextPagePath="'/screenpic3'"></page-switcher>
+        <!-- <page-switcher :prePagePath="'/screenpic1'" :nextPagePath="'/screenpic3'"></page-switcher> -->
+        <page-switcher :prePagePath="prePage" :nextPagePath="nextPage"></page-switcher>
     </div>
 </template>
 <script>
@@ -249,7 +250,9 @@ export default {
                 sex: "",
                 name: "",
                 type: ""
-            }
+            },
+            prePage: '', // 上一张大屏
+            nextPage: '' // 下一张大屏
         };
     },
     directives: {
@@ -293,7 +296,30 @@ export default {
         window.chartTimer.AutoRefrash = setInterval(_ => { // 每十分钟更新一次
             this.getMap()
         }, 60 * 1000 * 10);
-        this.$setCarousel('ScreenPic3')
+        // this.$setCarousel('ScreenPic3')
+        let curPageName = this.$route.path.replace('/', ''); // 当前路由名称
+        let carouselList = JSON.parse(sessionStorage.getItem('carouselList')); // 轮播顺序(carouselList)
+        let curIndex = carouselList.indexOf(curPageName);
+        if (curIndex == -1) {
+            return false;
+        }
+        else {
+            if (curIndex == 0) { // 第一页
+                this.$setCarousel(carouselList[1]); // 下一页为第二页
+                this.nextPage = '/' + carouselList[1];
+                this.prePage = '/' + carouselList[carouselList.length - 1]; // 上一页为最后一页
+            }
+            else if (curIndex == carouselList.length - 1) { // 最后一页
+                this.$setCarousel(carouselList[0]); // 下一页为第一页
+                this.nextPage = '/' + carouselList[0];
+                this.prePage = '/' + carouselList[curIndex - 1];
+            }
+            else {
+                this.$setCarousel(carouselList[curIndex + 1]); // 设置下一页
+                this.nextPage = '/' + carouselList[curIndex + 1];
+                this.prePage = '/' + carouselList[curIndex - 1];
+            }
+        }
     },
     methods: {
         getMap() {
@@ -415,7 +441,7 @@ export default {
         //     this.liveData = newVal
         // }
     },
-    beforeDestroy(){
+    beforeDestroy() {
         console.log('222---页面2销毁');
     }
 }
@@ -900,7 +926,8 @@ export default {
             flex-direction: column;
             .content-r-wrap-t {
                 height: 20.7692vh;
-                background: url(../../../static/images/rectangle_small.png) no-repeat;
+                background: url(../../../static/images/rectangle_small.png)
+                    no-repeat;
                 background-size: 100% 100%;
                 position: relative;
                 .content-r-wrap-t-title {

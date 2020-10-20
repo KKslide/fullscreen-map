@@ -296,6 +296,7 @@ export default {
         // this.getMap(newVal)
         // },
         '$store.state.allCurrentTrade': function (newVal) {
+            console.log(newVal);
             this.getMap(newVal)
         }
     },

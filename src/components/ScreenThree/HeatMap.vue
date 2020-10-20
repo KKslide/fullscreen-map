@@ -32,22 +32,20 @@ export default {
             const geoCoordMap = allCity;
 
 
-            /* let dataValue = [ // 父组件传来的值 该写成这样
+            let dataValue = [ // 父组件传来的值 该写成这样
                 { name: "海门", value: 100 },
                 { name: "鄂尔多斯", value: 112 },
                 { name: "招远", value: 112 },
                 { name: "舟山", value: 112 },
                 { name: "齐齐哈尔", value: 114 }
-            ]; */
+            ];
 
-
-            let dataValue = mapdata
+            // let dataValue = mapdata
 
             dataValue.map(e => {
                 e["name"] = e["name"] ? e["name"] : e["type"];
                 e["amount"] = Math.round(Number(e["amount"]))
             })
-
 
             let convertData = function (data) {
                 var res = [];
@@ -140,9 +138,6 @@ export default {
         mapData(nv, ov) {
             this.getMap(nv)
         },
-        // mapData: (nv, ov) => {
-        //   this.getMap(nv)
-        // }
     }
 }
 </script>

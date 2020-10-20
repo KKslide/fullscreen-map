@@ -1,81 +1,66 @@
 {
-    "dataList": [
+    "nationList": [
         {
-            "amount": "184792.36",
+            "amount": "111015.32",
             "unit": "万元",
-            "type": "贷款余额"
+            "type": "总贷款余额"
         },
         {
-            "amount": "39484",
-            "unit": "笔",
-            "type": "累计放款笔数"
-        },
-        {
-            "amount": "26222",
-            "unit": "件",
-            "type": "进件数"
-        },
-        {
-            "amount": "11.0",
-            "unit": "件",
-            "type": "放款数"
-        },
-        {
-            "amount": "24222",
-            "unit": "件",
-            "type": "审批通过数"
-        },
-        {
-            "amount": "0.0",
-            "unit": "万元",
-            "type": "昨日放款金额"
-        },
-        {
-            "amount": "0.0",
-            "unit": "笔",
-            "type": "昨日放款笔数"
-        },
-        {
-            "amount": "0.0",
-            "unit": "万元",
-            "type": "昨日还款金额"
-        },
-        {
-            "amount": "0.0",
-            "unit": "万元",
-            "type": "昨日还款利息"
-        },
-        {
-            "amount": "0.0",
-            "unit": "位",
+            "amount": "2089",
+            "unit": "户",
             "type": "总客户数"
         },
         {
-            "amount": "0.0",
-            "unit": "位",
-            "type": "昨日新增客户数"
-        },
-        {
-            "amount": "2800000",
+            "amount": "176130.70",
             "unit": "万元",
-            "type": "今日放款金额"
+            "type": "授信金额"
         },
         {
-            "amount": "11",
+            "amount": "2089",
             "unit": "笔",
-            "type": "今日放款笔数"
+            "type": "授信笔数"
+        },
+        {
+            "amount": "116812.5",
+            "unit": "万元",
+            "type": "放款金额"
+        },
+        {
+            "amount": "1615",
+            "unit": "笔",
+            "type": "放款笔数"
         }
     ],
-    "realeaseType": [
+    "localList": [
         {
-            "data2": "35269",
-            "data1": "73777.03",
-            "type": "海大"
+            "amount": "11931.93",
+            "unit": "万元",
+            "type": "总贷款余额"
         },
         {
-            "data2": "16155",
-            "data1": "116812.5",
-            "type": "喜之郎"
+            "amount": "186",
+            "unit": "户",
+            "type": "总客户数"
+        },
+        {
+            "amount": "19017.30",
+            "unit": "万元",
+            "type": "授信金额"
+        },
+        {
+            "amount": "256",
+            "unit": "笔",
+            "type": "授信笔数"
+        },
+        {
+            "amount": "12731.10",
+            "unit": "万元",
+            "type": "放款金额"
+        },
+        {
+            "amount": "186",
+            "unit": "笔",
+            "type": "放款笔数"
         }
     ],
     "nationmap": [
@@ -250,206 +235,129 @@
             "value": "0.0"
         }
     ],
-    "latest7": [
+    "7day_CY": [
         {
             "date": "20201015",
-            "data2": "148.38",
-            "data1": "280"
+            "amount": "280"
         },
         {
             "date": "20201014",
-            "data2": "230.12",
-            "data1": "354.6"
+            "amount": "354.6"
         },
         {
             "date": "20201013",
-            "data2": "245.34",
-            "data1": "133"
+            "amount": "133"
         },
         {
             "date": "20201012",
-            "data2": "149.27",
-            "data1": "325.4"
+            "amount": "325.4"
         },
         {
             "date": "20201011",
-            "data2": "162.17",
-            "data1": "193.9"
+            "amount": "193.9"
         },
         {
             "date": "20201010",
-            "data2": "178.93",
-            "data1": "599.6"
+            "amount": "599.6"
         },
         {
             "date": "20201009",
-            "data2": "154.43",
-            "data1": "506"
+            "amount": "506"
         }
     ],
-    "fullDayTrade": [
+    "localmap": [
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "1"
+            "amount": "1.0",
+            "name": "新兴",
+            "value": "10.0"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "2"
+            "amount": "321",
+            "name": "鹤山",
+            "value": "441.2"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "3"
+            "amount": "485.2",
+            "name": "阳春",
+            "value": "1211"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "4"
+            "amount": "774",
+            "name": "清新",
+            "value": "1454"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "5"
+            "amount": "112",
+            "name": "佛冈",
+            "value": "1224"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "6"
+            "amount": "441",
+            "name": "阳山",
+            "value": "3115"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "7"
+            "amount": "623",
+            "name": "英德",
+            "value": "6124"
         },
         {
-            "date24_before": "10",
-            "date24": "0",
-            "hour": "8"
+            "amount": "844",
+            "name": "连州",
+            "value": "8841"
         },
         {
-            "date24_before": "54.6",
-            "date24": "0",
-            "hour": "9"
+            "amount": "522",
+            "name": "曲江",
+            "value": "5114"
         },
         {
-            "date24_before": "80",
-            "date24": "35",
-            "hour": "10"
+            "amount": "774",
+            "name": "霞兴",
+            "value": "4566"
         },
         {
-            "date24_before": "80",
-            "date24": "95",
-            "hour": "11"
+            "amount": "52",
+            "name": "南雄",
+            "value": "1145"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "12"
+            "amount": "455",
+            "name": "开平",
+            "value": "6223"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "13"
+            "amount": "995",
+            "name": "恩平",
+            "value": "6022"
         },
         {
-            "date24_before": "20",
-            "date24": "0",
-            "hour": "14"
+            "amount": "952",
+            "name": "阳东",
+            "value": "7884"
         },
         {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "15"
+            "amount": "113",
+            "name": "阳西",
+            "value": "1224"
         },
         {
-            "date24_before": "0",
-            "date24": "124.9",
-            "hour": "16"
+            "amount": "620",
+            "name": "揭阳",
+            "value": "6635"
         },
         {
-            "date24_before": "60",
-            "date24": "25.1",
-            "hour": "17"
-        },
-        {
-            "date24_before": "50",
-            "date24": "0",
-            "hour": "18"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "19"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "20"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "21"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "22"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "23"
-        },
-        {
-            "date24_before": "0",
-            "date24": "0",
-            "hour": "0"
+            "amount": "720",
+            "name": "丰顺",
+            "value": "7415"
         }
     ],
     "realist_CY": [
         {
-            "amount": "34400.0",
-            "address": "黑龙江省哈尔滨市",
-            "name": "刘**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "44800.0",
-            "address": "内蒙古省包头市",
-            "name": "何**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "110000.0",
-            "address": "河北省唐山市",
-            "name": "黄**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "59100.0",
-            "address": "甘肃省兰州市",
-            "name": "张**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "54800.0",
-            "address": "新疆省乌鲁木齐市",
-            "name": "刘**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "49900.0",
-            "address": "山东省济南市",
-            "name": "周**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "110000.0",
-            "address": "河北省石家庄市",
-            "name": "李**",
+            "amount": "251000",
+            "address": "山西省运城市万荣县",
+            "sex": "先生",
+            "name": "牛捷",
             "type": "个人农户贷款"
         },
         {
@@ -474,33 +382,59 @@
             "type": "个人农户贷款"
         },
         {
-            "amount": "59100.0",
-            "address": "甘肃省兰州市",
-            "name": "周**",
+            "amount": "250000",
+            "address": "江西省赣州市大余县",
+            "sex": "先生",
+            "name": "刘军",
             "type": "个人农户贷款"
         },
         {
-            "amount": "48000.0",
-            "address": "湖北省邯郸市",
-            "name": "孙**",
+            "amount": "249000",
+            "address": "山西省运城市万荣县",
+            "sex": "先生",
+            "name": "蒋文蓄",
             "type": "个人农户贷款"
         },
         {
-            "amount": "269300.0",
+            "amount": "400000",
+            "address": "新疆维吾尔自治区乌鲁木齐市天山区中山路479号",
+            "sex": "先生",
+            "name": "曾传生",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "200000",
+            "address": "广东省清远市清新区",
+            "sex": "先生",
+            "name": "冯贤峰",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "475000",
+            "address": "北京市北京市东城区前门大街1号",
+            "sex": "先生",
+            "name": "刘波",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "400000",
+            "address": "新疆维吾尔自治区乌鲁木齐市天山区中山路479号",
+            "sex": "先生",
+            "name": "曾传生",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
+            "address": "江苏省南京市",
+            "sex": "女士",
+            "name": "曾焕芬",
+            "type": "个人农户贷款"
+        },
+        {
+            "amount": "500000",
             "address": "上海市",
-            "name": "黄**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "110000.0",
-            "address": "河北省邯郸市",
-            "name": "魏**",
-            "type": "个人农户贷款"
-        },
-        {
-            "amount": "59100.0",
-            "address": "甘肃省兰州市",
-            "name": "吴**",
+            "sex": "女士",
+            "name": "曾焕芬",
             "type": "个人农户贷款"
         }
     ]

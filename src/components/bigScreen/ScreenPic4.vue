@@ -126,7 +126,8 @@
                 </div>
             </div>
         </div>
-        <page-switcher :prePagePath="'/screenpic3'" :nextPagePath="'/screenpic1'"></page-switcher>
+        <!-- <page-switcher :prePagePath="'/screenpic3'" :nextPagePath="'/screenpic5'"></page-switcher> -->
+        <page-switcher :prePagePath="prePage" :nextPagePath="nextPage"></page-switcher>
     </div>
 </template>
 <script>
@@ -196,7 +197,10 @@ export default {
                     }
                 ]
             },
-            pieChartSuccessData: []
+            pieChartSuccessData: [],
+
+            prePage:'',
+            nextPage:''
         }
     },
     components: {
@@ -212,7 +216,30 @@ export default {
         window.chartTimer.dataAutoRefrash = setInterval(_ => {
             this.getData();
         }, 60 * 1000 * 10); // 十分钟更新一次
-        this.$setCarousel('ScreenPic1')
+        // this.$setCarousel('ScreenPic5')
+        let curPageName = this.$route.path.replace('/',''); // 当前路由名称
+        let carouselList = JSON.parse(sessionStorage.getItem('carouselList')); // 轮播顺序(carouselList)
+        let curIndex = carouselList.indexOf(curPageName);
+        if(curIndex == -1){
+            return false;
+        }
+        else{
+            if(curIndex == 0){ // 第一页
+                this.$setCarousel(carouselList[1]); // 下一页为第二页
+                this.nextPage = '/'+carouselList[1];
+                this.prePage = '/'+carouselList[carouselList.length-1]; // 上一页为最后一页
+            }
+            else if(curIndex == carouselList.length-1){ // 最后一页
+                this.$setCarousel(carouselList[0]); // 下一页为第一页
+                this.nextPage = '/'+carouselList[0]; 
+                this.prePage = '/'+carouselList[curIndex-1]; 
+            }
+            else{
+                this.$setCarousel(carouselList[curIndex+1]); // 设置下一页
+                this.nextPage = '/'+carouselList[curIndex+1];
+                this.prePage = '/'+carouselList[curIndex-1]; 
+            }
+        }
     },
     methods: {
         getData() {

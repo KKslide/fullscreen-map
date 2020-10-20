@@ -2,10 +2,12 @@
     <div class="loginBG">
         <form action method="POST" class="loginForm" @submit.prevent="submit">
             <p style="font-size:50px;">请输入口令：</p>
+
             <p>
                 口令：
                 <input type="password" v-model="password" autofocus placeholder="请输入口令" />
             </p>
+
             <p>
                 是否轮播：
                 <input
@@ -19,6 +21,7 @@
                 <input type="radio" name="isCarousel" id="no" value="no" v-model="isCarousel" />
                 <label for="no">否</label>
             </p>
+
             <p>
                 轮播时间：
                 <input
@@ -28,10 +31,38 @@
                     :disabled="isCarousel=='no'"
                 />
             </p>
+
+            <p class="carouselList">
+                <span>轮播页面：</span>
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic1" value="screenpic1" v-model="carouselList"/>
+                    <label for="screenpic1">温氏物联网金融</label>
+                </em>
+                <br />
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic2" value="screenpic2" v-model="carouselList"/>
+                    <label for="screenpic2">线上资产业务监控大屏</label>
+                </em>
+                <br />
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic3" value="screenpic3" v-model="carouselList"/>
+                    <label for="screenpic3">线上存款监控大屏</label>
+                </em>
+                <br />
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic4" value="screenpic4" v-model="carouselList"/>
+                    <label for="screenpic4">移动支付业务情况</label>
+                </em>
+                <br />
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic5" value="screenpic5" v-model="carouselList"/>
+                    <label for="screenpic5">惠普金融业务大屏</label>
+                </em>
+            </p>
+
             <p>
                 <input type="submit" value="确认" />
             </p>
-            <p></p>
         </form>
     </div>
 </template>
@@ -44,7 +75,8 @@ export default {
             toPage: '',
             password: '',
             carouselTime: 30,
-            isCarousel: 'no'
+            isCarousel: 'no',
+            carouselList:[]
         }
     },
     methods: {
@@ -52,13 +84,18 @@ export default {
             if (!this.password) {
                 alert('没填密码！')
             }
-            if (!this.carouselTime) {
+            if (this.isCarousel != 'no' && !this.carouselTime) {
                 alert('没填轮播时间！')
+            }
+            if (this.carouselList.length==0) {
+                alert('请选择轮播页面！')
             }
             sessionStorage.setItem('timer', this.carouselTime);
             sessionStorage.setItem('isCarousel', this.isCarousel);
+            sessionStorage.setItem('carouselList', JSON.stringify(this.carouselList.sort()));
             if (!sessionStorage.getItem('toPage') || (sessionStorage.getItem('toPage') == '/access')) {
-                this.toPage = '/screenpic1'
+                // this.toPage = '/screenpic1'
+                this.toPage = this.carouselList.sort()[0]
             } else {
                 this.toPage = sessionStorage.getItem('toPage')
             }
@@ -98,7 +135,7 @@ export default {
         box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.62);
         border-radius: 15px;
         width: 600px;
-        height: 400px;
+        // height: 400px;
         padding: 10px;
         text-align: center;
         display: flex;
@@ -110,6 +147,21 @@ export default {
         transform: translate(-50%, -50%);
         p {
             font-size: 30px;
+            padding: 0 50px;
+            text-align: left;
+        }
+        p:first-child {
+            text-align: center;
+        }
+        p.carouselList {
+            font-size: 25px;
+            position: relative;
+            span {
+                position: absolute;
+            }
+            em{
+                margin-left: 130px;
+            }
         }
         p {
             input {

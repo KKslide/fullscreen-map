@@ -1,21 +1,28 @@
 <template>
-    <div ref="map" class="map"></div>
+    <div id="map" ref="map" :style="this.childClass"></div>
 </template>
 <script>
 import echarts from 'echarts'
 import '../../../node_modules/echarts/map/js/china.js'; // 引入中国地图数据
+import { mapData } from './HeatMapTemp'; // 引入热力图数据
+import allCity from 'e:/Work/nantian/梅州客商大屏/05上线阶段/tomcat/apache-tomcat-7.0.94/webapps/usp_ks/fxxking_big_screen/src/js/allCity.js';
 
 export default {
     name: 'ChinaMap',
     data() {
         return {
             titleFontColor: 'white',
+            mapColor: [
+                [0, '#BCBFD8'],
+                [0.3, '#6B759D'],
+                [0.4, '#AFFCF7'],
+                [1, '#46B9DE']
+            ],
             list: [],
             title: '\nTop5: ',
             echartElement: null,
         }
     },
-    mounted() { },
     methods: {
         changeNum(num) {
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0]
@@ -28,19 +35,15 @@ export default {
                 return v1 - v2;
             }
         },
-        clone(origin) {
-            return Object.values(Object.assign({}, origin))
-        },
-        getMap() {
+        getMap(mapname) {
             // 基于准备好的dom，初始化echarts实例
             this.echartElement = echarts.init(this.$el);
-            // var data = this.nationMapValueData;
-            // var data = this.$deepClone(this.nationMapValueData);
-            var data = this.clone(this.nationMapValueData);
+            var data = this.$deepClone(this.nationMapValueData);
             //   存Top5 前五名
             var topArr = data.sort(this.compare("amount")).slice(-5).reverse();
 
             for (var i = 0; i < topArr.length; i++) {
+                // this.title += (i + 1) + '. ' + topArr[i].type + ' : ' + this.changeNum(topArr[i].amount) + '\n'
                 this.title += topArr[i].type + this.changeNum(topArr[i].amount) + '   '
             }
 
@@ -50,53 +53,16 @@ export default {
             }
 
             // 全国城市坐标
-            var geoCoordMap = {
-                "新疆": [86.61, 40.79],
-                "西藏": [89.13, 30.66],
-                "黑龙江": [128.34, 47.05],
-                "吉林": [126.32, 43.38],
-                "辽宁": [123.42, 41.29],
-                "内蒙古": [112.17, 42.81],
-                "北京": [116.40, 40.40],
-                "宁夏": [106.27, 36.76],
-                "山西": [111.95, 37.65],
-                "河北": [115.21, 38.44],
-                "天津": [117.04, 39.52],
-                "青海": [97.07, 35.62],
-                "甘肃": [103.82, 36.05],
-                "山东": [118.01, 36.37],
-                "陕西": [108.94, 34.46],
-                "河南": [113.46, 34.25],
-                "安徽": [117.28, 31.86],
-                "江苏": [120.26, 32.54],
-                "上海": [121.46, 31.28],
-                "四川": [103.36, 30.65],
-                "湖北": [112.29, 30.98],
-                "浙江": [120.15, 29.28],
-                "重庆": [107.51, 29.63],
-                "湖南": [112.08, 27.79],
-                "江西": [115.89, 27.97],
-                "贵州": [106.91, 26.67],
-                "福建": [118.31, 26.07],
-                "云南": [101.71, 24.84],
-                "台湾": [121.01, 23.54],
-                "广西": [108.67, 23.68],
-                "广东": [113.98, 22.82],
-                "海南": [110.03, 19.33],
-                "澳门": [113.54, 22.19],
-                "香港": [114.17, 22.32]
-            };
+            var geoCoordMap = allCity;
 
             var convertData = function (data) {
                 var res = [];
                 for (var i = 0; i < data.length; i++) {
                     var geoCoord = geoCoordMap[data[i].type];
-
                     if (geoCoord) {
                         res.push({
                             name: data[i].type,
-                            value: geoCoord.concat(data[i].value),
-
+                            value: geoCoord.concat(data[i].amount),
                         });
                     }
                 }
@@ -129,7 +95,7 @@ export default {
                         height: 200,
                     },
                 },
-                backgroundColor: '',
+                // backgroundColor: 'pink',
                 textStyle: {
                     color: this.fontColor,
                     fontSize: '80%'
@@ -141,7 +107,7 @@ export default {
                         color: "white",
                         fontSize: '10%'
                     },
-                    formatter: params => {
+                    formatter: function (params) {
                         if (params.data == undefined) {
                             return
                         } else {
@@ -151,31 +117,38 @@ export default {
                 },
                 animation: false,
                 grid: {
-                    height: '10%',
-                    x: '15%',
-                    y: '15%'
+                    backgroundColor: 'rgba(255,0,0,.8)',
+                    // height: '0%',
+                    // x: '15%',
+                    // y: '5%'
+                    // left: 'center',
+                    //   top: '35%',
                 },
                 // 左下角的条子
                 visualMap: {
                     show: false,
                     min: 0,
                     max: result,
-                    left: '10%',
-                    // top: 'bottom',
-                    bottom: '5%',
+                    left: 'center',
+                    top: '10%',
+                    // bottom: '5%',
                     calculable: false,
                     // seriesIndex: [1],
                     inRange: {
                         // color: ['#2fb9ea', '#0f58ce'] // 蓝绿
+                        // color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
                     }
                 },
                 geo: [
                     {
                         type: 'map',
                         map: 'china',
-                        top: '40%',
+                        top: '35%',
+                        left: '12%',
+                        right: '12%',
+                        bottom: '10%',
                         zoom: 1.2,
-                        aspectScale: 1.05,
+                        aspectScale: 1.1,
                         label: {
                             emphasis: {
                                 show: false
@@ -203,9 +176,12 @@ export default {
                     },
                     {
                         type: 'map',
-                        top: '40%',
+                        top: '35%',
+                        left: '12%',
+                        right: '12%',
+                        bottom: '10%',
                         zoom: 1.2,
-                        aspectScale: 1.05,
+                        aspectScale: 1.1,
                         map: 'china',
                         label: {
                             normal: {
@@ -223,7 +199,6 @@ export default {
                         roam: false,
                         itemStyle: {
                             normal: {
-                                // areaColor: '#0f58ce',
                                 areaColor: '#00177b',
                                 borderColor: '#2fb9ea',
                             },
@@ -234,6 +209,7 @@ export default {
                     },
                 ],
                 series: [
+                    /* 普通地图 */
                     {
                         geoIndex: 1,
                         type: 'map',
@@ -251,102 +227,115 @@ export default {
                             data: this.list
                         },
                     },
+                    /* 热力图 */
+                    {
+                        geoIndex: 1,
+                        name: '',
+                        type: 'heatmap',
+                        coordinateSystem: 'geo',
+                        data: convertData(mapData)
+                    },
                     /* 普通点 */
-                    {
-                        name: '',
-                        // type: 'scatter',
-                        type: 'effectScatter',
-                        coordinateSystem: 'geo',
-                        data: convertData(data),
-                        // symbolSize: 12,
-                        symbolSize: function (val) {
-                            if (val[2] == "0.0") {
-                                return 0
-                            } else {
-                                return 12;
-                            };
-                        },
-                        showEffectOn: 'render',
-                        rippleEffect: {
-                            brushType: 'stroke'
-                        },
-                        label: {
-                            normal: {
-                                formatter: '{b}',
-                                position: 'top',
-                                show: true,
-                                color: 'white',
-                                fontSize: 16,
-                            },
-                            emphasis: {
-                                show: false
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                color: '#07b6ea',
-                            },
-                            emphasis: {
-                                color: '#07b6ea'
-                            }
-                        }
-                    },
-                    /* 动画点 */
-                    {
-                        name: '',
-                        type: 'effectScatter',
-                        coordinateSystem: 'geo',
-                        data: convertData(data.sort(function (a, b) {
-                            return b.amount - a.amount;
-                        }).slice(0, 5)),
-                        symbolSize: function (val) {
-                            return maxNum -= 4;
-                        },
-                        // showEffectOn: 'none',
-                        showEffectOn: 'render',
-                        rippleEffect: {
-                            brushType: 'stroke'
-                        },
-                        // show:false,
-                        hoverAnimation: true,
-                        label: {
-                            normal: {
-                                formatter: '{b}',
-                                position: 'right',
-                                show: false
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                color: '#00ffff',
-                                shadowBlur: 10,
-                                shadowColor: '#07b6ea'
-                            }
-                        },
-                        zlevel: 1
-                    },
+                    // {
+                    //     name: '',
+                    //     // type: 'scatter',
+                    //     type: 'effectScatter',
+                    //     coordinateSystem: 'geo',
+                    //     data: convertData(data),
+                    //     // symbolSize: 12,
+                    //     symbolSize: function (val) {
+                    //         if (val[2] == "0.0" || val[2] == "") {
+                    //             return 0
+                    //         } else {
+                    //             return 12;
+                    //         };
+                    //     },
+                    //     showEffectOn: 'render',
+                    //     rippleEffect: {
+                    //         brushType: 'stroke'
+                    //     },
+                    //     label: {
+                    //         normal: {
+                    //             formatter: '{b}',
+                    //             position: 'top',
+                    //             show: true,
+                    //             color: 'white',
+                    //             fontSize: 16,
+                    //         },
+                    //         emphasis: {
+                    //             show: false
+                    //         }
+                    //     },
+                    //     itemStyle: {
+                    //         normal: {
+                    //             color: '#07b6ea',
+                    //         },
+                    //         emphasis: {
+                    //             color: '#07b6ea'
+                    //         }
+                    //     }
+                    // },
+                    // /* 动画点 */
+                    // {
+                    //     name: '',
+                    //     type: 'effectScatter',
+                    //     coordinateSystem: 'geo',
+                    //     data: convertData(data.sort(function (a, b) {
+                    //         return b.amount - a.amount;
+                    //     }).slice(0, 5)),
+                    //     symbolSize: function (val) {
+                    //         if (val[2] == 0) {
+                    //             return 0
+                    //         } else {
+                    //             return maxNum -= 3;
+                    //         }
+                    //     },
+                    //     // showEffectOn: 'none',
+                    //     showEffectOn: 'render',
+                    //     rippleEffect: {
+                    //         brushType: 'stroke'
+                    //     },
+                    //     // show:false,
+                    //     hoverAnimation: true,
+                    //     label: {
+                    //         normal: {
+                    //             formatter: '{b}',
+                    //             position: 'right',
+                    //             show: false
+                    //         }
+                    //     },
+                    //     itemStyle: {
+                    //         normal: {
+                    //             color: '#00ffff',
+                    //             shadowBlur: 10,
+                    //             shadowColor: '#07b6ea'
+                    //         }
+                    //     },
+                    //     zlevel: 1
+                    // },
                 ]
             };
 
             this.echartElement.setOption(option);
-
-        },
+        }
     },
+    props: ['childClass', 'nationMapValueData', 'titleName'],
     watch: {
-        nationMapValueData(newVal) {
+        nationMapValueData(v) {
             this.getMap()
         }
     },
-    props: ['nationMapValueData', 'titleName'],
     beforeDestroy() {
         this.echartElement.dispose();
     }
 };
 
 </script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-.map {
+#map {
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
 }
 </style>

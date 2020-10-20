@@ -1,19 +1,19 @@
 <template>
     <div class="SPTcontainer">
         <div class="logo"></div>
-        <div class="title">线上存款监控大屏</div>
+        <div class="title">喜之郎供应链业务</div>
         <div class="content">
             <!-- 左边 -->
             <div class="content-l-wrap">
                 <div class="l-top">
                     <div class="l-top-title top_title">
-                        <span>线上存款规模</span>
+                        <span>注册及额度情况</span>
                     </div>
                     <count-part :iconItemData="onlineSaving"></count-part>
                 </div>
                 <div class="l-bot">
                     <div class="top_title">
-                        <span>全国交易分布情况</span>
+                        <span>成功注册用户分布情况</span>
                     </div>
                     <!-- Top5排行 -->
                     <heat-map-rank :mapData="mapDataTop5"></heat-map-rank>
@@ -25,38 +25,99 @@
             <div class="content-mid-wrap">
                 <div class="content-mid-wrap-t">
                     <div class="top_title">
-                        <span>近七日交易量走势</span>
+                        <span>用信情况</span>
                     </div>
-                    <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart>
-                    <!-- <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart> -->
+                    <!-- <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart> -->
+                    <div class="chart_box">
+                        <div class="chart_table">
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">贷款金额</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">累计贷款金额</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">用信户数</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">户</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">单户最大</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">单户最小</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                        </div>
+                        <div class="split_line"></div>
+                        <div class="chart_table">
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">户均贷款金额</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">笔数</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">笔</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">笔数最大</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">笔</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">笔数最小</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                            <div class="chart_table_item">
+                                <span class="chart_table_title">笔均</span>
+                                <p class="chart_table_val">999,999</p>
+                                <span class="chart_table_unit">万元</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="content-mid-wrap-m">
+                <div class="content-mid-wrap-m" v-if="false">
                     <div class="top_title">
                         <span class="top_title_after" attr-title="单位(户)">近七日线上开户走势</span>
-                        <!-- <div style="font-size:15px;">单位(户)</div> -->
                     </div>
                     <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart>
                 </div>
                 <div class="content-mid-wrap-b">
                     <div class="top_title">
-                        <span class="top_title_after">全国实时存款分布情况</span>
+                        <span class="top_title_after">全国客户省份分布情况</span>
                     </div>
                     <!-- <live-tip :position="{'top':'25%'}"></live-tip> -->
-                    <live-trade-map :position="{'top':'8%',}"></live-trade-map>
-                    <!-- <heat-map :nationMapValueData="mapData"></heat-map> -->
+                    <!-- <live-trade-map :position="{'top':'8%',}"></live-trade-map> -->
+                    <double-bar></double-bar>
                 </div>
             </div>
             <!-- 右边 -->
             <div class="content-r-wrap">
                 <div class="content-r-wrap-t">
                     <div class="top_title">
-                        <span>今日线上存款实时情况</span>
+                        <span>按核心企业统计</span>
                     </div>
-                    <line-chart-right :productRealTimeLine="productRealTimeLine"></line-chart-right>
+                    <!-- <bar-chart :barChartData="barChartData"></bar-chart> -->
+                </div>
+                <div class="content-r-wrap-m">
+                    <div class="top_title">
+                        <span>最近7天交易趋势</span>
+                    </div>
+                    <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart>
                 </div>
                 <div class="content-r-wrap-b">
                     <div class="top_title">
-                        <span>最新存款动态</span>
+                        <span>实时交易情况</span>
                     </div>
                     <realTime-list :reallist="workreallist" :originList="originRealList"></realTime-list>
                 </div>
@@ -67,36 +128,27 @@
     </div>
 </template>
 <script>
-import CountPart from '@/components/ScreenThree/CountPart'; // 统计组件
-// import HeatMap from '@/components/ScreenThree/HeatMap'; // 客户交易量热力图
-import HeatMap from '@/components/ScreenThree/ChinaMap'; // 客户交易量热力图
+import CountPart from '@/components/ScreenSix/CountPart'; // 统计组件
+import HeatMap from '@/components/ScreenSix/HeatMap'; // 客户交易量热力图
+// import HeatMap from '@/components/ScreenSix/ChinaMap'; // 客户交易量热力图
 import HeatMapRank from '@/components/ScreenThree/HeatMapRank'; // 热力图
 import LineChartRight from '@/components/ScreenThree/LineChartRight'; // 购买产品实时情况 - 中间曲线图
-import RealTimeList from '@/components/ScreenThree/RealTimeList'; // 中间下边实时交易
+import RealTimeList from '@/components/ScreenSix/RealTimeList'; // 中间下边实时交易
+import BarChart from "@/components/ScreenSix/BarChart"; 
 
 import LineChart from '@/components/ScreenThree/LineChart'; // 近七日交易量走势
 import Tendency from '@/components/ScreenThree/Tendency'; // 近七日线上开户走势
 import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 import LiveTradeTip from '@/components/publicComponent/LiveTip' // 实时交易提示
+import DoubleBarChart from '../ScreenSix/DoubleBarChart.vue';
 // import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
     name: 'ScreenPic3',
     data() {
         return {
-            iconItemData: [
-                {
-                    text: '今日放款金额',
-                    value: '9,953,666.8',
-                    unit: '元'
-                },
-                {
-                    text: '今日放款笔数',
-                    value: '226',
-                    unit: '笔'
-                }
-            ],
-
+            iconItemData: [],
+            barChartData:[],
             onlineSaving: [], // 累计线上存款交易
             heatMapData: [], // 热数据
             productRealTimeLine: [], // 理财产品实时情况
@@ -120,8 +172,10 @@ export default {
     },
     components: {
         'count-part': CountPart, // 统计组件
+        'bar-chart': BarChart, // 统计组件
         'heat-map': HeatMap, // 热力图
         'heat-map-rank': HeatMapRank,
+        'double-bar':DoubleBarChart,
         'line-chart-right': LineChartRight, // 购买产品实时情况
         'realTime-list': RealTimeList, // 交易提醒-
         'line-chart': LineChart,
@@ -163,17 +217,13 @@ export default {
     methods: {
         getMap() {
             this.$axios({
-                url: this.$http.screenpic3.url, // 本地
-                method: this.$http.screenpic3.method,
+                url: this.$http.screenpic6.url, // 本地
+                method: this.$http.screenpic6.method,
                 data: {},
-
-                // url: "http://10.30.80.71:8100/usp_ks/tx/SZYH",
-                // url: "./tx/SZYH",
-                // method: "post",
-                // data: {},
             }).then(res => {
                 let curHour = new Date().getHours();
-                this.onlineSaving = res.data.iconItemData1  // 左上组件 
+                this.onlineSaving = res.data.iconItemData  // 左上组件 
+                this.barChartData = res.data.coreCompany
                 this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
                 this.productRealTimeLine.data1.splice(curHour + 1)
                 this.productRealTimeLine.data2.splice(curHour + 1)
@@ -335,23 +385,62 @@ export default {
                 background-size: 100% 100%;
                 background-position: center;
                 position: relative;
-                // height: 40%;
                 display: inline-block !important;
             }
             .content-mid-wrap-t {
-                // flex: 2.5;
-                // height: 21.5%;
-                height: 25%;
+                // height: 40%;
+                height: 29vh;
                 margin-bottom: 0.1rem;
+                div.chart_box{
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-41%);
+                    display: flex;
+                    justify-content: space-around;
+                    .chart_table{
+                        display: flex;
+                        flex-direction: column;
+                        div.chart_table_item{
+                            width: 100%;
+                            display: flex;
+                            padding:3px 0;
+                            span.chart_table_title{
+                                font-size: 23px;
+                            }
+                            p.chart_table_val{
+                                    color: #7aeaff;
+                                    text-shadow: 0 0 8px rgba(56, 250, 255, 0.62);
+                                    font-size: 25px;
+                                    padding:0 15px;
+                            }
+                            span.chart_table_unit{
+                                font-size: 20px;
+                            }
+                            span{
+                                color:#fff;
+                            }
+                        }
+                    }
+                    div.split_line{
+                        // position: ;
+                        width: 1px;
+                        height: 1.5em;
+                        background-color: #fff;
+                    }
+                }
             }
-            .content-mid-wrap-m {
-                // width: 33.3333vw;
-                width: 100%;
-                height: 25%;
-                overflow: hidden;
-            }
+            // .content-mid-wrap-m {
+            //     width: 100%;
+            //     height: 25%;
+            //     margin-bottom: 0.1rem;
+            //     overflow: hidden;
+            // }
             .content-mid-wrap-b {
-                height: 50%;
+                // height: 60%;
+                height: 61vh;
+                background: url("../../../static/images/wrap_bg4.png") center center no-repeat;
+                background-size: 100% 100%;
                 position: relative;
             }
         }
@@ -360,44 +449,28 @@ export default {
             display: flex;
             flex-direction: column;
             .content-r-wrap-t {
-                height: 42vh;
+                height: 30vh;
                 margin-bottom: 0.1rem;
-                background: url("../../../static/images/wrap_bg4.png") center
-                    center no-repeat;
+                background: url("../../../static/images/rectangle_small.png") center center no-repeat;
                 background-size: 100% 100%;
                 position: relative;
             }
             .content-r-wrap-m {
-                flex: 1.5;
+                height: 30vh;
                 margin-bottom: 0.1rem;
-                background: url("../../../static/images/wrap_bg4.png") center
-                    center no-repeat;
+                background: url("../../../static/images/rectangle_small.png") center center no-repeat;
                 background-size: 100% 100%;
                 position: relative;
+                #lineChart{
+                    height:100%;
+                }
             }
             .content-r-wrap-b {
                 width: 28vw;
-                height: 48vh;
-                background: url("../../../static/images/wrap_bg4.png") center
-                    center no-repeat;
+                height: 30vh;
+                background: url("../../../static/images/wrap_bg4.png") center center no-repeat;
                 background-size: 100% 100%;
                 position: relative;
-                .content_pie_left,
-                .content_pie_right {
-                    position: absolute;
-                    width: 80%;
-                    height: 75%;
-                }
-                .content_pie_left {
-                    left: 0.15rem;
-                    bottom: 0.15rem;
-                    //   background-color: rgba(254, 193, 204, 1);
-                }
-                .content_pie_right {
-                    right: 0.15rem;
-                    top: 0.15rem;
-                    //   background-color: rgba(255, 255, 0, 0.5);
-                }
             }
         }
     }
