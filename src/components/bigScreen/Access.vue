@@ -58,6 +58,11 @@
                     <input type="checkbox" name="carouselList" id="screenpic5" value="screenpic5" v-model="carouselList"/>
                     <label for="screenpic5">惠普金融业务大屏</label>
                 </em>
+                <br />
+                <em>
+                    <input type="checkbox" name="carouselList" id="screenpic6" value="screenpic6" v-model="carouselList"/>
+                    <label for="screenpic6">喜之郎供应链业务</label>
+                </em>
             </p>
 
             <p>

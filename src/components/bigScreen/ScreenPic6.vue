@@ -25,7 +25,7 @@
             <div class="content-mid-wrap">
                 <div class="content-mid-wrap-t">
                     <div class="top_title">
-                        <span>用信情况</span>
+                        <span>授信及用信情况</span>
                     </div>
                     <!-- <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart> -->
                     <div class="chart_box">
@@ -98,16 +98,17 @@
                     </div>
                     <!-- <live-tip :position="{'top':'25%'}"></live-tip> -->
                     <!-- <live-trade-map :position="{'top':'8%',}"></live-trade-map> -->
-                    <double-bar></double-bar>
+                    <!-- <double-bar></double-bar> -->
+                    <multiple-chart></multiple-chart>
                 </div>
             </div>
             <!-- 右边 -->
             <div class="content-r-wrap">
                 <div class="content-r-wrap-t">
                     <div class="top_title">
-                        <span>按核心企业统计</span>
+                        <span>核心企业统计</span>
                     </div>
-                    <!-- <bar-chart :barChartData="barChartData"></bar-chart> -->
+                    <bar-chart :barChartData="barChartData"></bar-chart>
                 </div>
                 <div class="content-r-wrap-m">
                     <div class="top_title">
@@ -142,6 +143,7 @@ import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的�
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
 import LiveTradeTip from '@/components/publicComponent/LiveTip' // 实时交易提示
 import DoubleBarChart from '../ScreenSix/DoubleBarChart.vue';
+import MultipleChart from '@/components/ScreenSix/MultipleChart';
 // import LiveTipVue from '../publicComponent/LiveTip.vue';
 export default {
     name: 'ScreenPic3',
@@ -176,6 +178,7 @@ export default {
         'heat-map': HeatMap, // 热力图
         'heat-map-rank': HeatMapRank,
         'double-bar':DoubleBarChart,
+        'multiple-chart':MultipleChart,
         'line-chart-right': LineChartRight, // 购买产品实时情况
         'realTime-list': RealTimeList, // 交易提醒-
         'line-chart': LineChart,
@@ -223,7 +226,7 @@ export default {
             }).then(res => {
                 let curHour = new Date().getHours();
                 this.onlineSaving = res.data.iconItemData  // 左上组件 
-                this.barChartData = res.data.coreCompany
+                this.barChartData = this.fixedForm(res.data.coreCompany)
                 this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
                 this.productRealTimeLine.data1.splice(curHour + 1)
                 this.productRealTimeLine.data2.splice(curHour + 1)

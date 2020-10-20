@@ -74,8 +74,8 @@ export default {
                     itemStyle: {
                         normal: {
                             // areaColor: '#00177b',
-                            areaColor: '#2fb9ea',
-                            borderColor: '#2fb9ea'
+                            areaColor: '#073f85',
+                            borderColor: '#fff'
                         },
                         emphasis: {
                             areaColor: '#2fb9ea'

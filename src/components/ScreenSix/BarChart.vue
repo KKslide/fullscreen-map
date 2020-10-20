@@ -11,10 +11,10 @@ export default {
             axisColor: 'rgba(255,255,255,0.5)',
             fontColor: 'rgba(255,255,255,0.9)',
             titleFontColor: 'rgba(12, 236, 228, 0.8)',
-            dataL: ['贷款余额', '放款笔数'],
+            dataL: ['贷款余额(万元)', '放款笔数(笔)'],
             barData: {
                 // type: ['O2O贷款业务', '联合授信业务'],
-                type: ['温氏物联网', '线上车金融'],
+                type: ['喜之郎', '海大'],
                 data1: [1034, 1360],
                 data2: [413, 502]
             },
@@ -61,10 +61,10 @@ export default {
                     type: 'shadow'
                 },
                 grid: {
-                    top: '20%',
-                    left: '32%',
+                    top: '15%',
+                    left: '20%',
                     right: '18%',
-                    bottom: '20%',
+                    bottom: '15%',
                     containLabel: true
                 },
                 legend: { // 不同系列的标记, 可以通过点击图例控制哪些系列不显示。
@@ -106,7 +106,7 @@ export default {
                 },
                 series: [
                     {
-                        name: '贷款余额',
+                        name: '贷款余额(万元)',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离
@@ -139,7 +139,7 @@ export default {
                         data: val.data1
                     },
                     {
-                        name: '放款笔数',
+                        name: '放款笔数(笔)',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离
@@ -195,6 +195,6 @@ export default {
 <style lang="less" scoped>
 #barChart {
     width: 100%;
-    height: 100%;
+    height: 23vh;
 }
 </style>

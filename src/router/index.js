@@ -67,7 +67,7 @@ export default new Router({
             name: 'ScreenPic6',
             component: ScreenPic6,
             meta: {
-                title: '供应链业务情况'
+                title: '喜之郎供应链业务'
             }
         }
     ]
