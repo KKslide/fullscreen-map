@@ -1,13 +1,8 @@
 {
-    "iconItemData": [
+    "iconItemData1": [
         {
             "unit": "户",
             "text": "成功注册户数",
-            "value": "9999"
-        },
-        {
-            "unit": "户",
-            "text": "在途注册户数",
             "value": "9999"
         },
         {
@@ -31,394 +26,243 @@
             "value": "9"
         }
     ],
-    "coreCompany": [
+    "iconItemData2": [
         {
-            "data2": "35269",
-            "data1": "73777.03",
-            "type": "海大"
+            "unit": "万元",
+            "text": "贷款金额",
+            "value": "9999"
         },
+        {
+            "unit": "万元",
+            "text": "累计贷款金额",
+            "value": "18731.36"
+        },
+        {
+            "unit": "户",
+            "text": "用信户数",
+            "value": "6111"
+        },
+        {
+            "unit": "万元",
+            "text": "单户最大",
+            "value": "11573"
+        },
+        {
+            "unit": "万元",
+            "text": "单户最小",
+            "value": "99999"
+        },
+        {
+            "unit": "万元",
+            "text": "户均贷款金额",
+            "value": "99999"
+        },
+        {
+            "unit": "笔",
+            "text": "笔数",
+            "value": "99999"
+        },
+        {
+            "unit": "万元",
+            "text": "笔数最大",
+            "value": "99999"
+        },
+        {
+            "unit": "万元",
+            "text": "笔数最小",
+            "value": "99999"
+        },
+        {
+            "unit": "万元",
+            "text": "笔均",
+            "value": "99999"
+        }
+    ],
+    "coreCompany": [
         {
             "data2": "16156",
             "data1": "116812.5",
             "type": "喜之郎"
         }
     ],
-    "dayProduct": [
-        {
-            "hour": "0",
-            "data2": "1200",
-            "data1": "0.0"
-        },
-        {
-            "hour": "1",
-            "data2": "1523",
-            "data1": "0.0"
-        },
-        {
-            "hour": "2",
-            "data2": "1658",
-            "data1": "0.0"
-        },
-        {
-            "hour": "3",
-            "data2": "4511",
-            "data1": "0.0"
-        },
-        {
-            "hour": "4",
-            "data2": "2713",
-            "data1": "0.0"
-        },
-        {
-            "hour": "5",
-            "data2": "2689",
-            "data1": "0.0"
-        },
-        {
-            "hour": "6",
-            "data2": "6552",
-            "data1": "0.0"
-        },
-        {
-            "hour": "7",
-            "data2": "1453",
-            "data1": "0.0"
-        },
-        {
-            "hour": "8",
-            "data2": "2001",
-            "data1": "611110.0"
-        },
-        {
-            "hour": "9",
-            "data2": "456",
-            "data1": "0.0"
-        },
-        {
-            "hour": "10",
-            "data2": "789",
-            "data1": "0.0"
-        },
-        {
-            "hour": "11",
-            "data2": "551",
-            "data1": "55100"
-        },
-        {
-            "hour": "12",
-            "data2": "9884",
-            "data1": "98800"
-        },
-        {
-            "hour": "13",
-            "data2": "7844",
-            "data1": "78500"
-        },
-        {
-            "hour": "14",
-            "data2": "1224",
-            "data1": "12000"
-        },
-        {
-            "hour": "15",
-            "data2": "4887",
-            "data1": "0.0"
-        },
-        {
-            "hour": "16",
-            "data2": "5555",
-            "data1": "0.0"
-        },
-        {
-            "hour": "17",
-            "data2": "5511",
-            "data1": "0.0"
-        },
-        {
-            "hour": "18",
-            "data2": "7749",
-            "data1": "0.0"
-        },
-        {
-            "hour": "19",
-            "data2": "1455",
-            "data1": "0.0"
-        },
-        {
-            "hour": "20",
-            "data2": "2336",
-            "data1": "0.0"
-        },
-        {
-            "hour": "21",
-            "data2": "1993",
-            "data1": "0.0"
-        },
-        {
-            "hour": "22",
-            "data2": "1044",
-            "data1": "0.0"
-        },
-        {
-            "hour": "23",
-            "data2": "8799",
-            "data1": "0.0"
-        }
-    ],
-    "funnelData": {
-        "trade_count": [
-            {
-                "name": "累计购买笔数",
-                "value": "8266.0"
-            },
-            {
-                "name": "累计充值笔数",
-                "value": "7307.0"
-            },
-            {
-                "name": "累计支取笔数",
-                "value": "127.0"
-            }
-        ],
-        "trade_amount": [
-            {
-                "name": "累计购买金额",
-                "value": "9495.57"
-            },
-            {
-                "name": "累计充值金额",
-                "value": "9235.79"
-            },
-            {
-                "name": "累计支取金额",
-                "value": "86.55"
-            }
-        ]
-    },
-    "customPie": {
-        "data1": [
-            {
-                "name": "陆金所",
-                "value": "999"
-            },
-            {
-                "name": "拉卡拉",
-                "value": "456"
-            },
-            {
-                "name": "自营",
-                "value": "789"
-            },
-            {
-                "name": "宜信",
-                "value": "1012"
-            },
-            {
-                "name": "比财",
-                "value": "1234"
-            }
-        ],
-        "data2": [
-            {
-                "name": "自营",
-                "value": "789"
-            },
-            {
-                "name": "付钱拉",
-                "value": "441"
-            },
-            {
-                "name": "尼克矩阵",
-                "value": "166"
-            },
-            {
-                "name": "比财",
-                "value": "1055"
-            },
-            {
-                "name": "银户通",
-                "value": "235"
-            }
-        ]
-    },
     "nationmap": [
         {
-            "value": "182435.0",
+            "value": "1445",
             "type": "北京",
             "amount": "65"
         },
         {
-            "value": "110000.0",
+            "value": "5226",
             "type": "天津",
             "amount": "4"
         },
         {
-            "value": "21046.02",
+            "value": "5759",
             "type": "石家庄",
             "amount": "2"
         },
         {
-            "value": "21046.02",
+            "value": "2653",
             "type": "辛集",
             "amount": "2"
         },
         {
-            "value": "0.0",
+            "value": "1145",
             "type": "晋州",
             "amount": "0"
         },
         {
-            "value": "678999",
+            "value": "5560",
             "type": "广西",
             "amount": "1234"
         },
         {
-            "value": "0.0",
+            "value": "889",
             "type": "鹿泉",
             "amount": "0"
         },
         {
-            "value": "4000.0",
+            "value": "516",
             "type": "唐山",
             "amount": "1"
         },
         {
-            "value": "0.0",
+            "value": "449",
             "type": "遵化",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "995",
             "type": "丰南",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "1225",
             "type": "秦皇岛",
             "amount": "0"
         },
         {
-            "value": "3000.0",
+            "value": "2991",
             "type": "邯郸",
             "amount": "3"
         },
         {
-            "value": "0.0",
+            "value": "3362",
             "type": "武安",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "421",
             "type": "邢台",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "447",
             "type": "南宫",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "112",
             "type": "沙河",
             "amount": "0"
         },
         {
-            "value": "410.0",
+            "value": "132",
             "type": "保定",
             "amount": "1"
         },
         {
-            "value": "0.0",
+            "value": "167",
             "type": "涿州",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "852",
             "type": "定州",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "322",
             "type": "安国",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "69",
             "type": "高碑店",
             "amount": "0"
         },
         {
-            "value": "5000.0",
+            "value": "4112",
             "type": "张家口",
             "amount": "1"
         },
         {
-            "value": "12342.0",
+            "value": "5526",
             "type": "承德",
             "amount": "4"
         },
         {
-            "value": "0.0",
+            "value": "3360",
             "type": "沧州",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "222",
             "type": "泊头",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "74",
             "type": "任丘",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "1121",
             "type": "黄骅",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "445",
             "type": "河间",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "102",
             "type": "霸州",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "80",
             "type": "三河",
             "amount": "0"
         },
         {
-            "value": "6958.9",
+            "value": "633",
             "type": "衡水",
             "amount": "16"
         },
         {
-            "value": "0.0",
+            "value": "411",
             "type": "冀州",
             "amount": "0"
         },
         {
-            "value": "6958.9",
+            "value": "523",
             "type": "深州",
             "amount": "16"
         },
         {
-            "value": "0.0",
+            "value": "546",
             "type": "太原",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "74",
             "type": "古交",
             "amount": "0"
         },
         {
-            "value": "0.0",
+            "value": "88",
             "type": "大同",
             "amount": "0"
         },
@@ -3198,73 +3042,6 @@
             "amount": "0"
         }
     ],
-    "diffTradeWayAmount": {
-        "names": {
-            "data1": "陆金所",
-            "data2": "拉卡拉",
-            "data3": "自营",
-            "data4": "宜信",
-            "data5": "比财"
-        },
-        "data": [
-            {
-                "date": "20201009",
-                "data1": 100,
-                "data2": 4056,
-                "data3": 1580,
-                "data4": 7869,
-                "data5": 4654
-            },
-            {
-                "date": "20201008",
-                "data1": 0,
-                "data2": 3056,
-                "data3": 7745,
-                "data4": 10000,
-                "data5": 9749
-            },
-            {
-                "date": "20201007",
-                "data1": 308,
-                "data2": 2032,
-                "data3": 2000,
-                "data4": 4456,
-                "data5": 1345
-            },
-            {
-                "date": "20201006",
-                "data1": 0,
-                "data2": 1012,
-                "data3": 1633,
-                "data4": 1123,
-                "data5": 8897
-            },
-            {
-                "date": "20201005",
-                "data1": 0,
-                "data2": 789,
-                "data3": 5997,
-                "data4": 8876,
-                "data5": 123
-            },
-            {
-                "date": "20201004",
-                "data1": 0,
-                "data2": 456,
-                "data3": 7749,
-                "data4": 7102,
-                "data5": 9874
-            },
-            {
-                "date": "20201003",
-                "data1": 0,
-                "data2": 123,
-                "data3": 2661,
-                "data4": 4561,
-                "data5": 4456
-            }
-        ]
-    },
     "realist_CY": [
         {
             "amount": "1000.0",
@@ -3323,7 +3100,7 @@
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "30000000000000000.0",
+            "amount": "300",
             "address": "贵州省xx市",
             "sex": "先生",
             "name": "陆阳杰",
@@ -3379,7 +3156,7 @@
             "type": "客商银行五年定期存款"
         }
     ],
-    "sevenDayTradeTendency":[
+    "sevenDayTradeTendency": [
         {
             "date": "20201001",
             "tradeCount": "1523",
@@ -3414,36 +3191,6 @@
             "date": "20201007",
             "tradeCount": "1200",
             "tradeAmount": "44874"
-        }
-    ],
-    "sevenDayOpenAccountTendency":[
-        {
-            "date": "20201001",
-            "data": "107655"
-        },
-        {
-            "date": "20201002",
-            "data": "98852"
-        },
-        {
-            "date": "20201003",
-            "data": "15578"
-        },
-        {
-            "date": "20201004",
-            "data": "33255"
-        },
-        {
-            "date": "20201005",
-            "data": "46211"
-        },
-        {
-            "date": "20201006",
-            "data": "85544"
-        },
-        {
-            "date": "20201007",
-            "data": "44874"
         }
     ]
 }

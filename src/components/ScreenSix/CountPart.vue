@@ -1,6 +1,6 @@
 <template>
     <div id="iconC">
-        <div class="iconItem" v-for="(item,index) in iconItemData" :key="index">
+        <div class="iconItem" v-for="(item,index) in iconItemData1" :key="index">
             <div class="num_content">
                 <p v-html="item.text"></p>
                 <p v-translatex>
@@ -43,9 +43,9 @@ export default {
             return _data;
         }
     },
-    props: ['iconItemData'],
+    props: ['iconItemData1'],
     watch: {
-        iconItemData(nv, ov) {
+        iconItemData1(nv, ov) {
             this.fixedData = this.formatData(nv);
         }
     },

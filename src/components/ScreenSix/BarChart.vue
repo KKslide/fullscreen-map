@@ -183,9 +183,6 @@ export default {
             this.getEchart(nv)
         }
     },
-    mounted(){
-        console.log('shit...');
-    },
     beforeDestroy(){
         this.echartElement.dispose();
     }

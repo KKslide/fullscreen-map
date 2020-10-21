@@ -4,28 +4,30 @@
 
 <script>
 import echarts from 'echarts'
-import allCity from './allCity'; // 全国所有的城市!!!
-import { mapData } from './HeatMapTemp'; // 引入热力图数据
+import allCity from '../../js/allCity'; // 全国所有的城市!!!
+// import { mapData } from './HeatMapTemp'; // 引入临时热力图数据
 export default {
     name: '',
     data() {
         return {
-            echartElement: null,
-            dataList: mapData.map(v => {
-                v["value"] = Math.random() * 290 + 10
-                return v
-            })
+            echartElement: null
         }
     },
     methods: {
-        getMap(pos) {
+        compare(prop) { // 排序
+            return function (a, b) {
+                var v1 = a[prop];
+                var v2 = b[prop];
+                return v1 - v2;
+            }
+        },
+        getMap(heatData) {
             this.echartElement = echarts.init(document.getElementById("heatMap"));
             const geoCoordMap = allCity;
-
             const convertData = function (data) {
                 var res = [];
                 for (var i = 0; i < data.length; i++) {
-                    var geoCoord = geoCoordMap[data[i].name];
+                    var geoCoord = geoCoordMap[data[i].type];
                     if (geoCoord) {
                         res.push(geoCoord.concat(data[i].value));
                     }
@@ -45,7 +47,7 @@ export default {
                 visualMap: {
                     show: false,
                     min: 0,
-                    max: 500,
+                    max: Number(heatData[0]["value"])/100, // 最值改为最大值除以100的值
                     splitNumber: 5,
                     inRange: {
                         color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
@@ -53,7 +55,6 @@ export default {
                     textStyle: {
                         color: '#fff'
                     },
-
                 },
                 geo: {
                     type:'map',
@@ -86,15 +87,18 @@ export default {
                     name: '',
                     type: 'heatmap',
                     coordinateSystem: 'geo',
-                    data: convertData(mapData)
+                    data: convertData(this.nationMapValueData)
                 }]
             };
-
             this.echartElement.setOption(option);
         }
     },
-    mounted() {
-        this.getMap();
+    props:["nationMapValueData"],
+    watch: {
+        nationMapValueData(nv, ov) {
+            let tempData = this.$deepClone(nv).sort(this.compare("value"));
+            this.getMap(tempData.reverse());
+        }
     },
     beforeDestroy() {
         this.echartElement.dispose();

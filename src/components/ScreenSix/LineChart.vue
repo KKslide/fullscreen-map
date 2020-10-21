@@ -1,276 +1,219 @@
 <template>
     <div id="lineChart" ref="lineChart"></div>
 </template>
+
 <script>
 import echarts from 'echarts'
-let startIndex = 0;
 export default {
-    name: "lineChart",
     data() {
         return {
-            isPlay: true,
-            baseColor: ['rgba(92,196,10)', 'rgba(209,205,211)'],
-            axisColor: 'rgba(255,255,255,0.5)',
-            fontColor: 'rgba(255,255,255,0.9)',
-            titleFontColor: 'rgba(12, 236, 228,0.8)',
-            dataL: ['昨日', '今日'],
             echartElement: null,
         }
     },
-    mounted() {
-        this.getLineChart();
-    },
     methods: {
-        getLineChart() {
-            // 基于准备好的dom，初始化echarts实例
+        getChart() {
             this.echartElement = echarts.init(this.$el)
-            // 绘制图表
+            //   let xData = ['芝罘区', '福山区', '莱山区', '牟平区', '海阳市', '莱阳市', '蓬莱市', '栖霞市', '龙口市', '长岛县', '招远市', '莱州市', '开发区', '高新区', '昆嵛山', '龙海', '机场', '核电'];
+            //   let y1Data = [10758, 3975, 2980, 1831, 2122, 3018, 3525, 1729, 2764, 380, 3988, 2333, 3596, 453, 365, 9, 67, 48];
+            //   let y2Data = [28, 4.4, 5.9, 0.9, 0.7, 1.1, 2.1, 0.4, 1.9, 3.8, 1.6, 0.7, 5.7, 6.1, 0.7, 1.1, 28, 4.4];
+            let xData = this.sevenDayTradeTendency.date
+            let y1Data = this.sevenDayTradeTendency.tradeAmount
+            let y2Data = this.sevenDayTradeTendency.tradeCount
             let option = {
-                title: {
-                    text: this.titleName,
-                    left: 'left',
-                    padding: [10, 20],
-                    textStyle: {
-                        color: "white",
-                        fontFamily: 'PingFang SC',
-                        fontWeight: '400',
-                        fontSize: '25.5'
-                    }
-                },
-                color: this.baseColor,
-                backgroundColor: '',
-                textStyle: {
-                    color: this.fontColor,
-                    fontSize: '80%'
+                grid: {
+                    left: '12%',
+                    right: '12%',
+                    top: '32%',
+                    bottom: '12%',
                 },
                 tooltip: {
                     trigger: 'axis',
-                    axisPointer: {
-                        type: 'cross',
-                        label: {
-                            backgroundColor: '#6a7985'
-                        }
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 legend: {
-                    data: this.dataL,
-                    bottom: "1%",
-                    left: 'center',
+                    data: ['交易金额(万元)', '交易笔数(笔)'],
+                    right: '3%',
+                    top: '10%',
+                    itemWidth: 11,
+                    itemHeight: 11,
                     textStyle: {
-                        color: this.fontColor,
-                        fontSize: '20'
+                        color: '#ffffff',
+                        fontSize: 15
                     }
                 },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '13%',
-                    containLabel: true
+                toolbox: {
+                    show: false,
                 },
-                xAxis: {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: [],
-                    splitLine: { //X轴网格线修改
-                        show: false,
-                    },
-                    axisLine: {
-                        show: true, // X轴轴线颜色类型的修改
-                        lineStyle: {
-                            type: 'solid',
-                            color: this.axisColor
-                        }
-                    },
-                    axisLabel: {
+                xAxis: [
+                    {
+                        type: 'category',
+                        boundaryGap: true,
                         show: true,
-                        textStyle: {
-                            // color: 'red',
-                            fontSize: 18
-                        }
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            fontSize: 15,
+                            color: '#d0d0d0',
+                            margin: 8,
+                            interval: 0,
+                            rotate: 10
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                type: 'solid',
+                                color: '#4e608b',//左边线的颜色
+                                width: '1'//坐标线的宽度
+                            }
+                        },
+                        data: xData
                     }
-                },
-                yAxis: {
-                    type: 'value',
-                    splitLine: { //Y轴网格线修改
-                        show: false,
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        scale: true,
+                        name: '',
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                type: 'solid',
+                                color: '#4e608b',//左边线的颜色
+                                width: '1'//坐标线的宽度
+                            }
+                        },
+                        splitNumber: 4,
+                        axisTick: {
+                            show: false
+                        },
+                        splitLine: {
+                            lineStyle: { // 使用深浅的间隔色
+                                color: '#4e608b'
+                            }
+                        },
+                        axisLabel: {
+                            fontSize: 13,
+                            color: '#d0d0d0',
+                            margin: 12,
+                        },
+                        min: 0,
+                        max: function (val) {
+                            if (val.max <= 10) return 10;
+                            let temp = val.max.toString().split("");
+                            temp[1] = parseInt(temp[1]) + 1;
+                            return temp.join("");
+                        },
+                        boundaryGap: [0.2, 0.2]
                     },
-                    axisLine: {
-                        show: true, // Y轴轴线颜色类型的修改
-                        lineStyle: {
-                            type: 'solid',
-                            color: this.axisColor
-                        }
+                    {
+                        type: 'value',
+                        scale: true,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                type: 'solid',
+                                color: '#4e608b',//左边线的颜色
+                                width: '1'//坐标线的宽度
+                            }
+                        },
+                        splitNumber: 3,
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            fontSize: 13,
+                            color: '#d0d0d0',
+                            margin: 12,
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                // 使用深浅的间隔色
+                                color: '#4e608b'
+                            }
+                        },
+                        name: '',
+                        min: 0,
+                        max: function (val) {
+                            if (val.max <= 10) return 10;
+                            let temp = val.max.toString().split("");
+                            temp[1] = parseInt(temp[1]) + 1;
+                            return temp.join("");
+                        },
+                        boundaryGap: [0.2, 0.2]
                     },
-                    axisLabel: {
-                        show: true,
-                        textStyle: {
-                            // color: 'red',
-                            fontSize: 18
-                        }
-                    }
-                },
+
+                ],
                 series: [
-                    // 近24小时
                     {
-                        name: this.dataL[0],
-                        type: 'line',
-                        smooth: true,
-                        symbol: 'circle',
-                        symbolSize: 10,
-                        itemStyle: {
+                        name: '交易金额(万元)',
+                        type: 'bar',
+                        label: {
                             normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: '#f7c368'
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: '#1dacfe'
                                 },
-                                {
-                                    offset: 1,
-                                    color: '#fc4b4b'
-                                }]),
-                                opacity: 0.9,
-                                shadowColor: 'rgba(255, 255, 255, 0.7)',
-                                shadowBlur: 10,
-                                label: {
-                                    show: true,
-                                    position: 'top',
-                                    fontSize: 12
-                                }
+                                formatter: '{c}'
                             }
                         },
-                        areaStyle: { // 设置折线图区域渐变
-                            normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: 'rgba(247,195,104, 0.5)'
-                                }, {
-                                    offset: 0.8,
-                                    color: 'rgba(252,75,75, 0)'
-                                }], false),
-                                shadowColor: 'rgba(0, 0, 0, 0.1)',
-                                shadowBlur: 10,
-                                label: {
-                                    show: true,
-                                    position: 'top',
-                                    fontSize: 12
-                                }
-                            }
-                        },
-                        data: []
-                    },
-                    // 上24小时
-                    {
-                        name: this.dataL[1],
-                        type: 'line',
-                        smooth: true,
-                        symbol: 'circle',
-                        symbolSize: 10,
                         itemStyle: {
                             normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                                    {
-                                        offset: 0,
-                                        color: '#479df6'
-                                    },
-                                    {
-                                        offset: 1,
-                                        color: '#f95e74'
-                                    }
-                                ]),
-                                opacity: 0.9,
-                                shadowColor: 'rgba(255, 255, 255, 0.7)',
-                                shadowBlur: 10,
-                                label: {
-                                    show: true,
-                                    position: 'top',
-                                    fontSize: 12
-                                }
-                            }
-                        },
-                        areaStyle: { // 设置折线图区域渐变
-                            normal: {
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
                                     offset: 0,
-                                    color: 'rgba(160,168,228, 0.5)' //#a0a8e4
+                                    color: "#4889fb" // 0% 处的颜色
                                 }, {
-                                    offset: 0.8,
-                                    color: 'rgba(98,109,144, 0)' // #626d90
-                                }], false),
-                                shadowColor: 'rgba(0, 0, 0, 0.1)',
-                                shadowBlur: 10
+                                    offset: 1,
+                                    color: "#15b3ff" // 100% 处的颜色
+                                }], false)
                             }
                         },
-                        data: [] // 所有的
+                        barWidth: '40%',
+                        yAxisIndex: 0,
+                        data: y1Data
+                    },
+                    {
+                        name: '交易笔数(笔)',
+                        yAxisIndex: 1,
+                        color: '#ffd300',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: '#ffd300'
+                                },
+                                formatter: '{c}'
+                            }
+                        },
+                        lineStyle: {
+                            color: '#ffd300'
+                        },
+                        type: 'line',
+                        data: y2Data
                     }
                 ]
             };
-            var that = this;
-            window.chartTimer.two_line_chart = setInterval(function () {
-                if (!that.isPlay) return;
-                var d1 = [],
-                    d2 = [],
-                    indexArr = [];
-                startIndex++;
-                // 近24小时
-                for (let i = startIndex; i < that.latest24Data.date24.length; i++) {
-                    if (i < startIndex + 6) {
-                        d1.push(that.latest24Data.date24[i]);
-                        indexArr.push(that.latest24Data.hour[i])
-                    }
-                }
-                // 上24小时
-                for (let i = startIndex; i < that.latest24Data.date24_before.length; i++) {
-                    if (i < startIndex + 6) {
-                        d2.push(that.latest24Data.date24_before[i]);
-                    }
-                }
-                if (d1.length < 6) {
-                    startIndex = -1;
-                }
-
-                that.echartElement.setOption({
-                    xAxis: [{
-                        data: indexArr
-                    }],
-                    series: [{
-                        name: that.dataL[0],
-                        data: d1
-                    }, {
-                        name: that.dataL[1],
-                        data: d2
-                    }]
-                });
-            }, 2000);
-            // 使用刚指定的配置项和数据显示图表。
-            // 使用刚指定的配置项和数据显示图表。
-            if (that.isPlay) {
-                this.echartElement.setOption(option);
-            }
-            window.addEventListener("resize", function () {
-                this.echartElement.resize();
-            });
-        },
-        //控制myChart1的暂停与开始
-        play() {
-            let that = this;
-            let lineChart = document.getElementById('lineChart')
-            lineChart.onclick = function () {
-                that.isPlay = !that.isPlay;
-                setInterval(() => {
-                    that.isPlay = true;
-                }, 10*1000);
-            }
+            this.$nextTick(_ => this.echartElement.setOption(option))
         }
     },
-    props: ['latest24Data', 'titleName'],
+    props: ['sevenDayTradeTendency'],
+    watch: {
+        sevenDayTradeTendency(nv, ov) {
+            this.getChart()
+        }
+    },
     beforeDestroy(){
         this.echartElement.dispose();
     }
-};
-
+}
 </script>
+
 <style lang="less" scoped>
 #lineChart {
     width: 100%;
-    height: 25vh;
+    height: 100%;
 }
 </style>

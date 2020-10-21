@@ -9,14 +9,14 @@
                     <div class="l-top-title top_title">
                         <span>注册及额度情况</span>
                     </div>
-                    <count-part :iconItemData="onlineSaving"></count-part>
+                    <count-part :iconItemData1="iconItemData1"></count-part>
                 </div>
                 <div class="l-bot">
                     <div class="top_title">
                         <span>成功注册用户分布情况</span>
                     </div>
                     <!-- Top5排行 -->
-                    <heat-map-rank :mapData="mapDataTop5"></heat-map-rank>
+                    <heat-map-rank :mapDataRank="mapDataTop5"></heat-map-rank>
                     <!-- Top5排行 -->
                     <heat-map :nationMapValueData="mapData"></heat-map>
                 </div>
@@ -27,37 +27,23 @@
                     <div class="top_title">
                         <span>授信及用信情况</span>
                     </div>
-                    <!-- <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart> -->
                     <div class="chart_box">
                         <div class="chart_table">
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">贷款金额</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">累计贷款金额</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">用信户数</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">户</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">单户最大</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">单户最小</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
+                            <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(0,5)" :key="index">
+                                <span class="chart_table_title" v-html="item.text">贷款金额</span>
+                                <p class="chart_table_val" v-html="item.value"></p>
+                                <span class="chart_table_unit" v-html="item.unit">万元</span>
                             </div>
                         </div>
                         <div class="split_line"></div>
                         <div class="chart_table">
+                            <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(5,10)" :key="index">
+                                <span class="chart_table_title" v-html="item.text">贷款金额</span>
+                                <p class="chart_table_val" v-html="item.value"></p>
+                                <span class="chart_table_unit" v-html="item.unit">万元</span>
+                            </div>
+                        </div>
+                        <div class="chart_table" v-if="false">
                             <div class="chart_table_item">
                                 <span class="chart_table_title">户均贷款金额</span>
                                 <p class="chart_table_val">999,999</p>
@@ -86,19 +72,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-mid-wrap-m" v-if="false">
-                    <div class="top_title">
-                        <span class="top_title_after" attr-title="单位(户)">近七日线上开户走势</span>
-                    </div>
-                    <tendency-chart :sevenDayOpenAccountTendency="sevenDayOpenAccountTendency"></tendency-chart>
-                </div>
                 <div class="content-mid-wrap-b">
                     <div class="top_title">
                         <span class="top_title_after">全国客户省份分布情况</span>
                     </div>
-                    <!-- <live-tip :position="{'top':'25%'}"></live-tip> -->
-                    <!-- <live-trade-map :position="{'top':'8%',}"></live-trade-map> -->
-                    <!-- <double-bar></double-bar> -->
                     <multiple-chart></multiple-chart>
                 </div>
             </div>
@@ -124,50 +101,37 @@
                 </div>
             </div>
         </div>
-        <!-- <page-switcher :prePagePath="'/screenpic2'" :nextPagePath="'/screenpic4'"></page-switcher> -->
         <page-switcher :prePagePath="prePage" :nextPagePath="nextPage"></page-switcher>
     </div>
 </template>
 <script>
-import CountPart from '@/components/ScreenSix/CountPart'; // 统计组件
-import HeatMap from '@/components/ScreenSix/HeatMap'; // 客户交易量热力图
+import CountPart from '@/components/ScreenSix/CountPart'; // 统计组件 - 注册及额度情况
+import HeatMap from '@/components/ScreenSix/HeatMap'; // 热力图 - 成功注册用户分布情况
 // import HeatMap from '@/components/ScreenSix/ChinaMap'; // 客户交易量热力图
-import HeatMapRank from '@/components/ScreenThree/HeatMapRank'; // 热力图
-import LineChartRight from '@/components/ScreenThree/LineChartRight'; // 购买产品实时情况 - 中间曲线图
+import HeatMapRank from '@/components/ScreenSix/HeatMapRank'; // 热力图 - 交易(贷款)金额top5
 import RealTimeList from '@/components/ScreenSix/RealTimeList'; // 中间下边实时交易
 import BarChart from "@/components/ScreenSix/BarChart"; 
 
-import LineChart from '@/components/ScreenThree/LineChart'; // 近七日交易量走势
-import Tendency from '@/components/ScreenThree/Tendency'; // 近七日线上开户走势
-import LiveTrapMap from '@/components/publicComponent/LiveTrapMap' // 新增的实时交易路线地图组件
+import LineChart from '@/components/ScreenSix/LineChart'; // 折线图 - 近七日交易量走势
 import PageSwitcher from '@/components/publicComponent/PageSwitch' // 前进后退按钮控件
-import LiveTradeTip from '@/components/publicComponent/LiveTip' // 实时交易提示
-import DoubleBarChart from '../ScreenSix/DoubleBarChart.vue';
-import MultipleChart from '@/components/ScreenSix/MultipleChart';
-// import LiveTipVue from '../publicComponent/LiveTip.vue';
+// import DoubleBarChart from '../ScreenSix/DoubleBarChart.vue'; // 横向双柱状图 - 融资区间分布
+import MultipleChart from '@/components/ScreenSix/MultipleChart'; // 纵向双柱状图 - 融资区间分布
 export default {
-    name: 'ScreenPic3',
+    name: 'ScreenPic6',
     data() {
         return {
-            iconItemData: [],
-            barChartData:[],
-            onlineSaving: [], // 累计线上存款交易
+            barChartData:[], // 核心企业统计
+            iconItemData1: [], // 注册及额度情况
+            iconItemData2: [], // 授信及用信情况
             heatMapData: [], // 热数据
             productRealTimeLine: [], // 理财产品实时情况
-            workreallist: [],      //实时信息数据
-            originRealList: [],
-            mapData: [], // 热例如数据
+            originRealList: [], // 实时信息数据(处理前)
+            workreallist: [], // 实时信息数据(处理后)
+            mapData: [], // 热力图数据
             mapDataTop5: [],
 
             sevenDayTradeTendency: [], // 近七日交易量走势
             sevenDayOpenAccountTendency: [], // 近七日线上开户走势
-            liveData: {
-                amount: "",
-                address: "",
-                sex: "",
-                name: "",
-                type: ""
-            },
             prePage:'',
             nextPage:''
         };
@@ -177,22 +141,17 @@ export default {
         'bar-chart': BarChart, // 统计组件
         'heat-map': HeatMap, // 热力图
         'heat-map-rank': HeatMapRank,
-        'double-bar':DoubleBarChart,
+        // 'double-bar':DoubleBarChart,
         'multiple-chart':MultipleChart,
-        'line-chart-right': LineChartRight, // 购买产品实时情况
         'realTime-list': RealTimeList, // 交易提醒-
-        'line-chart': LineChart,
-        'tendency-chart': Tendency,
-        'live-trade-map': LiveTrapMap, // 实时交易路线地图组件
+        'line-chart': LineChart, // 最近7天交易趋势
         'page-switcher': PageSwitcher, // 前进后退按钮控件
-        // 'live-tip':LiveTipVue
     },
     mounted() {
         this.getMap()
         window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
         }, 60 * 1000 * 10); // 十分钟更新一次
-        // this.$setCarousel('ScreenPic4')
         let curPageName = this.$route.path.replace('/',''); // 当前路由名称
         let carouselList = JSON.parse(sessionStorage.getItem('carouselList')); // 轮播顺序(carouselList)
         let curIndex = carouselList.indexOf(curPageName);
@@ -225,22 +184,22 @@ export default {
                 data: {},
             }).then(res => {
                 let curHour = new Date().getHours();
-                this.onlineSaving = res.data.iconItemData  // 左上组件 
-                this.barChartData = this.fixedForm(res.data.coreCompany)
-                this.productRealTimeLine = this.fixedForm(res.data.dayProduct) // 24小时数据
-                this.productRealTimeLine.data1.splice(curHour + 1)
-                this.productRealTimeLine.data2.splice(curHour + 1)
-                this.productRealTimeLine.hour.splice(curHour + 1)
+                this.iconItemData1 = res.data.iconItemData1  // 注册及额度情况 
+                this.iconItemData2 = res.data.iconItemData2  // 授信及用信情况 
+                this.barChartData = this.fixedForm(res.data.coreCompany) // 核心企业统计
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
                 this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
-                this.mapData = res.data.nationmap // 地图数据 - 城市的数据
+                this.mapData = res.data.nationmap // 地图热力图组件数据 - 城市的数据
                 this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
-
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
-                this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
-                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+
+                this.iconItemData2.map(v=>{
+                    return v.value = v.unit=="万元" ? this.fixedNumber(v.value) : v.value
+                });
             })
+        },
+        fixedNumber(num) { // 数字千分位
+            return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')//.split(".")[0];
         },
         compare(prop) { // 排序
             return function (a, b) {
@@ -249,7 +208,7 @@ export default {
                 return v1 - v2;
             }
         },
-        fixedForm(data) { // json的数据格式在转换
+        fixedForm(data) { // json的数据格式转换
             let obj = {}, keys = [];
             data.forEach(e => keys = keys.concat(Object.keys(e))); // 先去重掉keys
             this.unique(keys).forEach(ele => {
@@ -268,19 +227,13 @@ export default {
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
                 let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-                workreallistdata.push(a.address + a.name + /* a.sex */"**" + ", " + "存入一笔【线上存款】产品, 金额" + " " + b + "元")
+                workreallistdata.push(a.address + a.name.slice(0,1) + /* a.sex */"**" + ", " + "申请一笔贷款, 金额" + " " + b + "万元")
             }
             return workreallistdata;
-        },
-        filterNotZero(arr) {
-            var newArr = arr.filter((v, i, arr) => {
-                return Math.round(Number(v.value)) > 0
-            })
-            return newArr.length == 0 ? arr : newArr;
         }
     },
     beforeDestroy(){
-        console.log('333---页面3销毁');
+        console.log('666---页面6销毁');
     }
 }
 </script>
