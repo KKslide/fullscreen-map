@@ -1,7 +1,6 @@
 # MZKS-Bank 大屏展示页面
 
-> 该项目前端技术基于Vue和Echarts, 
-> 服务端使用的是公司内部的usp技术
+> 该项目前端技术基于Vue和Echarts
  
 
 ## 打包步骤
