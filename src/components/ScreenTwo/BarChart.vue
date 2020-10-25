@@ -11,7 +11,7 @@ export default {
             axisColor: 'rgba(255,255,255,0.5)',
             fontColor: 'rgba(255,255,255,0.9)',
             titleFontColor: 'rgba(12, 236, 228, 0.8)',
-            dataL: ['余额', '笔数'],
+            dataL: ['贷款余额', '放款笔数'],
             barData: {
                 // type: ['O2O贷款业务', '联合授信业务'],
                 type: ['温氏物联网', '线上车金融'],
@@ -106,7 +106,7 @@ export default {
                 },
                 series: [
                     {
-                        name: '余额',
+                        name: '贷款余额',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离
@@ -139,7 +139,7 @@ export default {
                         data: val.data1
                     },
                     {
-                        name: '笔数',
+                        name: '放款笔数',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离

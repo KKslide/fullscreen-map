@@ -33,16 +33,16 @@ if (process.env.NODE_ENV === "production") {
       "url": "./tx/Login",
       "method": "post"
     },
-    // "screenpic1": {
-    //   "url": "./tx/GYL",
-    //   "method": "post"
-    // },
-    // "screenpic2": {
-    //   "url": "./tx/XSZC",
-    //   "method": "post"
-    // },
-    "screenpic1": { "url": "./static/json/screen1.json", "method": "get" },
-    "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
+    "screenpic1": {
+      "url": "./tx/GYL",
+      "method": "post"
+    },
+    "screenpic2": {
+      "url": "./tx/XSZC",
+      "method": "post"
+    },
+    // "screenpic1": { "url": "./static/json/screen1.json", "method": "get" },
+    // "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
     "screenpic3": {
       "url": "./tx/SZYH",
       "method": "post"
@@ -63,7 +63,8 @@ if (process.env.NODE_ENV === "production") {
       "url": "./upload?schemeIDs=2&transCode=deal",
       "method": "post"
     },
-
+    "screenpic6": { "url": "./static/json/screen6.json", "method": "get" },
+    "screenpic6_test": { "url": "./tx/XSZC", "method": "post" },
   }
 } else {
   console.log("正在使用开发环境...")
@@ -77,7 +78,7 @@ if (process.env.NODE_ENV === "production") {
     "screenpic3": { "url": "./static/json/screen3.json", "method": "get" },
     "screenpic4": { "url": "./static/json/screen4.json", "method": "get" },
     "screenpic5": { "url": "./static/json/screen5.json", "method": "get" },
-    "screenpic6": { "url": "./static/json/screen6.json", "method": "get" },
+    "screenpic6": { "url": "./static/json/screenpic6_new.json", "method": "get" },
 
     // "screenpic1": {
     //   "url": "http://10.30.80.71:8100/usp_ks/tx/GYL",

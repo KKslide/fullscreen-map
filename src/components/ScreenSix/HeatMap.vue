@@ -47,7 +47,7 @@ export default {
                 visualMap: {
                     show: false,
                     min: 0,
-                    max: Number(heatData[0]["value"])/100, // 最值改为最大值除以100的值
+                    max: Number(heatData[0]["value"])/1000, // 最值改为最大值除以100的值
                     splitNumber: 5,
                     inRange: {
                         color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()

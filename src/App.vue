@@ -35,6 +35,9 @@ export default {
                         curTempIndex = carouselList.length - 1;
                     }
                 }
+                else {
+                    return false;
+                }
                 this.$router.push({ path: '/' + carouselList[curTempIndex] });
             }
         }

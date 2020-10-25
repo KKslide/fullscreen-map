@@ -7,7 +7,7 @@
             <div class="content-l-wrap">
                 <div class="l-top">
                     <div class="l-top-title top_title">
-                        <span>注册及额度情况</span>
+                        <span>注册及授信额度情况</span>
                     </div>
                     <count-part :iconItemData1="iconItemData1"></count-part>
                 </div>
@@ -25,7 +25,7 @@
             <div class="content-mid-wrap">
                 <div class="content-mid-wrap-t">
                     <div class="top_title">
-                        <span>授信及用信情况</span>
+                        <span>用信情况</span>
                     </div>
                     <div class="chart_box">
                         <div class="chart_table">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="content-mid-wrap-b">
                     <div class="top_title">
-                        <span class="top_title_after">全国客户省份分布情况</span>
+                        <span class="top_title_after">融资区间分布</span>
                     </div>
                     <multiple-chart></multiple-chart>
                 </div>
@@ -105,7 +105,7 @@
     </div>
 </template>
 <script>
-import CountPart from '@/components/ScreenSix/CountPart'; // 统计组件 - 注册及额度情况
+import CountPart from '@/components/ScreenSix/CountPart'; // 统计组件 - 注册及授信额度情况
 import HeatMap from '@/components/ScreenSix/HeatMap'; // 热力图 - 成功注册用户分布情况
 // import HeatMap from '@/components/ScreenSix/ChinaMap'; // 客户交易量热力图
 import HeatMapRank from '@/components/ScreenSix/HeatMapRank'; // 热力图 - 交易(贷款)金额top5
@@ -121,7 +121,7 @@ export default {
     data() {
         return {
             barChartData:[], // 核心企业统计
-            iconItemData1: [], // 注册及额度情况
+            iconItemData1: [], // 注册及授信额度情况
             iconItemData2: [], // 授信及用信情况
             heatMapData: [], // 热数据
             productRealTimeLine: [], // 理财产品实时情况
@@ -148,6 +148,13 @@ export default {
         'page-switcher': PageSwitcher, // 前进后退按钮控件
     },
     mounted() {
+        // this.$axios({
+        //     url: this.$http.screenpic6_test.url, // 本地
+        //     method: this.$http.screenpic6_test.method,
+        //     data: {},
+        // }).then(res=>{
+        //     console.log(res);
+        // });
         this.getMap()
         window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
@@ -184,12 +191,12 @@ export default {
                 data: {},
             }).then(res => {
                 let curHour = new Date().getHours();
-                this.iconItemData1 = res.data.iconItemData1  // 注册及额度情况 
+                this.iconItemData1 = res.data.iconItemData1  // 注册及授信额度情况 
                 this.iconItemData2 = res.data.iconItemData2  // 授信及用信情况 
                 this.barChartData = this.fixedForm(res.data.coreCompany) // 核心企业统计
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
                 this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
-                this.mapData = res.data.nationmap // 地图热力图组件数据 - 城市的数据
+                this.mapData = this.fixedLocation(res.data.nationmap); // 地图热力图组件数据 - 城市的数据
                 this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
 
@@ -227,9 +234,33 @@ export default {
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
                 let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-                workreallistdata.push(a.address + a.name.slice(0,1) + /* a.sex */"**" + ", " + "申请一笔贷款, 金额" + " " + b + "万元")
+                workreallistdata.push(a.address+', ' + a.name.slice(0,1) + /* a.sex */"**" + ", " + "申请一笔贷款, 金额" + " " + b + "万元")
             }
             return workreallistdata;
+        },
+        fixedLocation(locArr){ // 地图热力点区分省份
+            let res = this.$deepClone(locArr)
+            res.map((v,i)=>{
+                // 直辖市
+                let isDirectControlRegion = v.type.indexOf('北京') ==0 || v.type.indexOf('上海') ==0 || v.type.indexOf('重庆') ==0 || v.type.indexOf('天津') == 0;
+                // 自治区
+                let isAutonomousRegion = v.type.indexOf('自治区') !=0;
+                // 特别行政区
+                let isSpecialRegion =  v.type.indexOf('香港') !=0 || v.type.indexOf('澳门') !=0;
+                if(isDirectControlRegion){
+                    return v.type = v.type.split("市")[0]
+                }
+                else if(isAutonomousRegion){
+                    return v.type = v.type.slice(0,2);
+                }
+                else if(isSpecialRegion){
+                    return v.type = v.type.slice(0,2);
+                }
+                else{
+                    return v.type = v.type.split("省")[0];
+                }
+            });
+            return res;
         }
     },
     beforeDestroy(){
