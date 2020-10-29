@@ -168,9 +168,9 @@
           <div class="top_title">
             <span>温氏业务投放情况（梅州）</span>
           </div>
-          <MZ-map :meizhouMapValueData="meizhouMapValueData" style="position: absolute; margin-top:-13vh;height:50vh"></MZ-map>
+          <MZ-map :meizhouMapValueData="meizhouMapValueData" style="position: absolute; height:42vh"></MZ-map>
         </div>
-        <div class="content-r-b">
+        <div class="content-r-b" v-if="false">
           <!--  | 右下 -->
           <div class="top_title">
             <span> </span>
@@ -274,8 +274,8 @@ export default {
   components: {
     "page-switcher": PageSwitcher, // 前进后退按钮控件
     "bar-chart": BarChart, // 交易金额情况
-    "china-map": ChinaMap, // 全国地图
-    "china-map-m": ChinaMap,
+    // "china-map": ChinaMap, // 全国地图
+    // "china-map-m": ChinaMap,
     "dynamicBar-chart": DynamicBarChart, //动态数据柱状图
     "loan-pie": LoanPie, //分类占比饼图
     "tendency-chart": Tendency,

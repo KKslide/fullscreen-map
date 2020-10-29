@@ -9,17 +9,12 @@ export default {
   name: "MeiZhouMap",
   data() {
     return {
+      echartElement: null, // 地图页面元素
       titleFontColor: "white",
       mapColor: [],
       list: [],
       title: "\nTop5: "
     };
-  },
-
-  mounted() {
-    setTimeout(() => {
-      this.getMap();
-    }, 800);
   },
   methods: {
     changeNum(num) {
@@ -28,10 +23,9 @@ export default {
         .replace(/(\d)(?=(\d{3})+\.)/g, "$1,")
         .split(".")[0];
     },
-    getMap(mapname) {
+    getMap(val) {
       echarts.registerMap("梅州", meizhou);
-      var mapdata = this.meizhouMapValueData; // 所有数据
-      console.log(mapdata);
+      var mapdata = val; // 所有数据
       var topArr = mapdata
         .sort(this.compare("value"))
         .slice(-5)
@@ -96,7 +90,7 @@ export default {
 
       let maxNum = 30;
       // 基于准备好的dom，初始化echarts实例
-      let mapChart = echarts.init(this.$el);
+      this.echartElement = echarts.init(this.$el);
 
       // 绘制图表
       let options = {
@@ -162,7 +156,10 @@ export default {
             map: "梅州",
             silent: true,
             aspectScale: 1.5, //0.75 geoBoundingRect.width / geoBoundingRect.height * aspectScale
-            top: "47%",
+            top: "23%",
+            left: "10%",
+            right: "10%",
+            bottom: "20%",
             zoom: 1.2,
             label: {
               normal: {
@@ -194,8 +191,10 @@ export default {
             map: "梅州",
             zoom: 1.2,
             aspectScale: 1.5,
-            top: "45%",
-
+            top: "21%",
+            left: "10%",
+            right: "10%",
+            bottom: "22%",
             label: {
               emphasis: {
                 show: false
@@ -235,13 +234,6 @@ export default {
             roam: false,
             data: convertData(mapdata),
             geoCoord: getGeoCoord(),
-            itemStyle: {
-              color: function(params) {
-                if (params.name == mapname) {
-                  return "#2fb9ea";
-                }
-              }
-            },
             markPoint: {
               symbol: "pin",
               symbolsize: 5,
@@ -255,7 +247,6 @@ export default {
           /* 普通点 */
           {
             name: "",
-            // type: 'scatter',
             type: "effectScatter",
             coordinateSystem: "geo",
             data: convertData(mapdata),
@@ -332,10 +323,10 @@ export default {
           }
         ]
       };
-      mapChart.setOption(options);
+      this.echartElement.setOption(options);
 
-      window.addEventListener("resize", function() {
-        mapChart.resize();
+      window.addEventListener("resize", _ => {
+        this.echartElement.resize();
       });
     },
 
@@ -348,12 +339,21 @@ export default {
       };
     }
   },
-  props: ["childClass", "titleName", "meizhouMapValueData"]
+  props: ["childClass", "titleName", "meizhouMapValueData"],
+  watch: {
+    meizhouMapValueData(nv) {
+      let newVal = this.$deepClone(nv);
+      this.getMap(newVal);
+    }
+  },
+  beforeDestroy() {
+    this.echartElement.dispose();
+  }
 };
 </script>
 <style lang="less">
 .MZmap {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
 }
 </style>

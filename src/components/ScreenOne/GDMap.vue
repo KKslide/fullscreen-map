@@ -9,17 +9,12 @@ export default {
   name: "GuangdongMap",
   data() {
     return {
+      echartElement: null, // 地图页面元素
       titleFontColor: "white",
       mapColor: [],
       list: [],
       title: "\nTop5: "
     };
-  },
-
-  mounted() {
-    setTimeout(() => {
-      this.getMap();
-    }, 800);
   },
   methods: {
     changeNum(num) {
@@ -28,11 +23,10 @@ export default {
         .replace(/(\d)(?=(\d{3})+\.)/g, "$1,")
         .split(".")[0];
     },
-    getMap(mapname) {
+    getMap(val) {
       echarts.registerMap("广东", some);
-
-      var mapdata = this.localMapValueData; // 所有数据
-      var topArr = this.localMapValueData
+      var mapdata = val; // 所有数据
+      var topArr = val
         .sort(this.compare("value"))
         .slice(-5)
         .reverse(); // 前5名数据
@@ -156,7 +150,7 @@ export default {
 
       let maxNum = 30;
       // 基于准备好的dom，初始化echarts实例
-      let mapChart = echarts.init(this.$el);
+      this.echartElement = echarts.init(this.$el);
       // 绘制图表
       let options = {
         title: {
@@ -294,13 +288,13 @@ export default {
             roam: false,
             data: convertData(mapdata),
             geoCoord: getGeoCoord(),
-            itemStyle: {
-              color: function(params) {
-                if (params.name == mapname) {
-                  return "#2fb9ea";
-                }
-              }
-            },
+            // itemStyle: {
+            //   color: function(params) {
+            //     if (params.name == mapname) {
+            //       return "#2fb9ea";
+            //     }
+            //   }
+            // },
             markPoint: {
               symbol: "pin",
               symbolsize: 5,
@@ -391,10 +385,10 @@ export default {
           }
         ]
       };
-      mapChart.setOption(options);
+      this.echartElement.setOption(options);
 
-      window.addEventListener("resize", function() {
-        mapChart.resize();
+      window.addEventListener("resize", () => {
+        this.echartElement.resize();
       });
     },
 
@@ -407,7 +401,16 @@ export default {
       };
     }
   },
-  props: ["childClass", "titleName", "localMapValueData"]
+  props: ["childClass", "titleName", "localMapValueData"],
+  watch:{
+    localMapValueData(nv){
+      let newVal = this.$deepClone(nv);
+      this.getMap(newVal);
+    }
+  },
+  beforeDestroy() {
+    this.echartElement.dispose();
+  }
 };
 </script>
 <style lang="less">

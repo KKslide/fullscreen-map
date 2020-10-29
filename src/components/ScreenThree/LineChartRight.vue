@@ -274,7 +274,7 @@ export default {
             if (that.isPlay) {
                 this.echartElement.setOption(option);
             }
-            window.addEventListener("resize", function () {
+            window.addEventListener("resize", () => {
                 this.echartElement.resize();
             });
         },

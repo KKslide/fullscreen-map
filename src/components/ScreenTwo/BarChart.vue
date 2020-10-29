@@ -172,8 +172,8 @@ export default {
                     }
                 ]
             });
-            window.addEventListener("resize", function () {
-                barChart.resize();
+            window.addEventListener("resize", () => {
+                this.echartElement.resize();
             });
         }
     },

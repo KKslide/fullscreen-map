@@ -168,7 +168,7 @@ export default {
                         }
                     ]
                 });
-            window.addEventListener("resize", function () {
+            window.addEventListener("resize", () => {
                 funnelChart.resize();
             });
         }

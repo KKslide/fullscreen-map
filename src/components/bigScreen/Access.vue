@@ -2,11 +2,7 @@
     <div class="loginBG">
         <form action method="POST" class="loginForm" @submit.prevent="submit">
             <p style="font-size:50px;">请输入口令：</p>
-
-            <p>
-                口令：
-                <input type="password" v-model="password" autofocus placeholder="请输入口令" />
-            </p>
+            <p> 口令： <input type="password" v-model="password" autofocus placeholder="请输入口令" /> </p>
 
             <p>
                 是否轮播：
@@ -98,8 +94,7 @@ export default {
             sessionStorage.setItem('timer', this.carouselTime);
             sessionStorage.setItem('isCarousel', this.isCarousel);
             sessionStorage.setItem('carouselList', JSON.stringify(this.carouselList.sort()));
-            if (!sessionStorage.getItem('toPage') || (sessionStorage.getItem('toPage') == '/access')) {
-                // this.toPage = '/screenpic1'
+            if (!sessionStorage.getItem('toPage') ||sessionStorage.getItem('toPage') == '/' || (sessionStorage.getItem('toPage') == '/access')) {
                 this.toPage = this.carouselList.sort()[0]
             } else {
                 this.toPage = sessionStorage.getItem('toPage')
@@ -108,9 +103,6 @@ export default {
                 url: this.$http.access.url, // 本地
                 method: this.$http.access.method,
                 data: { password: this.password }
-                // url: './tx/Login', // 线上
-                // method: 'POST',
-                // data: { password: this.password }
             }).then(res => {
                 if (res.data.message) {
                     sessionStorage.setItem('isAdmin', true)
