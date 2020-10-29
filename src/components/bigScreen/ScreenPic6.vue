@@ -31,7 +31,7 @@
                         <div class="chart_table">
                             <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(0,5)" :key="index">
                                 <span class="chart_table_title" v-html="item.text">贷款金额</span>
-                                <p class="chart_table_val" v-html="item.value"></p>
+                                <p class="chart_table_val" v-html="Number(item.value).toFixed(2)"></p>
                                 <span class="chart_table_unit" v-html="item.unit">万元</span>
                             </div>
                         </div>
@@ -39,35 +39,8 @@
                         <div class="chart_table">
                             <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(5,10)" :key="index">
                                 <span class="chart_table_title" v-html="item.text">贷款金额</span>
-                                <p class="chart_table_val" v-html="item.value"></p>
+                                <p class="chart_table_val" v-html="Number(item.value).toFixed(2)"></p>
                                 <span class="chart_table_unit" v-html="item.unit">万元</span>
-                            </div>
-                        </div>
-                        <div class="chart_table" v-if="false">
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">户均贷款金额</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">笔数</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">笔</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">笔数最大</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">笔</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">笔数最小</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
-                            </div>
-                            <div class="chart_table_item">
-                                <span class="chart_table_title">笔均</span>
-                                <p class="chart_table_val">999,999</p>
-                                <span class="chart_table_unit">万元</span>
                             </div>
                         </div>
                     </div>
@@ -76,7 +49,7 @@
                     <div class="top_title">
                         <span class="top_title_after">融资区间分布</span>
                     </div>
-                    <multiple-chart></multiple-chart>
+                    <multiple-chart :chartData="financeSection"></multiple-chart>
                 </div>
             </div>
             <!-- 右边 -->
@@ -129,6 +102,7 @@ export default {
             workreallist: [], // 实时信息数据(处理后)
             mapData: [], // 热力图数据
             mapDataTop5: [],
+            financeSection:[], // 融资区间分布
 
             sevenDayTradeTendency: [], // 近七日交易量走势
             sevenDayOpenAccountTendency: [], // 近七日线上开户走势
@@ -148,13 +122,6 @@ export default {
         'page-switcher': PageSwitcher, // 前进后退按钮控件
     },
     mounted() {
-        // this.$axios({
-        //     url: this.$http.screenpic6_test.url, // 本地
-        //     method: this.$http.screenpic6_test.method,
-        //     data: {},
-        // }).then(res=>{
-        //     console.log(res);
-        // });
         this.getMap()
         window.chartTimer.autoRefrash = setInterval(_ => {
             this.getMap();
@@ -193,16 +160,18 @@ export default {
                 let curHour = new Date().getHours();
                 this.iconItemData1 = res.data.iconItemData1  // 注册及授信额度情况 
                 this.iconItemData2 = res.data.iconItemData2  // 授信及用信情况 
-                this.barChartData = this.fixedForm(res.data.coreCompany) // 核心企业统计
+                this.barChartData = res.data.coreCompany == ""
+                    ? []
+                    : this.fixedForm(res.data.coreCompany) // 核心企业统计
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
                 this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
                 this.mapData = this.fixedLocation(res.data.nationmap); // 地图热力图组件数据 - 城市的数据
                 this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
-
-                this.iconItemData2.map(v=>{
-                    return v.value = v.unit=="万元" ? this.fixedNumber(v.value) : v.value
-                });
+                this.financeSection = this.fixedForm(res.data.financeSection2) // 融资区间分布
+                // this.iconItemData2.map(v=>{
+                //     return v.value = v.unit=="万元" ? this.fixedNumber(v.value) : v.value
+                // });
             })
         },
         fixedNumber(num) { // 数字千分位
@@ -233,7 +202,7 @@ export default {
             let workreallistdata = [];
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
-                let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+                let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 workreallistdata.push(a.address+', ' + a.name.slice(0,1) + /* a.sex */"**" + ", " + "申请一笔贷款, 金额" + " " + b + "万元")
             }
             return workreallistdata;

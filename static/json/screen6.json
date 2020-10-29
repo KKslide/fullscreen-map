@@ -3,79 +3,79 @@
         {
             "unit": "户",
             "text": "成功注册户数",
-            "value": "9999"
+            "value": "154"
         },
         {
             "unit": "万元",
-            "text": "授信总额",
-            "value": "18731.36"
+            "text": "授信额度",
+            "value": "16726.0"
         },
         {
             "unit": "万元",
             "text": "单户最大",
-            "value": "61.11"
+            "value": "166.0"
         },
         {
             "unit": "万元",
             "text": "单户最小",
-            "value": "11573"
+            "value": "3.0"
         },
         {
             "unit": "万元",
             "text": "户均额度",
-            "value": "9"
+            "value": "43.32"
         }
     ],
     "iconItemData2": [
         {
             "unit": "万元",
             "text": "贷款金额",
-            "value": "9999"
+            "value": "9999.9"
         },
         {
             "unit": "万元",
             "text": "累计贷款金额",
-            "value": "18731.36"
+            "value": "2858.96"
         },
         {
             "unit": "户",
             "text": "用信户数",
-            "value": "6111"
+            "value": "66"
         },
         {
             "unit": "万元",
             "text": "单户最大",
-            "value": "11573"
+            "value": "166.0"
         },
         {
             "unit": "万元",
             "text": "单户最小",
-            "value": "99999"
+            "value": "3.0"
         },
         {
             "unit": "万元",
             "text": "户均贷款金额",
-            "value": "99999"
+            "value": "43.32"
         },
         {
             "unit": "笔",
             "text": "笔数",
-            "value": "99999"
+            "value": "165"
         },
         {
             "unit": "万元",
             "text": "笔数最大",
-            "value": "99999"
+            "value": "99.0"
         },
         {
             "unit": "万元",
-            "text": "笔数最小",
-            "value": "99999"
+            "text": "笔数最大",
+            "value": "1.3"
         },
         {
             "unit": "万元",
             "text": "笔均",
-            "value": "99999"
+            "value": "17.33"
         }
     ],
     "coreCompany": [
@@ -87,3162 +87,1380 @@
     ],
     "nationmap": [
         {
-            "value": "1445",
-            "type": "北京",
-            "amount": "65"
+            "amount": "1",
+            "type": "云南省德宏傣族景颇族自治州梁河县",
+            "value": "20.0"
         },
         {
-            "value": "5226",
-            "type": "天津",
-            "amount": "4"
+            "amount": "1",
+            "type": "云南省德宏傣族景颇族自治州盈江县",
+            "value": "32.0"
         },
         {
-            "value": "5759",
-            "type": "石家庄",
-            "amount": "2"
+            "amount": "3",
+            "type": "北京市",
+            "value": "204.0"
         },
         {
-            "value": "2653",
-            "type": "辛集",
-            "amount": "2"
+            "amount": "1",
+            "type": "吉林省长春市",
+            "value": "26.0"
         },
         {
-            "value": "1145",
-            "type": "晋州",
-            "amount": "0"
+            "amount": "1",
+            "type": "四川省内江市",
+            "value": "22.0"
         },
         {
-            "value": "5560",
-            "type": "广西",
-            "amount": "1234"
+            "amount": "2",
+            "type": "四川省凉山彝族自治州西昌市",
+            "value": "316.0"
         },
         {
-            "value": "889",
-            "type": "鹿泉",
-            "amount": "0"
+            "amount": "2",
+            "type": "四川省成都市",
+            "value": "52.0"
         },
         {
-            "value": "516",
-            "type": "唐山",
-            "amount": "1"
+            "amount": "1",
+            "type": "四川省攀枝花市",
+            "value": "46.0"
         },
         {
-            "value": "449",
-            "type": "遵化",
-            "amount": "0"
+            "amount": "3",
+            "type": "四川省雅安市",
+            "value": "162.0"
         },
         {
-            "value": "995",
-            "type": "丰南",
-            "amount": "0"
+            "amount": "1",
+            "type": "天津市",
+            "value": "55.0"
         },
         {
-            "value": "1225",
-            "type": "秦皇岛",
-            "amount": "0"
+            "amount": "1",
+            "type": "宁夏回族自治区石嘴山市",
+            "value": "26.0"
         },
         {
-            "value": "2991",
-            "type": "邯郸",
-            "amount": "3"
+            "amount": "2",
+            "type": "宁夏回族自治区银川市",
+            "value": "570.0"
         },
         {
-            "value": "3362",
-            "type": "武安",
-            "amount": "0"
+            "amount": "1",
+            "type": "安徽省六安市",
+            "value": "64.0"
         },
         {
-            "value": "421",
-            "type": "邢台",
-            "amount": "0"
+            "amount": "2",
+            "type": "安徽省合肥市",
+            "value": "54.0"
         },
         {
-            "value": "447",
-            "type": "南宫",
-            "amount": "0"
+            "amount": "2",
+            "type": "安徽省安庆市",
+            "value": "76.0"
         },
         {
-            "value": "112",
-            "type": "沙河",
-            "amount": "0"
+            "amount": "1",
+            "type": "安徽省宿州市",
+            "value": "153.0"
         },
         {
-            "value": "132",
-            "type": "保定",
-            "amount": "1"
+            "amount": "5",
+            "type": "安徽省蚌埠市",
+            "value": "410.0"
         },
         {
-            "value": "167",
-            "type": "涿州",
-            "amount": "0"
+            "amount": "1",
+            "type": "安徽省铜陵市",
+            "value": "58.0"
         },
         {
-            "value": "852",
-            "type": "定州",
-            "amount": "0"
+            "amount": "3",
+            "type": "安徽省阜阳市",
+            "value": "240.0"
         },
         {
-            "value": "322",
-            "type": "安国",
-            "amount": "0"
+            "amount": "5",
+            "type": "山东省济宁市",
+            "value": "146.0"
         },
         {
-            "value": "69",
-            "type": "高碑店",
-            "amount": "0"
+            "amount": "3",
+            "type": "山东省滨州市",
+            "value": "66.0"
         },
         {
-            "value": "4112",
-            "type": "张家口",
-            "amount": "1"
+            "amount": "2",
+            "type": "山东省菏泽市",
+            "value": "158.0"
         },
         {
-            "value": "5526",
-            "type": "承德",
-            "amount": "4"
+            "amount": "3",
+            "type": "山东省青岛市",
+            "value": "900.0"
         },
         {
-            "value": "3360",
-            "type": "沧州",
-            "amount": "0"
+            "amount": "1",
+            "type": "山西省临汾市",
+            "value": "25.0"
         },
         {
-            "value": "222",
-            "type": "泊头",
-            "amount": "0"
+            "amount": "5",
+            "type": "山西省太原市",
+            "value": "335.0"
         },
         {
-            "value": "74",
-            "type": "任丘",
-            "amount": "0"
+            "amount": "2",
+            "type": "山西省晋中市",
+            "value": "42.0"
         },
         {
-            "value": "1121",
-            "type": "黄骅",
-            "amount": "0"
+            "amount": "1",
+            "type": "山西省晋城市",
+            "value": "64.0"
         },
         {
-            "value": "445",
-            "type": "河间",
-            "amount": "0"
+            "amount": "2",
+            "type": "广东省云浮市",
+            "value": "156.0"
         },
         {
-            "value": "102",
-            "type": "霸州",
-            "amount": "0"
+            "amount": "3",
+            "type": "广东省惠州市",
+            "value": "855.0"
         },
         {
-            "value": "80",
-            "type": "三河",
-            "amount": "0"
+            "amount": "9",
+            "type": "广东省江门市",
+            "value": "720.0"
         },
         {
-            "value": "633",
-            "type": "衡水",
-            "amount": "16"
+            "amount": "1",
+            "type": "广东省深圳市",
+            "value": "100.0"
         },
         {
-            "value": "411",
-            "type": "冀州",
-            "amount": "0"
+            "amount": "12",
+            "type": "广东省清远市",
+            "value": "2112.0"
         },
         {
-            "value": "523",
-            "type": "深州",
-            "amount": "16"
+            "amount": "11",
+            "type": "广东省珠海市",
+            "value": "1243.0"
         },
         {
-            "value": "546",
-            "type": "太原",
-            "amount": "0"
+            "amount": "3",
+            "type": "广西壮族自治区南宁市",
+            "value": "146.0"
         },
         {
-            "value": "74",
-            "type": "古交",
-            "amount": "0"
+            "amount": "1",
+            "type": "广西壮族自治区柳州市",
+            "value": "26.0"
         },
         {
-            "value": "88",
-            "type": "大同",
-            "amount": "0"
+            "amount": "1",
+            "type": "广西壮族自治区桂林市",
+            "value": "52.0"
         },
         {
-            "value": "0.0",
-            "type": "阳泉",
-            "amount": "0"
+            "amount": "6",
+            "type": "江苏省盐城市",
+            "value": "810.0"
         },
         {
-            "value": "0.0",
-            "type": "长治",
-            "amount": "0"
+            "amount": "1",
+            "type": "江西省吉安市",
+            "value": "15.0"
         },
         {
-            "value": "0.0",
-            "type": "潞城",
-            "amount": "0"
+            "amount": "4",
+            "type": "江西省赣州市",
+            "value": "218.0"
         },
         {
-            "value": "0.0",
-            "type": "晋城",
-            "amount": "0"
+            "amount": "7",
+            "type": "河北省唐山市",
+            "value": "508.0"
         },
         {
-            "value": "0.0",
-            "type": "高平",
-            "amount": "0"
+            "amount": "6",
+            "type": "河北省承德市",
+            "value": "252.0"
         },
         {
-            "value": "0.0",
-            "type": "朔州",
-            "amount": "0"
+            "amount": "1",
+            "type": "河北省邢台市",
+            "value": "55.0"
         },
         {
-            "value": "0.0",
-            "type": "介休",
-            "amount": "0"
+            "amount": "1",
+            "type": "河北省邯郸市",
+            "value": "18.0"
         },
         {
-            "value": "0.0",
-            "type": "运城",
-            "amount": "0"
+            "amount": "1",
+            "type": "河南省周口市",
+            "value": "120.0"
         },
         {
-            "value": "0.0",
-            "type": "永济",
-            "amount": "0"
+            "amount": "2",
+            "type": "河南省安阳市",
+            "value": "138.0"
         },
         {
-            "value": "0.0",
-            "type": "河津",
-            "amount": "0"
+            "amount": "1",
+            "type": "河南省濮阳市",
+            "value": "196.0"
         },
         {
-            "value": "0.0",
-            "type": "忻州",
-            "amount": "0"
+            "amount": "1",
+            "type": "河南省鹤壁市",
+            "value": "50.0"
         },
         {
-            "value": "0.0",
-            "type": "原平",
-            "amount": "0"
+            "amount": "6",
+            "type": "浙江省金华市",
+            "value": "729.0"
         },
         {
-            "value": "0.0",
-            "type": "临汾",
-            "amount": "0"
+            "amount": "3",
+            "type": "海南省省直辖县级行政区划昌江黎族自治县",
+            "value": "132.0"
         },
         {
-            "value": "0.0",
-            "type": "侯马",
-            "amount": "0"
+            "amount": "4",
+            "type": "湖北省荆州市",
+            "value": "260.0"
         },
         {
-            "value": "0.0",
-            "type": "霍州",
-            "amount": "0"
+            "amount": "1",
+            "type": "湖北省黄冈市",
+            "value": "39.0"
         },
         {
-            "value": "0.0",
-            "type": "孝义",
-            "amount": "0"
+            "amount": "3",
+            "type": "湖南省怀化市",
+            "value": "117.0"
         },
         {
-            "value": "0.0",
-            "type": "呼和浩特",
-            "amount": "0"
+            "amount": "2",
+            "type": "湖南省株洲市",
+            "value": "64.0"
         },
         {
-            "value": "0.0",
-            "type": "包头",
-            "amount": "0"
+            "amount": "5",
+            "type": "湖南省邵阳市",
+            "value": "260.0"
         },
         {
-            "value": "0.0",
-            "type": "乌海",
-            "amount": "0"
+            "amount": "4",
+            "type": "湖南省长沙市",
+            "value": "348.0"
         },
         {
-            "value": "0.0",
-            "type": "赤峰",
-            "amount": "0"
+            "amount": "1",
+            "type": "甘肃省庆阳市",
+            "value": "103.0"
         },
         {
-            "value": "0.0",
-            "type": "通辽",
-            "amount": "0"
+            "amount": "5",
+            "type": "甘肃省武威市",
+            "value": "460.0"
         },
         {
-            "value": "0.0",
-            "type": "霍林郭勒",
-            "amount": "0"
+            "amount": "1",
+            "type": "辽宁省铁岭市",
+            "value": "38.0"
         },
         {
-            "value": "0.0",
-            "type": "满洲里",
-            "amount": "0"
+            "amount": "1",
+            "type": "陕西省榆林市",
+            "value": "18.0"
         },
         {
-            "value": "0.0",
-            "type": "牙克石",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "扎兰屯",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "根河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海拉尔",
-            "amount": "0"
-        },
-        {
-            "value": "6589.0",
-            "type": "额尔古纳",
-            "amount": "49"
-        },
-        {
-            "value": "0.0",
-            "type": "乌兰浩特",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "二连浩特",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "锡林浩特",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "集宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丰镇",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "沈阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新民",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "大连",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "瓦房店",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "普兰店",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "庄河",
-            "amount": "0"
-        },
-        {
-            "value": "6211.0",
-            "type": "鞍山",
-            "amount": "34"
-        },
-        {
-            "value": "0.0",
-            "type": "海城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "抚顺",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "本溪",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丹东",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "东港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "凤城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "锦州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "凌海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "营口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "盖州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "大石桥",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阜新",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "辽阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "盘锦",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "铁岭",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "开原",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "朝阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "北票",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "凌源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "葫芦岛",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兴城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "铁法",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "长春",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "九台",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "德惠",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吉林",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "蛟河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "桦甸",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "舒兰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "四平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "公主岭",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "辽源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "通化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "梅河口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "白山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "集安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "松原",
-            "amount": "0"
-        },
-        {
-            "value": "3217.0",
-            "type": "白城",
-            "amount": "5"
-        },
-        {
-            "value": "0.0",
-            "type": "洮南",
-            "amount": "0"
-        },
-        {
-            "value": "3217.0",
-            "type": "大安",
-            "amount": "5"
-        },
-        {
-            "value": "0.0",
-            "type": "延吉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "图们",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "敦化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "珲春",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "龙井",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "和龙",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "哈尔滨",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阿城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "双城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "尚志",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "五常",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "齐齐哈尔",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "讷河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鸡西",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鹤岗",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "双鸭山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "大庆",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "伊春",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "铁力",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "佳木斯",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "同江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "富锦",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "七台河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "牡丹江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "绥芬河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "密山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海林",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宁安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "黑河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "北安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "五大连池",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "绥化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "安达",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "肇东",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海伦",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "上海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南京",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "无锡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "江阴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "徐州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新沂",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邳州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "常州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "溧阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "金坛",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "苏州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "常熟",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "张家港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "昆山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吴江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "太仓",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南通",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "如皋",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "通州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海门",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "连云港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "淮安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "东台",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "扬州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "仪征",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兴化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高邮",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "靖江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "江都",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "镇江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丹阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "扬中",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "泰州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "泰兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "姜堰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宿迁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "杭州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "萧山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "富阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "余杭",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "建德",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宁波",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "余姚",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "慈溪",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "奉化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "温州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "瑞安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乐清",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "嘉兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "平湖",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "桐乡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "湖州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "绍兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "诸暨",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "上虞",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "金华",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兰溪",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "义乌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "东阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "永康",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "衢州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "江山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "舟山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "台州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "温岭",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丽水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "龙泉",
-            "amount": "0"
-        },
-        {
-            "value": "171440.76",
-            "type": "合肥",
-            "amount": "22"
-        },
-        {
-            "value": "0.0",
-            "type": "芜湖",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "蚌埠",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "淮南",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "马鞍山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "淮北",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "铜陵",
-            "amount": "0"
-        },
-        {
-            "value": "100865.63",
-            "type": "安庆",
-            "amount": "4"
-        },
-        {
-            "value": "0.0",
-            "type": "黄山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "滁州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "天长",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "明光",
-            "amount": "0"
-        },
-        {
-            "value": "2100.0",
-            "type": "阜阳",
-            "amount": "4"
-        },
-        {
-            "value": "0.0",
-            "type": "界首",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宿州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "巢湖",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "六安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "亳州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宣州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "贵池",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "福州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "福清",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "长乐",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "厦门",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "莆田",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "三明",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "永安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "泉州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "石狮",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "晋江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "漳州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "龙海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邵武",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "武夷山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "建瓯",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "建阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "龙岩",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "漳平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宁德",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "福安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南昌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "景德镇",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乐平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "萍乡",
-            "amount": "0"
-        },
-        {
-            "value": "556.0",
-            "type": "九江",
-            "amount": "1"
-        },
-        {
-            "value": "556.0",
-            "type": "瑞昌",
-            "amount": "1"
-        },
-        {
-            "value": "0.0",
-            "type": "新余",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鹰潭",
-            "amount": "0"
-        },
-        {
-            "value": "15200.0",
-            "type": "赣州",
-            "amount": "4"
-        },
-        {
-            "value": "0.0",
-            "type": "瑞金",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "井冈山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜春",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丰城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "樟树",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "上饶",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "德兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "济南",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "章丘",
-            "amount": "0"
-        },
-        {
-            "value": "10000.0",
-            "type": "青岛",
-            "amount": "1"
-        },
-        {
-            "value": "0.0",
-            "type": "胶州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "即墨",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "平度",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "胶南",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "莱西",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "淄博",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "枣庄",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "滕州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "东营",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "烟台",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "龙口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "莱阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "莱州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "蓬莱",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "招远",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "潍坊",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "青州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "诸城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "寿光",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "安丘",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高密",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "昌邑",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "济宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "曲阜",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兖州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邹城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "泰安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新泰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "肥城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "威海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "文登",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "荣成",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乳山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "日照",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "莱芜",
-            "amount": "0"
-        },
-        {
-            "value": "11000.0",
-            "type": "临沂",
-            "amount": "3"
-        },
-        {
-            "value": "223.0",
-            "type": "德州",
-            "amount": "2"
-        },
-        {
-            "value": "0.0",
-            "type": "乐陵",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "聊城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临清",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "滨州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "菏泽",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "郑州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "巩义",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "荥阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新密",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新郑",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "登封",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "开封",
-            "amount": "0"
-        },
-        {
-            "value": "32740.0",
-            "type": "洛阳",
-            "amount": "93"
-        },
-        {
-            "value": "26642.0",
-            "type": "偃师",
-            "amount": "85"
-        },
-        {
-            "value": "0.0",
-            "type": "平顶山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "舞钢",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "汝州",
-            "amount": "0"
-        },
-        {
-            "value": "34544.0",
-            "type": "安阳",
-            "amount": "3"
-        },
-        {
-            "value": "0.0",
-            "type": "林州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鹤壁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "新乡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "卫辉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "辉县",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "焦作",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "济源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "沁阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "濮阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "许昌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "禹州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "长葛",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "漯河",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "三门峡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "义马",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "灵宝",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邓州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "商丘",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "信阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "周口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "项城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "驻马店",
-            "amount": "0"
-        },
-        {
-            "value": "55003.77",
-            "type": "武汉",
-            "amount": "3"
-        },
-        {
-            "value": "0.0",
-            "type": "黄石",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "大冶",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "十堰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "丹江口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜昌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "当阳",
-            "amount": "0"
-        },
-        {
-            "value": "17235.0",
-            "type": "襄樊",
-            "amount": "26"
-        },
-        {
-            "value": "0.0",
-            "type": "老河口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "枣阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鄂州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "荆门",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "孝感",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "应城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "安陆",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "广水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "石首",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "钟祥",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "洪湖",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "麻城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "武穴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "咸宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "随州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "恩施",
-            "amount": "0"
-        },
-        {
-            "value": "211735.0",
-            "type": "长沙",
-            "amount": "143"
-        },
-        {
-            "value": "0.0",
-            "type": "浏阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "株洲",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "醴陵",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "湘潭",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "湘乡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "韶山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "衡阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "耒阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邵阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "武冈",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "岳阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "汨罗",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临湘",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "常德",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "津市",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "张家界",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "益阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "沅江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "郴州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "资兴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "永州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "怀化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "洪江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "娄底",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "冷水江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "涟源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吉首",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "广州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "番禺",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "花都",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "增城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "从化",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "韶关",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乐昌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "深圳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "珠海",
-            "amount": "0"
-        },
-        {
-            "value": "15980.2",
-            "type": "汕头",
-            "amount": "21"
-        },
-        {
-            "value": "0.0",
-            "type": "澄海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "潮阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "佛山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "顺德",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "三水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高明",
-            "amount": "0"
-        },
-        {
-            "value": "113139.26",
-            "type": "江门",
-            "amount": "23"
-        },
-        {
-            "value": "0.0",
-            "type": "台山",
-            "amount": "0"
-        },
-        {
-            "value": "113139.26",
-            "type": "新会",
-            "amount": "23"
-        },
-        {
-            "value": "0.0",
-            "type": "开平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "鹤山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "恩平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "湛江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "廉江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "雷州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吴川",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "茂名",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "化州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "肇庆",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "罗定",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "高要",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "四会",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "惠州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "惠阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "梅州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兴宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "汕尾",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "河源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阳江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阳春",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "清远",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "英德",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "连州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "东莞",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "中山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "潮州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "揭阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "普宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "云浮",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "柳州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "桂林",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "梧州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "北海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "防城港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "钦州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "贵港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "桂平",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "玉林",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "北流",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "百色",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "河池",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "合山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "通什",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "琼海",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "儋州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "琼山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "海口",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "三亚",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "重庆",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "成都",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "都江堰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "彭州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "邛崃",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "崇州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "永川",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "江津",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "合川",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "自贡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "攀枝花",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "泸州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "德阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "广汉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "绵阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "江油",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "广元",
-            "amount": "0"
-        },
-        {
-            "value": "1881.14",
-            "type": "遂宁",
-            "amount": "5"
-        },
-        {
-            "value": "0.0",
-            "type": "内江",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乐山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "峨眉山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "万县",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "南充",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阆中",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宜宾",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "华蓥",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "万源",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "雅安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "巴中",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "资阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "简阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "涪陵",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "达川",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "贵阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "清镇",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "六盘水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "遵义",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "赤水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "安顺",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "铜仁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兴义",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "毕节",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "凯里",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "都匀",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "昆明",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "宣威",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "玉溪",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "保山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "昭通",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "楚雄",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "大理",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "拉萨",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "日喀则",
-            "amount": "0"
-        },
-        {
-            "value": "1708017.09",
-            "type": "西安",
-            "amount": "41"
-        },
-        {
-            "value": "0.0",
-            "type": "铜川",
-            "amount": "0"
-        },
-        {
-            "value": "112726.31",
-            "type": "宝鸡",
-            "amount": "40"
-        },
-        {
-            "value": "134000.0",
-            "type": "咸阳",
-            "amount": "6"
-        },
-        {
-            "value": "0.0",
-            "type": "兴平",
-            "amount": "0"
-        },
-        {
-            "value": "15459.0",
-            "type": "渭南",
-            "amount": "15"
-        },
-        {
-            "value": "0.0",
-            "type": "韩城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "华阴",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "延安",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "汉中",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "榆林",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "安康",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "兰州",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "嘉峪关",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "金昌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "白银",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "天水",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "武威",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "张掖",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "平凉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "酒泉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "玉门",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "敦煌",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "庆阳",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "临夏",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "西宁",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "格尔木",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "德令哈",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "银川",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "石嘴山",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吴忠",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "青铜峡",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "乌鲁木齐",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "克拉玛依",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "石河子",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "吐鲁番",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "哈密",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "昌吉",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阜康",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "塔城",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阿勒泰",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "博乐",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "郭楞",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阿克苏",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "阿图什",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "喀什",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "和田",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "奎屯",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "香港",
-            "amount": "0"
-        },
-        {
-            "value": "0.0",
-            "type": "澳门",
-            "amount": "0"
-        }
-    ],
-    "realist_CY": [
-        {
-            "amount": "1000.0",
-            "address": "湖北省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行周周利2号"
-        },
-        {
-            "amount": "50.0",
-            "address": "浙江省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "福建省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "1000.0",
-            "address": "江西省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行周周利2号"
-        },
-        {
-            "amount": "50.0",
-            "address": "湖南省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "浙江省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "福建省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "湖南省xx市",
-            "sex": "女士",
-            "name": "钟嘉雯",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "300",
-            "address": "贵州省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "周周利1号"
-        },
-        {
-            "amount": "1000.0",
-            "address": "云南省xx市",
-            "sex": "女士",
-            "name": "钟嘉雯",
-            "type": "周周利1号"
-        },
-        {
-            "amount": "50.0",
-            "address": "浙江省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "福建省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "1765.84",
-            "address": "广西省xx市",
-            "sex": "女士",
-            "name": "钟嘉雯",
-            "type": "周周利1号"
-        },
-        {
-            "amount": "10000.0",
-            "address": "海南省xx市",
-            "sex": "女士",
-            "name": "钟嘉雯",
-            "type": "周周利1号"
-        },
-        {
-            "amount": "50.0",
-            "address": "浙江省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
-        },
-        {
-            "amount": "50.0",
-            "address": "福建省xx市",
-            "sex": "先生",
-            "name": "陆阳杰",
-            "type": "客商银行五年定期存款"
+            "amount": "1",
+            "type": "陕西省西安市",
+            "value": "46.0"
         }
     ],
     "sevenDayTradeTendency": [
         {
-            "date": "20201001",
-            "tradeCount": "1523",
-            "tradeAmount": "77655"
+            "date": "20201019",
+            "tradeAmount": "4673.0",
+            "tradeCount": "24"
         },
         {
-            "date": "20201109",
-            "tradeCount": "1658",
-            "tradeAmount": "98852"
+            "date": "20201020",
+            "tradeAmount": "1960.0",
+            "tradeCount": "26"
         },
         {
-            "date": "20201003",
-            "tradeCount": "4511",
-            "tradeAmount": "15578"
+            "date": "20201021",
+            "tradeAmount": "2047.0",
+            "tradeCount": "27"
         },
         {
-            "date": "20201004",
-            "tradeCount": "2713",
-            "tradeAmount": "33255"
+            "date": "20201022",
+            "tradeAmount": "2501.0",
+            "tradeCount": "26"
         },
         {
-            "date": "20201005",
-            "tradeCount": "2689",
-            "tradeAmount": "46211"
+            "date": "20201023",
+            "tradeAmount": "1811.0",
+            "tradeCount": "24"
         },
         {
-            "date": "20201006",
-            "tradeCount": "6552",
-            "tradeAmount": "85544"
+            "date": "20201024",
+            "tradeAmount": "1672.0",
+            "tradeCount": "19"
         },
         {
-            "date": "20201007",
-            "tradeCount": "1200",
-            "tradeAmount": "44874"
+            "date": "20201025",
+            "tradeAmount": "2062.0",
+            "tradeCount": "23"
         }
     ],
-    "financeSection2":[
+    "financeSection2": [
         {
-            "range":"0-10",
-            "creadit":400,
-            "loan":400
+            "loan": "0",
+            "range": "0-10",
+            "creadit": "2"
         },
         {
-            "range":"0-10",
-            "creadit":400,
-            "loan":400
+            "loan": "3",
+            "range": "10-20",
+            "creadit": "7"
         },
         {
-            "range":"10-20",
-            "creadit":400,
-            "loan":400
+            "loan": "7",
+            "range": "20-30",
+            "creadit": "8"
         },
         {
-            "range":"10-20",
-            "creadit":400,
-            "loan":400
+            "loan": "5",
+            "range": "30-40",
+            "creadit": "5"
         },
         {
-            "range":"20-30",
-            "creadit":400,
-            "loan":400
+            "loan": "3",
+            "range": "40-50",
+            "creadit": "5"
         },
         {
-            "range":"20-30",
-            "creadit":400,
-            "loan":400
+            "loan": "6",
+            "range": "50-60",
+            "creadit": "5"
         },
         {
-            "range":"30-40",
-            "creadit":400,
-            "loan":400
+            "loan": "5",
+            "range": "60-70",
+            "creadit": "2"
         },
         {
-            "range":"30-40",
-            "creadit":400,
-            "loan":400
+            "loan": "2",
+            "range": "70-80",
+            "creadit": "1"
         },
         {
-            "range":"40-50",
-            "creadit":400,
-            "loan":400
+            "loan": "18",
+            "range": ">80",
+            "creadit": "9"
+        }
+    ],
+    "realist_CY": [
+        {
+            "amount": "13.0",
+            "address": "湖南省邵阳市武冈市",
+            "name": "测试客户",
+            "type": "LND259015591501"
         },
         {
-            "range":"40-50",
-            "creadit":400,
-            "loan":400
+            "amount": "17.0",
+            "address": "山东省济宁市嘉祥县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "16.0",
+            "address": "山东省滨州市惠民县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "甘肃省武威市凉州区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "山东省济宁市嘉祥县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "11.0",
+            "address": "湖北省荆州市沙市区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.5",
+            "address": "河北省邯郸市涉县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "浙江省金华市东阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "河北省唐山市丰南区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "河北省邢台市宁晋县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "14.0",
+            "address": "安徽省阜阳市界首市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "宁夏回族自治区银川市兴庆区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "68.0",
+            "address": "四川省凉山彝族自治州西昌市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "河北省承德市宽城满族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.0",
+            "address": "山东省济宁市曲阜市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "99.0",
+            "address": "甘肃省庆阳市西峰区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.5",
+            "address": "河北省承德市围场满族蒙古族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "3.0",
+            "address": "天津市市辖区滨海新区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "5.0",
+            "address": "海南省省直辖县级行政区划昌江黎族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "四川省雅安市雨城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "宁夏回族自治区石嘴山市大武口区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "18.0",
+            "address": "陕西省西安市阎良区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "19.0",
+            "address": "甘肃省武威市凉州区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "山东省菏泽市曹县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "江西省赣州市于都县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "山东省青岛市城阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "2.0",
+            "address": "河北省唐山市乐亭县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.0",
+            "address": "河北省唐山市乐亭县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "河北省承德市围场满族蒙古族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.0",
+            "address": "湖南省邵阳市武冈市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "湖北省荆州市沙市区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "浙江省金华市东阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "安徽省蚌埠市禹会区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "1.88",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "4.12",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "3.1",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "13.0",
+            "address": "河南省安阳市林州市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "山西省太原市尖草坪区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江西省赣州市龙南县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "16.28",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "16.28",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "52.0",
+            "address": "广西壮族自治区桂林市全州县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "广东省云浮市云城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "23.2",
+            "address": "浙江省金华市婺城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "四川省雅安市雨城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "2.45",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "10.0",
+            "address": "安徽省蚌埠市禹会区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "云南省德宏傣族景颇族自治州梁河县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "11.0",
+            "address": "北京市市辖区朝阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "河北省承德市宽城满族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "安徽省宿州市埇桥区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "湖南省怀化市沅陵县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "28.0",
+            "address": "北京市市辖区朝阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "18.0",
+            "address": "山西省太原市尖草坪区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "甘肃省武威市凉州区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "17.0",
+            "address": "四川省成都市金堂县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.48",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "22.0",
+            "address": "安徽省阜阳市阜南县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.0",
+            "address": "湖南省邵阳市武冈市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "17.0",
+            "address": "安徽省蚌埠市禹会区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "辽宁省铁岭市昌图县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "26.0",
+            "address": "宁夏回族自治区银川市兴庆区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "湖南省株洲市茶陵县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "山西省晋中市榆次区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "云南省德宏傣族景颇族自治州盈江县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "湖北省荆州市沙市区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "河北省承德市围场满族蒙古族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "27.0",
+            "address": "江西省赣州市龙南县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "安徽省安庆市桐城市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "4.0",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "4.0",
+            "address": "河北省承德市围场满族蒙古族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "山东省菏泽市曹县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "18.0",
+            "address": "安徽省安庆市桐城市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "甘肃省武威市凉州区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "11.0",
+            "address": "湖南省邵阳市武冈市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "湖南省长沙市浏阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "18.0",
+            "address": "陕西省榆林市府谷县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "甘肃省武威市凉州区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "26.0",
+            "address": "吉林省长春市农安县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "湖南省邵阳市武冈市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "河南省周口市淮阳县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "安徽省阜阳市界首市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "6.93",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "四川省攀枝花市东区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "山东省青岛市城阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "39.0",
+            "address": "湖北省黄冈市罗田县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "5.0",
+            "address": "河北省唐山市乐亭县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "90.0",
+            "address": "四川省凉山彝族自治州西昌市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "河北省唐山市乐亭县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "22.0",
+            "address": "四川省内江市资中县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.2",
+            "address": "河北省唐山市丰南区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "2.1",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.0",
+            "address": "四川省成都市金堂县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "6.0",
+            "address": "江西省赣州市于都县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "14.0",
+            "address": "河南省安阳市林州市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "浙江省金华市东阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "12.0",
+            "address": "安徽省阜阳市界首市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "21.0",
+            "address": "湖北省荆州市沙市区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "山东省济宁市嘉祥县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "山西省太原市尖草坪区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "山东省济宁市嘉祥县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "",
+            "name": "",
+            "type": "LND2590100001"
+        },
+        {
+            "amount": "10.5",
+            "address": "浙江省金华市婺城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "18.0",
+            "address": "四川省雅安市雨城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "浙江省金华市婺城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "北京市市辖区朝阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "山东省青岛市城阳区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "16.5",
+            "address": "河北省唐山市丰南区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.67",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "广东省深圳市龙岗区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "47.0",
+            "address": "广东省深圳市龙华区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.11",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "24.13",
+            "address": "广东省云浮市云城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.1",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "广东省深圳市龙岗区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "5.86",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "26.0",
+            "address": "广西壮族自治区柳州市融安县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "6.11",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.32",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "5.0",
+            "address": "海南省省直辖县级行政区划昌江黎族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "29.8",
+            "address": "广东省深圳市龙岗区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "1.3",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "5.0",
+            "address": "海南省省直辖县级行政区划昌江黎族自治县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.13",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "20.0",
+            "address": "广东省云浮市云城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "35.0",
+            "address": "江苏省盐城市盐都区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "15.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "37.0",
+            "address": "湖南省长沙市浏阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "17.0",
+            "address": "广西壮族自治区南宁市横县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.83",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "14.0",
+            "address": "湖南省株洲市茶陵县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "19.0",
+            "address": "安徽省蚌埠市禹会区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "25.0",
+            "address": "山西省临汾市襄汾县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "8.0",
+            "address": "安徽省合肥市肥东县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "30.0",
+            "address": "山西省晋城市城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "湖南省长沙市浏阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "山西省晋中市榆次区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.0",
+            "address": "湖南省怀化市沅陵县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "50.0",
+            "address": "河南省濮阳市华龙区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "11.0",
+            "address": "广西壮族自治区南宁市横县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "湖南省怀化市沅陵县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "19.0",
+            "address": "安徽省合肥市肥东县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "9.9",
+            "address": "山西省太原市尖草坪区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "山西省太原市尖草坪区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "4.21",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "江西省吉安市安福县",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "湖南省长沙市浏阳市",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "10.0",
+            "address": "广东省清远市清城区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "13.0",
+            "address": "安徽省蚌埠市禹会区",
+            "name": "测试客户",
+            "type": "LND259015591501"
+        },
+        {
+            "amount": "7.47",
+            "address": "广东省珠海市香洲区",
+            "name": "测试客户",
+            "type": "LND259015591501"
         }
     ]
 }

@@ -136,7 +136,7 @@ export default {
                                 barBorderRadius: 7
                             }
                         },
-                        data: val.data1
+                        data: val.data1.map(v=>{return Number(v).toFixed(2)})
                     },
                     {
                         name: '放款笔数(笔)',
