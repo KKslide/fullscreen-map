@@ -8,6 +8,7 @@ import ScreenPic3 from '@/components/bigScreen/ScreenPic3'
 import ScreenPic4 from '@/components/bigScreen/ScreenPic4'
 import ScreenPic5 from '@/components/bigScreen/ScreenPic5'
 import ScreenPic6 from '@/components/bigScreen/ScreenPic6'
+import StaticCom from '@/components/bigScreen/Static.vue'
 
 /* 口令登陆页面 */
 import Access from '@/components/bigScreen/Access'
@@ -68,6 +69,14 @@ export default new Router({
             component: ScreenPic6,
             meta: {
                 title: '喜之郎供应链业务'
+            }
+        },
+        {
+            path: '/static',
+            name: 'static',
+            component: StaticCom,
+            meta: {
+                title: '静态数据设置'
             }
         }
     ]

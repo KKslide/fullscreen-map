@@ -3,7 +3,11 @@ import App from './App'
 import axios from 'axios'
 import router from './router'
 import Vuex from 'vuex';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import './assets/style/style.css'
 Vue.use(Vuex);
+Vue.use(ElementUI);
 
 import $ from "jquery"
 import jqCircle from "jquery-circle-progress"
@@ -64,6 +68,16 @@ if (process.env.NODE_ENV === "production") {
       "method": "post"
     },
     "screenpic6": { "url": "./tx/newGYL", "method": "post" },
+    "static": {
+      "screen1":{
+        "url":"../static/json/screen1.json",
+        "method":"get",
+      },
+      "screen2":{
+        "url":"../static/json/screen2.json",
+        "method":"get",
+      }
+    }
   }
 } else {
   console.log("正在使用开发环境...")
@@ -78,7 +92,16 @@ if (process.env.NODE_ENV === "production") {
     "screenpic4": { "url": "./static/json/screen4.json", "method": "get" },
     "screenpic5": { "url": "./static/json/screen5.json", "method": "get" },
     "screenpic6": { "url": "./static/json/screen6.json", "method": "get" },
-
+    "static": {
+      "screen1":{
+        "url":"../static/json/screen1.json",
+        "method":"get",
+      },
+      "screen2":{
+        "url":"../static/json/screen2.json",
+        "method":"get",
+      }
+    }
     // "screenpic1": {
     //   "url": "http://10.30.80.71:8100/usp_ks/tx/GYL",
     //   "method": "post"
