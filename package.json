@@ -15,7 +15,7 @@
     "echarts-gl": "^1.1.1",
     "element-ui": "^2.14.0",
     "highcharts": "^7.1.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-circle-progress": "^1.2.2",
     "kim-vue-touch": "^1.1.4",
     "less": "^3.9.0",
