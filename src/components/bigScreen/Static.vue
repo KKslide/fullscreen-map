@@ -795,20 +795,29 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
+    getStaticData(src){
+      this.$axios({
+        url: this.$http.static[src].url, // 本地
+        method: this.$http.static[src].method,
+        data: {},
+      }).then((res) => {
+        console.log(res.data);
+      });
+    }
   },
   mounted() {
-    // this.$axios({
-    //   url: this.$http.static.screen1.url, // 本地
-    //   method: this.$http.static.screen1.method,
-    //   data: {},
-    // }).then((res) => {
-    //   console.log(res);
-    // });
-    // let temp_nationmap = this.$deepClone(this.nationmap);
+    let curPicked = this.form.screenPicked;
+    this.getStaticData(curPicked);
     this.form.screen1.nationmap.map((v) => {
       return this.form.screen1.nationmap.sort(this.compare("value")).reverse();
     });
   },
+  watch:{
+    'form.screenPicked':function(nv, ov){
+      console.log('变化选项! 当前选择为: ',nv);
+      this.getStaticData(nv)
+    }
+  }
 };
 </script>
 
