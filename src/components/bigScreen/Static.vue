@@ -3,39 +3,33 @@
     <el-container class="static_container">
       <el-form ref="form" :model="form" label-width="125px" size="mini">
         <el-form-item label="要编辑的大屏">
-          <el-select v-model="form.screenPicked" placeholder="请选择大屏">
-            <el-option
-              v-for="(item, index) in form.screen"
-              :key="index"
-              :label="item.name"
-              :value="item.value"
-            ></el-option>
+          <el-select v-model="screenPicked" placeholder="请选择大屏">
+            <el-option v-for="(item, index) in screen" :key="index" :label="item.name" :value="item.value" ></el-option>
           </el-select>
         </el-form-item>
         <!-- 大屏1 -->
-        <el-form-item label="全国业务情况" v-if="form.screenPicked=='screen1'">
+        <el-form-item label="全国业务情况" v-if="screenPicked=='screen1'">
           <el-col :span="3" v-for="(item, index) in form.screen1.nationList" :key="index" >
             <el-form-item :label="item.type + '(' + item.unit + ')'">
-              <!-- <el-form-item :label="item.type"> -->
               <el-input v-model="item.amount"></el-input>
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="广东业务情况" v-if="form.screenPicked=='screen1'">
+        <el-form-item label="广东业务情况" v-if="screenPicked=='screen1'">
           <el-col :span="3" v-for="(item, index) in form.screen1.localList" :key="index" >
             <el-form-item :label="item.type + '(' + item.unit + ')'">
               <el-input v-model="item.amount"></el-input>
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="近七天放款趋势" v-if="form.screenPicked=='screen1'">
+        <el-form-item label="近七天放款趋势" v-if="screenPicked=='screen1'">
           <el-col :span="3" v-for="(item, index) in form.screen1.sevenDay_CY" :key="index" >
             <el-form-item :label="weekList[index]">
               <el-input v-model="item.amount"></el-input>
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="全国交易量情况" v-if="form.screenPicked=='screen1'">
+        <el-form-item label="全国交易量情况" v-if="screenPicked=='screen1'">
           <el-row>
             <el-col :span="1" style="color: #fff">金额TOP5:</el-col>
             <el-col :span="3" v-for="(item, index) in form.screen1.nationmap" :key="index" >
@@ -53,7 +47,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="实时交易" v-if="form.screenPicked=='screen1'">
+        <el-form-item label="实时交易" v-if="screenPicked=='screen1'">
           <el-col :span="18">
             <el-table :data="form.screen1.realist_CY" style="width: 100%" height="20em">
               <el-table-column label="姓名">
@@ -78,17 +72,8 @@
               </el-table-column>
               <el-table-column label="操作">
                 <template slot-scope="scope">
-                  <el-button
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)"
-                    >编辑</el-button
-                  >
-                  <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(scope.$index, scope.row)"
-                    >删除</el-button
-                  >
+                  <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" >编辑</el-button >
+                  <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)" >删除</el-button >
                 </template>
               </el-table-column>
             </el-table>
@@ -98,14 +83,14 @@
           </el-col>
         </el-form-item>
         <!-- 大屏2 -->
-        <el-form-item label="页面要素" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="页面要素" v-if="screenPicked=='screen2'">
           <el-col :span="3" v-for="(item, index) in form.screen2.dataList" :key="index" >
             <el-form-item :label="item.type + '(' + item.unit + ')'" label-width="150px">
               <el-input v-model="item.amount"></el-input>
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="按放款类型统计" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="按放款类型统计" v-if="screenPicked=='screen2'">
           <el-row>
             <el-col :span="5" v-for="(item, index) in form.screen2.realeaseType" :key="index" >
               <el-form-item :label="item.type+'[贷款余额]'" label-width="180px">
@@ -121,7 +106,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="全国交易分布情况" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="全国交易分布情况" v-if="screenPicked=='screen2'">
           <el-row>
             <el-col :span="1" style="color: #fff">金额TOP5:</el-col>
             <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index" >
@@ -139,7 +124,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="近七天放款趋势" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="近七天放款趋势" v-if="screenPicked=='screen2'">
           <el-row>
             <el-col :span="3" v-for="(item, index) in form.screen2.latest7" :key="index" >
               <el-form-item :label="weekList[index].slice(4,8)+'[借款金额]'" label-width="120px">
@@ -155,7 +140,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="24小时放款金额" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="24小时放款金额" v-if="screenPicked=='screen2'">
           <el-row>
             <!-- [今日] -->
             <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index" >
@@ -165,6 +150,7 @@
             </el-col>
           </el-row>
           <el-row>
+            <!-- [昨日] -->
             <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index+'aaa'" >
               <el-form-item :label="item.hour+':00[昨日]'" label-width="90px">
                 <el-input v-model="item.date24_before"></el-input>
@@ -172,7 +158,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="实时交易" v-if="form.screenPicked=='screen2'">
+        <el-form-item label="实时交易" v-if="screenPicked=='screen2'">
           <el-col :span="18">
             <el-table :data="form.screen2.realist_CY" style="width: 100%" height="20em">
               <el-table-column label="姓名">
@@ -197,17 +183,8 @@
               </el-table-column>
               <el-table-column label="操作">
                 <template slot-scope="scope">
-                  <el-button
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)"
-                    >编辑</el-button
-                  >
-                  <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(scope.$index, scope.row)"
-                    >删除</el-button
-                  >
+                  <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" >编辑</el-button >
+                  <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)" >删除</el-button >
                 </template>
               </el-table-column>
             </el-table>
@@ -229,13 +206,13 @@
 export default {
   data() {
     return {
-      form: {
         screen: [
           { name: "温室大屏", value: "screen1" },
           { name: "线上资产", value: "screen2" },
         ],
-        screenPicked: 'screen2',
-        screen1:{
+        screenPicked: 'screen1',
+      form: {
+        screen1:{ // 温氏资产大屏数据格式
           nationList: [
             {
               amount: "111883.62",
@@ -444,7 +421,7 @@ export default {
             },
           ],
         },
-        screen2:{
+        screen2:{ // 线上资产大屏数据格式
           dataList:[
             {
                 "amount": "184410.39",
@@ -746,31 +723,26 @@ export default {
     };
   },
   computed: {
-    weekList() {
+    weekList() { // 一周七天, 日期列表, 字符串数组
       let weekArr = [];
       weekArr = this.form.screen1.sevenDay_CY.map((v, i) => {
         let Time = new Date();
         let curTime = Time.getTime() - 1000 * 60 * 60 * 24 * i;
         Time.setTime(curTime);
-        return (
-          "" +
-          Time.getFullYear() +
-          (Time.getMonth() + 1) +
-          (Time.getDate() >= 10 ? Time.getDate() : "0" + Time.getDate())
-        );
+        return ( "" + Time.getFullYear() + (Time.getMonth() + 1) + (Time.getDate() >= 10 ? Time.getDate() : "0" + Time.getDate()) );
       });
       return weekArr;
     },
   },
   methods: {
-    compare(prop) {
+    compare(prop) { // 排序
       return function (a, b) {
         var v1 = a[prop];
         var v2 = b[prop];
         return v1 - v2;
       };
     },
-    onSubmit() {
+    onSubmit() { // 提交
       this.$confirm('将改为使用静态数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -787,33 +759,46 @@ export default {
           });          
         });
       console.log("submit!");
-      console.log(this.form.screen2);
+      console.log('修改' , this.screenPicked , '的静态数据:\n' , this.form[this.screenPicked]); 
     },
-    handleEdit(index, row) {
+    handleEdit(index, row) { // 编辑 
       console.log(index, row);
     },
-    handleDelete(index, row) {
+    handleDelete(index, row) { // 删除
       console.log(index, row);
     },
-    getStaticData(src){
-      this.$axios({
-        url: this.$http.static[src].url, // 本地
-        method: this.$http.static[src].method,
-        data: {},
-      }).then((res) => {
-        console.log(res.data);
-      });
+    getStaticData(src){ // 获取当前静态数据
+        let localData = localStorage.getItem(`screen_static_data_${src}`);
+        if( !localData ){
+            this.$axios({
+                url: this.$http.static[src].url, // 本地
+                method: this.$http.static[src].method,
+                data: {},
+            }).then((res) => {
+                console.log('页面加载完成,当前待改的页面是:',src,'\n数据模板为:',res.data,'第一次存储到localStorage中');
+                localStorage.setItem(`screen_static_data_${src}`,JSON.stringify({
+                    _time:new Date(),
+                    _data:res.data
+                }))
+            });
+        } else {
+            // this.form[src] = JSON.parse(localStorage.getItem(`screen_static_data_${src}`))._data;
+            let temp = JSON.parse(localStorage.getItem(`screen_static_data_${src}`))._data;
+            console.log(temp);
+            console.log('cur src:', src);
+            console.log(this.form[src]);
+        }
     }
   },
   mounted() {
-    let curPicked = this.form.screenPicked;
+    let curPicked = this.screenPicked;
     this.getStaticData(curPicked);
-    this.form.screen1.nationmap.map((v) => {
-      return this.form.screen1.nationmap.sort(this.compare("value")).reverse();
-    });
+    // this.form.screen1.nationmap.map((v) => {
+    //   return this.form.screen1.nationmap.sort(this.compare("value")).reverse();
+    // });
   },
   watch:{
-    'form.screenPicked':function(nv, ov){
+    'screenPicked':function(nv, ov){
       console.log('变化选项! 当前选择为: ',nv);
       this.getStaticData(nv)
     }

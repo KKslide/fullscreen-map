@@ -11,7 +11,7 @@ export default {
             axisColor: 'rgba(255,255,255,0.5)',
             fontColor: 'rgba(255,255,255,0.9)',
             titleFontColor: 'rgba(12, 236, 228, 0.8)',
-            dataL: ['贷款余额(万元)', '放款笔数(笔)'],
+            dataL: ['累计贷款金额(万元)', '累计放款笔数(笔数)'],
             barData: {
                 // type: ['O2O贷款业务', '联合授信业务'],
                 type: ['喜之郎', '海大'],
@@ -106,7 +106,7 @@ export default {
                 },
                 series: [
                     {
-                        name: '贷款余额(万元)',
+                        name: '累计贷款金额(万元)',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离
@@ -139,7 +139,7 @@ export default {
                         data: val.data1.map(v=>{return Number(v).toFixed(2)})
                     },
                     {
-                        name: '放款笔数(笔)',
+                        name: '累计放款笔数(笔数)',
                         type: 'bar',
                         barWidth: '15%', //柱条的宽度
                         barGap: '80%', //不同系列的柱间距离

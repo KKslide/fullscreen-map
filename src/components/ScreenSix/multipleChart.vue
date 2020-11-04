@@ -24,7 +24,7 @@ export default {
                     unit: "户",
                 }
             ];
-            var xData = ["0-10万元", "10-20万元", "20-30万元", "30-40万元", "40-50万元", "50-60万元", "60-70万元", "70-80万元", "> 80万元"];
+            var xData = ["0-25万元", "25-50万元", "50-75万元", "75-100万元", "100-125万元", "125-150万元", "150-175万元", "175-200万元", ">200万元"];
             var lines = [
                 [400, 400, 300, 300, 300, 400, 400, 400, 350],
                 [400, 330, 220, 850, 120, 666, 340, 540, 250]
@@ -147,6 +147,11 @@ export default {
                 ],
                 yAxis: [
                     {
+                        name:"单位: 户数",
+                        nameTextStyle:{
+                            fontSize:17,
+                            color: "#FFFFFF",
+                        },
                         type: "value",
                         // scale: true, //坐标轴起点不限制0
                         axisLabel: {
@@ -170,9 +175,6 @@ export default {
                             lineStyle: {
                                 color: "#FFF",
                             }
-                        },
-                        nameTextStyle: {
-                            color: "#FFFFFF",
                         },
                         splitArea: {
                             show: false,

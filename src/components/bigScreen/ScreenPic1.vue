@@ -223,9 +223,25 @@ export default {
 
         this.workreallist = workreallistdata
 
+        // if(res.data.realist_CY.length==0||res.data.realist_CY==''){
+        //     this.$axios({
+        //         url: "./static/json/screen1.json", // 本地
+        //         method: "get",
+        //         data: {},
+        //     }).then( res_temp => {
+        //         this.originRealList = res_temp.data.realist_CY; // 实时交易原始数据格式
+        //         for (var i = 0; i < res_temp.data.realist_CY.length; i++) {
+        //             var a = res_temp.data.realist_CY[i];
+        //             var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+        //             workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
+        //         }
+        //     })
+        // }
+
         this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
         window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
 
+          
       }).catch(res => {
 
       })

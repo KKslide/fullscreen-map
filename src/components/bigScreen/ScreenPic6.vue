@@ -13,7 +13,7 @@
                 </div>
                 <div class="l-bot">
                     <div class="top_title">
-                        <span>成功注册用户分布情况</span>
+                        <span>注册用户分布情况</span>
                     </div>
                     <!-- Top5排行 -->
                     <heat-map-rank :mapDataRank="mapDataTop5"></heat-map-rank>
@@ -31,7 +31,7 @@
                         <div class="chart_table">
                             <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(0,5)" :key="index">
                                 <span class="chart_table_title" v-html="item.text">贷款金额</span>
-                                <p class="chart_table_val" v-html="Number(item.value).toFixed(2)"></p>
+                                <p class="chart_table_val" v-html="item.unit=='万元'?Number(item.value).toFixed(2):Number(item.value).toFixed(0)"></p>
                                 <span class="chart_table_unit" v-html="item.unit">万元</span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="chart_table">
                             <div class="chart_table_item" v-for="(item,index) in iconItemData2.slice(5,10)" :key="index">
                                 <span class="chart_table_title" v-html="item.text">贷款金额</span>
-                                <p class="chart_table_val" v-html="Number(item.value).toFixed(2)"></p>
+                                <p class="chart_table_val" v-html="item.unit=='万元'?Number(item.value).toFixed(2):Number(item.value).toFixed(0)"></p>
                                 <span class="chart_table_unit" v-html="item.unit">万元</span>
                             </div>
                         </div>
@@ -166,13 +166,19 @@ export default {
                 this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
                 this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
                 this.mapData = this.fixedLocation(res.data.nationmap); // 地图热力图组件数据 - 城市的数据
-                this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
+                // this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
                 this.financeSection = this.fixedForm(res.data.financeSection2) // 融资区间分布
-                // this.iconItemData2.map(v=>{
-                //     return v.value = v.unit=="万元" ? this.fixedNumber(v.value) : v.value
-                // });
-            })
+
+                let groupProvinceList = this.groupBy(this.mapData,item=>{ // 地图: 1- 将地图数据按照省份进行group by排列
+                    return [item.type];
+                });
+                let sortedProvinceList = groupProvinceList.map(v => { // 地图: 2- 取最大值
+                    return v.sort(this.compare("amount")).reverse()[0];
+                });
+                // 地图: 3- 排序取前5名
+                this.mapDataTop5 = sortedProvinceList.sort(this.compare("amount")).reverse().slice(0,5);
+            });
         },
         fixedNumber(num) { // 数字千分位
             return Number(num).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')//.split(".")[0];
@@ -183,6 +189,17 @@ export default {
                 var v2 = b[prop];
                 return v1 - v2;
             }
+        },
+        groupBy( array , f ) { // js实现groupby算法
+            let groups = {};
+            array.forEach( function( o ) {
+                let group = JSON.stringify( f(o) );
+                groups[group] = groups[group] || [];
+                groups[group].push( o );
+            });
+            return Object.keys(groups).map( function( group ) {
+                return groups[group];
+            });
         },
         fixedForm(data) { // json的数据格式转换
             let obj = {}, keys = [];

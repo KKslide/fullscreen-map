@@ -29,7 +29,7 @@
     "iconItemData2": [
         {
             "unit": "万元",
-            "text": "贷款金额",
+            "text": "贷款余额",
             "value": "9999.9"
         },
         {
@@ -39,7 +39,7 @@
         },
         {
             "unit": "户",
-            "text": "用信户数",
+            "text": "贷款户数",
             "value": "66"
         },
         {
@@ -64,12 +64,12 @@
         },
         {
             "unit": "万元",
-            "text": "笔数最大",
+            "text": "单笔最大",
             "value": "99.0"
         },
         {
             "unit": "万元",
-            "text": "笔数最大",
+            "text": "单笔最小",
             "value": "1.3"
         },
         {
@@ -427,47 +427,47 @@
     "financeSection2": [
         {
             "loan": "0",
-            "range": "0-10",
+            "range": "0-25",
             "creadit": "2"
         },
         {
             "loan": "3",
-            "range": "10-20",
+            "range": "25-50",
             "creadit": "7"
         },
         {
             "loan": "7",
-            "range": "20-30",
+            "range": "50-75",
             "creadit": "8"
         },
         {
             "loan": "5",
-            "range": "30-40",
+            "range": "75-100",
             "creadit": "5"
         },
         {
             "loan": "3",
-            "range": "40-50",
+            "range": "100-125",
             "creadit": "5"
         },
         {
             "loan": "6",
-            "range": "50-60",
+            "range": "125-150",
             "creadit": "5"
         },
         {
             "loan": "5",
-            "range": "60-70",
+            "range": "150-175",
             "creadit": "2"
         },
         {
             "loan": "2",
-            "range": "70-80",
+            "range": "175-200",
             "creadit": "1"
         },
         {
             "loan": "18",
-            "range": ">80",
+            "range": ">200",
             "creadit": "9"
         }
     ],

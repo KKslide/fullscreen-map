@@ -62,8 +62,8 @@ export default {
                 },
                 grid: {
                     top: '20%',
-                    left: '32%',
-                    right: '18%',
+                    left: '35%',
+                    right: '20%',
                     bottom: '20%',
                     containLabel: true
                 },
@@ -102,7 +102,7 @@ export default {
                     },
                     axisTick: { show: false },
                     splitLine: { show: false },
-                    data: val.type // 纵坐标
+                    data: val.type.map(v=>{return v=='线上车金融'?`线上车金融       `:v}) // 纵坐标
                 },
                 series: [
                     {

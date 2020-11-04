@@ -38,7 +38,7 @@ export default {
             // let _a = this.originList,
             //     _b = this.originList.shift();
             // this.originList.push(_b);
-        }, 6 * 1000)
+        }, 60 * 1000)
 
     },
     watch: {

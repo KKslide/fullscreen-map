@@ -63,7 +63,7 @@ export default {
             for (let i = 0; i < temp.length; i++) {
                 // temp[i].amount = (parseFloat(temp[i].amount) / 10000).toFixed(1) + ""
                 temp[i].amount = parseInt(temp[i].amount)
-                temp[i].type = temp[i].type.slice(temp[i].type.indexOf("市")-2,temp[i].type.indexOf("市"))
+                // temp[i].type = temp[i].type.slice(temp[i].type.indexOf("市")-2,temp[i].type.indexOf("市"))
             }
             this.top5 = temp
             this.getCircle()
