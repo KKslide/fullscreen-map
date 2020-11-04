@@ -65,7 +65,7 @@ export default {
                 // [ { name: pos, value: 100 }, { name: '梅州' } ],
             ];
             if (allCurrentTrade) {
-                console.log('当前页面实时数据--->',allCurrentTrade);
+                console.log('↓↓↓ 当前页面实时数据 ↓↓↓',allCurrentTrade);
                 BJData = allCurrentTrade.map(v => {
                     return [{
                         name: v.address.match(/.+?(省|市|自治区|自治州|县|区)/g)[0].replace(/省|壮族自治区|自治区|回族自治区|维吾尔自治区|市/, ''),
@@ -296,7 +296,6 @@ export default {
         // this.getMap(newVal)
         // },
         '$store.state.allCurrentTrade': function (newVal) {
-            console.log(newVal);
             this.getMap(newVal)
         }
     },

@@ -178,15 +178,24 @@ export default {
                 this.productRealTimeLine.data1.splice(curHour + 1)
                 this.productRealTimeLine.data2.splice(curHour + 1)
                 this.productRealTimeLine.hour.splice(curHour + 1)
-                this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
-                this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
                 this.mapData = res.data.nationmap // 地图数据 - 城市的数据
                 this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
 
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
                 this.sevenDayOpenAccountTendency = this.fixedForm(res.data.sevenDayOpenAccountTendency) // 近七日线上开户走势
-                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+                
+                if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
+                    console.log('*** it`s now useing fake data !!! ***');
+                    this.workreallist = ["湖北省武汉市周**, 存入一笔【线上存款】产品, 金额 10,000元","浙江省金华市魏**, 存入一笔【线上存款】产品, 金额 50,000元","福建省烟台市贾**, 存入一笔【线上存款】产品, 金额 12,000元","江西省南昌市梨**, 存入一笔【线上存款】产品, 金额 10,000元","湖南省海口市韦**, 存入一笔【线上存款】产品, 金额 8,000元","浙江省金华市李**, 存入一笔【线上存款】产品, 金额 50,000元","福建省福州市潘**, 存入一笔【线上存款】产品, 金额 50,000元","湖南省海口市陆**, 存入一笔【线上存款】产品, 金额 30,000元","贵州省贵阳市林**, 存入一笔【线上存款】产品, 金额 300,000元","云南省昆明市周**, 存入一笔【线上存款】产品, 金额 10,000元","浙江省杭州市陆**, 存入一笔【线上存款】产品, 金额 150,000元","福建省烟台市孙**, 存入一笔【线上存款】产品, 金额 20,000元","广西省南宁市刘**, 存入一笔【线上存款】产品, 金额 170,000元","海南省儋州市赵**, 存入一笔【线上存款】产品, 金额 100,000元","浙江省金华市陆**, 存入一笔【线上存款】产品, 金额 50,000元","福建省福州市陆**, 存入一笔【线上存款】产品, 金额 50,000元"];
+                    this.originRealList = [{"amount":"10000","address":"湖北省武汉市","sex":"先生","name":"周","type":"客商银行周周利2号"},{"amount":"50000","address":"浙江省金华市","sex":"先生","name":"魏","type":"客商银行五年定期存款"},{"amount":"12000","address":"福建省烟台市","sex":"先生","name":"贾","type":"客商银行五年定期存款"},{"amount":"10000","address":"江西省南昌市","sex":"先生","name":"梨","type":"客商银行周周利2号"},{"amount":"8000","address":"湖南省海口市","sex":"先生","name":"韦","type":"客商银行五年定期存款"},{"amount":"50000","address":"浙江省金华市","sex":"先生","name":"李","type":"客商银行五年定期存款"},{"amount":"50000","address":"福建省福州市","sex":"先生","name":"潘","type":"客商银行五年定期存款"},{"amount":"30000","address":"湖南省海口市","sex":"女士","name":"陆","type":"客商银行五年定期存款"},{"amount":"300000","address":"贵州省贵阳市","sex":"先生","name":"林","type":"周周利1号"},{"amount":"10000","address":"云南省昆明市","sex":"女士","name":"周","type":"周周利1号"},{"amount":"150000","address":"浙江省杭州市","sex":"先生","name":"陆阳杰","type":"客商银行五年定期存款"},{"amount":"20000","address":"福建省烟台市","sex":"先生","name":"孙","type":"客商银行五年定期存款"},{"amount":"170000","address":"广西省南宁市","sex":"女士","name":"刘","type":"周周利1号"},{"amount":"100000","address":"海南省儋州市","sex":"女士","name":"赵","type":"周周利1号"},{"amount":"50000","address":"浙江省金华市","sex":"先生","name":"陆","type":"客商银行五年定期存款"},{"amount":"50000","address":"福建省福州市","sex":"先生","name":"陆","type":"客商银行五年定期存款"}];
+                    this.$store.commit('setAllCurrentTrade', this.originRealList);
+                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
+                } else {
+                    this.workreallist = this.formMatList(res.data.realist_CY) // 实时信息数据
+                    this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
+                    this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+                }
             })
         },
         compare(prop) { // 排序
@@ -215,7 +224,7 @@ export default {
             for (var i = 0; i < list.length; i++) {
                 let a = list[i];
                 let b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-                workreallistdata.push(a.address + a.name + /* a.sex */"**" + ", " + "存入一笔【线上存款】产品, 金额" + " " + b + "元")
+                workreallistdata.push(a.address + a.name.slice(0,1) + /* a.sex */"**" + ", " + "存入一笔【线上存款】产品, 金额" + " " + b + "元")
             }
             return workreallistdata;
         },

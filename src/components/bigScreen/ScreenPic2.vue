@@ -35,21 +35,9 @@
                     <!-- top5 -->
                     <div class="tradeCountTop5">
                         <div class="trade_count">
-                            <span>
-                                放款金额Top5
-                                <br />(万元)
-                            </span>
-                            <div
-                                class="trade_count_item"
-                                v-for="(item,index) in mapTradeValueTop5"
-                                :key="index"
-                            >
-                                <div
-                                    class="trade_count_item_data"
-                                    :data-name="item.type"
-                                    :data-count="parseInt(item.value)"
-                                    v-trans
-                                ></div>
+                            <span> 放款金额Top5 <br />(万元) </span>
+                            <div class="trade_count_item" v-for="(item,index) in mapTradeValueTop5" :key="index" >
+                                <div class="trade_count_item_data" :data-name="item.type" :data-count="parseInt(item.value)" v-trans ></div>
                                 <div class="rank_circle"></div>
                             </div>
                         </div>
@@ -327,11 +315,6 @@ export default {
                 url: this.$http.screenpic2.url, // 本地
                 method: this.$http.screenpic2.method,
                 data: {},
-
-                // url: "http://10.30.80.71:8100/usp_ks/tx/XSZC",
-                // url: "./tx/XSZC",
-                // method: "post",
-                // data: {}
             }).then(res => {
 
                 this.totalData = res.data;
@@ -358,14 +341,20 @@ export default {
 
                 this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
                 this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
-
-                this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
-                this.originRealList = res.data.realist_CY
-
                 this.barChartData = this.fixedForm(res.data.realeaseType)
 
-                this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-                window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+                if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
+                    console.log('*** it`s now useing fake data !!! ***');
+                    this.workreallist = ["黑龙江省哈尔滨市刘****,申请一笔【线上贷款】产品,金额 34,400 元","内蒙古省包头市何****,申请一笔【线上贷款】产品,金额 44,800 元","山西省运城市芮城县樊****,申请一笔【线上贷款】产品,金额 300,000 元","甘肃省兰州市张****,申请一笔【线上贷款】产品,金额 59,100 元","新疆省乌鲁木齐市刘****,申请一笔【线上贷款】产品,金额 54,800 元","山东省济南市周****,申请一笔【线上贷款】产品,金额 49,900 元","山西省运城市鲍****,申请一笔【线上贷款】产品,金额 150,000 元","山西省运城市万荣县牛捷**,申请一笔【线上贷款】产品,金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾传生**,申请一笔【线上贷款】产品,金额 400,000 元","山西省运城市万荣县蒋文蓄**,申请一笔【线上贷款】产品,金额 251,000 元","甘肃省兰州市周****,申请一笔【线上贷款】产品,金额 59,100 元","湖北省邯郸市孙****,申请一笔【线上贷款】产品,金额 48,000 元","上海市黄****,申请一笔【线上贷款】产品,金额 269,300 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元"];
+                    this.originRealList = [{"amount":"34400.0","address":"黑龙江省哈尔滨市","name":"刘**","type":"个人农户贷款"},{"amount":"44800.0","address":"内蒙古省包头市","name":"何**","type":"个人农户贷款"},{"amount":"300000","address":"山西省运城市芮城县","name":"樊**","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"张**","type":"个人农户贷款"},{"amount":"54800.0","address":"新疆省乌鲁木齐市","name":"刘**","type":"个人农户贷款"},{"amount":"49900.0","address":"山东省济南市","name":"周**","type":"个人农户贷款"},{"amount":"150000","address":"山西省运城市","name":"鲍**","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"周**","type":"个人农户贷款"},{"amount":"48000.0","address":"湖北省邯郸市","name":"孙**","type":"个人农户贷款"},{"amount":"269300.0","address":"上海市","name":"黄**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"}];
+                    this.$store.commit('setAllCurrentTrade', this.originRealList);
+                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
+                } else {
+                    this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
+                    this.originRealList = res.data.realist_CY
+                    this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+                }
 
             })
         },

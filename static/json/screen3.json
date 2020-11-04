@@ -3267,115 +3267,115 @@
     },
     "realist_CY": [
         {
-            "amount": "1000.0",
-            "address": "湖北省xx市",
+            "amount": "10000",
+            "address": "湖北省武汉市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "周",
             "type": "客商银行周周利2号"
         },
         {
-            "amount": "50.0",
-            "address": "浙江省xx市",
+            "amount": "50000",
+            "address": "浙江省金华市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "魏",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "福建省xx市",
+            "amount": "12000",
+            "address": "福建省烟台市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "贾",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "1000.0",
-            "address": "江西省xx市",
+            "amount": "10000",
+            "address": "江西省南昌市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "梨",
             "type": "客商银行周周利2号"
         },
         {
-            "amount": "50.0",
-            "address": "湖南省xx市",
+            "amount": "8000",
+            "address": "湖南省海口市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "韦",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "浙江省xx市",
+            "amount": "50000",
+            "address": "浙江省金华市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "李",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "福建省xx市",
+            "amount": "50000",
+            "address": "福建省福州市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "潘",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "湖南省xx市",
+            "amount": "30000",
+            "address": "湖南省海口市",
             "sex": "女士",
-            "name": "",
+            "name": "陆",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "30000000000000000.0",
-            "address": "贵州省xx市",
+            "amount": "300000",
+            "address": "贵州省贵阳市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "林",
             "type": "周周利1号"
         },
         {
-            "amount": "1000.0",
-            "address": "云南省xx市",
+            "amount": "10000",
+            "address": "云南省昆明市",
             "sex": "女士",
-            "name": "",
+            "name": "周",
             "type": "周周利1号"
         },
         {
-            "amount": "50.0",
-            "address": "浙江省xx市",
+            "amount": "150000",
+            "address": "浙江省杭州市",
             "sex": "先生",
             "name": "陆阳杰",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "福建省xx市",
+            "amount": "20000",
+            "address": "福建省烟台市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "孙",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "1765.84",
-            "address": "广西省xx市",
+            "amount": "170000",
+            "address": "广西省南宁市",
             "sex": "女士",
-            "name": "",
+            "name": "刘",
             "type": "周周利1号"
         },
         {
-            "amount": "10000.0",
-            "address": "海南省xx市",
+            "amount": "100000",
+            "address": "海南省儋州市",
             "sex": "女士",
-            "name": "",
+            "name": "赵",
             "type": "周周利1号"
         },
         {
-            "amount": "50.0",
-            "address": "浙江省xx市",
+            "amount": "50000",
+            "address": "浙江省金华市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "陆",
             "type": "客商银行五年定期存款"
         },
         {
-            "amount": "50.0",
-            "address": "福建省xx市",
+            "amount": "50000",
+            "address": "福建省福州市",
             "sex": "先生",
-            "name": "陆阳杰",
+            "name": "陆",
             "type": "客商银行五年定期存款"
         }
     ],

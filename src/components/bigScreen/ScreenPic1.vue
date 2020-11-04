@@ -213,35 +213,27 @@ export default {
 
         this.localList = res.data.localList // 广东地图数据
 
-        this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
+        if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
+            console.log('*** it`s now useing fake data !!! ***');
+            this.workreallist = ["山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 251,000 元","山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","山西省运城市万荣**，申请一笔【个人农户贷款】产品，金额 251,000 元","江西省赣州市大余县刘**，申请一笔【个人农户贷款】产品，金额 250,000 元","山西省运城市万荣县蒋**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","广东省清远市清新区冯**，申请一笔【个人农户贷款】产品，金额 200,000 元","北京市北京市东城区前门大街1号刘波**，申请一笔【个人农户贷款】产品，金额 475,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","江苏省南京市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元","上海市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元"];
+            this.originRealList = [{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"250000","address":"江西省赣州市大余县","sex":"先生","name":"刘军","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"200000","address":"广东省清远市清新区","sex":"先生","name":"冯贤峰","type":"个人农户贷款"},{"amount":"475000","address":"北京市北京市东城区前门大街1号","sex":"先生","name":"刘波","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"500000","address":"江苏省南京市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"},{"amount":"500000","address":"上海市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"}];
+            this.$store.commit('setAllCurrentTrade', this.originRealList);
+            window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
+        } else {
+            this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
 
-        for (var i = 0; i < res.data.realist_CY.length; i++) {
-          var a = res.data.realist_CY[i];
-          var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-          workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
+            for (var i = 0; i < res.data.realist_CY.length; i++) {
+              var a = res.data.realist_CY[i];
+              var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+              workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
+            }
+
+            this.workreallist = workreallistdata
+
+            this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+            window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
         }
 
-        this.workreallist = workreallistdata
-
-        // if(res.data.realist_CY.length==0||res.data.realist_CY==''){
-        //     this.$axios({
-        //         url: "./static/json/screen1.json", // 本地
-        //         method: "get",
-        //         data: {},
-        //     }).then( res_temp => {
-        //         this.originRealList = res_temp.data.realist_CY; // 实时交易原始数据格式
-        //         for (var i = 0; i < res_temp.data.realist_CY.length; i++) {
-        //             var a = res_temp.data.realist_CY[i];
-        //             var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-        //             workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
-        //         }
-        //     })
-        // }
-
-        this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-        window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
-
-          
       }).catch(res => {
 
       })
