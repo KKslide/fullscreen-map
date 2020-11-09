@@ -29,7 +29,7 @@ export default {
                 [400, 400, 300, 300, 300, 400, 400, 400, 350],
                 [400, 330, 220, 850, 120, 666, 340, 540, 250]
             ];
-            lines[0] = val.creadit; // 授信用户
+            lines[0] = val.credit; // 授信用户
             lines[1] = val.loan; // 用信用户
             var option = {
                 backgroundColor: "",

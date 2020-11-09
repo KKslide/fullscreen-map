@@ -426,49 +426,69 @@
     ],
     "financeSection2": [
         {
-            "loan": "0",
+            "count": "10",
+            "range": "200-",
+            "type": "credit"
+        },
+        {
+            "count": "13",
             "range": "0-25",
-            "creadit": "2"
+            "type": "credit"
         },
         {
-            "loan": "3",
-            "range": "25-50",
-            "creadit": "7"
+            "count": "53",
+            "range": "0-25",
+            "type": "loan"
         },
         {
-            "loan": "7",
-            "range": "50-75",
-            "creadit": "8"
-        },
-        {
-            "loan": "5",
-            "range": "75-100",
-            "creadit": "5"
-        },
-        {
-            "loan": "3",
+            "count": "16",
             "range": "100-125",
-            "creadit": "5"
+            "type": "credit"
         },
         {
-            "loan": "6",
+            "count": "9",
             "range": "125-150",
-            "creadit": "5"
+            "type": "credit"
         },
         {
-            "loan": "5",
+            "count": "3",
             "range": "150-175",
-            "creadit": "2"
+            "type": "credit"
         },
         {
-            "loan": "2",
+            "count": "13",
             "range": "175-200",
-            "creadit": "1"
+            "type": "credit"
         },
         {
-            "loan": "18",
-            "range": ">200",
-            "creadit": "9"
+            "count": "36",
+            "range": "25-50",
+            "type": "credit"
+        },
+        {
+            "count": "17",
+            "range": "25-50",
+            "type": "loan"
+        },
+        {
+            "count": "35",
+            "range": "50-75",
+            "type": "credit"
+        },
+        {
+            "count": "2",
+            "range": "50-75",
+            "type": "loan"
+        },
+        {
+            "count": "34",
+            "range": "75-100",
+            "type": "credit"
+        },
+        {
+            "count": "2",
+            "range": "75-100",
+            "type": "loan"
         }
     ],
     "realist_CY": [

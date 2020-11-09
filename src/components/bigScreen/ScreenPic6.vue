@@ -62,7 +62,7 @@
                 </div>
                 <div class="content-r-wrap-m">
                     <div class="top_title">
-                        <span>最近7天交易趋势</span>
+                        <span>近6周交易趋势</span>
                     </div>
                     <line-chart :sevenDayTradeTendency="sevenDayTradeTendency"></line-chart>
                 </div>
@@ -168,7 +168,9 @@ export default {
                 this.mapData = this.fixedLocation(res.data.nationmap); // 地图热力图组件数据 - 城市的数据
                 // this.mapDataTop5 = res.data.nationmap.sort(this.compare("amount")).reverse().slice(0, 5) // 地图数据 - 城市数据TOP5
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
-                this.financeSection = this.fixedForm(res.data.financeSection2) // 融资区间分布
+                // this.financeSection = this.fixedForm(res.data.financeSection2) // 融资区间分布
+                this.financeSection = this.fixedForm(this.listFilter(res.data.financeSection2)) // 融资区间分布
+                console.log(this.financeSection);
 
                 let groupProvinceList = this.groupBy(this.mapData,item=>{ // 地图: 1- 将地图数据按照省份进行group by排列
                     return [item.type];
@@ -247,6 +249,50 @@ export default {
                 }
             });
             return res;
+        },
+        listFilter(arr){
+            const range = ["0-25", "25-50", "50-75", "75-100", "100-125", "125-150", "150-175", "175-200", "200-"];
+            let creditList = arr.filter(v => {
+                return v.type == 'credit'
+            });
+            let loanList = arr.filter(v => {
+                return v.type == 'loan'
+            });
+            let creditListLeft = creditList.map(v => {
+                return v.range
+            })
+            let loanListLeft = loanList.map(v => {
+                return v.range
+            });
+            if (creditListLeft.length!=0){
+                this.arrDiff(creditListLeft,range).forEach(v=>{
+                    creditList.push({
+                        "count":"0",
+                        "range":v,
+                        "type":"credit"
+                    })
+                })
+            }
+            if (loanListLeft.length!=0){
+                this.arrDiff(loanListLeft,range).forEach(v=>{
+                    loanList.push({
+                        "count":"0",
+                        "range":v,
+                        "type":"loan"
+                    })
+                })
+            }
+            let res = range.map((v,i)=>{
+                return {
+                    "range":v,
+                    "credit":creditList.filter(sub_v=>{return sub_v.range==v})[0].count,
+                    "loan":loanList.filter(sub_v2=>{return sub_v2.range==v})[0].count
+                }
+            });
+            return res;
+        },
+        arrDiff(arr,arr2){ // 求数组差集
+            return arr2.filter(i=>{ return arr.indexOf(i)<0})
         }
     },
     beforeDestroy(){

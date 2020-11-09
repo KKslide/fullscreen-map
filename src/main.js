@@ -170,3 +170,7 @@ new Vue({
   template: '<App/>',
   store: new Vuex.Store(storeCongfig)
 })
+
+// Array.prototype.difff = function (a) {
+//   return this.filter(function (i) { return a.indexOf(i) < 0; });
+// };
