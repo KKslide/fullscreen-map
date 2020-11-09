@@ -178,8 +178,11 @@ export default {
                 let sortedProvinceList = groupProvinceList.map(v => { // 地图: 2- 取最大值
                     return v.sort(this.compare("amount")).reverse()[0];
                 });
+                let sortedByValueProvinceList = groupProvinceList.map(v => { // 地图: 2- 取最大值
+                    return v.sort(this.compare("value")).reverse()[0];
+                });
                 // 地图: 3- 排序取前5名
-                this.mapDataTop5 = sortedProvinceList.sort(this.compare("value")).reverse().slice(0,5);
+                this.mapDataTop5 = sortedByValueProvinceList.sort(this.compare("value")).reverse().slice(0,5);
             });
         },
         fixedNumber(num) { // 数字千分位

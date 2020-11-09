@@ -11,7 +11,7 @@
                 <div
                     class="trade_rank_item_data"
                     :data-name="item.type"
-                    :data-count="parseInt(item.amount)"
+                    :data-count="parseInt(item.value)"
                 ></div>
                 <div class="rank_circle"></div>
             </div>
@@ -62,7 +62,7 @@ export default {
             let temp = nv;
             for (let i = 0; i < temp.length; i++) {
                 // temp[i].amount = (parseFloat(temp[i].amount) / 10000).toFixed(1) + ""
-                temp[i].amount = parseInt(temp[i].amount)
+                temp[i].value = parseInt(temp[i].value)
                 // temp[i].type = temp[i].type.slice(temp[i].type.indexOf("市")-2,temp[i].type.indexOf("市"))
             }
             this.top5 = temp
