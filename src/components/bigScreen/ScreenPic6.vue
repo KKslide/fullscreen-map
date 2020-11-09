@@ -179,7 +179,7 @@ export default {
                     return v.sort(this.compare("amount")).reverse()[0];
                 });
                 // 地图: 3- 排序取前5名
-                this.mapDataTop5 = sortedProvinceList.sort(this.compare("amount")).reverse().slice(0,5);
+                this.mapDataTop5 = sortedProvinceList.sort(this.compare("value")).reverse().slice(0,5);
             });
         },
         fixedNumber(num) { // 数字千分位
@@ -360,7 +360,7 @@ export default {
             justify-content: space-between;
             flex-direction: column;
             .l-top {
-                height: 42vh;
+                height: 29vh;
                 margin-bottom: 0.1rem;
                 background: url(../../../static/images/wrap_bg4.png) no-repeat;
                 background-size: 100% 100%;
@@ -386,7 +386,7 @@ export default {
                 }
             }
             .l-bot {
-                height: 48vh;
+                height: 61vh;
                 background: url(../../../static/images/wrap_bg4.png) no-repeat;
                 background-size: 100% 100%;
                 position: relative;

@@ -62,7 +62,7 @@ export default {
                     top: '35%',
                     left: '12%',
                     right: '12%',
-                    bottom: '10%',
+                    bottom: '15%',
                     zoom: 1.2,
                     aspectScale: 1.1,
                     label: {

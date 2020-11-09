@@ -79,7 +79,7 @@ export default {
     flex-wrap: wrap;
     padding-top: 0.3rem;
     .iconItem {
-        width: 50%;
+        width: 33.33333%;
         // height: 33.333333%;
         display: inline-block;
         text-align: center;
@@ -129,6 +129,9 @@ export default {
                 }
             }
         }
+    }
+    .iconItem:first-child,.iconItem:nth-child(2){
+        width: 50%;
     }
 }
 </style>

@@ -1,291 +1,290 @@
 {
-  "topDate1":
-  {
-    "unit": "亿",
-    "number": "31",
-    "Percentage": "64.47%"
-  },
-  "topDate2":
-  {
-    "unit": "万",
-    "number": "5929",
-    "Percentage": "55.65%"
-  },
-  "topDate3":
-  {
-    "unit": "万",
-    "number": "12869",
-    "Percentage": "6.1%"
-  },
-  "pieData": [
-  {
-    "value": "1686",
-    "name": "创业贷"
-  },
-  {
-    "value": "850",
-    "name": "惠农贷"
-  },
-  {
-    "value": "600",
-    "name": "税银贷"
-  },
-  {
-    "value": "1900",
-    "name": "政银贷"
-  },
-  {
-    "value": "350",
-    "name": "经营贷"
-  },
-  {
-    "value": "543",
-    "name": "票据贷"
-  }],
-  "tendencyChartDate":
-  {
-    "data": [
-    {
-      "range": "0-50",
-      "value": "30"
+    "topDate1": {
+        "unit": "亿",
+        "number": "31",
+        "Percentage": "64.47%"
     },
-    {
-      "range": "50-100",
-      "value": "13"
+    "topDate2": {
+        "unit": "万",
+        "number": "5929",
+        "Percentage": "55.65%"
     },
-    {
-      "range": "100-300",
-      "value": "5"
+    "topDate3": {
+        "unit": "万",
+        "number": "12869",
+        "Percentage": "6.1%"
     },
-    {
-      "range": "300-500",
-      "value": "5"
+    "pieData": [
+        {
+            "value": "1686",
+            "name": "创业贷"
+        },
+        {
+            "value": "850",
+            "name": "惠农贷"
+        },
+        {
+            "value": "600",
+            "name": "税银贷"
+        },
+        {
+            "value": "1900",
+            "name": "政银贷"
+        },
+        {
+            "value": "350",
+            "name": "经营贷"
+        },
+        {
+            "value": "543",
+            "name": "票据贷"
+        }
+    ],
+    "tendencyChartDate": {
+        "data": [
+            {
+                "range": "0-50",
+                "value": "30"
+            },
+            {
+                "range": "50-100",
+                "value": "13"
+            },
+            {
+                "range": "100-300",
+                "value": "5"
+            },
+            {
+                "range": "300-500",
+                "value": "5"
+            },
+            {
+                "range": "500-1000",
+                "value": "1"
+            }
+        ]
     },
-    {
-      "range": "500-1000",
-      "value": "1"
-    }]
-  },
-  "dynamicBarChartDate2":
-  {
-    "data": [
-    {
-      "year": "2017",
-      "value": "1020"
+    "dynamicBarChartDate2": {
+        "data": [
+            {
+                "year": "2017",
+                "value": "1020"
+            },
+            {
+                "year": "2018",
+                "value": "4405"
+            },
+            {
+                "year": "2019",
+                "value": "61053.99"
+            }
+        ]
     },
-    {
-      "year": "2018",
-      "value": "4405"
+    "dynamicBarChartDate1": {
+        "data": [
+            {
+                "year": "2017",
+                "value": "1000"
+            },
+            {
+                "year": "2018",
+                "value": "3605"
+            },
+            {
+                "year": "2019",
+                "value": "5929"
+            }
+        ]
     },
-    {
-      "year": "2019",
-      "value": "61053.99"
-    }]
-  },
-  "dynamicBarChartDate1":
-  {
-    "data": [
-    {
-      "year": "2017",
-      "value": "1000"
+    "localmap1": [
+        {
+            "amount": "1.0",
+            "name": "新兴",
+            "value": "10.0"
+        },
+        {
+            "amount": "321",
+            "name": "鹤山",
+            "value": "441.2"
+        },
+        {
+            "amount": "485.2",
+            "name": "阳春",
+            "value": "1211"
+        },
+        {
+            "amount": "774",
+            "name": "清新",
+            "value": "1454"
+        },
+        {
+            "amount": "112",
+            "name": "佛冈",
+            "value": "1224"
+        },
+        {
+            "amount": "441",
+            "name": "阳山",
+            "value": "3115"
+        },
+        {
+            "amount": "623",
+            "name": "英德",
+            "value": "6124"
+        },
+        {
+            "amount": "844",
+            "name": "连州",
+            "value": "8841"
+        },
+        {
+            "amount": "522",
+            "name": "曲江",
+            "value": "5114"
+        },
+        {
+            "amount": "774",
+            "name": "霞兴",
+            "value": "4566"
+        },
+        {
+            "amount": "52",
+            "name": "南雄",
+            "value": "1145"
+        },
+        {
+            "amount": "455",
+            "name": "开平",
+            "value": "6223"
+        },
+        {
+            "amount": "995",
+            "name": "恩平",
+            "value": "6022"
+        },
+        {
+            "amount": "952",
+            "name": "阳东",
+            "value": "7884"
+        },
+        {
+            "amount": "113",
+            "name": "阳西",
+            "value": "1224"
+        },
+        {
+            "amount": "620",
+            "name": "揭阳",
+            "value": "6635"
+        },
+        {
+            "amount": "720",
+            "name": "丰顺",
+            "value": "7415"
+        }
+    ],
+    "localmap2": [
+        {
+            "amount": "1.0",
+            "name": "广州",
+            "value": "10.0"
+        },
+        {
+            "amount": "321",
+            "name": "深圳",
+            "value": "441.2"
+        },
+        {
+            "amount": "485.2",
+            "name": "东莞",
+            "value": "1211"
+        },
+        {
+            "amount": "774",
+            "name": "汕头",
+            "value": "1454"
+        },
+        {
+            "amount": "112",
+            "name": "韶关",
+            "value": "1224"
+        },
+        {
+            "amount": "441",
+            "name": "清远",
+            "value": "3115"
+        },
+        {
+            "amount": "623",
+            "name": "珠海",
+            "value": "6124"
+        },
+        {
+            "amount": "844",
+            "name": "佛山",
+            "value": "8841"
+        },
+        {
+            "amount": "522",
+            "name": "惠州",
+            "value": "5114"
+        },
+        {
+            "amount": "774",
+            "name": "揭阳",
+            "value": "4566"
+        },
+        {
+            "amount": "52",
+            "name": "茂名",
+            "value": "1145"
+        },
+        {
+            "amount": "455",
+            "name": "江门",
+            "value": "6223"
+        },
+        {
+            "amount": "995",
+            "name": "肇庆",
+            "value": "6022"
+        },
+        {
+            "amount": "720",
+            "name": "丰顺",
+            "value": "7415"
+        }
+    ],
+    "avgTradeValue": {
+        "name": "历史日均交易金额",
+        "value": "424.45",
+        "unit": "万元"
     },
-    {
-      "year": "2018",
-      "value": "3605"
+    "maxTradeValue": {
+        "name": "历史单日最高交易金额",
+        "value": "1119.16",
+        "unit": "万元"
     },
-    {
-      "year": "2019",
-      "value": "5929"
-    }]
-  },
-  "localmap1": [
-  {
-    "amount": "1.0",
-    "name": "新兴",
-    "value": "10.0"
-  },
-  {
-    "amount": "321",
-    "name": "鹤山",
-    "value": "441.2"
-  },
-  {
-    "amount": "485.2",
-    "name": "阳春",
-    "value": "1211"
-  },
-  {
-    "amount": "774",
-    "name": "清新",
-    "value": "1454"
-  },
-  {
-    "amount": "112",
-    "name": "佛冈",
-    "value": "1224"
-  },
-  {
-    "amount": "441",
-    "name": "阳山",
-    "value": "3115"
-  },
-  {
-    "amount": "623",
-    "name": "英德",
-    "value": "6124"
-  },
-  {
-    "amount": "844",
-    "name": "连州",
-    "value": "8841"
-  },
-  {
-    "amount": "522",
-    "name": "曲江",
-    "value": "5114"
-  },
-  {
-    "amount": "774",
-    "name": "霞兴",
-    "value": "4566"
-  },
-  {
-    "amount": "52",
-    "name": "南雄",
-    "value": "1145"
-  },
-  {
-    "amount": "455",
-    "name": "开平",
-    "value": "6223"
-  },
-  {
-    "amount": "995",
-    "name": "恩平",
-    "value": "6022"
-  },
-  {
-    "amount": "952",
-    "name": "阳东",
-    "value": "7884"
-  },
-  {
-    "amount": "113",
-    "name": "阳西",
-    "value": "1224"
-  },
-  {
-    "amount": "620",
-    "name": "揭阳",
-    "value": "6635"
-  },
-  {
-    "amount": "720",
-    "name": "丰顺",
-    "value": "7415"
-  }],
-  "localmap2": [
-  {
-    "amount": "1.0",
-    "name": "广州",
-    "value": "10.0"
-  },
-  {
-    "amount": "321",
-    "name": "深圳",
-    "value": "441.2"
-  },
-  {
-    "amount": "485.2",
-    "name": "东莞",
-    "value": "1211"
-  },
-  {
-    "amount": "774",
-    "name": "汕头",
-    "value": "1454"
-  },
-  {
-    "amount": "112",
-    "name": "韶关",
-    "value": "1224"
-  },
-  {
-    "amount": "441",
-    "name": "清远",
-    "value": "3115"
-  },
-  {
-    "amount": "623",
-    "name": "珠海",
-    "value": "6124"
-  },
-  {
-    "amount": "844",
-    "name": "佛山",
-    "value": "8841"
-  },
-  {
-    "amount": "522",
-    "name": "惠州",
-    "value": "5114"
-  },
-  {
-    "amount": "774",
-    "name": "揭阳",
-    "value": "4566"
-  },
-  {
-    "amount": "52",
-    "name": "茂名",
-    "value": "1145"
-  },
-  {
-    "amount": "455",
-    "name": "江门",
-    "value": "6223"
-  },
-  {
-    "amount": "995",
-    "name": "肇庆",
-    "value": "6022"
-  },
-  {
-    "amount": "720",
-    "name": "丰顺",
-    "value": "7415"
-  }],
-  "avgTradeValue":
-  {
-    "name": "历史日均交易金额",
-    "value": "424.45",
-    "unit": "万元"
-  },
-  "maxTradeValue":
-  {
-    "name": "历史单日最高交易金额",
-    "value": "1119.16",
-    "unit": "万元"
-  },
-  "localmap3": [
-  {
-    "amount": "1.0",
-    "name": "梅县区",
-    "value": "10.0"
-  },
-  {
-    "amount": "321",
-    "name": "丰顺县",
-    "value": "441.2"
-  },
-  {
-    "amount": "485.2",
-    "name": "五华县",
-    "value": "1211"
-  },
-  {
-    "amount": "774",
-    "name": "蕉岭县",
-    "value": "1454"
-  }]
+    "localmap3": [
+        {
+            "amount": "1.0",
+            "name": "梅县区",
+            "value": "10.0"
+        },
+        {
+            "amount": "321",
+            "name": "丰顺县",
+            "value": "441.2"
+        },
+        {
+            "amount": "485.2",
+            "name": "五华县",
+            "value": "1211"
+        },
+        {
+            "amount": "774",
+            "name": "蕉岭县",
+            "value": "1454"
+        }
+    ]
 }
