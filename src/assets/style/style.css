@@ -1,3 +1,28 @@
 #staticCom .static_container .el-form-item__label {
   color: #Fff;
 }
+#staticCom .static_container #c_name_1,
+#staticCom .static_container #c_name_2 {
+  margin-left: 20px;
+}
+#staticCom .static_container #c_name_1 .el-form-item__content,
+#staticCom .static_container #c_name_2 .el-form-item__content {
+  display: flex;
+}
+#staticCom .static_container #c_name_1 .el-form-item__content button,
+#staticCom .static_container #c_name_2 .el-form-item__content button {
+  padding: 0 8px 0 2px;
+  font-size: 14px;
+  color: #73b8ff;
+}
+#staticCom .static_container #c_name_2 {
+  margin-left: 10px;
+}
+#staticCom .static_container form#tempLiveTradeData {
+  padding: 0;
+  background-color: unset;
+  box-shadow: unset;
+}
+#staticCom .static_container form#tempLiveTradeData label {
+  color: #000;
+}

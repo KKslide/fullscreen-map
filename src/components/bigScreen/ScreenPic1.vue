@@ -131,7 +131,7 @@ export default {
       GDTadeValueTop5: [], // 广东交易金额Top5
 
       titleName4: '广东省交易量情况（单位：笔数）',
-      localMapValueData: [],
+    //   localMapValueData: [],
 
       title: "温氏物联网金融",
       liveData: {
@@ -195,7 +195,7 @@ export default {
 
         this.nationMapValueData = res.data.nationmap;
 
-        this.localMapValueData = res.data.localmap
+        // this.localMapValueData = res.data.localmap
 
         // 全国交易笔数前五名
         this.nationTradeAmountTop5 = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse()
@@ -203,9 +203,9 @@ export default {
         this.nationTradeValueTop5 = this.nationMapValueData.sort(this.compare("value")).slice(-5).reverse()
 
         // 广东交易笔数前五名
-        this.GDTadeAmountTop5 = this.localMapValueData.sort(this.compare("amount")).slice(-5).reverse()
+        // this.GDTadeAmountTop5 = this.localMapValueData.sort(this.compare("amount")).slice(-5).reverse()
         // 广东交易金额前五名
-        this.GDTadeValueTop5 = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse()
+        // this.GDTadeValueTop5 = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse()
 
         this.worklist = res.data.list_CY
 

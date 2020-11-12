@@ -1,7 +1,32 @@
-#staticCom{
-    .static_container{
-      .el-form-item__label{
-        color:#Fff;
-      }
+#staticCom {
+    .static_container {
+        .el-form-item__label {
+            color: #Fff;
+        }
+        // 省份名称label的样式修改
+        #c_name_1,#c_name_2{
+            margin-left: 20px;
+            .el-form-item__content{
+                display: flex;
+                button{
+                    padding:0 8px 0 2px;
+                    font-size: 14px;
+                    color: #73b8ff;
+                }
+            }
+        }
+        #c_name_2{
+            margin-left: 10px;
+        }
+        // 实时交易数据模态框表单样式
+        form#tempLiveTradeData{
+            padding: 0;
+            background-color: unset;
+            box-shadow: unset;
+            label{
+                color:#000;
+            }
+        }
     }
-  }
+}
+
