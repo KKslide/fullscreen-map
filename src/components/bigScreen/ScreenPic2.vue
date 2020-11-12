@@ -311,14 +311,11 @@ export default {
     },
     methods: {
         getMap() {
-            this.$axios({
-                url: this.$http.screenpic2.url, // 本地
-                method: this.$http.screenpic2.method,
-                data: {},
-            }).then(res => {
-
-                this.totalData = res.data;
-
+            let staticData = JSON.parse(localStorage.getItem('screen_static_data_screen2'));
+            let isUsedStaticData = JSON.parse(localStorage.getItem('screen_static_data_screen2'))._isUsed;
+            if(staticData && isUsedStaticData){
+                console.log('当前页面使用静态数据');
+                this.totalData = staticData._data;
                 this.totalTradeAmount = this.getDetails('贷款余额')
                 this.totalTradeCount = this.getDetails('累计放款笔数')
                 this.importNum = this.getDetails('进件数')
@@ -332,31 +329,65 @@ export default {
                 this.returnCount = this.getDetails('昨日还款利息')
                 this.newsBussiness = this.getDetails('总客户数')
                 this.O2OBussiness = this.getDetails('昨日新增客户数')
-
                 this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
-
-                this.nationMapValueData = res.data.nationmap // 地图数据
-                this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
-                this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
-
-                this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
-                this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
-                this.barChartData = this.fixedForm(res.data.realeaseType)
-
-                if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
-                    console.log('*** it`s now useing fake data !!! ***');
-                    this.workreallist = ["黑龙江省哈尔滨市刘****,申请一笔【线上贷款】产品,金额 34,400 元","内蒙古省包头市何****,申请一笔【线上贷款】产品,金额 44,800 元","山西省运城市芮城县樊****,申请一笔【线上贷款】产品,金额 300,000 元","甘肃省兰州市张****,申请一笔【线上贷款】产品,金额 59,100 元","新疆省乌鲁木齐市刘****,申请一笔【线上贷款】产品,金额 54,800 元","山东省济南市周****,申请一笔【线上贷款】产品,金额 49,900 元","山西省运城市鲍****,申请一笔【线上贷款】产品,金额 150,000 元","山西省运城市万荣县牛捷**,申请一笔【线上贷款】产品,金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾传生**,申请一笔【线上贷款】产品,金额 400,000 元","山西省运城市万荣县蒋文蓄**,申请一笔【线上贷款】产品,金额 251,000 元","甘肃省兰州市周****,申请一笔【线上贷款】产品,金额 59,100 元","湖北省邯郸市孙****,申请一笔【线上贷款】产品,金额 48,000 元","上海市黄****,申请一笔【线上贷款】产品,金额 269,300 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元"];
-                    this.originRealList = [{"amount":"34400.0","address":"黑龙江省哈尔滨市","name":"刘**","type":"个人农户贷款"},{"amount":"44800.0","address":"内蒙古省包头市","name":"何**","type":"个人农户贷款"},{"amount":"300000","address":"山西省运城市芮城县","name":"樊**","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"张**","type":"个人农户贷款"},{"amount":"54800.0","address":"新疆省乌鲁木齐市","name":"刘**","type":"个人农户贷款"},{"amount":"49900.0","address":"山东省济南市","name":"周**","type":"个人农户贷款"},{"amount":"150000","address":"山西省运城市","name":"鲍**","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"周**","type":"个人农户贷款"},{"amount":"48000.0","address":"湖北省邯郸市","name":"孙**","type":"个人农户贷款"},{"amount":"269300.0","address":"上海市","name":"黄**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"}];
-                    this.$store.commit('setAllCurrentTrade', this.originRealList);
-                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
-                } else {
-                    this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
-                    this.originRealList = res.data.realist_CY
-                    this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-                    window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
-                }
-
-            })
+                this.nationMapValueData = staticData._data.nationmap // 地图数据
+                this.mapTradeAmountTop5 = staticData._data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
+                this.mapTradeValueTop5 = staticData._data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
+                this.latest24Data = this.fixedForm(staticData._data.fullDayTrade) // 最近24小时放款金额
+                this.latest7 = this.fixedForm(staticData._data.latest7.reverse()) // 近7天的交易趋势
+                this.barChartData = this.fixedForm(staticData._data.realeaseType) // 按放款类型统计
+                this.workreallist = this.formMatList(staticData._data.realist_CY) // 实时交易情况
+                this.originRealList = staticData._data.realist_CY // 实时交易数据 - 原始格式
+                this.$store.commit('setAllCurrentTrade', staticData._data.realist_CY) // 将原始实时交易数据存入store中
+                window.localStorage.setItem('allCurrentTrade', JSON.stringify(staticData._data.realist_CY))
+            } else {
+                this.$axios({
+                    url: this.$http.screenpic2.url, // 本地
+                    method: this.$http.screenpic2.method,
+                    data: {},
+                }).then(res => {
+    
+                    this.totalData = res.data;
+    
+                    this.totalTradeAmount = this.getDetails('贷款余额')
+                    this.totalTradeCount = this.getDetails('累计放款笔数')
+                    this.importNum = this.getDetails('进件数')
+                    this.dealNum = this.getDetails('放款数')
+                    this.passNum = this.getDetails('审批通过数')
+                    this.releaseAmountToday = this.getDetails('今日放款金额')
+                    this.releaseCountToday = this.getDetails('今日放款笔数')
+                    this.releaseAmount = this.getDetails('昨日放款金额')
+                    this.releaseCount = this.getDetails('昨日放款笔数')
+                    this.returnAmount = this.getDetails('昨日还款金额')
+                    this.returnCount = this.getDetails('昨日还款利息')
+                    this.newsBussiness = this.getDetails('总客户数')
+                    this.O2OBussiness = this.getDetails('昨日新增客户数')
+    
+                    this.showData = [this.releaseAmountToday, this.releaseCountToday] //今日放款金额和笔数
+    
+                    this.nationMapValueData = res.data.nationmap // 地图数据
+                    this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
+                    this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
+    
+                    this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
+                    this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
+                    this.barChartData = this.fixedForm(res.data.realeaseType)
+    
+                    if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
+                        console.log('*** it`s now useing fake data !!! ***');
+                        this.workreallist = ["黑龙江省哈尔滨市刘****,申请一笔【线上贷款】产品,金额 34,400 元","内蒙古省包头市何****,申请一笔【线上贷款】产品,金额 44,800 元","山西省运城市芮城县樊****,申请一笔【线上贷款】产品,金额 300,000 元","甘肃省兰州市张****,申请一笔【线上贷款】产品,金额 59,100 元","新疆省乌鲁木齐市刘****,申请一笔【线上贷款】产品,金额 54,800 元","山东省济南市周****,申请一笔【线上贷款】产品,金额 49,900 元","山西省运城市鲍****,申请一笔【线上贷款】产品,金额 150,000 元","山西省运城市万荣县牛捷**,申请一笔【线上贷款】产品,金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾传生**,申请一笔【线上贷款】产品,金额 400,000 元","山西省运城市万荣县蒋文蓄**,申请一笔【线上贷款】产品,金额 251,000 元","甘肃省兰州市周****,申请一笔【线上贷款】产品,金额 59,100 元","湖北省邯郸市孙****,申请一笔【线上贷款】产品,金额 48,000 元","上海市黄****,申请一笔【线上贷款】产品,金额 269,300 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元","广东省韶关市南雄市徐****,申请一笔【线上贷款】产品,金额 200,000 元"];
+                        this.originRealList = [{"amount":"34400.0","address":"黑龙江省哈尔滨市","name":"刘**","type":"个人农户贷款"},{"amount":"44800.0","address":"内蒙古省包头市","name":"何**","type":"个人农户贷款"},{"amount":"300000","address":"山西省运城市芮城县","name":"樊**","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"张**","type":"个人农户贷款"},{"amount":"54800.0","address":"新疆省乌鲁木齐市","name":"刘**","type":"个人农户贷款"},{"amount":"49900.0","address":"山东省济南市","name":"周**","type":"个人农户贷款"},{"amount":"150000","address":"山西省运城市","name":"鲍**","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"59100.0","address":"甘肃省兰州市","name":"周**","type":"个人农户贷款"},{"amount":"48000.0","address":"湖北省邯郸市","name":"孙**","type":"个人农户贷款"},{"amount":"269300.0","address":"上海市","name":"黄**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"},{"amount":"200000","address":"广东省韶关市南雄市","sex":"先生","name":"徐**","type":"个人农户贷款"}];
+                        this.$store.commit('setAllCurrentTrade', this.originRealList);
+                        window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
+                    } else {
+                        this.workreallist = this.formMatList(res.data.realist_CY) // 实时交易情况
+                        this.originRealList = res.data.realist_CY
+                        this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+                        window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+                    }
+    
+                })
+            }
         },
         getDetails(detail) {
             return this.totalData.dataList.filter(v => v.type == detail)

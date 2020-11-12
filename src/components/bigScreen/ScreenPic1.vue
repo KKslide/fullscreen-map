@@ -131,7 +131,7 @@ export default {
       GDTadeValueTop5: [], // 广东交易金额Top5
 
       titleName4: '广东省交易量情况（单位：笔数）',
-    //   localMapValueData: [],
+      // localMapValueData: [],
 
       title: "温氏物联网金融",
       liveData: {
@@ -169,74 +169,106 @@ export default {
       }
     },
     getData() { // 获取数据
-      this.$axios({
-        url: this.$http.screenpic1.url, // 本地
-        method: this.$http.screenpic1.method,
-        data: {},
-
-        // url: "http://10.30.80.71:8100/usp_ks/tx/GYL",
-        // url: "./tx/GYL",
-        // method: "post",
-        // data: {},
-      }).then(res => {
-
+      let staticData = JSON.parse(localStorage.getItem('screen_static_data_screen1'));
+      let isUsedStaticData = JSON.parse(localStorage.getItem('screen_static_data_screen1'))._isUsed;
+      if(staticData && isUsedStaticData){
+        console.log('当前页面使用静态数据');
         var workdataX = [];
         var workdata1 = [];
-
         var workreallistdata = [];
-
-        for (var i = 0; i < res.data["7day_CY"].length; i++) {
-          workdataX.push(res.data["7day_CY"][i].date);
-          workdata1.push(res.data["7day_CY"][i].amount);
+        for (var i = 0; i < staticData._data["7day_CY"].length; i++) {
+            workdataX.push(staticData._data["7day_CY"][i].date);
+            workdata1.push(staticData._data["7day_CY"][i].amount);
         }
-
         this.workCrightData.dataX = workdataX.reverse();
         this.workCrightData.data1 = workdata1.reverse();
-
-        this.nationMapValueData = res.data.nationmap;
-
-        // this.localMapValueData = res.data.localmap
-
+        this.nationMapValueData = staticData._data.nationmap;
         // 全国交易笔数前五名
         this.nationTradeAmountTop5 = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse()
         // 全国交易金额前五名
         this.nationTradeValueTop5 = this.nationMapValueData.sort(this.compare("value")).slice(-5).reverse()
-
-        // 广东交易笔数前五名
-        // this.GDTadeAmountTop5 = this.localMapValueData.sort(this.compare("amount")).slice(-5).reverse()
-        // 广东交易金额前五名
-        // this.GDTadeValueTop5 = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse()
-
-        this.worklist = res.data.list_CY
-
-        this.nationList = res.data.nationList // 全国地图数据
-
-        this.localList = res.data.localList // 广东地图数据
-
-        if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
-            console.log('*** it`s now useing fake data !!! ***');
-            this.workreallist = ["山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 251,000 元","山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","山西省运城市万荣**，申请一笔【个人农户贷款】产品，金额 251,000 元","江西省赣州市大余县刘**，申请一笔【个人农户贷款】产品，金额 250,000 元","山西省运城市万荣县蒋**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","广东省清远市清新区冯**，申请一笔【个人农户贷款】产品，金额 200,000 元","北京市北京市东城区前门大街1号刘波**，申请一笔【个人农户贷款】产品，金额 475,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","江苏省南京市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元","上海市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元"];
-            this.originRealList = [{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"250000","address":"江西省赣州市大余县","sex":"先生","name":"刘军","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"200000","address":"广东省清远市清新区","sex":"先生","name":"冯贤峰","type":"个人农户贷款"},{"amount":"475000","address":"北京市北京市东城区前门大街1号","sex":"先生","name":"刘波","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"500000","address":"江苏省南京市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"},{"amount":"500000","address":"上海市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"}];
-            this.$store.commit('setAllCurrentTrade', this.originRealList);
-            window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
-        } else {
-            this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
-
-            for (var i = 0; i < res.data.realist_CY.length; i++) {
-              var a = res.data.realist_CY[i];
-              var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
-              workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
-            }
-
-            this.workreallist = workreallistdata
-
-            this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
-            window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+        this.worklist = staticData._data.list_CY
+        this.nationList = staticData._data.nationList // 全国地图数据
+        this.localList = staticData._data.localList // 广东地图数据
+        this.originRealList = staticData._data.realist_CY; // 实时交易原始数据格式
+        for (var i = 0; i < staticData._data.realist_CY.length; i++) {
+            var a = staticData._data.realist_CY[i];
+            var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+            workreallistdata.push(a.address + a.name.slice(0,2) + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
         }
-
-      }).catch(res => {
-
-      })
+        this.workreallist = workreallistdata
+        this.$store.commit('setAllCurrentTrade', staticData._data.realist_CY)
+        window.localStorage.setItem('allCurrentTrade', JSON.stringify(staticData._data.realist_CY))
+      } else {
+        this.$axios({
+          url: this.$http.screenpic1.url, // 本地
+          method: this.$http.screenpic1.method,
+          data: {},
+  
+          // url: "http://10.30.80.71:8100/usp_ks/tx/GYL",
+          // url: "./tx/GYL",
+          // method: "post",
+          // data: {},
+        }).then(res => {
+  
+          var workdataX = [];
+          var workdata1 = [];
+  
+          var workreallistdata = [];
+  
+          for (var i = 0; i < res.data["7day_CY"].length; i++) {
+            workdataX.push(res.data["7day_CY"][i].date);
+            workdata1.push(res.data["7day_CY"][i].amount);
+          }
+  
+          this.workCrightData.dataX = workdataX.reverse();
+          this.workCrightData.data1 = workdata1.reverse();
+  
+          this.nationMapValueData = res.data.nationmap;
+  
+          // this.localMapValueData = res.data.localmap
+  
+          // 全国交易笔数前五名
+          this.nationTradeAmountTop5 = this.nationMapValueData.sort(this.compare("amount")).slice(-5).reverse()
+          // 全国交易金额前五名
+          this.nationTradeValueTop5 = this.nationMapValueData.sort(this.compare("value")).slice(-5).reverse()
+  
+          // 广东交易笔数前五名
+          // this.GDTadeAmountTop5 = this.localMapValueData.sort(this.compare("amount")).slice(-5).reverse()
+          // 广东交易金额前五名
+          // this.GDTadeValueTop5 = this.localMapValueData.sort(this.compare("value")).slice(-5).reverse()
+  
+          this.worklist = res.data.list_CY
+  
+          this.nationList = res.data.nationList // 全国地图数据
+  
+          this.localList = res.data.localList // 广东地图数据
+  
+          if( !res.data.realist_CY || res.data.realist_CY.length==0 || res.data.realist_CY=="" || res.data.realist_CY==[]){
+              console.log('*** it`s now useing fake data !!! ***');
+              this.workreallist = ["山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 251,000 元","山西省运城市万荣县牛**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","山西省运城市万荣**，申请一笔【个人农户贷款】产品，金额 251,000 元","江西省赣州市大余县刘**，申请一笔【个人农户贷款】产品，金额 250,000 元","山西省运城市万荣县蒋**，申请一笔【个人农户贷款】产品，金额 249,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","广东省清远市清新区冯**，申请一笔【个人农户贷款】产品，金额 200,000 元","北京市北京市东城区前门大街1号刘波**，申请一笔【个人农户贷款】产品，金额 475,000 元","新疆维吾尔自治区乌鲁木齐市天山区中山路479号曾**，申请一笔【个人农户贷款】产品，金额 400,000 元","江苏省南京市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元","上海市曾**，申请一笔【个人农户贷款】产品，金额 500,000 元"];
+              this.originRealList = [{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"牛捷","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"251000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"250000","address":"江西省赣州市大余县","sex":"先生","name":"刘军","type":"个人农户贷款"},{"amount":"249000","address":"山西省运城市万荣县","sex":"先生","name":"蒋文蓄","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"200000","address":"广东省清远市清新区","sex":"先生","name":"冯贤峰","type":"个人农户贷款"},{"amount":"475000","address":"北京市北京市东城区前门大街1号","sex":"先生","name":"刘波","type":"个人农户贷款"},{"amount":"400000","address":"新疆维吾尔自治区乌鲁木齐市天山区中山路479号","sex":"先生","name":"曾传生","type":"个人农户贷款"},{"amount":"500000","address":"江苏省南京市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"},{"amount":"500000","address":"上海市","sex":"女士","name":"曾焕芬","type":"个人农户贷款"}];
+              this.$store.commit('setAllCurrentTrade', this.originRealList);
+              window.localStorage.setItem('allCurrentTrade', JSON.stringify(this.originRealList));
+          } else {
+              this.originRealList = res.data.realist_CY; // 实时交易原始数据格式
+  
+              for (var i = 0; i < res.data.realist_CY.length; i++) {
+                var a = res.data.realist_CY[i];
+                var b = Number(a.amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,').split(".")[0];
+                workreallistdata.push(a.address + a.name + /* a.sex */ "**" + "，" + "申请一笔【" + a.type + "】产品，金额" + " " + b + " 元")
+              }
+  
+              this.workreallist = workreallistdata
+  
+              this.$store.commit('setAllCurrentTrade', res.data.realist_CY)
+              window.localStorage.setItem('allCurrentTrade', JSON.stringify(res.data.realist_CY))
+          }
+  
+        }).catch(err => {
+          console.log(err);
+        })
+      }
     },
     getCircle() { // 启动圆环排名的圆环插件
       var timer = setInterval(() => {

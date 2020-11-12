@@ -15,10 +15,12 @@ import jqCircle from "jquery-circle-progress"
 // 设置页面轮播(其实就是自动跳转)
 import {
   setCarousel,
-  deepClone
+  deepClone,
+  dateFormat
 } from './js/utils'
 Vue.prototype.$setCarousel = setCarousel
 Vue.prototype.$deepClone = deepClone
+Vue.prototype.$dateFormat = dateFormat
 
 Vue.prototype.$axios = axios
 

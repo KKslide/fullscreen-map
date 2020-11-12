@@ -1,11 +1,18 @@
 <template>
     <div id="staticCom">
         <el-container class="static_container">
+            <div class="last_modified" v-html="'上次更新时间: '+lastModified"></div>
             <el-form ref="form" :model="form" label-width="125px" size="mini">
                 <el-form-item label="要编辑的大屏">
-                    <el-select v-model="screenPicked" placeholder="请选择大屏">
-                        <el-option v-for="(item, index) in screen" :key="index" :label="item.name" :value="item.value" ></el-option>
-                    </el-select>
+                    <el-col :span="3">
+                        <el-select v-model="screenPicked" placeholder="请选择大屏">
+                            <el-option v-for="(item, index) in screen" :key="index" :label="item.name" :value="item.value" ></el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="4">
+                        <span style="color:#FFF;">是否使用静态数据:</span>
+                        <el-switch v-model="isUsed" active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否"></el-switch>
+                    </el-col>
                 </el-form-item>
                 <!-- 大屏1 -->
                 <el-form-item label="全国业务情况" v-if="screenPicked == 'screen1'" >
@@ -76,13 +83,13 @@
                             </el-table-column>
                             <el-table-column label="操作">
                                 <template slot-scope="scope">
-                                    <el-button size="mini" @click=" handleEdit(scope.$index, scope.row) " >编辑</el-button >
-                                    <el-button size="mini" type="danger" @click=" handleDelete( scope.$index, scope.row ) " >删除</el-button >
+                                    <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
+                                    <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
                                 </template>
                             </el-table-column>
                         </el-table>
                         <div>
-                            <el-button @click="handleDialog('add')" >添加</el-button >
+                            <el-button @click="handleDialog(null,null,'add')" >添加</el-button >
                         </div>
                     </el-col>
                 </el-form-item>
@@ -114,8 +121,8 @@
                     <el-row>
                         <el-col :span="1" style="color: #fff">金额TOP5:</el-col>
                         <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index" >
-                            <el-form-item :label="item.type" label-width="50px">
-                                <!-- <el-button type="text" @click="editItem(item.type)" v-html="item.type"></el-button> -->
+                            <el-form-item id="c_name_3">
+                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
                                 <el-input v-model="item.value"></el-input>
                             </el-form-item>
                         </el-col>
@@ -123,7 +130,8 @@
                     <el-row>
                         <el-col :span="1.5" style="color: #fff" >交易量TOP5:</el-col >
                         <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index + 'aaa'" >
-                            <el-form-item :label="item.type" label-width="50px">
+                            <el-form-item id="c_name_4">
+                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
                                 <el-input v-model="item.amount"></el-input>
                             </el-form-item>
                         </el-col>
@@ -166,6 +174,7 @@
                 <el-form-item label="实时交易" v-if="screenPicked == 'screen2'">
                     <el-col :span="18">
                         <el-table :data="form.screen2.realist_CY" style="width: 100%" height="20em" >
+                            <el-table-column label="序号" type="index"></el-table-column>
                             <el-table-column label="姓名">
                                 <template slot-scope="scope">
                                     <p>{{ scope.row.name }}</p>
@@ -188,8 +197,8 @@
                             </el-table-column>
                             <el-table-column label="操作">
                                 <template slot-scope="scope">
-                                    <el-button size="mini" @click=" handleEdit(scope.$index, scope.row) " >编辑</el-button >
-                                    <el-button size="mini" type="danger" @click=" handleDelete( scope.$index, scope.row ) " >删除</el-button >
+                                    <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
+                                    <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -206,23 +215,23 @@
 
             <!--实时交易编辑框 -->
             <el-dialog :title="(curStatus=='add'?'新增':'编辑')+'实时数据'" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
-                <el-form id="tempLiveTradeData" ref="tempLiveTradeData" :model="tempLiveTradeData" label-width="80px">
-                    <el-form-item label="客户姓名">
+                <el-form id="tempLiveTradeData" ref="LiveTradeDataForm" :model="tempLiveTradeData" label-width="80px">
+                    <el-form-item label="客户姓名" prop="name">
                         <el-input v-model="tempLiveTradeData.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="客户地址">
+                    <el-form-item label="客户地址" prop="address">
                         <el-input v-model="tempLiveTradeData.address"></el-input>
                     </el-form-item>
-                    <el-form-item label="贷款金额">
+                    <el-form-item label="贷款金额" prop="amount">
                         <el-input v-model="tempLiveTradeData.amount"></el-input>
                     </el-form-item>
-                    <el-form-item label="贷款产品">
+                    <el-form-item label="贷款产品" prop="type">
                         <el-input v-model="tempLiveTradeData.type"></el-input>
                     </el-form-item>
                 </el-form>
                 <span slot="footer" class="dialog-footer">
-                    <el-button @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                    <el-button @click="cancelEditLiveData">取 消</el-button>
+                    <el-button type="primary" @click="addLiveTradeData(curEditIndex)">确 定</el-button>
                 </span>
             </el-dialog>
 
@@ -234,6 +243,7 @@
 export default {
     data() {
         return {
+            isUsed:null,
             screen: [ { name: "温室大屏", value: "screen1" }, { name: "线上资产", value: "screen2" }, ],
             screenPicked: 'screen1',
             form: {
@@ -752,7 +762,9 @@ export default {
                 type: "个人农户贷款",
             },
             curStatus:'add', // 模态框状态 add - 新增, edit - 编辑
+            curEditIndex:null, // 当前正在编辑的实时数据
             dialogVisible: false, // 模态框显示/隐藏
+            lastModified:null, // 上次更新时间
         };
     },
     computed: {
@@ -787,16 +799,26 @@ export default {
                     type: 'success',
                     message: '修改的省份名为: ' + value
                 });
-            }).catch(() => {
+            }).catch((err) => {
+                console.log(err);
                 this.$message({
                     type: 'info',
                     message: '取消输入'
                 });       
             });
         },
-        handleDialog(mode){ // 新增实时数据
+        handleDialog(index, row, mode){ // 新增或删除实时数据
             this.curStatus = mode;
             this.dialogVisible = true;
+            this.curEditIndex = index; // 同步当前正在编辑数据的索引值
+            if (mode == 'add'){
+                for (const key in this.tempLiveTradeData) {
+                    this.tempLiveTradeData[key] = ""
+                }
+            }
+            else if(mode == 'edit'){
+                this.tempLiveTradeData = this.$deepClone(row);
+            }
         },
         handleClose(done) { // 关闭实时数据模态框
             this.$confirm('确认关闭？')
@@ -805,33 +827,63 @@ export default {
             })
             .catch(_ => {});
         },
-        onSubmit() { // 提交
+        cancelEditLiveData(){ // 取消编辑实时数据
+            this.$confirm('当前数据将不会保存, 是否取消编辑当前实时数据?','提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(_=>{
+                this.$message({
+                    type: 'success',
+                    message: '操作成功!'
+                });
+                this.dialogVisible = false;
+            })
+        },
+        addLiveTradeData(index){ // 确定新增实时数据
+            if(this.curStatus=='add'){
+                this.form[this.screenPicked]["realist_CY"].unshift(this.$deepClone(this.tempLiveTradeData));
+            }
+            else if(this.curStatus == 'edit' && index != null){
+                /* 直接赋值不靠谱, 需要用Vue.$set才行 */
+                this.$set(this.form[this.screenPicked]["realist_CY"],index,this.$deepClone(this.tempLiveTradeData))
+            }
+            this.dialogVisible = false;
+        },
+        deleteLiveTradeData(index, row) { // 实时交易删除
+            this.$confirm('是否删除当前实时数据?','提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(_=>{
+                this.$delete(this.form[this.screenPicked]['realist_CY'],index);
+                this.$message({
+                    type: 'success',
+                    message: '操作成功!'
+                });
+                this.dialogVisible = false;
+            })
+        },
+        onSubmit() { // 提交所有修改
             this.$confirm('将改为使用静态数据, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                console.log(this.form);
                 this.$message({
                     type: 'success',
                     message: '操作成功!'
                 });
+                console.log("submit!");
+                console.log('修改', this.screenPicked, '的静态数据:\n', this.form[this.screenPicked]);
+                // 动态存储当前修改
+                localStorage.setItem(`screen_static_data_${this.screenPicked}`, JSON.stringify({ "_time": new Date(), "_data": this.form[this.screenPicked], "_isUsed":this.isUsed }));
             }).catch(() => {
                 this.$message({
                     type: 'info',
                     message: '已取消操作'
                 });
             });
-            console.log("submit!");
-            console.log('修改', this.screenPicked, '的静态数据:\n', this.form[this.screenPicked]);
-             // 动态存储当前修改
-            localStorage.setItem(`screen_static_data_${this.screenPicked}`, JSON.stringify({ "_time": new Date(), "_data": this.form[this.screenPicked] }));
-        },
-        handleEdit(index, row) { // 实时交易数据编辑 
-            console.log(index, row);
-        },
-        handleDelete(index, row) { // 实时交易删除
-            console.log(index, row);
         },
         getStaticData(src) { // 获取当前静态数据
             let localData = localStorage.getItem(`screen_static_data_${src}`);
@@ -848,14 +900,20 @@ export default {
                     preData["nationmap"] = mapData;
                     localStorage.setItem(`screen_static_data_${src}`, JSON.stringify({
                         _time: new Date(),
-                        _data: preData
+                        _data: preData,
+                        _isUsed: this.isUsed
                     }));
                     this.form[src] = preData;
+                    this.lastModified = this.$dateFormat("YYYY-mm-dd HH:MM:SS",new Date())
+                    console.log(this.lastModified);
                     console.log('页面加载完成,当前待改的页面是:', src, '\n数据模板为:', preData, '第一次存储到localStorage中');
                 });
             } else { // 已经存储过旧静态数据
-                let localTemp = JSON.parse(localStorage.getItem(`screen_static_data_${src}`))._data;
-                this.form[src] = localTemp;
+                this.form[src] = JSON.parse(localData)._data;
+                this.lastModified = this.$dateFormat("YYYY-mm-dd HH:MM:SS",new Date(JSON.parse(localData)._time))
+                this.isUsed = JSON.parse(localData)._isUsed;
+                // console.log(new Date());
+                console.log(this.lastModified);
                 console.log('已经存储过旧静态数据,当前使用localstorage数据');
             }
         }
@@ -879,10 +937,19 @@ export default {
         height: 100vh;
         justify-content: center;
         overflow-y: scroll;
+        position: relative;
+        .last_modified{
+            position: absolute;
+            top:2%;
+            right: 3%;
+            font-size: 20px;
+            color:#FFF;
+        }
         form {
             padding: 0.3em;
             background-color: rgba(223, 223, 223, 0.1);
             box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.62);
+            overflow: scroll;
         }
         .el-form-item__label {
             color: #fff;
