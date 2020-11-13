@@ -2,216 +2,218 @@
     <div id="staticCom">
         <el-container class="static_container">
             <div class="last_modified" v-html="'上次更新时间: '+lastModified"></div>
-            <el-form ref="form" :model="form" label-width="125px" size="mini">
-                <el-form-item label="要编辑的大屏">
-                    <el-col :span="3">
-                        <el-select v-model="screenPicked" placeholder="请选择大屏">
-                            <el-option v-for="(item, index) in screen" :key="index" :label="item.name" :value="item.value" ></el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="4">
-                        <span style="color:#FFF;">是否使用静态数据:</span>
-                        <el-switch v-model="isUsed" active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否"></el-switch>
-                    </el-col>
-                </el-form-item>
-                <!-- 大屏1 -->
-                <el-form-item label="全国业务情况" v-if="screenPicked == 'screen1'" >
-                    <el-col :span="3" v-for="(item, index) in form.screen1.nationList" :key="index" >
-                        <el-form-item :label="item.type + '(' + item.unit + ')'" >
-                            <el-input v-model="item.amount"></el-input>
+                <el-form ref="form" :model="form" label-width="125px" size="mini">
+                    <el-scrollbar style="height:100%">
+                        <el-form-item label="要编辑的大屏">
+                            <el-col :span="3">
+                                <el-select v-model="screenPicked" placeholder="请选择大屏">
+                                    <el-option v-for="(item, index) in screen" :key="index" :label="item.name" :value="item.value" ></el-option>
+                                </el-select>
+                            </el-col>
+                            <el-col :span="4">
+                                <span style="color:#FFF;">是否使用静态数据:</span>
+                                <el-switch v-model="isUsed" active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否"></el-switch>
+                            </el-col>
                         </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="广东业务情况" v-if="screenPicked == 'screen1'" >
-                    <el-col :span="3" v-for="(item, index) in form.screen1.localList" :key="index" >
-                        <el-form-item :label="item.type + '(' + item.unit + ')'" >
-                            <el-input v-model="item.amount"></el-input>
+                        <!-- 大屏1 -->
+                        <el-form-item label="全国业务情况" v-if="screenPicked == 'screen1'" >
+                            <el-col :span="3" v-for="(item, index) in form.screen1.nationList" :key="index" >
+                                <el-form-item :label="item.type + '(' + item.unit + ')'" >
+                                    <el-input v-model="item.amount"></el-input>
+                                </el-form-item>
+                            </el-col>
                         </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="近七天放款趋势" v-if="screenPicked == 'screen1'" >
-                    <el-col :span="3" v-for="(item, index) in form.screen1['7day_CY']" :key="index" >
-                        <el-form-item :label="weekList[index]">
-                            <el-input v-model="item.amount"></el-input>
+                        <el-form-item label="广东业务情况" v-if="screenPicked == 'screen1'" >
+                            <el-col :span="3" v-for="(item, index) in form.screen1.localList" :key="index" >
+                                <el-form-item :label="item.type + '(' + item.unit + ')'" >
+                                    <el-input v-model="item.amount"></el-input>
+                                </el-form-item>
+                            </el-col>
                         </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="全国交易量情况" v-if="screenPicked == 'screen1'" >
-                    <el-row>
-                        <el-col :span="1" style="color: #fff">金额TOP5:</el-col>
-                        <el-col :span="3" v-for="(item, index) in form.screen1.nationmap" :key="index" >
-                            <!-- <el-form-item :label="item.type" label-width="50px"> -->
-                            <el-form-item id="c_name_1">
-                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
-                                <el-input v-model="item.value"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="1.5" style="color: #fff" >交易量TOP5:</el-col >
-                        <el-col :span="3" v-for="(item, index) in form.screen1.nationmap" :key="index + 'aaa'" >
-                            <el-form-item id="c_name_2">
-                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
-                                <el-input v-model="item.amount"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="实时交易" v-if="screenPicked == 'screen1'">
-                    <el-col :span="18">
-                        <el-table :data="form.screen1.realist_CY" style="width: 100%" height="20em" >
-                            <el-table-column label="序号" type="index"></el-table-column>
-                            <el-table-column label="姓名">
-                                <template slot-scope="scope">
-                                    <p>{{ scope.row.name }}</p>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="地址">
-                                <template slot-scope="scope">
-                                    <p>{{ scope.row.address }}</p>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="金额">
-                                <template slot-scope="scope">
-                                    <span style="margin-left: 10px">{{ scope.row.amount }}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="产品">
-                                <template slot-scope="scope">
-                                    <span style="margin-left: 10px">{{ scope.row.type }}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="操作">
-                                <template slot-scope="scope">
-                                    <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
-                                    <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
-                                </template>
-                            </el-table-column>
-                        </el-table>
-                        <div>
-                            <el-button @click="handleDialog(null,null,'add')" >添加</el-button >
-                        </div>
-                    </el-col>
-                </el-form-item>
-                <!-- 大屏2 -->
-                <el-form-item label="页面要素" v-if="screenPicked == 'screen2'">
-                    <el-col :span="3" v-for="(item, index) in form.screen2.dataList" :key="index" >
-                        <el-form-item :label="item.type + '(' + item.unit + ')'" label-width="150px" >
-                            <el-input v-model="item.amount"></el-input>
+                        <el-form-item label="近七天放款趋势" v-if="screenPicked == 'screen1'" >
+                            <el-col :span="3" v-for="(item, index) in form.screen1['7day_CY']" :key="index" >
+                                <el-form-item :label="weekList[index]">
+                                    <el-input v-model="item.amount"></el-input>
+                                </el-form-item>
+                            </el-col>
                         </el-form-item>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="按放款类型统计" v-if="screenPicked == 'screen2'" >
-                    <el-row>
-                        <el-col :span="5" v-for="(item, index) in form.screen2.realeaseType" :key="index" >
-                            <el-form-item :label="item.type + '[贷款余额]'" label-width="180px" >
-                                <el-input v-model="item.data1"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="5" v-for="(item, index) in form.screen2.realeaseType" :key="index" >
-                            <el-form-item :label="item.type + '[贷款笔数]'" label-width="180px" >
-                                <el-input v-model="item.data2"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="全国交易分布情况" v-if="screenPicked == 'screen2'" >
-                    <el-row>
-                        <el-col :span="1" style="color: #fff">金额TOP5:</el-col>
-                        <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index" >
-                            <el-form-item id="c_name_3">
-                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
-                                <el-input v-model="item.value"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="1.5" style="color: #fff" >交易量TOP5:</el-col >
-                        <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index + 'aaa'" >
-                            <el-form-item id="c_name_4">
-                                <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
-                                <el-input v-model="item.amount"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="近七天放款趋势" v-if="screenPicked == 'screen2'" >
-                    <el-row>
-                        <el-col :span="3" v-for="(item, index) in form.screen2.latest7" :key="index" >
-                            <el-form-item :label=" weekList[index].slice(4, 8) + '[借款金额]' " label-width="120px" >
-                                <el-input v-model="item.data1"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col :span="3" v-for="(item, index) in form.screen2.latest7" :key="index + 'aaa'" >
-                            <el-form-item :label=" weekList[index].slice(4, 8) + '[还款金额]' " label-width="120px" >
-                                <el-input v-model="item.data2"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="24小时放款金额" v-if="screenPicked == 'screen2'" >
-                    <el-row>
-                        <!-- [今日] -->
-                        <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index" >
-                            <el-form-item :label="item.hour + ':00[今日]'" label-width="90px" >
-                                <el-input v-model="item.date24"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row>
-                        <!-- [昨日] -->
-                        <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index + 'aaa'" >
-                            <el-form-item :label="item.hour + ':00[昨日]'" label-width="90px" >
-                                <el-input v-model="item.date24_before" ></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-form-item>
-                <el-form-item label="实时交易" v-if="screenPicked == 'screen2'">
-                    <el-col :span="18">
-                        <el-table :data="form.screen2.realist_CY" style="width: 100%" height="20em" >
-                            <el-table-column label="序号" type="index"></el-table-column>
-                            <el-table-column label="姓名">
-                                <template slot-scope="scope">
-                                    <p>{{ scope.row.name }}</p>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="地址">
-                                <template slot-scope="scope">
-                                    <p>{{ scope.row.address }}</p>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="金额">
-                                <template slot-scope="scope">
-                                    <span style="margin-left: 10px">{{ scope.row.amount }}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="产品">
-                                <template slot-scope="scope">
-                                    <span style="margin-left: 10px">{{ scope.row.type }}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column label="操作">
-                                <template slot-scope="scope">
-                                    <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
-                                    <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
-                                </template>
-                            </el-table-column>
-                        </el-table>
-                        <div>
-                            <el-button @click="console.log('hhh')" >添加</el-button >
-                        </div>
-                    </el-col>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit" >立即创建</el-button >
-                    <el-button>取消</el-button>
-                </el-form-item>
-            </el-form>
+                        <el-form-item label="全国交易量情况" v-if="screenPicked == 'screen1'" >
+                            <el-row>
+                                <el-col :span="1" style="color: #fff;white-space:nowrap;">金额TOP5:</el-col>
+                                <el-col :span="3" v-for="(item, index) in form.screen1.nationmap" :key="index" >
+                                    <!-- <el-form-item :label="item.type" label-width="50px"> -->
+                                    <el-form-item id="c_name_1">
+                                        <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
+                                        <el-input v-model="item.value"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                            <el-row>
+                                <el-col :span="1.5" style="color: #fff" >交易量TOP5:</el-col >
+                                <el-col :span="3" v-for="(item, index) in form.screen1.nationmap" :key="index + 'aaa'" >
+                                    <el-form-item id="c_name_2">
+                                        <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
+                                        <el-input v-model="item.amount"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item label="实时交易" v-if="screenPicked == 'screen1'">
+                            <el-col :span="18">
+                                <el-table :data="form.screen1.realist_CY" style="width: 100%" height="20em" >
+                                    <el-table-column label="序号" type="index"></el-table-column>
+                                    <el-table-column label="姓名">
+                                        <template slot-scope="scope">
+                                            <p>{{ scope.row.name }}</p>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="地址">
+                                        <template slot-scope="scope">
+                                            <p>{{ scope.row.address }}</p>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="金额">
+                                        <template slot-scope="scope">
+                                            <span style="margin-left: 10px">{{ scope.row.amount }}</span>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="产品">
+                                        <template slot-scope="scope">
+                                            <span style="margin-left: 10px">{{ scope.row.type }}</span>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="操作">
+                                        <template slot-scope="scope">
+                                            <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
+                                            <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                                <div>
+                                    <el-button @click="handleDialog(null,null,'add')" >添加</el-button >
+                                </div>
+                            </el-col>
+                        </el-form-item>
+                        <!-- 大屏2 -->
+                        <el-form-item label="页面要素" v-if="screenPicked == 'screen2'">
+                            <el-col :span="3" v-for="(item, index) in form.screen2.dataList" :key="index" >
+                                <el-form-item :label="item.type + '(' + item.unit + ')'" label-width="150px" >
+                                    <el-input v-model="item.amount"></el-input>
+                                </el-form-item>
+                            </el-col>
+                        </el-form-item>
+                        <el-form-item label="按放款类型统计" v-if="screenPicked == 'screen2'" >
+                            <el-row>
+                                <el-col :span="5" v-for="(item, index) in form.screen2.realeaseType" :key="index" >
+                                    <el-form-item :label="item.type + '[贷款余额]'" label-width="180px" >
+                                        <el-input v-model="item.data1"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                            <el-row>
+                                <el-col :span="5" v-for="(item, index) in form.screen2.realeaseType" :key="index" >
+                                    <el-form-item :label="item.type + '[贷款笔数]'" label-width="180px" >
+                                        <el-input v-model="item.data2"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item label="全国交易分布情况" v-if="screenPicked == 'screen2'" >
+                            <el-row>
+                                <el-col :span="1" style="color: #fff;white-space:nowrap;">金额TOP5:</el-col>
+                                <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index" >
+                                    <el-form-item id="c_name_3">
+                                        <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
+                                        <el-input v-model="item.value"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                            <el-row>
+                                <el-col :span="1.5" style="color: #fff" >交易量TOP5:</el-col >
+                                <el-col :span="3" v-for="(item, index) in form.screen2.nationmap" :key="index + 'aaa'" >
+                                    <el-form-item id="c_name_4">
+                                        <el-button type="text" @click="editItem(item.type,index)" v-html="item.type"></el-button>
+                                        <el-input v-model="item.amount"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item label="近七天放款趋势" v-if="screenPicked == 'screen2'" >
+                            <el-row>
+                                <el-col :span="3" v-for="(item, index) in form.screen2.latest7" :key="index" >
+                                    <el-form-item :label=" weekList[index].slice(4, 8) + '[借款金额]' " label-width="120px" >
+                                        <el-input v-model="item.data1"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                            <el-row>
+                                <el-col :span="3" v-for="(item, index) in form.screen2.latest7" :key="index + 'aaa'" >
+                                    <el-form-item :label=" weekList[index].slice(4, 8) + '[还款金额]' " label-width="120px" >
+                                        <el-input v-model="item.data2"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item label="24小时放款金额" v-if="screenPicked == 'screen2'" >
+                            <el-row>
+                                <!-- [今日] -->
+                                <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index" >
+                                    <el-form-item :label="item.hour + ':00[今日]'" label-width="90px" >
+                                        <el-input v-model="item.date24"></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                            <el-row>
+                                <!-- [昨日] -->
+                                <el-col :span="2" v-for="(item, index) in form.screen2.fullDayTrade" :key="index + 'aaa'" >
+                                    <el-form-item :label="item.hour + ':00[昨日]'" label-width="90px" >
+                                        <el-input v-model="item.date24_before" ></el-input>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item label="实时交易" v-if="screenPicked == 'screen2'">
+                            <el-col :span="18">
+                                <el-table :data="form.screen2.realist_CY" style="width: 100%" height="20em" >
+                                    <el-table-column label="序号" type="index"></el-table-column>
+                                    <el-table-column label="姓名">
+                                        <template slot-scope="scope">
+                                            <p>{{ scope.row.name }}</p>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="地址">
+                                        <template slot-scope="scope">
+                                            <p>{{ scope.row.address }}</p>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="金额">
+                                        <template slot-scope="scope">
+                                            <span style="margin-left: 10px">{{ scope.row.amount }}</span>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="产品">
+                                        <template slot-scope="scope">
+                                            <span style="margin-left: 10px">{{ scope.row.type }}</span>
+                                        </template>
+                                    </el-table-column>
+                                    <el-table-column label="操作">
+                                        <template slot-scope="scope">
+                                            <el-button size="mini" @click=" handleDialog(scope.$index, scope.row, 'edit') " >编辑</el-button >
+                                            <el-button size="mini" type="danger" @click=" deleteLiveTradeData( scope.$index, scope.row ) " >删除</el-button >
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                                <div>
+                                    <el-button @click="console.log('hhh')" >添加</el-button >
+                                </div>
+                            </el-col>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="onSubmit" >立即创建</el-button >
+                            <el-button v-if="false">取消</el-button>
+                        </el-form-item>
+                    </el-scrollbar>
+                </el-form>
 
             <!--实时交易编辑框 -->
             <el-dialog :title="(curStatus=='add'?'新增':'编辑')+'实时数据'" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
@@ -936,7 +938,6 @@ export default {
     .static_container {
         height: 100vh;
         justify-content: center;
-        overflow-y: scroll;
         position: relative;
         .last_modified{
             position: absolute;
@@ -949,7 +950,7 @@ export default {
             padding: 0.3em;
             background-color: rgba(223, 223, 223, 0.1);
             box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.62);
-            overflow: scroll;
+            overflow: hidden;
         }
         .el-form-item__label {
             color: #fff;

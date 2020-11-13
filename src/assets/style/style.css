@@ -42,3 +42,6 @@
 #staticCom .static_container .el-switch__label.el-switch__label--right.is-active {
   color: #13ce66;
 }
+#staticCom .el-scrollbar__wrap {
+  overflow-x: hidden;
+}
