@@ -774,7 +774,7 @@ export default {
             let weekArr = [];
             weekArr = this.form.screen1["7day_CY"].map((v, i) => {
                 let Time = new Date();
-                let curTime = Time.getTime() - 1000 * 60 * 60 * 24 * i;
+                let curTime = Time.getTime() - 1000 * 60 * 60 * 24 * i - 1000 * 60 * 60 * 24;
                 Time.setTime(curTime);
                 return ("" + Time.getFullYear() + (Time.getMonth() + 1) + (Time.getDate() >= 10 ? Time.getDate() : "0" + Time.getDate()));
             });
@@ -872,6 +872,18 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
+                if(this.screenPicked=='screen1'){
+                    this.form['screen1']['7day_CY'].forEach((v,i)=>{
+                        v['date'] = this.weekList[i]
+                    });
+                    // console.log(this.form[this.screenPicked]['7day_CY']);
+                }
+                else{
+                    this.form['screen2']['latest7'].forEach((v,i)=>{
+                        v['date'] = this.weekList[i]
+                    });
+                    // console.log(this.form[this.screenPicked]['latest7']);
+                }
                 this.$message({
                     type: 'success',
                     message: '操作成功!'
