@@ -170,7 +170,7 @@ export default {
                 this.sevenDayTradeTendency = this.fixedForm(res.data.sevenDayTradeTendency) // 近七日交易量走势
                 // this.financeSection = this.fixedForm(res.data.financeSection2) // 融资区间分布
                 this.financeSection = this.fixedForm(this.listFilter(res.data.financeSection2)) // 融资区间分布
-                console.log(this.financeSection);
+                // console.log(this.financeSection);
 
                 let groupProvinceList = this.groupBy(this.mapData,item=>{ // 地图: 1- 将地图数据按照省份进行group by排列
                     return [item.type];

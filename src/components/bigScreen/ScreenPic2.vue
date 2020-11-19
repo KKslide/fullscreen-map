@@ -354,8 +354,8 @@ export default {
                     this.importNum = this.getDetails('进件数')
                     this.dealNum = this.getDetails('放款数')
                     this.passNum = this.getDetails('审批通过数')
-                    this.releaseAmountToday = this.getDetails('今日放款金额')
-                    this.releaseCountToday = this.getDetails('今日放款笔数')
+                    this.releaseAmountToday = this.getDetails('昨日放款金额') // 临时改为昨日
+                    this.releaseCountToday = this.getDetails('昨日放款笔数') // 临时改为昨日
                     this.releaseAmount = this.getDetails('昨日放款金额')
                     this.releaseCount = this.getDetails('昨日放款笔数')
                     this.returnAmount = this.getDetails('昨日还款金额')
@@ -369,7 +369,9 @@ export default {
                     this.mapTradeAmountTop5 = res.data.nationmap.sort(this.compare("amount")).slice(-5).reverse() // 金额Top5
                     this.mapTradeValueTop5 = res.data.nationmap.sort(this.compare("value")).slice(-5).reverse() // 笔数Top5
     
-                    this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
+                    // this.latest24Data = this.fixedForm(res.data.fullDayTrade) // 最近24小时放款金额
+                    this.latest24Data = this.fixedForm(this.fix24Hour(res.data.fullDayTrade)) // 最近24小时放款金额
+
                     this.latest7 = this.fixedForm(res.data.latest7.reverse()) // 近7天的交易趋势
                     this.barChartData = this.fixedForm(res.data.realeaseType)
     
@@ -416,6 +418,9 @@ export default {
                 return v1 - v2;
             }
         },
+        arrDiff(arr,arr2){ // 求数组差集
+            return arr2.filter(i=>{ return arr.indexOf(i)<0})
+        },
         //   格式化数字
         fixedNumber(data) {
             return Number(data).toFixed(this.toFixedNum).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
@@ -449,6 +454,26 @@ export default {
                 workreallistdata.push(a.address + a.name + "**" + "," + "申请一笔【线上贷款】产品,金额" + " " + b + " 元")
             }
             return workreallistdata;
+        },
+        fix24Hour(arr){ // 补全小时数据
+            let resArr = arr.map(v => {
+                return Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
+            })
+            const range = new Array(24).fill(0).map((v, i) => {
+                return `${i < 10 ? '0' + i : i}`
+            })
+            let leftList = this.arrDiff(resArr,range).map((v,i)=>{
+                return {
+                    "hour":v,
+                    "date24": "0",
+                    "date24_before":"0"
+                }
+            })
+            let res = leftList.concat(arr).sort(this.compare("hour"));
+            res.forEach(v=>{
+                v["hour"] = Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
+            })
+            return res;
         }
     },
     watch: {

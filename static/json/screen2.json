@@ -29,6 +29,16 @@
             "amount": "4",
             "unit": "笔",
             "type": "今日放款笔数"
+        },
+        {
+            "amount": "150",
+            "unit": "万元",
+            "type": "昨日放款金额"
+        },
+        {
+            "amount": "4",
+            "unit": "笔",
+            "type": "昨日放款笔数"
         }
     ],
     "realeaseType": [
