@@ -456,24 +456,34 @@ export default {
             return workreallistdata;
         },
         fix24Hour(arr){ // 补全小时数据
-            let resArr = arr.map(v => {
-                return Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
-            })
             const range = new Array(24).fill(0).map((v, i) => {
                 return `${i < 10 ? '0' + i : i}`
             })
-            let leftList = this.arrDiff(resArr,range).map((v,i)=>{
-                return {
-                    "hour":v,
-                    "date24": "0",
-                    "date24_before":"0"
-                }
-            })
-            let res = leftList.concat(arr).sort(this.compare("hour"));
-            res.forEach(v=>{
-                v["hour"] = Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
-            })
-            return res;
+            if(arr==""){
+                return range.map((v,i)=>{
+                    return {
+                        "hour": v,
+                        "date24": "0",
+                        "date24_before": "0"
+                    }
+                })
+            } else {
+                let resArr = arr.map(v => {
+                    return Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
+                })
+                let leftList = this.arrDiff(resArr,range).map((v,i)=>{
+                    return {
+                        "hour":v,
+                        "date24": "0",
+                        "date24_before":"0"
+                    }
+                })
+                let res = leftList.concat(arr).sort(this.compare("hour"));
+                res.forEach(v=>{
+                    v["hour"] = Number(v["hour"]) < 10 ? "0"+Number(v["hour"]) : ""+Number(v["hour"])
+                })
+                return res;
+            }
         }
     },
     watch: {

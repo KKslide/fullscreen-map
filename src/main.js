@@ -39,16 +39,16 @@ if (process.env.NODE_ENV === "production") {
       "url": "./tx/Login",
       "method": "post"
     },
-    // "screenpic1": {
-    //   "url": "./tx/GYL",
-    //   "method": "post"
-    // },
-    // "screenpic2": {
-    //   "url": "./tx/XSZC",
-    //   "method": "post"
-    // },
-    "screenpic1": { "url": "./static/json/screen1.json", "method": "get" },
-    "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
+    "screenpic1": {
+      "url": "./tx/GYL",
+      "method": "post"
+    },
+    "screenpic2": {
+      "url": "./tx/XSZC",
+      "method": "post"
+    },
+    // "screenpic1": { "url": "./static/json/screen1.json", "method": "get" },
+    // "screenpic2": { "url": "./static/json/screen2.json", "method": "get" },
     "screenpic3": {
       "url": "./tx/SZYH",
       "method": "post"
