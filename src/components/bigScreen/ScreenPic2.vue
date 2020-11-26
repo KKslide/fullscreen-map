@@ -312,7 +312,7 @@ export default {
     methods: {
         getMap() {
             let staticData = JSON.parse(localStorage.getItem('screen_static_data_screen2'));
-            let isUsedStaticData = JSON.parse(localStorage.getItem('screen_static_data_screen2'))._isUsed;
+            let isUsedStaticData = staticData!=null?JSON.parse(localStorage.getItem('screen_static_data_screen2'))._isUsed:"";
             if(staticData && isUsedStaticData){
                 console.log('当前页面使用静态数据');
                 this.totalData = staticData._data;
